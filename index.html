@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wedding Invitation Letter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+  href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&display=swap"
+  rel="stylesheet"
+/>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+     <div class="countdown hidden"></div>
+    <div class="envlope-wrapper">
+      <!-- Click me hint -->
+      <div class="hint">
+        <p>Click me</p>
+        <div class="arrow">⬇</div>
+      </div>
+
+      <div id="envelope" class="close" tabindex="0">
+        <div class="front flap"></div>
+        <div class="front pocket"></div>
+        <article class="letter">
+          <h1 class="names">Gerwel &amp; Jane</h1>
+          <p class="message">
+            Together with their families,<br />
+            invite you to their wedding celebration
+          </p>
+          <p class="date"></p>
+          <div class="rsvp">
+            <p class="rsvp-text">RSVP form coming soon...</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
