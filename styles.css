@@ -155,7 +155,9 @@ body {
 }
 
 .hint .arrow {
-  font-size: 4rem; /* scales well on phones */
+  font-size: 3rem; /* scales well on phones */
+   font-weight: 200 !important;
+   
 }
 
 .hint.hidden {
