@@ -258,3 +258,54 @@ body {
   position: relative;
   text-align: center;
 }
+/* Elegant wax seal */
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #8b0000, #4b0000);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5e6c8; /* soft gold */
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.35), inset -2px -2px 6px rgba(0,0,0,0.5);
+  cursor: pointer;
+  z-index: 5;
+  transition: opacity 0.6s ease;
+  overflow: hidden;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+  padding:8px;
+}
+
+/* When the envelope is opened → seal breaks */
+.envelope-open .seal {
+  animation: breakSeal 0.8s forwards ease-in-out;
+}
+
+@keyframes breakSeal {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(10deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(255,215,0,0.8));
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(0.85) rotate(-15deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6) rotate(25deg);
+    opacity: 0;
+  }
+}
+

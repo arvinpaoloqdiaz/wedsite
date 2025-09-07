@@ -2,10 +2,10 @@ $(document).ready(function () {
   var envelope = $("#envelope");
   var hint = $(".hint");
   let countdownStarted = false;
+  let sealBroken = false; // 🕯 track if seal has already been broken
 
   // 🎯 Wedding date
-const weddingDate = new Date("2025-12-20T15:00:00+08:00");
-
+  const weddingDate = new Date("2025-12-20T15:00:00+08:00");
 
   // Insert formatted date into the letter
   $(".date").text(
@@ -43,11 +43,37 @@ const weddingDate = new Date("2025-12-20T15:00:00+08:00");
     `);
   }
 
+  // 🎇 Wax Seal Burst
+  function burstSealEffect() {
+    confetti({
+      particleCount: 25,
+      spread: 60,
+      origin: { y: 0.45 },
+      colors: ["#8b0000", "#4b0000", "#f5e6c8"] // burgundy + gold fragments
+    });
+  }
+
+  // Envelope toggle
   function toggleEnvelope() {
     if (envelope.hasClass("open")) {
+      // Closing envelope
       envelope.removeClass("open").addClass("close");
+      // Seal stays broken (do not re-add body.envelope-open)
     } else {
+      // Opening envelope
       envelope.removeClass("close").addClass("open");
+
+      // Break the seal only once
+      if (!sealBroken) {
+        $("body").addClass("envelope-open"); // triggers seal animation
+        burstSealEffect();
+        sealBroken = true;
+
+        // After animation, remove seal element entirely
+        setTimeout(() => {
+          $(".seal").remove();
+        }, 1000);
+      }
 
       // 🎉 Confetti burst when opening
       confetti({
