@@ -1,76 +1,117 @@
+/* ============================
+   Fonts
+============================ */
 @font-face {
-    font-family: "daydream"; /* This is the name you’ll use in CSS */
+    font-family: "daydream";
     src: url("assets/fonts/daydream.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
-/* Example usage */
-.daydream {
-    font-family: "daydream", sans-serif;
-    font-size: 3rem;
-    text-align: center;
-    font-weight: bold;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&family=Great+Vibes&display=swap');
+
+/* ============================
+   Root Variables
+============================ */
+:root {
+    /* 🎨 Colors from palette */
+    --color-deep-rose: #C4747B;
+    --color-peach: #F7B6A4;
+    --color-blush: #F6D9D6;
+    --color-cream: #F3E6DC;
+    --color-soft-white: #F8F6F2;
+
+    /* Assign roles */
+    --color-primary: var(--color-deep-rose);
+    --color-secondary: var(--color-peach);
+    --color-accent: var(--color-blush);
+    --color-bg-light: var(--color-soft-white);
+    --color-text: #6c757d;
+
+    /* ✨ Fonts */
+    --font-main: 'Poppins', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+    --font-names: 'Great Vibes', cursive;
+    --font-daydream: 'daydream', sans-serif;
+
+    /* 🔠 Font Sizes */
+    --font-size-xxl: 6rem;
+    --font-size-xl: 3rem;
+    --font-size-lg: 1.5rem;
+    --font-size-md: 1.2rem;
+    --font-size-sm: 0.9rem;
+    --font-size-xs: 0.7rem;
+
+    /* 📦 Layout */
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --shadow-soft: 0 4px 15px rgba(166, 30, 77, 0.2);
+    --shadow-box: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* ============================
+   Global Styles
+============================ */
 body, html {
-    margin:0;
-    padding:0;
-    font-family:'Poppins', sans-serif;
-    scroll-behavior: smooth; /* smooth scrolling */
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-main);
+    scroll-behavior: smooth;
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
 }
 
-/* Envelope Landing */
+.daydream { font-family: var(--font-daydream); text-align:center; font-weight: 600; letter-spacing: 2px; font-size: 2.75rem;}
+.names { font-family: var(--font-names); }
+.text-primary { color: var(--color-primary) !important; }
+
+/* ============================
+   Envelope Landing
+============================ */
 #landing {
-    background-color: #fff0f5;
+    background-color: var(--color-bg-light);
 }
-.envelope-container{
-    margin-top:4rem;
+.envelope-container {
+    margin-top: 4rem;
 }
 .envelope {
     width: 200px;
     height: 130px;
-    background: #a61e4d;
-    border-radius: 0 0 12px 12px;
+    background: var(--color-primary);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     position: relative;
     cursor: pointer;
-    right:50%;
+    right: 50%;
     transform: translateX(60%);
 }
-
 .flap {
-    width:0; height:0;
-    border-left:100px solid transparent;
-    border-right:100px solid transparent;
-    border-bottom:60px solid transparent;
-    border-top:60px solid #a61e4d;
-    position:absolute; top:-60px; left:0;
+    width: 0; height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-top: 60px solid var(--color-primary);
+    position: absolute; top: -60px; left: 0;
+}
+.pocket {
+    width: 0; height: 0;
+    border-left: 100px solid var(--color-secondary);
+    border-right: 100px solid var(--color-secondary);
+    border-bottom: 50px solid var(--color-accent);
+    border-top: 50px solid transparent;
+    position: absolute; bottom: 0; left: 0;
+}
+.description { font-family: var(--font-main); }
+.groom, .bride {
+    font-size: var(--font-size-xxl);
+    color: var(--color-primary);
+}
+.bride { margin-left: 7rem; }
+.groom { margin-right: 7rem; }
+.ampersand {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
 }
 
-.pocket {
-    width:0; height:0;
-    border-left:100px solid #d46a8c;
-    border-right:100px solid #d46a8c;
-    border-bottom:50px solid #e892a5;
-    border-top:50px solid transparent;
-    position:absolute; bottom:0; left:0;
-}
-.description{
-    font-family: "Poppins";
-}
-.groom,.bride{
-    font-size:6rem;
-    color:#a61e4d;
-}
-.bride{
-    margin-left:7rem;
-}
-.groom{
-    margin-right:7rem;
-}
-.ampersand{
-    font-size: 3rem;
-    color:#a61e4d;
-}
+/* Seal */
 .seal {
   width: 70px;
   height: 70px;
@@ -80,25 +121,29 @@ body, html {
   transform: translate(-50%, -50%);
   z-index: 10;
   font-weight: 1000;
-  font-size: 1.5rem;
+  font-size: var(--font-size-md);
 }
-
 .seal-svg {
   width: 100%;
   height: 100%;
   display: block;
 }
-
 .seal span {
     text-shadow: 0 1px 0 #fff5,
                  0 -1px 0 rgba(0,0,0,0.3),
                  1px 0 0 rgba(0,0,0,0.3),
                  -1px 0 0 rgba(0,0,0,0.3);
 }
+.hint { 
+    margin-top: 20px;
+    font-family: var(--font-script);
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+}
 
-.hint { margin-top:20px; font-family:'Dancing Script', cursive; font-size:1.5rem; color:#a61e4d; }
-
-/* Countdown Timer */
+/* ============================
+   Countdown Timer
+============================ */
 #countdown {
     position: fixed;
     top: 1rem;
@@ -106,103 +151,134 @@ body, html {
     transform: translateX(-50%);
     display: flex;
     gap: 0.8rem;
-    background: rgba(255, 245, 250, 0.9); /* soft pinkish background */
+    background: rgba(255, 245, 250, 0.9);
     padding: 0.6rem 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(166, 30, 77, 0.2);
-    font-family: 'Poppins', sans-serif;
-    color: #a61e4d; /* burgundy accent */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    font-family: var(--font-main);
+    color: var(--color-primary);
     z-index: 1000;
     font-size: 1rem;
 }
-
-/* Individual time box */
 #countdown .time-box {
     text-align: center;
     min-width: 60px;
     padding: 0.4rem 0.6rem;
-    background: #fff0f5; /* lighter pink */
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-box);
     transition: transform 0.3s ease;
 }
-
-/* Numbers and labels */
 #countdown .number {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: var(--font-size-md);
 }
-
 #countdown .label {
-    font-size: 0.7rem;
-    color: #6c757d; /* muted gray for labels */
+    font-size: var(--font-size-xs);
+    color: var(--color-text);
     margin-top: 0.2rem;
     display: block;
 }
-
-/* Optional: add hover effect */
 #countdown .time-box:hover {
     transform: translateY(-3px);
 }
 
-
-/* Wedding Page Hero Overlay */
+/* ============================
+   Hero Section
+============================ */
 .hero {
     position: relative;
     overflow: hidden;
 }
-
-/* Hero image fills container */
 .hero img {
     width: 100%;
     height: auto;
     display: block;
 }
-
-/* Hero text overlay */
 .hero-text-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* center on desktop */
-    width: 80%; /* leave some horizontal padding */
+    transform: translate(-50%, -50%);
+    width: 80%;
     max-width: 900px;
     text-align: center;
     background: rgba(0,0,0,0.5);
     padding: 2rem;
-    border-radius: 12px;
-    color: #fff;
+    border-radius: var(--radius-lg);
+    color: var(--color-soft-white);
 }
-
-/* Responsive for mobile */
 @media (max-width: 768px) {
     .hero-text-overlay {
-        position: static; /* remove absolute positioning */
+        position: static;
         transform: none;
         margin-top: 1rem;
-        margin-left:auto;
-        margin-right:auto;
+        margin-left: auto;
+        margin-right: auto;
         width: 95%;
         padding: 1.5rem;
-        font-size: 0.9rem; /* scale down text */
-        background: rgba(0,0,0,0.6); /* slightly darker for readability */
+        font-size: var(--font-size-sm);
+        background: rgba(0,0,0,0.6);
     }
     .hero {
-        padding-top: 6rem; /* space for countdown */
-        padding-bottom: 0rem;
+        padding-top: 6rem;
+        padding-bottom: 0;
     }
 }
 
-.names { font-family:'Great Vibes', cursive; }
-.text-primary { color: #a61e4d !important; }
+/* ============================
+   Dress Code Palette
+============================ */
+.palette {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.palette .color-box {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-box);
+    border: 2px solid #fff;
+}
+.color-deep-rose { background-color: var(--color-deep-rose); }
+.color-peach { background-color: var(--color-peach); }
+.color-blush { background-color: var(--color-blush); }
+.color-cream { background-color: var(--color-cream); }
+.color-soft-white { background-color: var(--color-soft-white); }
 
-/* Scroll animations */
+/* ============================
+   Section Animations
+============================ */
 .section {
-    opacity:0;
+    opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s ease;
 }
 .section.visible {
-    opacity:1;
+    opacity: 1;
     transform: translateY(0);
+}
+/* ❤️ Floating Hearts Animation */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  pointer-events: none;
+  animation: floatUp 4s ease-in forwards;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
 }
