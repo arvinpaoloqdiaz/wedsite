@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    
     // Envelope click -> show wedding page
    $("#envelope").on("click", function(){
     const envelope = $(this);
@@ -15,10 +15,17 @@ $(document).ready(function(){
         $("#landing").fadeOut(500, function(){
             $(this).remove(); // remove landing page
             $("#wedding-page").fadeIn(800);
+
+            // Start countdown
             startCountdown();
+
+            // Play background music
+            const music = document.getElementById("weddingMusic");
+            music.play().catch(err => console.log("Autoplay blocked", err));
         });
-    }, 600); // matches flap transition duration
+    }, 600); 
 });
+
 
 
     // Countdown Timer

@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "daydream"; /* This is the name you’ll use in CSS */
+    src: url("assets/fonts/daydream.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+/* Example usage */
+.daydream {
+    font-family: "daydream", sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+}
+
 body, html {
     margin:0;
     padding:0;
@@ -137,11 +151,48 @@ body, html {
     position: relative;
     overflow: hidden;
 }
+
+/* Hero image fills container */
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Hero text overlay */
 .hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* center on desktop */
+    width: 80%; /* leave some horizontal padding */
+    max-width: 900px;
+    text-align: center;
     background: rgba(0,0,0,0.5);
     padding: 2rem;
     border-radius: 12px;
+    color: #fff;
 }
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .hero-text-overlay {
+        position: static; /* remove absolute positioning */
+        transform: none;
+        margin-top: 1rem;
+        margin-left:auto;
+        margin-right:auto;
+        width: 95%;
+        padding: 1.5rem;
+        font-size: 0.9rem; /* scale down text */
+        background: rgba(0,0,0,0.6); /* slightly darker for readability */
+    }
+    .hero {
+        padding-top: 6rem; /* space for countdown */
+        padding-bottom: 0rem;
+    }
+}
+
 .names { font-family:'Great Vibes', cursive; }
 .text-primary { color: #a61e4d !important; }
 
