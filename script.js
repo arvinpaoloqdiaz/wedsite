@@ -1,106 +1,86 @@
-$(document).ready(function () {
-  var envelope = $("#envelope");
-  var hint = $(".hint");
-  let countdownStarted = false;
-  let sealBroken = false; // 🕯 track if seal has already been broken
+$(document).ready(function(){
 
-  // 🎯 Wedding date
-  const weddingDate = new Date("2025-12-20T15:00:00+08:00");
+    // Envelope click -> show wedding page
+   $("#envelope").on("click", function(){
+    const envelope = $(this);
 
-  // Insert formatted date into the letter
-  $(".date").text(
-    weddingDate.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }) + " • Porac, Pampanga"
-  );
+    // Animate flap opening
+    envelope.addClass("open");
 
-  // Countdown logic
-  function updateCountdown() {
-    const now = new Date();
-    const diff = weddingDate - now;
+    // Confetti
+    confetti({ particleCount: 50, spread: 70, colors:["#8b0000","#4b0000","#f5e6c8"] });
 
-    if (diff <= 0) {
-      $(".countdown").html("<span>The big day has arrived! 🎉</span>");
-      return;
-    }
+    // Wait for flap animation to finish before showing page
+    setTimeout(() => {
+        $("#landing").fadeOut(500, function(){
+            $(this).remove(); // remove landing page
+            $("#wedding-page").fadeIn(800);
+            startCountdown();
+        });
+    }, 600); // matches flap transition duration
+});
 
-    const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-    const days = Math.floor(
-      (diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24)
-    );
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
 
-    $(".countdown").html(`
-      <div class="time-box"><div class="number">${months}</div><div class="label">Months</div></div>
-      <div class="time-box"><div class="number">${days}</div><div class="label">Days</div></div>
-      <div class="time-box"><div class="number">${hours}</div><div class="label">Hours</div></div>
-      <div class="time-box"><div class="number">${minutes}</div><div class="label">Minutes</div></div>
-      <div class="time-box"><div class="number">${seconds}</div><div class="label">Seconds</div></div>
-    `);
-  }
-
-  // 🎇 Wax Seal Burst
-  function burstSealEffect() {
-    confetti({
-      particleCount: 25,
-      spread: 60,
-      origin: { y: 0.45 },
-      colors: ["#8b0000", "#4b0000", "#f5e6c8"] // burgundy + gold fragments
-    });
-  }
-
-  // Envelope toggle
-  function toggleEnvelope() {
-    if (envelope.hasClass("open")) {
-      // Closing envelope
-      envelope.removeClass("open").addClass("close");
-      // Seal stays broken (do not re-add body.envelope-open)
-    } else {
-      // Opening envelope
-      envelope.removeClass("close").addClass("open");
-
-      // Break the seal only once
-      if (!sealBroken) {
-        $("body").addClass("envelope-open"); // triggers seal animation
-        burstSealEffect();
-        sealBroken = true;
-
-        // After animation, remove seal element entirely
-        setTimeout(() => {
-          $(".seal").remove();
-        }, 1000);
-      }
-
-      // 🎉 Confetti burst when opening
-      confetti({
-        particleCount: 120,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-
-      // Hide the hint after first open
-      hint.addClass("hidden");
-
-      // Show countdown only once
-      if (!countdownStarted) {
-        $(".countdown").addClass("show");
-        setInterval(updateCountdown, 1000);
+    // Countdown Timer
+    const weddingDate = new Date("2025-12-20T15:00:00+08:00");
+    function startCountdown(){
         updateCountdown();
-        countdownStarted = true;
-      }
+        setInterval(updateCountdown,1000);
     }
-  }
+   function updateCountdown(){
+    const now = new Date();
+    let diff = weddingDate - now;
+    if(diff <= 0){
+        $("#countdown").html("<span>The big day has arrived! 🎉</span>");
+        return;
+    }
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const minutes = Math.floor((diff/(1000*60))%60);
+    const seconds = Math.floor((diff/1000)%60);
 
-  // Envelope click / keyboard
-  envelope.on("click", toggleEnvelope);
-  envelope.on("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleEnvelope();
+    // Inject styled countdown
+    $("#countdown").html(`
+        <div class="time-box">
+            <div class="number">${days}</div>
+            <div class="label">Days</div>
+        </div>
+        <div class="time-box">
+            <div class="number">${hours}</div>
+            <div class="label">Hours</div>
+        </div>
+        <div class="time-box">
+            <div class="number">${minutes}</div>
+            <div class="label">Minutes</div>
+        </div>
+        <div class="time-box">
+            <div class="number">${seconds}</div>
+            <div class="label">Seconds</div>
+        </div>
+    `);
+}
+
+
+    // Scroll animations
+    function checkSections(){
+        $('.section').each(function(){
+            let top = $(this).offset().top;
+            let scroll = $(window).scrollTop();
+            let windowHeight = $(window).height();
+            if(scroll + windowHeight*0.8 > top){
+                $(this).addClass('visible');
+            }
+        });
     }
-  });
+    $(window).on('scroll resize', checkSections);
+    checkSections();
+
+    // Smooth scroll for navbar links without changing URL
+    $(".navbar a").on("click", function(e){
+        e.preventDefault(); // prevent default jump
+        let targetId = $(this).attr("href");
+        let targetOffset = $(targetId).offset().top;
+        $("html, body").animate({scrollTop: targetOffset - 60}, 800); // 60px offset for navbar
+    });
+
 });

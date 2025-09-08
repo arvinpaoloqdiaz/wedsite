@@ -1,311 +1,157 @@
-:root {
-  /* Colors */
-  --envelope-red: #a61e4d;
-  --envelope-pink: #d46a8c;
-  --envelope-light-red: #e892a5;
-  --letter-bg: #ffffff;
-  --page-bg: #fff0f5;
-
-  --names: #a61e4d;
-  --muted: #6c757d;
-  --text: #222;
-
-  /* Sizes (responsive to screen width) */
-  --envelope-width: clamp(280px, 90vw, 480px);
-  --envelope-height: calc(var(--envelope-width) * 0.65);
-  --flap-height: calc(var(--envelope-width) * 0.36);
-  --pocket-height: calc(var(--envelope-width) * 0.32);
-  --letter-translate: calc(var(--envelope-width) * -0.36);
-
-  --border-radius: 8px;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
-  /* Typography */
-  --names-font: "Great Vibes", cursive;
-  --font: "Poppins", sans-serif;
+body, html {
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    scroll-behavior: smooth; /* smooth scrolling */
 }
 
-body {
-  background-color: var(--page-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 1rem;
+/* Envelope Landing */
+#landing {
+    background-color: #fff0f5;
 }
-
-.names {
-  font-family: var(--names-font);
-  font-size: clamp(28px, 6vw, 40px);
-  color: var(--names);
-  margin: 0;
+.envelope-container{
+    margin-top:4rem;
 }
-
-#envelope {
-  position: relative;
-  width: var(--envelope-width);
-  height: var(--envelope-height);
-  max-width: 100%;
-  background-color: var(--envelope-red);
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  margin: auto;
-}
-
-.date,
-.rsvp-text {
-  color: var(--muted);
-  font-size: clamp(0.65rem, 2vw, 0.9rem);
-}
-
-.rsvp-text {
-  font-style: italic;
-}
-
-.front {
-  position: absolute;
-  width: 0;
-  height: 0;
-  z-index: 3;
+.envelope {
+    width: 200px;
+    height: 130px;
+    background: #a61e4d;
+    border-radius: 0 0 12px 12px;
+    position: relative;
+    cursor: pointer;
+    right:50%;
+    transform: translateX(60%);
 }
 
 .flap {
-  border-left: calc(var(--envelope-width) / 2) solid transparent;
-  border-right: calc(var(--envelope-width) / 2) solid transparent;
-  border-bottom: calc(var(--flap-height) * 0.8) solid transparent;
-  border-top: var(--flap-height) solid var(--envelope-red);
-  transform-origin: top;
-  pointer-events: none;
+    width:0; height:0;
+    border-left:100px solid transparent;
+    border-right:100px solid transparent;
+    border-bottom:60px solid transparent;
+    border-top:60px solid #a61e4d;
+    position:absolute; top:-60px; left:0;
 }
 
 .pocket {
-  border-left: calc(var(--envelope-width) / 2) solid var(--envelope-pink);
-  border-right: calc(var(--envelope-width) / 2) solid var(--envelope-pink);
-  border-bottom: var(--pocket-height) solid var(--envelope-light-red);
-  border-top: var(--pocket-height) solid transparent;
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
+    width:0; height:0;
+    border-left:100px solid #d46a8c;
+    border-right:100px solid #d46a8c;
+    border-bottom:50px solid #e892a5;
+    border-top:50px solid transparent;
+    position:absolute; bottom:0; left:0;
 }
-
-.letter {
-  position: relative;
-  background-color: var(--letter-bg);
-  width: 90%;
-  padding-top: 10px;
-  margin: auto;
-  height: 90%;
-  top: 5%;
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
-  font-family: var(--font);
-  text-align: center;
+.description{
+    font-family: "Poppins";
 }
-
-.message {
-  font-size: clamp(0.9rem, 3vw, 1.2rem);
-  color: var(--text);
-  line-height: 1.4;
+.groom,.bride{
+    font-size:6rem;
+    color:#a61e4d;
 }
-
-/* Animations */
-.open .flap {
-  transform: rotateX(180deg);
-  transition: transform 0.4s ease, z-index 0.6s;
-  z-index: 1;
+.bride{
+    margin-left:7rem;
 }
-
-.close .flap {
-  transform: rotateX(0deg);
-  transition: transform 0.4s 0.6s ease, z-index 1s;
-  z-index: 5;
+.groom{
+    margin-right:7rem;
 }
-
-.close .letter {
-  transform: translateY(0px);
-  transition: transform 0.4s ease, z-index 1s;
-  z-index: 1;
+.ampersand{
+    font-size: 3rem;
+    color:#a61e4d;
 }
-
-.open .letter {
-  transform: translateY(var(--letter-translate));
-  transition: transform 0.4s 0.6s ease, z-index 0.6s;
-  z-index: 2;
-}
-
-/* "Click me" hint */
-.hint p{
-    padding:0;
-    margin:0;
-}
-.hint {
-  position: absolute;
-  top: -15rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: var(--names); /* use the accent color instead of muted */
-  font-family: "Dancing Script", cursive;
-  font-size: 4em; /* bigger on small screens */
-  font-weight: 500;
-  animation: bounce 1.5s infinite;
-  pointer-events: none;
-}
-
-.hint .arrow {
-  font-size: 3rem; /* scales well on phones */
-   font-weight: 200 !important;
-   
-}
-
-.hint.hidden {
-  display: none;
-}
-/* Import a nice display font for timer */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
-
-.countdown {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  padding: 0.8rem 1.2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(166, 30, 77, 0.2);
-  font-family: "Roboto Mono", monospace;
-  color: var(--names);
-  font-size: 1.1rem;
-  display: flex;
-  gap: 1rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-  z-index: 1000;
-}
-
-.countdown.show {
-  opacity: 1;
-}
-
-.countdown .time-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.countdown .number {
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.countdown .label {
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin-top: 0.2rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .countdown {
-    font-size: 1rem;
-    gap: 0.6rem;
-  }
-  .countdown .number {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .countdown {
-    font-size: 0.9rem;
-    gap: 0.5rem;
-    padding: 0.6rem 0.9rem;
-  }
-  .countdown .number {
-    font-size: 1.1rem;
-  }
-  .countdown .label {
-    font-size: 0.65rem;
-  }
-}
-
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-6px);
-  }
-}
-
-.envlope-wrapper {
-  position: relative;
-  text-align: center;
-}
-/* Elegant wax seal */
 .seal {
+  width: 70px;
+  height: 70px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle at 30% 30%, #8b0000, #4b0000);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f5e6c8; /* soft gold */
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.35), inset -2px -2px 6px rgba(0,0,0,0.5);
-  cursor: pointer;
-  z-index: 5;
-  transition: opacity 0.6s ease;
-  overflow: hidden;
-  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
-  padding:8px;
+  z-index: 10;
+  font-weight: 1000;
+  font-size: 1.5rem;
 }
 
-/* When the envelope is opened → seal breaks */
-.envelope-open .seal {
-  animation: breakSeal 0.8s forwards ease-in-out;
+.seal-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-@keyframes breakSeal {
-  0% {
-    transform: translate(-50%, -50%) scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  30% {
-    transform: translate(-50%, -50%) scale(1.1) rotate(10deg);
-    opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(255,215,0,0.8));
-  }
-  60% {
-    transform: translate(-50%, -50%) scale(0.85) rotate(-15deg);
-    opacity: 0.7;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.6) rotate(25deg);
-    opacity: 0;
-  }
+.seal span {
+    text-shadow: 0 1px 0 #fff5,
+                 0 -1px 0 rgba(0,0,0,0.3),
+                 1px 0 0 rgba(0,0,0,0.3),
+                 -1px 0 0 rgba(0,0,0,0.3);
 }
 
+.hint { margin-top:20px; font-family:'Dancing Script', cursive; font-size:1.5rem; color:#a61e4d; }
+
+/* Countdown Timer */
+#countdown {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    background: rgba(255, 245, 250, 0.9); /* soft pinkish background */
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(166, 30, 77, 0.2);
+    font-family: 'Poppins', sans-serif;
+    color: #a61e4d; /* burgundy accent */
+    z-index: 1000;
+    font-size: 1rem;
+}
+
+/* Individual time box */
+#countdown .time-box {
+    text-align: center;
+    min-width: 60px;
+    padding: 0.4rem 0.6rem;
+    background: #fff0f5; /* lighter pink */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Numbers and labels */
+#countdown .number {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+#countdown .label {
+    font-size: 0.7rem;
+    color: #6c757d; /* muted gray for labels */
+    margin-top: 0.2rem;
+    display: block;
+}
+
+/* Optional: add hover effect */
+#countdown .time-box:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Wedding Page Hero Overlay */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+.hero-text-overlay {
+    background: rgba(0,0,0,0.5);
+    padding: 2rem;
+    border-radius: 12px;
+}
+.names { font-family:'Great Vibes', cursive; }
+.text-primary { color: #a61e4d !important; }
+
+/* Scroll animations */
+.section {
+    opacity:0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+.section.visible {
+    opacity:1;
+    transform: translateY(0);
+}

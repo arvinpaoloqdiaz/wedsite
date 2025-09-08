@@ -1,57 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Wedding Invitation Letter</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-  href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&display=swap"
-  rel="stylesheet"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerwel & Jane Wedding</title>
 
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-     <div class="countdown hidden"></div>
-    <div class="envlope-wrapper">
-      <!-- Click me hint -->
-      <div class="hint">
-        <p>Click me</p>
-        <!-- <div class="arrow"><i class="fa-solid fa-angles-down"></i></div> -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
-      </div>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      <div id="envelope" class="close" tabindex="0">
-        <div class="front flap"></div>
-        <div class="front pocket"></div>
-        <div class="seal">
-        <span>GJ</span>
-        </div>
-
-        <article class="letter">
-          <h1 class="names">Gerwel &amp; Jane</h1>
-          <p class="message">
-            Together with their families,<br />
-            invite you to their wedding celebration
-          </p>
-          <p class="date"></p>
-          <div class="rsvp">
-            <p class="rsvp-text">RSVP form coming soon...</p>
-          </div>
-        </article>
-      </div>
+<!-- Landing Page (Envelope) -->
+<div id="landing" class="vh-100 d-flex flex-column justify-content-start align-items-center text-center bg-light pt-5">
+    <div class="names-container names w-100">
+        <h1 class="groom">Gerwel</h1>
+        <h4 class="ampersand">&</h4>
+        <h1 class="bride">Jane</h1>
+        <p class="description h5 d-flex gap-4 justify-content-center fst-italic text-secondary"><span>#GerwelJanePH</span><span>#KeepSafe</span></p>
     </div>
+    <div class="mb-auto envelope-container">
+    <div class="envelope" id="envelope">
+        <!-- <div class="flap"></div> -->
+        <div class="pocket"></div>
+        <div class="seal">
+  <svg viewBox="0 0 100 100" class="seal-svg">
+    <defs>
+      <radialGradient id="waxGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#f5c6a5"/>
+        <stop offset="50%" stop-color="#8b0000"/>
+        <stop offset="100%" stop-color="#4b0000"/>
+      </radialGradient>
+    </defs>
+    <path d="
+      M50,0
+      C65,0 70,10 80,15
+      C90,20 95,35 90,50
+      C95,65 90,80 80,85
+      C70,90 65,100 50,100
+      C35,100 30,90 20,85
+      C10,80 5,65 10,50
+      C5,35 10,20 20,15
+      C30,10 35,0 50,0
+      Z
+    " fill="url(#waxGrad)" stroke="#8b0000" stroke-width="2"/>
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Great Vibes" font-size="25" fill="#f5e6c8">GJ</text>
+  </svg>
+</div>
+    
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+    </div>
+    <p class="hint mt-3">Click the envelope to enter</p>
+    </div>
+</div>
+
+<!-- Full Wedding Page -->
+<div id="wedding-page" style="display:none;">
+
+    <!-- Countdown -->
+    <div id="countdown" class="position-fixed top-0 start-50 translate-middle-x bg-white rounded shadow p-2 mt-2 text-center"></div>
+
+    <!-- Hero Section with Placeholder Image -->
+    <header class="hero text-center position-relative">
+        <img src="https://placehold.co/1200x500" class="img-fluid w-100" alt="Wedding Hero">
+        <div class="hero-text-overlay position-absolute top-50 start-50 translate-middle text-white">
+            <h1 class="display-2 names">Gerwel & Jane</h1>
+            <p class="lead">Together with their families, they invite you to celebrate their wedding</p>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <!-- About Section -->
+        <section class="about mb-5 section" id="about">
+            <h2 class="text-primary mb-3">About the Couple</h2>
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                    <img src="https://placehold.co/500x400" class="img-fluid rounded" alt="Couple Photo">
+                </div>
+                <div class="col-md-6">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus orci vitae lorem luctus, a scelerisque nunc bibendum.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Venue Section -->
+        <section class="venue mb-5 section" id="venue">
+            <h2 class="text-primary mb-3">Venue</h2>
+            <img src="https://placehold.co/1200x400" class="img-fluid rounded mb-3" alt="Venue">
+            <p>Porac, Pampanga</p>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="schedule mb-5 section" id="schedule">
+            <h2 class="text-primary mb-3">Schedule</h2>
+            <ul class="list-group">
+                <li class="list-group-item">3:00 PM - Ceremony</li>
+                <li class="list-group-item">4:00 PM - Cocktail Reception</li>
+                <li class="list-group-item">5:00 PM - Dinner & Dance</li>
+            </ul>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp mb-5 section" id="rsvp">
+            <h2 class="text-primary mb-3">RSVP</h2>
+            <p>Form coming soon...</p>
+        </section>
+    </main>
+
+    <!-- Bottom Navbar -->
+    <nav class="navbar fixed-bottom navbar-light bg-light justify-content-around">
+        <a class="nav-link text-primary" href="#about">About</a>
+        <a class="nav-link text-primary" href="#venue">Venue</a>
+        <a class="nav-link text-primary" href="#schedule">Schedule</a>
+        <a class="nav-link text-primary" href="#rsvp">RSVP</a>
+    </nav>
+
+</div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+</body>
 </html>
