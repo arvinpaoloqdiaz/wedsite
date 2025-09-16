@@ -16,46 +16,63 @@
 </head>
 <body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-<!-- Landing Page (Envelope) -->
-<div id="landing" class="vh-100 d-flex flex-column justify-content-start align-items-center text-center bg-light pt-5">
-    <div class="names-container names w-100">
+<!-- Landing Page (Map Opening) -->
+<div id="landing" class="vh-100 d-flex flex-column justify-content-center bg-light align-items-center text-center pt-5">
+    <!-- <div class="names-container names w-100">
         <h1 class="groom">Gerwel</h1>
         <h4 class="ampersand">&</h4>
         <h1 class="bride">Jane</h1>
         <p class="description h5 d-flex gap-4 justify-content-center fst-italic text-secondary">#GerwelJanePH #KeepSafe #UYkasalnasaSABADO</p>
-    </div>
-    <div class="mb-auto envelope-container">
-    <div class="envelope" id="envelope">
-        <!-- <div class="flap"></div> -->
-        <div class="pocket"></div>
-        <div class="seal">
-  <svg viewBox="0 0 100 100" class="seal-svg">
-    <defs>
-      <radialGradient id="waxGrad" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#f5c6a5"/>
-        <stop offset="50%" stop-color="#8b0000"/>
-        <stop offset="100%" stop-color="#4b0000"/>
-      </radialGradient>
-    </defs>
-    <path d="
-      M50,0
-      C65,0 70,10 80,15
-      C90,20 95,35 90,50
-      C95,65 90,80 80,85
-      C70,90 65,100 50,100
-      C35,100 30,90 20,85
-      C10,80 5,65 10,50
-      C5,35 10,20 20,15
-      C30,10 35,0 50,0
-      Z
-    " fill="url(#waxGrad)" stroke="#8b0000" stroke-width="2"/>
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Great Vibes" font-size="25" fill="#f5e6c8">GJ</text>
-  </svg>
-</div>
-    
-
-    </div>
-    <p class="hint mt-3">Click the envelope to enter</p>
+    </div> -->
+    <div class="mb-auto map-wrapper">
+        <div class="map-base" id="openingMap">
+            <div class="footsteps footsteps-1">
+                <div class="footstep left"></div>
+                <div class="footstep right"></div>
+                <div class="scroll-name">
+                    <p>Gerwel</p>
+                </div>
+            </div>
+            <div class="footsteps footsteps-2">
+                <div class="footstep left"></div>
+                <div class="footstep right"></div>
+                <div class="scroll-name">
+                    <p>Jane Ann</p>
+                </div>
+            </div>
+            <div class="map-flap flap--1">
+                <div class="map-flap__front"></div>
+                <div class="map-flap__back"></div>
+            </div>
+            <div class="map-flap flap--2">
+                <div class="map-flap__front"></div>
+                <div class="map-flap__back"></div>
+            </div>
+            <div class="map-side side-1">
+                <div class="front" style="--image: url('./assets/images/map-fragment/8.png')"></div>
+                <div class="back"></div>
+            </div>
+            <div class="map-side side-2">
+                <div class="front" style="--image: url('./assets/images/map-fragment/18.png')"></div>
+                <div class="back"></div>
+            </div>
+            <div class="map-side side-3">
+                <div class="front" style="--image: url('./assets/images/map-fragment/7.png')"></div>
+                <div class="back"></div>
+            </div>
+            <div class="map-side side-4">
+                <div class="front" style="--image: url('./assets/images/map-fragment/10.png')"></div>
+            </div>
+            <div class="map-side side-5">
+                <div class="front" style="--image: url('./assets/images/map-fragment/6.png')"></div>
+                <div class="back"></div>
+            </div>
+            <div class="map-side side-6">
+                <div class="front" style="--image: url('./assets/images/map-fragment/11.png')"></div>
+                <div class="back"></div>
+            </div>
+        </div>
+        <p class="hint mt-3">Tap the map to enter</p>
     </div>
 </div>
 
