@@ -78,7 +78,7 @@
 
 <!-- Full Wedding Page -->
 <div id="wedding-page" style="display:none;">
-
+    <div id="wedding-page-bg">
     <!-- Countdown -->
     <div id="countdown" class="position-fixed top-0 start-50 translate-middle-x bg-white rounded shadow p-2 mt-2 text-center"></div>
 
@@ -95,11 +95,11 @@
 
         <!-- About the Couple -->
         <section class="about mb-5 section" id="about">
-            <h2 class="text-primary mb-3 daydream"><i class="bi bi-person-heart me-2"></i>About the Couple</h2>
+            <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-person-heart me-2"></i>About the Couple</span></h2>
             <div class="row g-4 align-items-center">
                 
                 <div class="col-md-6">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus orci vitae lorem luctus, a scelerisque nunc bibendum.</p>
+                    <p class="glass-blur">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus orci vitae lorem luctus, a scelerisque nunc bibendum.</p>
                 </div>
                 <div class="col-md-6">
                     <img src="https://placehold.co/500x400?text=Couple+Photo" class="img-fluid rounded" alt="Couple Photo">
@@ -109,13 +109,13 @@
 
         <!-- Invitation Section -->
         <section class="invitation mb-5 section" id="invitation">
-            <h2 class="text-primary mb-3 daydream"><i class="bi bi-envelope-fill me-2"></i>Invitation</h2>
+            <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-envelope-fill me-2"></i>Invitation</span></h2>
             <div class="row g-4 align-items-center">
-                <div class="col-md-6">
-                    <img src="https://placehold.co/500x400?text=Printed+Invitation" class="img-fluid rounded" alt="Printed Invitation">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <img src="./assets/images/invitation.png" class="img-fluid rounded rounded-3" alt="Printed Invitation" style="max-height:800px;">
                 </div>
                 <div class="col-md-6">
-                    <ul class="list-group">
+                    <ul class="list-group glass-blur">
                         <li class="list-group-item">3:00 PM - Ceremony</li>
                         <li class="list-group-item">4:00 PM - Cocktail Reception</li>
                         <li class="list-group-item">5:00 PM - Dinner & Dance</li>
@@ -126,7 +126,7 @@
 
         <!-- Prenup Photos Carousel -->
         <section class="prenup mb-5 section" id="prenup">
-            <h2 class="text-primary mb-3 daydream"><i class="bi bi-camera-fill me-2"></i>Prenup Photos</h2>
+            <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-camera-fill me-2"></i>Prenup Photos</span></h2>
             <div id="prenupCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -152,63 +152,112 @@
 
         <!-- Venue Section -->
         <section class="venue mb-5 section" id="venue">
-    <h2 class="text-primary mb-3 daydream"><i class="bi bi-building me-2"></i>Venue</h2>
-    <div class="row g-4">
-        <!-- Church -->
-        <div class="col-md-6">
-            <h4 class="text-secondary">Church</h4>
-            <img src="https://placehold.co/600x400?text=Church" class="img-fluid rounded mb-2" alt="Church Venue">
-            <p>St. John the Baptist Church, Porac, Pampanga</p>
-        </div>
+  <h2 class="text-primary mb-3 daydream">
+    <span class="glass-blur"><i class="bi bi-building me-2"></i>Venue</span>
+  </h2>
 
-        <!-- Reception -->
-        <div class="col-md-6">
-            <h4 class="text-secondary">Reception</h4>
-            <img src="https://placehold.co/600x400?text=Reception" class="img-fluid rounded mb-2" alt="Reception Venue">
-            <p>Porac Grand Ballroom, Porac, Pampanga</p>
-        </div>
+  <div class="row g-4">
+    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-3">
+    <!-- Church -->
+    <div class="flex-grow-1">
+      <h4 class="text-secondary"><span class="glass-blur">Church</span></h4>
+      <img src="https://balenporac.com/wp-content/uploads/2022/09/church-1.jpg" class="img-fluid rounded mb-2 border border-1 shadow-sm" alt="Church Venue" style="height:auto;">
+      <p><span class="glass-blur">Santa Catalina de Alexandria Parish, Porac, Pampanga</span></p>
     </div>
+
+    <!-- Reception -->
+    <div class="flex-grow-1">
+      <h4 class="text-secondary"><span class="glass-blur">Reception</span></h4>
+      <img src="https://acc.alviera.ph/wp-content/uploads/2022/07/gallery-acc7.png" class="img-fluid rounded mb-2 border border-1 shadow-sm" alt="Reception Venue" style="height:auto;">
+      <p><span class="glass-blur">Alviera Country Club, Porac Pampanga</span></p>
+    </div>
+  </div>
+</div>
+  <!-- Directions QR Codes -->
+  <div class="row mt-5 text-center">
+    <p class="glass-blur h5">Directions from Church to Reception</p>
+    <!-- Google Maps QR -->
+    <div class="col-md-6">
+      <p><span class="glass-blur">Google Maps</span></p>
+
+        <img src="assets/images/qr-google-maps.png" alt="Google Maps QR" class="img-fluid rounded shadow" style="width: 350px; height: 350px;">
+      
+    </div>
+
+    <!-- Waze QR -->
+    <div class="col-md-6">
+      <p><span class="glass-blur">Waze</span></p>
+     
+        <img src="assets/images/qr-waze.png" alt="Waze QR" class="img-fluid rounded shadow" style="width: 350px; height: 350px;">
+      
+    </div>
+  </div>
 </section>
+
 
 
         <!-- Gift Requests Section -->
         <section class="gifts mb-5 section" id="gifts">
-            <h2 class="text-primary mb-3 daydream"><i class="bi bi-gift-fill me-2"></i>Gift Requests</h2>
-            <p class="text-center">We kindly request your presence as the greatest gift, but for those wishing to give, here are our suggestions:</p>
-            <ul class="list-unstyled text-start text-center">
-                <li><i class="bi bi-house-door-fill me-2"></i>Home Appliances</li>
-                <li><i class="bi bi-cash-stack me-2"></i>Cash Gifts</li>
-                <li><i class="bi bi-heart-fill me-2"></i>Personalized Items</li>
-            </ul>
-
+            <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-gift-fill me-2"></i>Gift Requests</span></h2>
+            <p class="text-center"><span class="glass-blur">As love is what this day is all about, <br>your presence is one we couldn't celebrate without. <br> If you're thinking of giving a gift to help us on our way,<br> a monetary gift would really make our day</span></p>
+            
         </section>
 
         <!-- Dress Code Section -->
-        <!-- Dress Code Section -->
-<section class="dresscode mb-5 section" id="dresscode">
-    <h2 class="text-primary mb-3 daydream"><i class="bi bi-easel-fill me-2"></i>Dress Code</h2>
-    <p class="text-center">Please wear formal attire in pastel colors or light shades. Comfortable shoes recommended for dancing!</p>
-
+<section class="dresscode mb-5 section " id="dresscode">
+    <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-easel-fill me-2"></i>Dress Code</span></h2>
+    <p class="text-center "><span class="glass-blur">We kindly encourage our guests to wear semi formal/formal attire with these colors on our special day.</span></p>
+    <div class="row">
+        <div class="col-6 col-lg-4 order-1 d-flex justify-content-end align-items-center">
+            <img src="/assets/images/suit-male.png" alt="Suit Male" class="img-fluid">
+        </div>
+        <div class="col-12 col-lg-4 order-3 order-lg-2">
     <!-- 🎨 Color Palette Showcase -->
-    <div class="palette">
-        <div class="color-box color-deep-rose" title="Deep Rose"></div>
-        <div class="color-box color-peach" title="Peach Pink"></div>
-        <div class="color-box color-blush" title="Blush Pink"></div>
-        <div class="color-box color-cream" title="Cream Beige"></div>
-        <div class="color-box color-soft-white" title="Soft White"></div>
+   <div class="palette">
+    <p class="glass-blur">Blush Pink Palette</p>
+    <div class="color-box-container">
+    <div class="color-box color-blush-light" title="Light Blush"></div>
+    <div class="color-box color-blush-medium" title="Medium Blush"></div>
+    <div class="color-box color-blush-rose" title="Rose Blush"></div>
+    <div class="color-box color-blush-deep" title="Deep Blush"></div>
     </div>
+</div>
+
+<div class="palette">
+    <p class="glass-blur">Beige Palette</p>
+    <div class="color-box-container">
+    <div class="color-box color-beige-ivory" title="Ivory Beige"></div>
+    <div class="color-box color-beige-cream" title="Cream Beige"></div>
+    <div class="color-box color-beige-sand" title="Sand Beige"></div>
+    <div class="color-box color-beige-taupe" title="Taupe Beige"></div>
+    </div>
+</div>
+
+<div class="palette">
+    <p class="glass-blur">Black/Dark Palette</p>
+    <div class="color-box-container">
+    <div class="color-box color-dark-gray" title="Dark Gray"></div>
+    <div class="color-box color-charcoal" title="Charcoal"></div>
+    <div class="color-box color-black" title="Black"></div>
+    </div>
+</div>
+</div>
+<div class="col-6 col-lg-4 order-2 order-lg-3 d-flex justify-content-start align-items-center">
+            <img src="/assets/images/suit-female.png" alt="Suit Female" class="img-fluid">
+        </div>
+</div>
 </section>
 
 
         <!-- Hashtags Section -->
         <section class="hashtags mb-5 section" id="hashtags">
-            <h2 class="text-primary mb-3 daydream"><i class="bi bi-hash me-2"></i>Share Your Moments</h2>
-            <p class="text-center">#GerwelJanePH #KeepSafe #UYkasalnasaSABADO</p>
+            <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-hash me-2"></i>Share Your Moments</span></h2>
+            <p class="text-center"><span class="glass-blur">#GerwelJanePH #KeepSafe #UYkasalnasaSABADO</span></p>
         </section>
         <!-- RSVP Section -->
 <section class="rsvp mb-5 section" id="rsvp">
-    <h2 class="text-primary mb-3 daydream"><i class="bi bi-pencil-square me-2"></i>RSVP</h2>
-    <p class="text-center">Please fill out your RSVP below. Form will appear soon!</p>
+    <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-pencil-square me-2"></i>RSVP</span></h2>
+    <p class="text-center"><span class="glass-blur">Please fill out your RSVP below. Form will appear soon!</span></p>
     <!-- Placeholder iframe -->
     <div class="ratio ratio-16x9">
         <iframe src="about:blank" title="RSVP Form Placeholder" frameborder="0"></iframe>
@@ -247,6 +296,7 @@
         <source src="assets/audio/who-let-the-dogs-out.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    </div>
 </div>
 
 

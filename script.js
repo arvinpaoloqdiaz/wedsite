@@ -63,7 +63,7 @@ function startWalkers() {
     // =========================
     let overlay = $(".footsteps-overlay");
     if (overlay.length === 0) {
-        $("body").append(`<div class="footsteps-overlay"></div>`);
+        $("wedding-page-bg").append(`<div class="footsteps-overlay"></div>`);
         overlay = $(".footsteps-overlay");
         overlay.css({
             position: 'fixed',

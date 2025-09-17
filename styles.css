@@ -26,6 +26,7 @@
     --color-accent: var(--color-blush);
     --color-bg-light: var(--color-soft-white);
     --color-text: #6c757d;
+    /* --color-text: #161616; */
 
     /* ✨ Fonts */
     --font-main: 'Poppins', sans-serif;
@@ -46,6 +47,22 @@
     --radius-md: 8px;
     --shadow-soft: 0 4px 15px rgba(166, 30, 77, 0.2);
     --shadow-box: 0 2px 8px rgba(0,0,0,0.1);
+
+    --color-blush-light: #f2d7d5;
+    --color-blush-medium: #e6b7b5;
+    --color-blush-rose: #d59894;
+    --color-blush-deep: #b37777;
+
+    /* Beige Palette */
+    --color-beige-ivory: #f7f1e9;
+    --color-beige-cream: #f2e4d7;
+    --color-beige-sand: #e6d5c3;
+    --color-beige-taupe: #cbb8a3;
+
+    /* Black/Dark Palette */
+    --color-dark-gray: #4a4a4a;
+    --color-charcoal: #2f2f2f;
+    --color-black: #000000;
 }
 
 /* ============================
@@ -57,9 +74,6 @@ body, html {
     font-family: var(--font-main);
     scroll-behavior: smooth;
     /* background-color: var(--color-bg-light); */
-    background: 
-    linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), /* dark overlay */
-    url(/assets/images/bg.png);
     color: var(--color-text);
     background-size: cover;
   background-position: center;
@@ -164,7 +178,8 @@ body, html {
 }
 
 /* Ensure main content sits above background footsteps */
-#wedding-page { position: relative; z-index: 1; }
+#wedding-page { position: relative; z-index:0;}
+
 @media (max-width: 768px) {
     .hero-text-overlay {
         position: static;
@@ -191,19 +206,45 @@ body, html {
     justify-content: center;
     gap: 1rem;
     margin-top: 1.5rem;
+    flex-direction: column;
+    align-items: center;
 }
+.palette .color-box-container{
+    display: flex;
+    gap:1rem;
+}
+.glass-blur {
+  background: transparent;
+  border-radius: 3px;        /* keep it invisible */
+  backdrop-filter: blur(5px);     /* blur whatever is behind */
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  z-index: 999 !important;
+}
+
 .palette .color-box {
+    /* display: flex; */
     width: 60px;
     height: 60px;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-box);
     border: 2px solid #fff;
 }
-.color-deep-rose { background-color: var(--color-deep-rose); }
-.color-peach { background-color: var(--color-peach); }
-.color-blush { background-color: var(--color-blush); }
-.color-cream { background-color: var(--color-cream); }
-.color-soft-white { background-color: var(--color-soft-white); }
+/* Blush Pink Palette */
+.color-blush-light { background-color: #f2d7d5; }
+.color-blush-medium { background-color: #e6b7b5; }
+.color-blush-rose { background-color: #d59894; }
+.color-blush-deep { background-color: #b37777; }
+
+/* Beige Palette */
+.color-beige-ivory { background-color: #f7f1e9; }
+.color-beige-cream { background-color: #f2e4d7; }
+.color-beige-sand { background-color: #e6d5c3; }
+.color-beige-taupe { background-color: #cbb8a3; }
+
+/* Black/Dark Palette */
+.color-dark-gray { background-color: #4a4a4a; }
+.color-charcoal { background-color: #2f2f2f; }
+.color-black { background-color: #000000; }
 
 /* ============================
    Section Animations
@@ -243,7 +284,7 @@ body, html {
 .map-flap__front,
 .map-flap__back { backface-visibility: hidden; width: 100%; height: 100%; position: absolute; }
 .map-flap__back { transform: scale(-1) rotateY(180deg); }
-.map-flap.flap--1 { box-shadow: 0 -1px 6px rgba(97, 83, 73, 0.5); }
+/* .map-flap.flap--1 { box-shadow: 0 -1px 6px rgba(97, 83, 73, 0.5); } */
 .map-flap.flap--1 .map-flap__front { background: url('./assets/images/map-fragment/mini-1.png') center left / cover; }
 .map-flap.flap--1 .map-flap__back { background: url('./assets/images/map-fragment/mini-3.png') -3px 0 / cover; }
 .map-flap.flap--2 { box-shadow: 0 1px 6px rgba(97, 83, 73, 0.5); top: 50%; }
@@ -261,10 +302,10 @@ body, html {
 .map-side.side-4 { left: 50%; margin-left: -1px; }
 .map-side.side-4 .back { transform: rotateY(180deg); }
 .map-side.side-5 { left: 0; }
-.map-side.side-5 .back { background-image: url('./assets/images/map-fragment/1.png'); }
+.map-side.side-5 .back { background-image: url('./assets/images/map-fragment/1-v2.png'); }
 .map-side.side-6 { left: 50%; }
 .map-side.side-6 .front { background-size: 99.5%; }
-.map-side.side-6 .back { background-image: url('./assets/images/map-fragment/17.png'); }
+.map-side.side-6 .back { background-image: url('./assets/images/map-fragment/17-v2.png'); }
 
 .scroll-name { position: absolute; bottom: 105px; left: -60px; width: clamp(100px, 25vw, 150px); height: clamp(20px, 5vw, 30px); font: clamp(12px, 3vw, 15px) Satisfy, cursive; text-align: center; background: url('./assets/images/map-fragment/scroll.svg') center center / cover; z-index: 10; color: #615349; cursor: default; opacity: 0; }
 .scroll-name p { display: inline-block; margin: 4px 0 0 15px; }
