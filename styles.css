@@ -521,4 +521,50 @@ body, html {
     50% { transform: translate(-50%, -5px); }
 }
 
+.image-mask {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
 
+  /* Apply brush stroke PNG as mask */
+  -webkit-mask-image: url("assets/images/dry-brush-stroke-8.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100%;
+
+  mask-image: url("assets/images/dry-brush-stroke-8.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100%;
+
+  /* Animate smoothly */
+  transition: -webkit-mask-size 2s ease, mask-size 2s ease;
+}
+/* On hover, remove mask */
+.image-mask:hover {
+  -webkit-mask-size: 250%; /* grow until it covers full image */
+  mask-size: 250%;
+}
+.image-mask-2:hover {
+  -webkit-mask-size: 250%; /* grow until it covers full image */
+  mask-size: 250%;
+}
+.image-mask-2 {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  /* Apply brush stroke PNG as mask */
+  -webkit-mask-image: url("assets/images/dry-brush-stroke-1.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100%;
+
+  mask-image: url("assets/images/dry-brush-stroke-1.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100%;
+
+  /* Animate smoothly */
+  transition: -webkit-mask-size 2s ease, mask-size 2s ease;
+}
