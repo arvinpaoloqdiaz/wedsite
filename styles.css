@@ -3,7 +3,7 @@
 ============================ */
 @font-face {
     font-family: "daydream";
-    src: url("assets/fonts/daydream.ttf") format("truetype");
+    src: url("./assets/fonts/daydream.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -79,6 +79,7 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  /* overflow: hidden; */
 }
 
 .daydream { font-family: var(--font-daydream); text-align:center; font-weight: 600; letter-spacing: 2px; font-size: 2.75rem;}
@@ -213,6 +214,31 @@ body, html {
     display: flex;
     gap:1rem;
 }
+  .color-box-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .color-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* Desktop hover */
+    .color-box:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Mobile tap / click */
+    .color-box:active {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
 .glass-blur {
   background: transparent;
   border-radius: 3px;        /* keep it invisible */
@@ -364,6 +390,7 @@ body, html {
     pointer-events: none;   /* allows interacting with underlying content */
     overflow: hidden;       /* prevent scrollbars from appearing */
     z-index: -1;           /* above background, below modals */
+    opacity: 0.4;
 }
 
 /* Footprint base */
@@ -490,14 +517,14 @@ body, html {
     transform: translate(-50%, 20px);
     width:100px;
     height: 250px;
-    background: url('/assets/images/map-fragment/scroll.svg') no-repeat center;
+    background: url('./assets/images/map-fragment/scroll.svg') no-repeat center;
     background-size: 100% 100%; /* stretch to fit container */
 
     padding: 10px 25px;  /* bigger padding for longer names */
     min-width: 120px;    /* ensure scroll isn’t too small */
     min-height: 50px;    /* taller scroll for a better look */
     
-    font-family: "Satisfy", cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 1rem;      /* slightly larger text */
     color: #3a2a1a;
     text-align: center;
@@ -508,7 +535,7 @@ body, html {
     justify-content: center;
 
     pointer-events: none;
-    opacity: 0.95;
+    opacity:1;
 }
 
 
@@ -592,3 +619,38 @@ body, html {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
 }
 
+.dancing-script{
+    font-family:"Dancing Script";
+    font-size:1.5rem;
+}
+.music-btn {
+  position: fixed;
+  bottom: 80px;   /* just above bottom navbar */
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  z-index: 1100;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color:var(--color-deep-rose);
+}
+
+/* Hover effect */
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  color:var(--color-deep-rose);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0.2); }
+  50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(0,0,0,0.15); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0.2); }
+}
+
+.music-btn.playing {
+  animation: pulse 1.8s infinite ease-in-out;
+}
+section{
+    padding-top:2rem;
+}

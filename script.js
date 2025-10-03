@@ -10,27 +10,50 @@ $(document).ready(function(){
         // Proceed only after the final name scroll animation finishes
         let transitioned = false;
         const proceed = () => {
-            if (transitioned) return;
-            transitioned = true;
-            $("#landing").fadeOut(600, function(){
-                $(this).remove();
-                $("#wedding-page").fadeIn(800, function(){
-                    // Inject footsteps overlay container
-                    if($(".footsteps-overlay").length === 0){
-                        $("body").append(`<div class="footsteps-overlay" aria-hidden="true"></div>`);
-                    }
-                    // Start single walker S-arc
-                    startWalkers();
+    if (transitioned) return;
+    transitioned = true;
 
-                    // Start countdown
-                    startCountdown();
+    $("#landing").fadeOut(600, function(){
+        $(this).remove();
+        $("#wedding-page").fadeIn(800, function(){
+            // Inject footsteps overlay container
+            if($(".footsteps-overlay").length === 0){
+                $("body").append(`<div class="footsteps-overlay" aria-hidden="true"></div>`);
+            }
 
-                    // Play background music
-                    const music = document.getElementById("weddingMusic");
-                    music.play().catch(err => console.log("Autoplay blocked", err));
-                });
+            // Start single walker S-arc
+            startWalkers();
+
+            // Start countdown
+            startCountdown();
+
+            // Play background music
+            const music = document.getElementById("weddingMusic");
+            music.play().catch(err => console.log("Autoplay blocked", err));
+
+            // Show floating music button
+            $("#musicToggle").fadeIn().addClass("playing");
+
+            // Toggle play/pause on button click
+            $("#musicToggle").on("click", function() {
+                if (music.paused) {
+                    music.play();
+                    $(this).find("i")
+                        .removeClass("bi-volume-mute-fill")
+                        .addClass("bi-volume-up-fill");
+                    $(this).addClass("playing"); // pulse when playing
+                } else {
+                    music.pause();
+                    $(this).find("i")
+                        .removeClass("bi-volume-up-fill")
+                        .addClass("bi-volume-mute-fill");
+                    $(this).removeClass("playing"); // stop pulse when muted
+                }
             });
-        };
+        });
+    });
+};
+
 
         const endTarget = map.find('.footsteps-2 .scroll-name')[0];
         if (endTarget) {
@@ -245,3 +268,28 @@ function startWalkers() {
     });
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+      let activeTooltip = null;
+
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.forEach(function (el) {
+        const tooltip = new bootstrap.Tooltip(el, {
+          trigger: 'hover click',
+        });
+
+        el.addEventListener("click", function () {
+          if (activeTooltip && activeTooltip !== tooltip) {
+            activeTooltip.hide();
+          }
+          activeTooltip = tooltip;
+        });
+      });
+
+      // Hide tooltip if clicking outside
+      document.addEventListener("click", function (event) {
+        if (activeTooltip && !event.target.closest('[data-bs-toggle="tooltip"]')) {
+          activeTooltip.hide();
+          activeTooltip = null;
+        }
+      });
+    });
