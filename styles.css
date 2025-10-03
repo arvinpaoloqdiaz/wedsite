@@ -568,3 +568,27 @@ body, html {
   /* Animate smoothly */
   transition: -webkit-mask-size 2s ease, mask-size 2s ease;
 }
+/* Floating QR / Hoverable Shadow */
+.hoverable-shadow {
+  display: inline-block;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); */
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+/* Hover (for desktop) */
+.hoverable-shadow:hover {
+    border-radius: 1rem;
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Active / Tap (for mobile and click) */
+.hoverable-shadow:active {
+    border-radius: 1rem;
+  transform: translateY(-3px) scale(0.98);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+}
+
