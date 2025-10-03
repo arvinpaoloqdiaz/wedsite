@@ -1,5 +1,17 @@
 $(document).ready(function(){
-    
+    // Suit recoloring
+   // recolor suit preview when a color box is clicked
+document.querySelectorAll('.color-box').forEach(box => {
+  box.addEventListener('click', () => {
+    const color = getComputedStyle(box).backgroundColor;
+    // Apply same chosen color to both suit and dress
+    document.querySelector('.suit-wrapper').style.setProperty('--suit-color', color);
+    document.querySelector('.dress-wrapper').style.setProperty('--dress-color', color);
+  });
+});
+
+
+
     // Map click -> play map opening then show wedding page
     $("#openingMap").on("click touchstart", function(e){
         e.preventDefault();

@@ -30,14 +30,14 @@
                 <div class="footstep left"></div>
                 <div class="footstep right"></div>
                 <div class="scroll-name">
-                    <p>Gerwel</p>
+                    <p class="text-map">Gerwel</p>
                 </div>
             </div>
             <div class="footsteps footsteps-2">
                 <div class="footstep left"></div>
                 <div class="footstep right"></div>
                 <div class="scroll-name">
-                    <p>Jane Ann</p>
+                    <p class="text-map">Jane Ann</p>
                 </div>
             </div>
             <div class="map-flap flap--1">
@@ -215,49 +215,71 @@
         </section>
 
         <!-- Dress Code Section -->
-<section class="dresscode mb-5 section " id="dresscode">
-    <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-easel-fill me-2"></i>Dress Code</span></h2>
-    <p class="text-center "><span class="glass-blur">We kindly encourage our guests to wear semi formal/formal attire with these colors on our special day.</span></p>
-    <div class="row">
-        <div class="col-6 col-lg-4 order-1 d-flex justify-content-end align-items-center">
-            <img src="./assets/images/suit-male.png" alt="Suit Male" class="img-fluid">
-        </div>
-        <div class="col-12 col-lg-4 order-3 order-lg-2">
-    <!-- 🎨 Color Palette Showcase -->
-   <div class="palette mb-4">
-    <p class="glass-blur">Blush Pink Palette</p>
-    <div class="color-box-container">
-      <div class="color-box color-blush-light" title="Light Blush" data-bs-toggle="tooltip"></div>
-      <div class="color-box color-blush-medium" title="Medium Blush" data-bs-toggle="tooltip"></div>
-      <div class="color-box color-blush-rose" title="Rose Blush" data-bs-toggle="tooltip"></div>
-      <div class="color-box color-blush-deep" title="Deep Blush" data-bs-toggle="tooltip"></div>
-    </div>
-  </div>
+<section class="dresscode mb-5 section" id="dresscode">
+  <h2 class="text-primary mb-3 daydream">
+    <span class="glass-blur"><i class="bi bi-easel-fill me-2"></i>Dress Code</span>
+  </h2>
 
-  <div class="palette mb-4">
-    <p class="glass-blur">Beige Palette</p>
-    <div class="color-box-container">
-      <div class="color-box color-beige-ivory" title="Ivory Beige" data-bs-toggle="tooltip"></div>
-      <div class="color-box color-beige-cream" title="Cream Beige" data-bs-toggle="tooltip"></div>
-      <div class="color-box color-beige-sand" title="Sand Beige" data-bs-toggle="tooltip"></div>
-      <div class="color-box color-beige-taupe" title="Taupe Beige" data-bs-toggle="tooltip"></div>
-    </div>
-  </div>
+  <p class="text-center">
+    <span class="glass-blur">We kindly encourage our guests to wear semi formal/formal attire with these colors on our special day.</span>
+  </p>
 
-<!-- <div class="palette">
-    <p class="glass-blur">Black/Dark Palette</p>
-    <div class="color-box-container">
-    <div class="color-box color-dark-gray" title="Dark Gray"></div>
-    <div class="color-box color-charcoal" title="Charcoal"></div>
-    <div class="color-box color-black" title="Black"></div>
-    </div>
-</div> -->
+  
+
+  <div class="row">
+    <!-- Male suit: wrapped so we can use ::after overlay -->
+    <div class="col-6 col-lg-4 order-1 d-flex justify-content-end align-items-center">
+  <div class="suit-wrapper">
+    <img src="./assets/images/suit-male-bw.png" alt="Suit Male" class="img-fluid">
+  </div>
 </div>
-<div class="col-6 col-lg-4 order-2 order-lg-3 d-flex justify-content-start align-items-center">
-            <img src="./assets/images/suit-female.png" alt="Suit Female" class="img-fluid">
+
+
+    <div class="col-12 col-lg-4 order-3 order-lg-2">
+      <!-- 🎨 Color Palette Showcase -->
+      <div class="palette mb-4">
+        <p class="glass-blur">Blush Pink Palette</p>
+        <div class="color-box-container">
+          <div class="color-box color-blush-light" data-color="var(--color-blush-light)" title="Light Blush" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-blush-medium" data-color="var(--color-blush-medium)" title="Medium Blush" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-blush-rose" data-color="var(--color-blush-rose)" title="Rose Blush" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-blush-deep" data-color="var(--color-blush-deep)" title="Deep Blush" data-bs-toggle="tooltip"></div>
         </div>
+      </div>
+
+      <div class="palette mb-4">
+        <p class="glass-blur">Beige Palette</p>
+        <div class="color-box-container">
+          <div class="color-box color-beige-ivory" data-color="var(--color-beige-ivory)" title="Ivory Beige" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-beige-cream" data-color="var(--color-beige-cream)" title="Cream Beige" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-beige-sand" data-color="var(--color-beige-sand)" title="Sand Beige" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-beige-taupe" data-color="var(--color-beige-taupe)" title="Taupe Beige" data-bs-toggle="tooltip"></div>
+        </div>
+      </div>
+    </div>
+    <div class="palette mb-4 not-allowed">
+  <p class="text-center text-danger fw-bold glass-blur">
+    ⚠️ Please avoid wearing <strong>black</strong> or <strong>white</strong> — it is a wedding celebration.
+  </p>
+  <div class="color-box-container">
+    <!-- <div class="color-box color-dark-gray forbidden" title="Dark Gray"></div>
+    <div class="color-box color-charcoal forbidden" title="Charcoal"></div> -->
+    <div class="color-box color-black forbidden" title="Black"></div>
+    <div class="color-box color-white forbidden" title="White"></div>
+  </div>
+</div>
+
+
+     <!-- Female dress -->
+  <div class="col-6 col-lg-4 order-2 order-lg-3 d-flex justify-content-start align-items-center">
+    <div class="dress-wrapper">
+      <img src="./assets/images/suit-female-bw.png" alt="Dress Female" class="img-fluid">
+    </div>
+  </div>
 </div>
 </section>
+
+
 
 
         <!-- Hashtags Section -->

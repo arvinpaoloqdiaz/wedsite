@@ -81,7 +81,9 @@ body, html {
   background-attachment: fixed;
   /* overflow: hidden; */
 }
-
+.text-map{
+    font-family: "Dancing Script";
+}
 .daydream { font-family: var(--font-daydream); text-align:center; font-weight: 600; letter-spacing: 2px; font-size: 2.75rem;}
 .names { font-family: var(--font-names); }
 .text-primary { color: var(--color-primary) !important; }
@@ -89,12 +91,13 @@ body, html {
 /* ============================
    Landing (Names + Map)
 ============================ */
-#landing { background-color: var(--color-bg-light); }
+#landing { background-color: var(--color-bg-light);overflow: hidden; }
 .map-wrapper { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; }
 .description { font-family: var(--font-main); }
 .groom, .bride {
     font-size: var(--font-size-xxl);
     color: var(--color-primary);
+    
 }
 .bride { margin-left: 7rem; }
 .groom { margin-right: 7rem; }
@@ -653,4 +656,161 @@ body, html {
 }
 section{
     padding-top:2rem;
+}
+.suit-preview {
+  position: relative;
+  display: block;
+}
+
+.suit-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent; /* will be set by JS */
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+.suit-preview::after {
+  background: var(--suit-color, transparent);
+}
+/* Color swatches */
+.color-box-container { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.color-box {
+  width:50px; height:50px; border-radius:8px; cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease, outline .08s;
+  box-shadow: var(--shadow-box);
+  border: 2px solid rgba(255,255,255,0.35);
+}
+.color-box:hover { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.color-box:active { transform: scale(0.98); }
+
+/* active swatch outline */
+.color-box.active {
+  outline: 3px solid rgba(255,255,255,0.85);
+  transform: scale(1.12);
+}
+
+/* Example color classes (uses your :root vars) */
+.color-blush-light { background: var(--color-blush-light); }
+.color-blush-medium { background: var(--color-blush-medium); }
+.color-blush-rose { background: var(--color-blush-rose); }
+.color-blush-deep { background: var(--color-blush-deep); }
+
+.color-beige-ivory { background: var(--color-beige-ivory); }
+.color-beige-cream { background: var(--color-beige-cream); }
+.color-beige-sand { background: var(--color-beige-sand); }
+.color-beige-taupe { background: var(--color-beige-taupe); }
+
+/* Suit wrapper + overlay (overlay will carry the chosen color) */
+/* 🎩 Suit recolor wrapper */
+.suit-wrapper {
+  position: relative;
+  display: inline-block; /* shrink-wrap around the image */
+}
+
+.suit-wrapper img {
+  display: block;
+  max-width: 100%; /* Bootstrap responsive */
+  height: auto;
+}
+
+/* 🎨 Overlay tint for recoloring */
+.suit-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--suit-color, transparent);
+  mix-blend-mode: multiply;  /* realistic tinting */
+  pointer-events: none;
+  opacity: .95;
+  transition: background .35s ease, opacity .2s ease;
+
+  /* 🖌️ Mask so tint applies only to suit */
+  -webkit-mask-image: url("./assets/images/suit-male-bw.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100% 100%;
+
+  mask-image: url("./assets/images/suit-male-bw.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100% 100%;
+}
+/* 👗 Dress recolor wrapper */
+.dress-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dress-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Overlay tint for dress */
+.dress-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dress-color, transparent);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  opacity: .95;
+  transition: background .35s ease, opacity .2s ease;
+
+  /* Mask only the dress shape */
+  -webkit-mask-image: url("./assets/images/suit-female-bw.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100% 100%;
+
+  mask-image: url("./assets/images/suit-female-bw.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100% 100%;
+}
+
+/* Special forbidden colors */
+.color-box.forbidden {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 1;
+  pointer-events: none; /* disables clicks */
+}
+
+/* Forbidden color boxes (not allowed) */
+.color-box.forbidden {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 1;
+  pointer-events: none; /* not clickable */
+}
+
+/* Red X overlay */
+.color-box.forbidden::before,
+.color-box.forbidden::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 5px;
+  background: red;
+  transform-origin: center;
+}
+
+.color-box.forbidden::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.color-box.forbidden::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
