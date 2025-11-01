@@ -294,7 +294,7 @@ body, html {
     height: 100%;
     text-align: center;
     background: rgba(0,0,0,0.5);
-    /* padding: 2rem; */
+    padding-inline: 4rem;
     padding-top: 8rem;
     visibility: middle;
     border-radius: 0;
@@ -313,7 +313,10 @@ body, html {
         padding-bottom: 56.25%; /* Maintain 16:9 ratio on mobile */
     }
     .l1,.l2{
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+    }
+    .names{
+        font-size: 1.5rem;
     }
 }
 
