@@ -167,18 +167,45 @@ body, html {
     height: auto;
     display: block;
 }
+
+/* Hero Video Wrapper - Full Width Responsive */
+.hero-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 .hero-text-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 900px;
+    width: 100%;
+    height: 100%;
     text-align: center;
     background: rgba(0,0,0,0.5);
     padding: 2rem;
+    padding-top: 10rem;
+    visibility: middle;
     border-radius: var(--radius-lg);
     color: var(--color-soft-white);
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.hero-text-overlay * {
+    pointer-events: auto;
 }
 
 /* Ensure main content sits above background footsteps */
@@ -199,6 +226,11 @@ body, html {
     .hero {
         padding-top: 6rem;
         padding-bottom: 0;
+    }
+    
+    /* Ensure video wrapper adjusts properly on mobile */
+    .hero-video-wrapper {
+        padding-bottom: 56.25%; /* Maintain 16:9 ratio on mobile */
     }
 }
 
