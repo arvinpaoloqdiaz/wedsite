@@ -7,7 +7,49 @@
     font-weight: normal;
     font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&family=Great+Vibes&display=swap');
+@font-face {
+    font-family: "magik";
+    src: url("./assets/fonts/Magik.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "magical_me";
+    src: url("./assets/fonts/magical_me.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "parisienne";
+    src: url("./assets/fonts/Parisienne-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "hagrid";
+    src: url("./assets/fonts/hagrid.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "pabasing";
+    src: url("./assets/fonts/PabasingSignature-q2x3d.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "educational-decree";
+    src: url("./assets/fonts/educational-decree.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Norican&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 /* ============================
    Root Variables
@@ -19,9 +61,10 @@
     --color-blush: #F6D9D6;
     --color-cream: #F3E6DC;
     --color-soft-white: #F8F6F2;
+    --color-brown:rgb(112, 85, 32);
 
     /* Assign roles */
-    --color-primary: var(--color-deep-rose);
+    --color-primary: var(--color-brown);
     --color-secondary: var(--color-peach);
     --color-accent: var(--color-blush);
     --color-bg-light: var(--color-soft-white);
@@ -33,6 +76,12 @@
     --font-script: 'Dancing Script', cursive;
     --font-names: 'Great Vibes', cursive;
     --font-daydream: 'daydream', sans-serif;
+    --font-pabasing: 'pabasing', sans-serif;
+    --font-magik: 'magik', sans-serif;
+    --font-magical_me: 'magical_me', sans-serif;
+    --font-parisienne: 'parisienne', sans-serif;
+    --font-hagrid: 'hagrid', sans-serif;
+    --font-educational-decree: 'educational-decree', sans-serif;
 
     /* 🔠 Font Sizes */
     --font-size-xxl: 6rem;
@@ -85,9 +134,33 @@ body, html {
     font-family: "Dancing Script";
 }
 .daydream { font-family: var(--font-daydream); text-align:center; font-weight: 600; letter-spacing: 2px; font-size: 2.75rem;}
-.names { font-family: var(--font-names); }
+.names {
+     font-family: var(--font-parisienne); 
+     color:white;
+     text-shadow:1px 1px 30px rgb(129, 99, 44);
+     font-weight: 1000;
+}
+.l1{
+    font-family: var(--font-main);
+    font-size: 1.3rem;
+    color:#ffffff;
+    font-weight: lighter;
+}
+.l2{
+    font-family: var(--font-main);
+    font-size: 1.3rem;
+    color:#ffffff;
+    font-weight: lighter;
+}
 .text-primary { color: var(--color-primary) !important; }
-
+.monogram.d-flex{
+    gap: 1rem;
+    justify-content: center;
+    
+}
+.monogram .image-container{
+    width:5% !important;
+}
 /* ============================
    Landing (Names + Map)
 ============================ */
@@ -196,7 +269,7 @@ body, html {
     text-align: center;
     background: rgba(0,0,0,0.5);
     padding: 2rem;
-    padding-top: 10rem;
+    
     visibility: middle;
     border-radius: var(--radius-lg);
     color: var(--color-soft-white);
