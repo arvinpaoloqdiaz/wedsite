@@ -67,7 +67,7 @@
     --color-primary: var(--color-brown);
     --color-secondary: var(--color-peach);
     --color-accent: var(--color-blush);
-    --color-bg-light: var(--color-soft-white);
+    --color-bg-light: #e5cfa9;
     --color-text: #6c757d;
     /* --color-text: #161616; */
 
@@ -122,7 +122,7 @@ body, html {
     padding: 0;
     font-family: var(--font-main);
     scroll-behavior: smooth;
-    /* background-color: var(--color-bg-light); */
+    /* background-color:white; */
     color: var(--color-text);
     background-size: cover;
   background-position: center;
@@ -130,6 +130,31 @@ body, html {
   background-attachment: fixed;
   /* overflow: hidden; */
 }
+body{
+    background-color: white;
+}
+.map-background {
+  background: radial-gradient(circle at 30% 30%, #cbb994, #b29b77, #8d7752);
+  background-size: 200% 200%;
+  animation: parchmentGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes parchmentGlow {
+  0% {
+    background-position: 30% 30%;
+    filter: brightness(1);
+  }
+  100% {
+    background-position: 70% 70%;
+    filter: brightness(1.1);
+  }
+}
+
+
+
+
+
+
 .text-map{
     font-family: "Dancing Script";
 }
