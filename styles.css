@@ -210,6 +210,12 @@ body{
     font-size: var(--font-size-lg);
     color: var(--color-primary);
 }
+.church{
+    position:absolute;
+    width:75px !important;
+    top:33%;
+    left:10%;
+}
 
 /* ============================
    Countdown Timer
