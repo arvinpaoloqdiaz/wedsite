@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/images/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/images/icons/favicon-16x16.png">
+<link rel="manifest" href="./assets/images/icons/site.webmanifest">
+<link rel="shortcut icon" href="./assets/images/icons/favicon.ico" type="image/x-icon">
 <title>Gerwel & Jane Wedding</title>
 
 <!-- Bootstrap 5 -->
@@ -98,12 +103,14 @@
           
           </div>
           
-        <div class="hero-text-overlay text-white d-flex align-items-center justify-content-center">
+        <div class="hero-text-overlay text-white d-flex flex-column align-items-center justify-content-evenly">
+            <div></div>
             <div>
              <p class="lead l1">After years of magic, laughter, and a touch of mischief,</p>
             <h1 class="display-2 names monogram d-flex">Gerwel & Jane</h1>
             <p class="lead l2">invite you to join them as they cast the greatest spell yet; <br>a lifetime of love.</p>
             </div>
+            <img src="./assets/images/monogram-gerjane.png" style="max-width: 6%;" alt="">
         </div>
     </header>
 
@@ -114,13 +121,20 @@
             <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-person-heart me-2"></i>Our Story</span></h2>
             <div class="row g-4 align-items-center">
                 
-                <div class="col-md-6">
-                    <p class="glass-blur">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus orci vitae lorem luctus, a scelerisque nunc bibendum.</p>
-                </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
+                    <p class="glass-blur text-justify about_text"> <span class="parisienne">Gerwel</span>  and <span class="parisienne bridename">Jane</span> first met at Lyceum of Subic Bay. He was an IT student, she was studying Accountancy. Even before knowing each other’s names, they often crossed paths on the stairs, their eyes meeting in fleeting, unspoken moments. Gerwel had secretly admired Jane for almost a year, and after a memorable day with friends at Ayala Harbor Point in 2015, he finally found the courage to add her on Facebook. That was when their story truly began. </p>
+                     <p class="glass-blur text-justify d-none d-lg-block about_text">
+                        For a time, Jane stepped back, unsure and cautious, leaving both hearts aching. Life carried them along separate paths, until two years later fate brought them back together. Healed and stronger, their paused love story resumed. They faced challenges hand in hand, dreamed together, and built a life filled with laughter, love, and unwavering devotion. Now, they are here, ready to fulfill one of their most cherished dreams—uniting their hearts in marriage and beginning their <span class="parisienne bridename">Forever</span>.</p>
+                    </div>
+                    
+                <div class="col-lg-6">
                     <div class="our-story-mask">
                     <img src="./assets/images/our-story.gif" class="img-fluid rounded-4" alt="Couple Photo">
                     </div>
+                </div>
+                <div class="col-lg-6 d-lg-none">
+                        <p class="glass-blur text-justify about_text">
+                        For a time, Jane stepped back, unsure and cautious, leaving both hearts aching. Life carried them along separate paths, until two years later fate brought them back together. Healed and stronger, their paused love story resumed. They faced challenges hand in hand, dreamed together, and built a life filled with laughter, love, and unwavering devotion. Now, they are here, ready to fulfill one of their most cherished dreams—uniting their hearts in marriage and beginning their <span class="parisienne">Forever</span>.</p>
                 </div>
             </div>
         </section>
@@ -129,11 +143,19 @@
         <section class="about mb-5 section" id="proposal">
             <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-person-heart me-2"></i>The Proposal</span></h2>
             <div class="row g-4 align-items-center">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img src="./assets/images/couple.jpeg" class="img-fluid rounded-4" alt="Couple Photo">
                 </div>
-                <div class="col-md-6">
-                    <p class="glass-blur">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus orci vitae lorem luctus, a scelerisque nunc bibendum.</p>
+                <div class="col-lg-6">
+                    <p class="glass-blur text-justify proposal_text">The proposal took place at <span 
+                        class="proposal_dateandtime" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="16°24'00.1&quot;N 120°36'59.9&quot;E">
+                        Camp John Hay Baguio
+                    </span>
+ on January 27, 2024, at 11:45 AM Gerwel secretly hired a photographer who pretended to be a content creator and asked both of them for a quick 15-minute shoot. While Jane was being photographed, Gerwel quietly prepared the ring. He then knelt down behind her, with Yuki sitting sweetly beside him. When she turned, she was completely surprised. With a full heart, 
+                        <span class="proposal_yes">she said YES.</span></p>
                 </div>
                 
             </div>
@@ -143,15 +165,229 @@
         <section class="invitation mb-5 section" id="invitation">
             <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-envelope-fill me-2"></i>Invitation</span></h2>
             <div class="row g-4 align-items-center">
-                <div class="col-md-6 d-flex justify-content-center">
-                    <img src="./assets/images/invitation.png" class="img-fluid rounded rounded-3" alt="Printed Invitation" style="max-height:800px;">
+                <div class="col-12 d-flex justify-content-center">
+
+<div class="wedding-table glass-blur">
+  
+  <!-- Bride's & Groom's Parents -->
+  <div class="row mb-3">
+    <div class="col-6 col-md-6">
+      <strong>Bride's Parents</strong>
+      <p>Joel Sabado</p>
+      <p>Leilani Sabado</p>
+    </div>
+    <div class="col-6 col-md-6">
+      <strong>Groom's Parents</strong>
+      <p>Alvin Diaz</p>
+      <p>Lilibeth Diaz</p>
+    </div>
+  </div>
+
+  <!-- Principal Sponsors -->
+  <div class="row mb-3">
+    <div class="col-12">
+      <strong>Principal Sponsors</strong>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+        <p>Mrs. Myrah Diasanta</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Rizaldee San Diasanta</p>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+         <p>Mrs. Jocelyn Mendoza</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Gerald Mendoza</p>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+         <p>Mrs. Dannalyn Regala</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Kevin Regala</p>
+        </div>
+    </div>
+     <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+         <p>Mrs. Nitaflor Patiag</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Noel Patiag</p>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+         <p>Mrs. Janet Reyes</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Noel Reyes</p>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+         <p>Ms. Katrina Valdez</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mrs. Evangeline Sabay</p>
+        </div>
+    </div>
+      <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+         <p>Mrs. Ma. Grace Gaudia</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Hon. Aquilino "Jong" Cortez</p>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+          <p>Mrs. Elma De Guzman</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Ms. Cheryl Baraan</p>
+        </div>
+    </div>
+     <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+          <p>Ms. Marilou Quiambao</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Arnold Obispo</p>
+        </div>
+    </div>     
+     <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+          <p>Mrs. Jocelyn Vasquez</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Mr. Arnel Vasquez</p>
+        </div>
+    </div>  
+  </div>
+
+  <!-- Maids of Honor & Best Men -->
+  <div class="row mb-3">
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+        <strong>Maids of Honor</strong>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <strong>Best Men</strong>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+        <p>Jonalyn Sabado</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Arvin Paolo Diaz</p>
+        </div>
+    </div>
+     <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+        <p>Lienny Abadiano</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Rizdale Aquino</p>
+        </div>
+    </div>
+    <div class="col-12 row text-center">
+        <div class="col-6" style="place-content: center;">
+        <p>Gielyn Merza</p>
+        </div>
+        <div class="col-6" style="place-content: center;">
+         <p>Audrey de Castro</p>
+        </div>
+    </div>
+  </div>
+
+  <!-- Bridesmaids/men & Groomsmen -->
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <strong>Bridesmaids/men</strong>
+      <p>Donna Bhie Rañada</p>
+      <p>Justine Fernando</p>
+      <p>Charm Miano</p>
+      <p>Krisnaline Sabay</p>
+      <p>Kolleen Cristobal</p>
+      <p>Michelle Anne Raquiño</p>
+      <p>Reyna Rose Laviña</p>
+      <p>Leogine Gumangan</p>
+      <p>Christian Ibasco</p>
+    </div>
+    <div class="col-12 col-md-6">
+      <strong>Groomsmen</strong>
+      <p>Nico Deveraturda</p>
+      <p>Edser Fernando</p>
+      <p>Rey Guevarra</p>
+      <p>Allen Laviña</p>
+      <p>Arnold Orgen</p>
+      <p>Jerimie Dulin</p>
+      <p>Anthony Damasco</p>
+      <p>Oliver John Cruz</p>
+      <p>Menard Manlapaz</p>
+    </div>
+  </div>
+
+  <!-- Jr. Bridesmaids & Jr. Groomsman -->
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <strong>Jr. Bridesmaids</strong>
+      <p>Avry Calimlim</p>
+    </div>
+    <div class="col-12 col-md-6">
+      <strong>Jr. Groomsman</strong>
+      <p>Chalmers Quiambao</p>
+    </div>
+  </div>
+
+  <!-- Bible Bearer & Ring Bearer -->
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <strong>Bible Bearer</strong>
+      <p>Jerald Sabado</p>
+    </div>
+    <div class="col-12 col-md-6">
+      <strong>Coin Bearer</strong>
+      <p>Zachariah Miguel Orgen</p>
+    </div>
+  </div>
+
+  <!-- Ring Bearer Special -->
+  <div class="row mb-3">
+    <div class="col-12">
+      <strong>Ring Bearer</strong>
+      <p>John Benedict Sabado</p>
+    </div>
+  </div>
+
+  <!-- Flower Princesses & Flower Girls -->
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <strong>Flower Princesses</strong>
+      <p>Makayla Diasanta</p>
+      <p>Raya Diasanta</p>
+      <p>Yanamarie Yanto</p>
+    </div>
+    <div class="col-12 col-md-6">
+      <strong>Flower Girls</strong>
+      <p>Avi Merza</p>
+      <p>Maliyah Gabut</p>
+    </div>
+  </div>
+
+</div>
+
+
+
                 </div>
-                <div class="col-md-6">
-                    <ul class="list-group glass-blur">
-                        <li class="list-group-item">3:00 PM - Ceremony</li>
-                        <li class="list-group-item">4:00 PM - Cocktail Reception</li>
-                        <li class="list-group-item">5:00 PM - Dinner & Dance</li>
-                    </ul>
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="./assets/images/program-flow.png" class=" glass-blur img-fluid" style="max-width:700px; width: 100%;" alt="">
                 </div>
             </div>
         </section>
@@ -300,7 +536,17 @@
         </div>
       </div>
     </div>
-    <div class="palette mb-4 not-allowed">
+ 
+
+
+     <!-- Female dress -->
+  <div class="col-6 col-lg-4 order-2 order-lg-3 d-flex justify-content-start align-items-center">
+    <div class="dress-wrapper">
+      <img src="./assets/images/suit-female-bw.png" alt="Dress Female" class="img-fluid">
+    </div>
+  </div>
+</div>
+   <div class="palette mb-4 not-allowed">
   <p class="text-center text-danger fw-bold glass-blur">
     ⚠️ Please avoid wearing <strong>black</strong> or <strong>white</strong> — it is a wedding celebration.
   </p>
@@ -309,15 +555,6 @@
     <div class="color-box color-charcoal forbidden" title="Charcoal"></div> -->
     <div class="color-box color-black forbidden" title="Black"></div>
     <div class="color-box color-white forbidden" title="White"></div>
-  </div>
-</div>
-
-
-     <!-- Female dress -->
-  <div class="col-6 col-lg-4 order-2 order-lg-3 d-flex justify-content-start align-items-center">
-    <div class="dress-wrapper">
-      <img src="./assets/images/suit-female-bw.png" alt="Dress Female" class="img-fluid">
-    </div>
   </div>
 </div>
 </section>
@@ -335,10 +572,24 @@
     <h2 class="text-primary mb-3 daydream"><span class="glass-blur"><i class="bi bi-pencil-square me-2"></i>RSVP</span></h2>
     <p class="text-center"><span class="glass-blur">Please fill out your RSVP below. Form will appear soon!</span></p>
     <!-- Placeholder iframe -->
-    <div class="ratio ratio-16x9">
-        <iframe src="https://widget.gerweljane.life/rsvp-form/widget.html" frameborder="0"></iframe>
+    <div class="w-100">
+  <iframe class="form-container w-100" src="https://widget.gerweljane.life/rsvp-form/widgetv2.html" frameborder="0" style="min-height: 800px;"></iframe>
+</div>
 
-    </div>
+<script>
+const iframe = document.querySelector('.form-container');
+
+window.addEventListener('message', (event) => {
+  // Make sure it's from the correct origin
+  if (event.origin !== 'https://widget.gerweljane.life') return;
+
+  if (event.data.type === 'resize' && event.data.height) {
+    iframe.style.height = event.data.height + 'px';
+  }
+});
+
+</script>
+
 </section>
 
     </main>

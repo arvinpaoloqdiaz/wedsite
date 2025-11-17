@@ -281,27 +281,48 @@ function startWalkers() {
 
 });
 document.addEventListener("DOMContentLoaded", function () {
-      let activeTooltip = null;
+  let activeTooltip = null;
 
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      tooltipTriggerList.forEach(function (el) {
-        const tooltip = new bootstrap.Tooltip(el, {
-          trigger: 'hover click',
-        });
-
-        el.addEventListener("click", function () {
-          if (activeTooltip && activeTooltip !== tooltip) {
-            activeTooltip.hide();
-          }
-          activeTooltip = tooltip;
-        });
-      });
-
-      // Hide tooltip if clicking outside
-      document.addEventListener("click", function (event) {
-        if (activeTooltip && !event.target.closest('[data-bs-toggle="tooltip"]')) {
-          activeTooltip.hide();
-          activeTooltip = null;
-        }
-      });
+  // Initialize all tooltips except the proposal one
+  const tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]:not(.proposal_dateandtime)')
+  );
+  tooltipTriggerList.forEach(function (el) {
+    const tooltip = new bootstrap.Tooltip(el, {
+      trigger: 'hover click',
+      placement: 'auto', // default for other tooltips
     });
+
+    el.addEventListener("click", function () {
+      if (activeTooltip && activeTooltip !== tooltip) {
+        activeTooltip.hide();
+      }
+      activeTooltip = tooltip;
+    });
+  });
+
+  // Hide tooltip if clicking outside
+  document.addEventListener("click", function (event) {
+    if (activeTooltip && !event.target.closest('[data-bs-toggle="tooltip"]')) {
+      activeTooltip.hide();
+      activeTooltip = null;
+    }
+  });
+
+  // Initialize only the proposal tooltip
+  const proposalTooltipEl = document.querySelector('.proposal_dateandtime');
+  if (proposalTooltipEl) {
+    new bootstrap.Tooltip(proposalTooltipEl, {
+      trigger: 'hover click',
+      placement: 'top', // always top
+      popperConfig: {
+        modifiers: [
+          {
+            name: 'preventOverflow',
+            options: { padding: 8 }
+          }
+        ]
+      }
+    });
+  }
+});

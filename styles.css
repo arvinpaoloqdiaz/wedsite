@@ -150,11 +150,52 @@ body{
   }
 }
 
-
-
-
-
-
+.parisienne{
+    color: var(--color-primary);
+    font-family: var(--font-parisienne);
+    font-size: 1.75rem;
+    font-weight: 750;
+    /* line-height: 1rem; */
+    padding-right: 1rem;
+}
+.parisienne.bridename{
+    padding-left: 1rem ;
+}
+.about_text{
+    line-height: 1.75rem;
+}
+.proposal_text span{
+    margin-block:1rem;
+}
+.proposal_text{
+    line-height: 1.75rem;
+}
+.navbar{
+    font-family: var(--font-script);
+    font-weight: 1000;
+    background: var(--color-beige-ivory) !important;
+}
+.proposal_dateandtime{
+    /* display: block; */
+    text-align: justify;
+    color: var(--color-primary);
+    font-family: var(--font-hagrid);
+    font-size: 1.25rem;
+    font-weight: 1000;
+    margin-inline: 0rem;
+}
+.proposal_yes{
+    display: block;
+    text-align: center;
+    color: var(--color-primary);
+    font-family: var(--font-hagrid);
+    font-size: 3rem;
+    font-weight: 1000;
+}
+.row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
 .text-map{
     font-family: "Dancing Script";
 }
@@ -523,13 +564,6 @@ body{
 @keyframes scroll-1 { 10% { transform: translate(8px, -15px); } 20% { transform: translate(30px, -45px); } 30% { transform: translate(40px, -75px); } 40% { transform: translate(45px, -100px); } 50% { transform: translate(50px, -125px); } 60% { transform: translate(50px, -135px); } 100% { transform: translate(50px, -135px); } }
 @keyframes scroll-2 { 0% { } 80% { transform: translate(-170px, -25px); } 100% { transform: translate(-180px, -25px); } }
 
-/* ============================
-   Infinite footsteps overlay after entry
-============================ */
-/* Foot Shapes */
-/* =========================
-   Footsteps Overlay
-========================= */
 /* =========================
    Footsteps Overlay (Refined)
 ========================= */
@@ -791,7 +825,49 @@ body{
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   color:var(--color-brown);
 }
+.text-justify{
+    text-align: justify !important;
+}
 
+    .wedding-table {
+        width: 100%;
+        max-width: 900px;
+        margin: 40px auto;
+        border-collapse: collapse;
+        color: #333;
+        text-align: center;
+    }
+
+    .wedding-table th {
+        background: #f8f3f0;
+        color: #444;
+        font-size: 1.75rem;
+        padding: 1px;
+        border-bottom: 2px solid #d9cdc5;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        font-family: var(--font-script);
+    }
+
+    .wedding-table td {
+        padding: 1px 12px;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+        font-family: var(--font-main);
+        font-size: 1rem;
+    }
+
+    .wedding-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .section-title {
+        background: #efe7e3 !important;
+        font-weight: bold;
+        font-size: 1.5rem !important;
+        padding: 14px !important;
+        letter-spacing: 1px;
+    }
 /* Hover effect */
 .music-btn:hover {
   transform: scale(1.1);
