@@ -291,7 +291,7 @@ body{
     text-align: center;
     min-width: 60px;
     padding: 0.4rem 0.6rem;
-    background: var(--color-bg-light);
+    background: var(--color-beige-ivory);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-box);
     transition: transform 0.3s ease;
