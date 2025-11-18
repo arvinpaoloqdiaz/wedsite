@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     // Suit recoloring
    // recolor suit preview when a color box is clicked
@@ -40,28 +42,44 @@ document.querySelectorAll('.color-box').forEach(box => {
             startCountdown();
 
             // Play background music
-            const music = document.getElementById("weddingMusic");
-            music.play().catch(err => console.log("Autoplay blocked", err));
+const music = document.getElementById("weddingMusic");
+music.volume = 0.5; // set initial volume (0.0 to 1.0)
+music.play().catch(err => console.log("Autoplay blocked", err));
 
-            // Show floating music button
-            $("#musicToggle").fadeIn().addClass("playing");
+// Show floating music button
+$("#musicToggle").fadeIn().addClass("playing");
 
-            // Toggle play/pause on button click
-            $("#musicToggle").on("click", function() {
-                if (music.paused) {
-                    music.play();
-                    $(this).find("i")
-                        .removeClass("bi-volume-mute-fill")
-                        .addClass("bi-volume-up-fill");
-                    $(this).addClass("playing"); // pulse when playing
-                } else {
-                    music.pause();
-                    $(this).find("i")
-                        .removeClass("bi-volume-up-fill")
-                        .addClass("bi-volume-mute-fill");
-                    $(this).removeClass("playing"); // stop pulse when muted
-                }
-            });
+// Toggle play/pause on button click
+$("#musicToggle").on("click", function() {
+    if (music.paused) {
+        music.play();
+        $(this).find("i")
+            .removeClass("bi-volume-mute-fill")
+            .addClass("bi-volume-up-fill");
+        $(this).addClass("playing"); // pulse when playing
+    } else {
+        music.pause();
+        $(this).find("i")
+            .removeClass("bi-volume-up-fill")
+            .addClass("bi-volume-mute-fill");
+        $(this).removeClass("playing"); // stop pulse when muted
+    }
+});
+
+// Stop music when page/tab is hidden (mobile fix)
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        music.pause();
+        $("#musicToggle").find("i").removeClass("bi-volume-up-fill").addClass("bi-volume-mute-fill");
+        $("#musicToggle").removeClass("playing");
+    }
+});
+
+// Optional: Stop music on page unload
+window.addEventListener("beforeunload", () => {
+    music.pause();
+});
+
         });
     });
 };
@@ -281,6 +299,7 @@ function startWalkers() {
 
 });
 document.addEventListener("DOMContentLoaded", function () {
+    
   let activeTooltip = null;
 
   // Initialize all tooltips except the proposal one

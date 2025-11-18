@@ -15,12 +15,12 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 <!-- Landing Page (Map Opening) -->
 <div id="landing" class="vh-100 d-flex flex-column justify-content-center map-background align-items-center text-center pt-5">
     <div class="mb-auto map-wrapper">
@@ -573,21 +573,36 @@
     <p class="text-center"><span class="glass-blur">Please fill out your RSVP below. Form will appear soon!</span></p>
     <!-- Placeholder iframe -->
     <div class="w-100">
-  <iframe class="form-container w-100" src="https://widget.gerweljane.life/rsvp-form/widgetv2.html" frameborder="0" style="min-height: 800px;"></iframe>
+  <iframe id="rsvpIframe" class="form-container w-100" src="https://widget.gerweljane.life/rsvp-form/widgetv2.html" frameborder="0" style="width:100%;"></iframe>
 </div>
 
 <script>
-const iframe = document.querySelector('.form-container');
+const iframe = document.getElementById("rsvpIframe");
 
-window.addEventListener('message', (event) => {
-  // Make sure it's from the correct origin
-  if (event.origin !== 'https://widget.gerweljane.life') return;
+// Function to resize iframe based on the .form-container inside
+function resizeIframe() {
+    if (!iframe.contentWindow) return;
 
-  if (event.data.type === 'resize' && event.data.height) {
-    iframe.style.height = event.data.height + 'px';
-  }
+    const doc = iframe.contentWindow.document;
+    const formContainer = doc.querySelector('.form-container');
+    if (formContainer) {
+        iframe.style.height = formContainer.scrollHeight + "px";
+    }
+}
+
+// Resize on iframe load
+iframe.addEventListener('load', () => {
+    resizeIframe();
+
+    // Observe changes inside iframe to dynamically adjust height
+    const formContainer = iframe.contentWindow.document.querySelector('.form-container');
+    if (formContainer) {
+        const observer = new MutationObserver(() => {
+            resizeIframe();
+        });
+        observer.observe(formContainer, { attributes: true, childList: true, subtree: true });
+    }
 });
-
 </script>
 
 </section>
@@ -632,7 +647,7 @@ window.addEventListener('message', (event) => {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script src="https://kit.fontawesome.com/c71995e0e3.js" crossorigin="anonymous"></script>
 <!-- Custom JS -->
 <script src="script.js"></script>
 </body>
