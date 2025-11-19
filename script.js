@@ -1,16 +1,78 @@
 
+document.addEventListener("DOMContentLoaded", function () {
+  const dressImg = document.querySelector(".dress-wrapper img");
+
+  // --------------------------
+  // 1. Preload all dress images
+  // --------------------------
+  function preloadDressImages() {
+    const dressNames = new Set();
+
+    document.querySelectorAll(".color-box").forEach(box => {
+      const name = box.getAttribute("data-dress");
+      if (name) dressNames.add(name);
+    });
+
+    // Include default dress
+    dressNames.add("light_blush");
+
+    // Preload
+    dressNames.forEach(name => {
+      const img = new Image();
+      img.src = `./assets/images/dress/${name}.png`;
+    });
+  }
+
+  preloadDressImages();
+
+
+  // --------------------------
+  // 2. Initial load image
+  // --------------------------
+  dressImg.src = "./assets/images/dress/light_blush.png";
+  dressImg.classList.add("dress-grayscale");
+
+
+  // --------------------------
+  // 3. Color click handler
+  // --------------------------
+  document.querySelectorAll(".color-box").forEach(box => {
+    box.addEventListener("click", () => {
+      const color = getComputedStyle(box).backgroundColor;
+      const dressName = box.getAttribute("data-dress");
+
+      // Recolor suit and dress via overlay
+      document.querySelector(".suit-wrapper")
+        .style.setProperty("--suit-color", color);
+      document.querySelector(".dress-wrapper")
+        .style.setProperty("--dress-color", color);
+
+      if (dressName) {
+        const newSrc = `./assets/images/dress/${dressName}.png`;
+
+        // Fade out
+        dressImg.classList.add("dress-fade");
+
+        setTimeout(() => {
+          dressImg.src = newSrc;
+
+          // Remove grayscale now that a color is chosen
+          dressImg.classList.remove("dress-grayscale");
+
+          // Fade back in
+          setTimeout(() => {
+            dressImg.classList.remove("dress-fade");
+          }, 40);
+
+        }, 250);
+      }
+    });
+  });
+});
+
 
 $(document).ready(function(){
     // Suit recoloring
-   // recolor suit preview when a color box is clicked
-document.querySelectorAll('.color-box').forEach(box => {
-  box.addEventListener('click', () => {
-    const color = getComputedStyle(box).backgroundColor;
-    // Apply same chosen color to both suit and dress
-    document.querySelector('.suit-wrapper').style.setProperty('--suit-color', color);
-    document.querySelector('.dress-wrapper').style.setProperty('--dress-color', color);
-  });
-});
 
 
 

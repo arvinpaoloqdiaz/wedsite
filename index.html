@@ -8,7 +8,69 @@
 <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/icons/favicon-16x16.png">
 <link rel="manifest" href="./assets/images/icons/site.webmanifest">
 <link rel="shortcut icon" href="./assets/images/icons/favicon.ico" type="image/x-icon">
+<!-- ============================================
+       PRELOAD — Critical images (must show instantly)
+       ============================================ -->
+
+  <!-- Logo / Branding -->
+  <link rel="preload" as="image" href="./assets/images/monogram-gerjane.png">
+
+  <!-- Hero / Church Section -->
+  <link rel="preload" as="image" href="./assets/images/church.svg">
+
+  <!-- Map Fragment (opening animation) -->
+  <link rel="preload" as="image" href="./assets/images/map-fragment/8.png">
+  <link rel="preload" as="image" href="./assets/images/map-fragment/18.png">
+  <link rel="preload" as="image" href="./assets/images/map-fragment/7.png">
+  <link rel="preload" as="image" href="./assets/images/map-fragment/10.png">
+  <link rel="preload" as="image" href="./assets/images/map-fragment/6.png">
+  <link rel="preload" as="image" href="./assets/images/map-fragment/11.png">
+
+  <!-- “Our Story” GIF -->
+  <link rel="preload" as="image" href="./assets/images/our-story.gif">
+
+  <!-- Dress Code initial images -->
+  <link rel="preload" as="image" href="./assets/images/suit-male-bw.png">
+  <link rel="preload" as="image" href="./assets/images/dress/light_blush.png">
+
+  <!-- ============================================
+       PREFETCH — For later-use images
+       (low priority, helps smooth navigation)
+       ============================================ -->
+
+  <!-- Carousel images -->
+  <link rel="prefetch" as="image" href="./assets/images/carousel/carousel.jpeg">
+  <link rel="prefetch" as="image" href="./assets/images/carousel/carousel1.jpeg">
+  <link rel="prefetch" as="image" href="./assets/images/carousel/carousel2.jpeg">
+  <link rel="prefetch" as="image" href="./assets/images/carousel/carousel3.jpeg">
+  <link rel="prefetch" as="image" href="./assets/images/carousel/carousel4.jpeg">
+  <link rel="prefetch" as="image" href="./assets/images/carousel/carousel5.jpeg">
+
+  <!-- QR Codes -->
+  <link rel="prefetch" as="image" href="./assets/images/qr-gmaps-v2.png">
+  <link rel="prefetch" as="image" href="./assets/images/qr-waze-v2.png">
+
+  <!-- Dress Code — Female colored dresses (prefetch all variants) -->
+  <link rel="prefetch" as="image" href="./assets/images/dress/light_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/medium_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/rose_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/deep_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/ivory_beige.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/cream_beige.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/sand_beige.png">
+  <link rel="prefetch" as="image" href="./assets/images/dress/taupe_beige.png">
+
+  <!-- ============================================
+       Fonts (preload increases performance)
+       ============================================ -->
+  <link rel="preload" href="./assets/fonts/daydream.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/fonts/magik.ttf" as="font" type="font/ttf" crossorigin>
 <title>Gerwel & Jane Wedding</title>
+<style>
+#rsvpIframe {
+    transition: height 0.25s ease;
+}
+</style>
 
 <!-- Bootstrap 5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -519,20 +581,22 @@
       <div class="palette mb-4">
         <p class="glass-blur">Blush Pink Palette</p>
         <div class="color-box-container">
-          <div class="color-box color-blush-light" data-color="var(--color-blush-light)" title="Light Blush" data-bs-toggle="tooltip"></div>
-          <div class="color-box color-blush-medium" data-color="var(--color-blush-medium)" title="Medium Blush" data-bs-toggle="tooltip"></div>
-          <div class="color-box color-blush-rose" data-color="var(--color-blush-rose)" title="Rose Blush" data-bs-toggle="tooltip"></div>
-          <div class="color-box color-blush-deep" data-color="var(--color-blush-deep)" title="Deep Blush" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-blush-light" data-color="var(--color-blush-light)" data-dress="light_blush" title="Light Blush" data-bs-toggle="tooltip"></div>
+<div class="color-box color-blush-medium" data-color="var(--color-blush-medium)" data-dress="medium_blush" title="Medium Blush" data-bs-toggle="tooltip"></div>
+<div class="color-box color-blush-rose" data-color="var(--color-blush-rose)" data-dress="rose_blush" title="Rose Blush" data-bs-toggle="tooltip"></div>
+<div class="color-box color-blush-deep" data-color="var(--color-blush-deep)" data-dress="deep_blush" title="Deep Blush" data-bs-toggle="tooltip"></div>
+
         </div>
       </div>
 
       <div class="palette mb-4">
         <p class="glass-blur">Beige Palette</p>
         <div class="color-box-container">
-          <div class="color-box color-beige-ivory" data-color="var(--color-beige-ivory)" title="Ivory Beige" data-bs-toggle="tooltip"></div>
-          <div class="color-box color-beige-cream" data-color="var(--color-beige-cream)" title="Cream Beige" data-bs-toggle="tooltip"></div>
-          <div class="color-box color-beige-sand" data-color="var(--color-beige-sand)" title="Sand Beige" data-bs-toggle="tooltip"></div>
-          <div class="color-box color-beige-taupe" data-color="var(--color-beige-taupe)" title="Taupe Beige" data-bs-toggle="tooltip"></div>
+          <div class="color-box color-beige-ivory" data-color="var(--color-beige-ivory)" data-dress="ivory_beige" title="Ivory Beige" data-bs-toggle="tooltip"></div>
+        <div class="color-box color-beige-cream" data-color="var(--color-beige-cream)" data-dress="cream_beige" title="Cream Beige" data-bs-toggle="tooltip"></div>
+        <div class="color-box color-beige-sand" data-color="var(--color-beige-sand)" data-dress="sand_beige" title="Sand Beige" data-bs-toggle="tooltip"></div>
+        <div class="color-box color-beige-taupe" data-color="var(--color-beige-taupe)" data-dress="taupe_beige" title="Taupe Beige" data-bs-toggle="tooltip"></div>
+
         </div>
       </div>
     </div>
@@ -542,7 +606,7 @@
      <!-- Female dress -->
   <div class="col-6 col-lg-4 order-2 order-lg-3 d-flex justify-content-start align-items-center">
     <div class="dress-wrapper">
-      <img src="./assets/images/suit-female-bw.png" alt="Dress Female" class="img-fluid">
+      <img src="./assets/images/dress/light_blush.png" alt="Dress Female" class="img-fluid" style="max-height: 275px; height: 100%;">
     </div>
   </div>
 </div>
@@ -575,35 +639,6 @@
     <div class="w-100">
   <iframe id="rsvpIframe" class="form-container w-100" src="https://widget.gerweljane.life/rsvp-form/widgetv2.html" frameborder="0" style="width:100%;"></iframe>
 </div>
-
-<script>
-const iframe = document.getElementById("rsvpIframe");
-
-// Function to resize iframe based on the .form-container inside
-function resizeIframe() {
-    if (!iframe.contentWindow) return;
-
-    const doc = iframe.contentWindow.document;
-    const formContainer = doc.querySelector('.form-container');
-    if (formContainer) {
-        iframe.style.height = formContainer.scrollHeight + "px";
-    }
-}
-
-// Resize on iframe load
-iframe.addEventListener('load', () => {
-    resizeIframe();
-
-    // Observe changes inside iframe to dynamically adjust height
-    const formContainer = iframe.contentWindow.document.querySelector('.form-container');
-    if (formContainer) {
-        const observer = new MutationObserver(() => {
-            resizeIframe();
-        });
-        observer.observe(formContainer, { attributes: true, childList: true, subtree: true });
-    }
-});
-</script>
 
 </section>
 
@@ -650,5 +685,17 @@ iframe.addEventListener('load', () => {
 <script src="https://kit.fontawesome.com/c71995e0e3.js" crossorigin="anonymous"></script>
 <!-- Custom JS -->
 <script src="script.js"></script>
+<script>
+window.addEventListener("message", (event) => {
+    // Make sure the message is the height message
+    if (event.data?.type === "iframeHeight") {
+        const iframe = document.getElementById("rsvpIframe");
+        
+        // Apply the new height
+        iframe.style.height = event.data.height + "px";
+    }
+});
+</script>
+
 </body>
 </html>

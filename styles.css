@@ -145,7 +145,7 @@ body{
 .map-background {
   background: radial-gradient(circle at 30% 30%, #cbb994, #b29b77, #8d7752);
   background-size: 200% 200%;
-  animation: parchmentGlow 8s ease-in-out infinite alternate;
+  animation: parchmentGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes parchmentGlow {
@@ -155,7 +155,7 @@ body{
   }
   100% {
     background-position: 70% 70%;
-    filter: brightness(1.1);
+    filter: brightness(1.2);
   }
 }
 
@@ -982,42 +982,19 @@ section{
   mask-size: 100% 100%;
 }
 /* 👗 Dress recolor wrapper */
-.dress-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
 .dress-wrapper img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+  transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+  opacity: 1;
 }
 
-/* Overlay tint for dress */
-.dress-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--dress-color, transparent);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  opacity: .95;
-  transition: background .35s ease, opacity .2s ease;
-
-  /* Mask only the dress shape */
-  -webkit-mask-image: url("./assets/images/suit-female-bw.png");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: 100% 100%;
-
-  mask-image: url("./assets/images/suit-female-bw.png");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: 100% 100%;
+.dress-fade {
+  opacity: 0;
 }
+
+.dress-grayscale {
+  filter: grayscale(100%);
+}
+
 
 /* Special forbidden colors */
 .color-box.forbidden {
