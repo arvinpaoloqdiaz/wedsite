@@ -1,74 +1,94 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-  const dressImg = document.querySelector(".dress-wrapper img");
 
-  // --------------------------
-  // 1. Preload all dress images
-  // --------------------------
-  function preloadDressImages() {
+  const dressImg = document.querySelector(".dress-wrapper img");
+  const suitImg  = document.querySelector(".suit-wrapper img");
+
+  // ----------------------------------------------------
+  // 1. Preload ALL dress + suit images used in color-box
+  // ----------------------------------------------------
+  function preloadImages() {
     const dressNames = new Set();
+    const suitNames = new Set();
 
     document.querySelectorAll(".color-box").forEach(box => {
-      const name = box.getAttribute("data-dress");
-      if (name) dressNames.add(name);
+      const dressName = box.getAttribute("data-dress");
+      const suitName  = box.getAttribute("data-suit");
+
+      if (dressName) dressNames.add(dressName);
+      if (suitName)  suitNames.add(suitName);
     });
 
-    // Include default dress
+    // Add defaults if not already included
     dressNames.add("light_blush");
+    suitNames.add("light_blush");
 
-    // Preload
+    // Preload dress images
     dressNames.forEach(name => {
       const img = new Image();
       img.src = `./assets/images/dress/${name}.png`;
     });
+
+    // Preload suit images
+    suitNames.forEach(name => {
+      const img = new Image();
+      img.src = `./assets/images/suit/${name}.png`;
+    });
   }
 
-  preloadDressImages();
+  preloadImages();
 
-
-  // --------------------------
-  // 2. Initial load image
-  // --------------------------
+  // ----------------------------------------------------
+  // 2. Initial images
+  // ----------------------------------------------------
   dressImg.src = "./assets/images/dress/light_blush.png";
-  dressImg.classList.add("dress-grayscale");
+//   dressImg.classList.add("dress-grayscale");
 
+  suitImg.src = "./assets/images/suit/light_blush.png";
+//   suitImg.classList.add("suit-grayscale");
 
-  // --------------------------
-  // 3. Color click handler
-  // --------------------------
+  // ----------------------------------------------------
+  // 3. Click handler for BOTH suit and dress
+  // ----------------------------------------------------
   document.querySelectorAll(".color-box").forEach(box => {
     box.addEventListener("click", () => {
-      const color = getComputedStyle(box).backgroundColor;
+
+      // ------ Dress update ------
       const dressName = box.getAttribute("data-dress");
-
-      // Recolor suit and dress via overlay
-      document.querySelector(".suit-wrapper")
-        .style.setProperty("--suit-color", color);
-      document.querySelector(".dress-wrapper")
-        .style.setProperty("--dress-color", color);
-
       if (dressName) {
-        const newSrc = `./assets/images/dress/${dressName}.png`;
+        const newDressSrc = `./assets/images/dress/${dressName}.png`;
 
-        // Fade out
         dressImg.classList.add("dress-fade");
-
         setTimeout(() => {
-          dressImg.src = newSrc;
+          dressImg.src = newDressSrc;
+        //   dressImg.classList.remove("dress-grayscale");
 
-          // Remove grayscale now that a color is chosen
-          dressImg.classList.remove("dress-grayscale");
-
-          // Fade back in
           setTimeout(() => {
             dressImg.classList.remove("dress-fade");
           }, 40);
-
         }, 250);
       }
+
+      // ------ Suit update ------
+      const suitName = box.getAttribute("data-dress");
+      if (suitName) {
+        const newSuitSrc = `./assets/images/suit/${suitName}.png`;
+
+        suitImg.classList.add("suit-fade");
+        setTimeout(() => {
+          suitImg.src = newSuitSrc;
+        //   suitImg.classList.remove("suit-grayscale");
+
+          setTimeout(() => {
+            suitImg.classList.remove("suit-fade");
+          }, 40);
+        }, 250);
+      }
+
     });
   });
 });
+
 
 
 $(document).ready(function(){

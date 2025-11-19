@@ -30,7 +30,7 @@
   <link rel="preload" as="image" href="./assets/images/our-story.gif">
 
   <!-- Dress Code initial images -->
-  <link rel="preload" as="image" href="./assets/images/suit-male-bw.png">
+  <link rel="preload" as="image" href="./assets/images/suit/light_blush.png">
   <link rel="preload" as="image" href="./assets/images/dress/light_blush.png">
 
   <!-- ============================================
@@ -60,11 +60,20 @@
   <link rel="prefetch" as="image" href="./assets/images/dress/sand_beige.png">
   <link rel="prefetch" as="image" href="./assets/images/dress/taupe_beige.png">
 
+    <!-- Dress Code — Male colored suits (prefetch all variants) -->
+  <link rel="prefetch" as="image" href="./assets/images/suit/light_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/medium_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/rose_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/deep_blush.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/ivory_beige.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/cream_beige.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/sand_beige.png">
+  <link rel="prefetch" as="image" href="./assets/images/suit/taupe_beige.png">
+
   <!-- ============================================
        Fonts (preload increases performance)
        ============================================ -->
   <link rel="preload" href="./assets/fonts/daydream.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="./assets/fonts/magik.ttf" as="font" type="font/ttf" crossorigin>
 <title>Gerwel & Jane Wedding</title>
 <style>
 #rsvpIframe {
@@ -172,7 +181,7 @@
             <h1 class="display-2 names monogram d-flex">Gerwel & Jane</h1>
             <p class="lead l2">invite you to join them as they cast the greatest spell yet; <br>a lifetime of love.</p>
             </div>
-            <img src="./assets/images/monogram-gerjane.png" style="max-width: 6%; height: auto;" alt="">
+            <img src="./assets/images/monogram-gerjane.png" style="max-width: 6%; aspect-ratio: 1/1 !important;" alt="">
         </div>
     </header>
 
@@ -571,7 +580,7 @@
     <!-- Male suit: wrapped so we can use ::after overlay -->
     <div class="col-6 col-lg-4 order-1 d-flex justify-content-end align-items-center">
   <div class="suit-wrapper">
-    <img src="./assets/images/suit-male-bw.png" alt="Suit Male" class="img-fluid">
+    <img src="./assets/images/suit/light_blush.png" alt="Suit Male" class="img-fluid" style="max-height: 275px; height: 100%;">
   </div>
 </div>
 
@@ -690,7 +699,7 @@ window.addEventListener("message", (event) => {
     // Make sure the message is the height message
     if (event.data?.type === "iframeHeight") {
         const iframe = document.getElementById("rsvpIframe");
-        
+        console.log(event)
         // Apply the new height
         iframe.style.height = event.data.height + "px";
     }

@@ -944,43 +944,15 @@ section{
 .color-beige-taupe { background: var(--color-beige-taupe); }
 
 /* Suit wrapper + overlay (overlay will carry the chosen color) */
-/* 🎩 Suit recolor wrapper */
-.suit-wrapper {
-  position: relative;
-  display: inline-block; /* shrink-wrap around the image */
-}
-
 .suit-wrapper img {
-  display: block;
-  max-width: 100%; /* Bootstrap responsive */
-  height: auto;
+  transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
+  opacity: 1;
 }
 
-/* 🎨 Overlay tint for recoloring */
-.suit-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--suit-color, transparent);
-  mix-blend-mode: multiply;  /* realistic tinting */
-  pointer-events: none;
-  opacity: .95;
-  transition: background .35s ease, opacity .2s ease;
-
-  /* 🖌️ Mask so tint applies only to suit */
-  -webkit-mask-image: url("./assets/images/suit-male-bw.png");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: 100% 100%;
-
-  mask-image: url("./assets/images/suit-male-bw.png");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: 100% 100%;
+.suit-fade {
+  opacity: 0;
 }
+
 /* 👗 Dress recolor wrapper */
 .dress-wrapper img {
   transition: opacity 0.4s ease-in-out, filter 0.4s ease-in-out;
@@ -989,10 +961,6 @@ section{
 
 .dress-fade {
   opacity: 0;
-}
-
-.dress-grayscale {
-  filter: grayscale(100%);
 }
 
 
@@ -1031,4 +999,41 @@ section{
 
 .color-box.forbidden::after {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+/* ================================
+   Hero Background Video Styles
+================================ */
+.hero-video-background {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full screen */
+    overflow: hidden;
+    background: #000;
+}
+
+/* Make iframe behave like a video background */
+.hero-video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh; /* Maintain 16:9 ratio while filling vertical space */
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    border: 0;
+    pointer-events: none; /* Disable click-to-pause and UI interactions */
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+/* Fade in on load */
+.hero-video-background iframe.loaded {
+    opacity: 1;
+}
+
+/* For small devices: ensure full cover */
+@media (max-aspect-ratio: 16/9) {
+    .hero-video-background iframe {
+        width: 100vw;
+        height: 56.25vw;
+    }
 }
