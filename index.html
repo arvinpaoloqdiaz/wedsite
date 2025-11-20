@@ -166,17 +166,20 @@
 
     <!-- Hero Section -->
     <header class="hero text-center position-relative mb-5">
-        <div class="hero-video-wrapper">
-            <iframe
-            class="hero-video"
-            src="https://www.youtube.com/embed/qeZybL_2-Ow?autoplay=1&mute=1&controls=0&loop=1&playlist=qeZybL_2-Ow&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-            title="Gerwel & Jane Wedding"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-          ></iframe>
-          
-          </div>
+        <div class="hero-video-wrapper" style="position: relative; width: 100%; overflow: hidden;">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    style="width: 100%; height: auto; object-fit: cover;"
+  >
+    <source src="https://res.cloudinary.com/dotvtqmny/video/upload/v1763650614/output_zgt0b5.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
           
         <div class="hero-text-overlay text-white d-flex flex-column align-items-center justify-content-center">
             <div class="d-flex justify-content-center align-items-center flex-column">
