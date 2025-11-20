@@ -202,6 +202,7 @@ body{
     font-family: var(--font-rock-salt);
     font-size: 3rem;
     font-weight: 400;
+    line-height: 4rem;
 }
 .proposal_yes_yes{
     font-weight: 1000;
@@ -481,18 +482,6 @@ body{
 .color-black { background-color: #000000; }
 
 /* ============================
-   Section Animations
-============================ */
-.section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
-}
-.section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* ============================
    Map Component (from wedsite-front)
 ============================ */
 .map-base {
@@ -770,11 +759,11 @@ body{
 }
 /* On hover, remove mask */
 .image-mask:hover {
-  -webkit-mask-size: 250%; /* grow until it covers full image */
+  -webkit-mask-size: 250%; 
   mask-size: 250%;
 }
 .image-mask-2:hover {
-  -webkit-mask-size: 250%; /* grow until it covers full image */
+  -webkit-mask-size: 250%; 
   mask-size: 250%;
 }
 .image-mask-2 {
@@ -813,18 +802,18 @@ body{
 }
 
 /* Hover (for desktop) */
-.hoverable-shadow:hover {
+/* .hoverable-shadow:hover {
     border-radius: 1rem;
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-}
+} */
 
 /* Active / Tap (for mobile and click) */
-.hoverable-shadow:active {
+/* .hoverable-shadow:active {
     border-radius: 1rem;
   transform: translateY(-3px) scale(0.98);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
-}
+} */
 
 .dancing-script{
     font-family:"Dancing Script";
@@ -1042,3 +1031,32 @@ section{
         height: 56.25vw;
     }
 }
+.btn-brand{
+    background-color: var(--color-beige-taupe);
+    color:white;
+    margin-bottom: 2rem;
+}
+.btn-brand:hover, .btn-brand:active{
+    background-color: var(--color-beige-taupe);
+    color:white;
+    transform: translateY(-3px);
+    transition: 0.5s;
+    /* box-shadow: 0px 5px 3px rgba(0,0,0,0.3); */
+    /* border:black solid 1px; */
+}
+.icon_link{
+    all:unset;
+    font-size: 3rem;
+}
+.section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+

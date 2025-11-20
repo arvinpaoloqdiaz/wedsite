@@ -92,10 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 $(document).ready(function(){
-    // Suit recoloring
-
-
-
     // Map click -> play map opening then show wedding page
     $("#openingMap").on("click touchstart", function(e){
         e.preventDefault();
@@ -112,6 +108,29 @@ $(document).ready(function(){
     $("#landing").fadeOut(600, function(){
         $(this).remove();
         $("#wedding-page").fadeIn(800, function(){
+
+ // After #wedding-page fadeIn
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible'); // fade in
+        } else {
+            entry.target.classList.remove('visible'); // fade out
+        }
+    });
+}, observerOptions);
+
+const sections = document.querySelectorAll("#wedding-page .section");
+sections.forEach(section => observer.observe(section));
+
+
+
             // Inject footsteps overlay container
             if($(".footsteps-overlay").length === 0){
                 $("body").append(`<div class="footsteps-overlay" aria-hidden="true"></div>`);
@@ -368,8 +387,8 @@ function startWalkers() {
             }
         });
     }
-    $(window).on('scroll resize', checkSections);
-    checkSections();
+    // $(window).on('scroll resize', checkSections);
+    // checkSections();
 
     // Smooth scroll for navbar links without changing URL
     $(".navbar a").on("click", function(e){
