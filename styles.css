@@ -433,7 +433,7 @@ body{
     padding-bottom: 1rem;
     padding-inline: 2rem;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-     background: linear-gradient(45deg, var(--color-beige-cream) 0%, var(--color-beige-ivory) 100%);
+     background: linear-gradient(45deg, var(--color-blush-light) 0%, var(--color-beige-ivory) 100%);
 }
 .palette .color-box-container{
     display: flex;
