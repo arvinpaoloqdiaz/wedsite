@@ -107,6 +107,16 @@ $("#openingMap").one("click touchstart", function(e) {
 
     // User interacted: allow music to play later
     canPlayMusic = true;
+     // Start music 7 seconds after map click
+    setTimeout(() => {
+        if (canPlayMusic) {
+            music.play().catch(err => console.log("Autoplay blocked", err));
+            $("#musicToggle").fadeIn().addClass("playing");
+            $("#musicToggle").find("i")
+                .removeClass("bi-volume-mute-fill")
+                .addClass("bi-volume-up-fill");
+        }
+    }, 7000); // 7 seconds
 
     // Proceed only after final name scroll animation finishes
     let transitioned = false;
@@ -143,13 +153,7 @@ $("#openingMap").one("click touchstart", function(e) {
                 startCountdown();
 
                 // Play music if user interacted
-                if (canPlayMusic) {
-                    music.play().catch(err => console.log("Autoplay blocked", err));
-                    $("#musicToggle").fadeIn().addClass("playing");
-                    $("#musicToggle").find("i")
-                        .removeClass("bi-volume-mute-fill")
-                        .addClass("bi-volume-up-fill");
-                }
+
 
                 // Music toggle button
                 $("#musicToggle").on("click", function() {
