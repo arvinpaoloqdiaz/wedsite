@@ -448,17 +448,47 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 const faqs = [
   {
-    question: " What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?",
-    answer: "Guests are encouraged to wear semi-formal attire. Light pastels or floral patterns are welcome."
+    question: "CAN I BRING A GUEST/PLUS ONE?",
+    answer: "As we hope to keep our celebration intimate and meaningful, kindly refer to your invitation code to know the number of seats reserved for you. We appreciate your understanding that we can accommodate only the guests reflected in your code."
   },
   {
-    question: "Is parking available at the venue?",
-    answer: "Yes, there is free parking available for guests at the venue entrance."
+    question: "CAN I BRING MY CHILD?",
+    answer: "We adore your little ones; however, our celebration will be an adult-only affair. We kindly hope you can take this opportunity to enjoy a relaxing evening to yourselves."
   },
   {
-    question: "Can children attend?",
-    answer: "Yes, children are welcome but kindly RSVP for them."
-  }
+    question: "IS PARKING AVAILABLE AT THE CHURCH AND VENUE?",
+    answer: "Absolutely! Both the ceremony and reception venues offer plenty of parking, ensuring a smooth and stress-free arrival for all our guests."
+  },
+  {
+    question: "IS THERE PUBLIC TRANSPORTATION FROM THE CHURCH TO THE RECEPTION?",
+    answer: "Shuttle service will be available from the church to the reception following the ceremony. The vehicle color and plate number will be announced soon for your convenience."
+  },
+  {
+  question: "HOW DO I RSVP?",
+  answer: `
+    Simply enter your unique invitation code on RSVP tab available on this website. Your name will appear automatically once verified. You may optionally add your email and contact number, then select your response.<br><br>
+    If you RSVP <strong>Yes</strong>, a QR code will be generated just for you. This will be used for registration at the wedding reception and give you access to different booths we've prepared with love for our guests while waiting for the program. <br><br>
+    If you RSVP <strong>No</strong>, we would truly appreciate knowing as soon as possible, so we can plan the celebration with care and thoughtfulness for everyone attending.
+  `
+    },
+    {
+    question: "WHEN IS THE RSVP DEADLINE?",
+    answer: "Kindly submit your RSVP on or before <strong>December 06, 2025</strong>, at <strong>7:00PM</strong>. If your plans change and you are unable to attend after confirming, we kindly ask that you notify us as soon as possible. This will help us accommodate other guests and make the necessary arrangements for a smooth and enjoyable celebration."
+  },
+  {
+    question: "WHO CAN WE CONTACT FOR QUESTIONS OR CONCERNS?",
+    answer: `For any questions or concerns, you may reach out to our wedding coordinator. Kindly contact Ms. Melanie Santos through:<br>
+Mobile number/Viber/Whatsapp: +63 917 532 5105
+<br>
+Facebook: <a href="facebook.com/IamLanie22" target="_blank">Melanie Santos</a>
+`
+  },
+   {
+    question: "DO THE COUPLE HAVE A SPECIAL NOTE?",
+    answer: "Yes. The couple warmly requests that all guests stay until the end of the program. Every detail has been prepared with love and care for this special day, and they sincerely hope to see everyone through to the send-off."
+  },
+
+
 ];
 
 // Populate the FAQ container
