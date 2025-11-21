@@ -153,11 +153,11 @@ body{
 @keyframes parchmentGlow {
   0% {
     background-position: 30% 30%;
-    filter: brightness(1);
+    
   }
   100% {
     background-position: 70% 70%;
-    filter: brightness(1.2);
+    
   }
 }
 
