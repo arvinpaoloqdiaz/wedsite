@@ -91,225 +91,175 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-$(document).ready(function(){
-    // Map click -> play map opening then show wedding page
-    $("#openingMap").on("click touchstart", function(e){
-        e.preventDefault();
-        const map = $(this);
-        if(map.hasClass("active")) return; // prevent double trigger
-        map.addClass("active");
-
-        // Proceed only after the final name scroll animation finishes
-        let transitioned = false;
-        const proceed = () => {
-    if (transitioned) return;
-    transitioned = true;
-
-    $("#landing").fadeOut(600, function(){
-        $(this).remove();
-        $("#wedding-page").fadeIn(800, function(){
-
- // After #wedding-page fadeIn
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible'); // fade in
-        } else {
-            entry.target.classList.remove('visible'); // fade out
-        }
-    });
-}, observerOptions);
-
-const sections = document.querySelectorAll("#wedding-page .section");
-sections.forEach(section => observer.observe(section));
-
-
-
-            // Inject footsteps overlay container
-            if($(".footsteps-overlay").length === 0){
-                $("body").append(`<div class="footsteps-overlay" aria-hidden="true"></div>`);
-            }
-
-            // Start single walker S-arc
-            startWalkers();
-
-            // Start countdown
-            startCountdown();
-
-            // Play background music
+$(document).ready(function() {
 const music = document.getElementById("weddingMusic");
-music.volume = 0.5; // set initial volume (0.0 to 1.0)
-music.play().catch(err => console.log("Autoplay blocked", err));
+music.volume = 0.5; // initial volume
 
-// Show floating music button
-$("#musicToggle").fadeIn().addClass("playing");
+// Flag to ensure music starts only after user interaction
+let canPlayMusic = false;
 
-// Toggle play/pause on button click
-$("#musicToggle").on("click", function() {
-    if (music.paused) {
-        music.play();
-        $(this).find("i")
-            .removeClass("bi-volume-mute-fill")
-            .addClass("bi-volume-up-fill");
-        $(this).addClass("playing"); // pulse when playing
-    } else {
-        music.pause();
-        $(this).find("i")
-            .removeClass("bi-volume-up-fill")
-            .addClass("bi-volume-mute-fill");
-        $(this).removeClass("playing"); // stop pulse when muted
-    }
-});
+// Map click -> play map opening then show wedding page
+$("#openingMap").one("click touchstart", function(e) {
+    e.preventDefault();
+    const map = $(this);
+    if (map.hasClass("active")) return;
+    map.addClass("active");
 
-// Stop music when page/tab is hidden (mobile fix)
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        music.pause();
-        $("#musicToggle").find("i").removeClass("bi-volume-up-fill").addClass("bi-volume-mute-fill");
-        $("#musicToggle").removeClass("playing");
-    }
-});
+    // User interacted: allow music to play later
+    canPlayMusic = true;
 
-// Optional: Stop music on page unload
-window.addEventListener("beforeunload", () => {
-    music.pause();
-});
+    // Proceed only after final name scroll animation finishes
+    let transitioned = false;
+    const proceed = () => {
+        if (transitioned) return;
+        transitioned = true;
 
+        $("#landing").fadeOut(600, function() {
+            $(this).remove();
+            $("#wedding-page").fadeIn(800, function() {
+                // Intersection Observer for fade-in sections
+                const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        } else {
+                            entry.target.classList.remove('visible');
+                        }
+                    });
+                }, observerOptions);
+                const sections = document.querySelectorAll("#wedding-page .section");
+                sections.forEach(section => observer.observe(section));
+
+                // Inject footsteps overlay container
+                if ($(".footsteps-overlay").length === 0) {
+                    $("body").append(`<div class="footsteps-overlay" aria-hidden="true"></div>`);
+                }
+
+                // Start single walker S-arc
+                startWalkers();
+
+                // Start countdown
+                startCountdown();
+
+                // Play music if user interacted
+                if (canPlayMusic) {
+                    music.play().catch(err => console.log("Autoplay blocked", err));
+                    $("#musicToggle").fadeIn().addClass("playing");
+                    $("#musicToggle").find("i")
+                        .removeClass("bi-volume-mute-fill")
+                        .addClass("bi-volume-up-fill");
+                }
+
+                // Music toggle button
+                $("#musicToggle").on("click", function() {
+                    if (music.paused) {
+                        music.play();
+                        $(this).find("i")
+                            .removeClass("bi-volume-mute-fill")
+                            .addClass("bi-volume-up-fill");
+                        $(this).addClass("playing");
+                    } else {
+                        music.pause();
+                        $(this).find("i")
+                            .removeClass("bi-volume-up-fill")
+                            .addClass("bi-volume-mute-fill");
+                        $(this).removeClass("playing");
+                    }
+                });
+
+                // Stop music on page/tab hidden
+                document.addEventListener("visibilitychange", () => {
+                    if (document.hidden) {
+                        music.pause();
+                        $("#musicToggle").find("i")
+                            .removeClass("bi-volume-up-fill")
+                            .addClass("bi-volume-mute-fill");
+                        $("#musicToggle").removeClass("playing");
+                    }
+                });
+
+                // Optional: stop music on page unload
+                window.addEventListener("beforeunload", () => {
+                    music.pause();
+                });
+            });
         });
-    });
-};
+    };
 
+    // Wait for last name scroll animation
+    const endTarget = map.find('.footsteps-2 .scroll-name')[0];
+    if (endTarget) {
+        endTarget.addEventListener('animationend', proceed, { once: true });
+    }
 
-        const endTarget = map.find('.footsteps-2 .scroll-name')[0];
-        if (endTarget) {
-            endTarget.addEventListener('animationend', proceed, { once: true });
-        }
-        // Fallback timeout in case animation events are missed
-        setTimeout(proceed, 20000);
-    });
+    // Fallback timeout in case animation events are missed
+    setTimeout(proceed, 20000);
+});
 
-// Only 2 footsteps moving left to right across screen
+// =========================
+// Walkers / Footsteps
+// =========================
 function startWalkers() {
-    // =========================
-    // Configuration Variables
-    // =========================
     const WALKERS = [
         { type: 'human', stride: 40, speed: 1, lateral: 20, name: 'Gerwel' },
         { type: 'human', stride: 35, speed: 1.1, lateral: 20, name: 'Jane' },
         { type: 'dog', stride: 25, speed: 1.2, lateral: 12, name: 'Yuki' },
         { type: 'dog', stride: 23, speed: 1.1, lateral: 12, name: 'Yumi' },
     ];
+    const FADE_OUT_TIME = 2000;
+    const FOOTPRINT_DURATION = 1000;
+    const ANGLE_VARIATION = 10;
+    const ENTRY_MARGIN = 50;
+    const STEP_PACE = 1;
 
-    const FADE_OUT_TIME = 2000;       // fade duration in ms
-    const FOOTPRINT_DURATION = 1000;  // visible duration before fade
-    const ANGLE_VARIATION = 10;       // max random angle change
-    const ENTRY_MARGIN = 50;          // start off-screen margin
-    const STEP_PACE = 1;              // multiplier to stride distance (1 = normal)
-
-    // =========================
-    // Overlay container
-    // =========================
     let overlay = $(".footsteps-overlay");
     if (overlay.length === 0) {
-        $("wedding-page-bg").append(`<div class="footsteps-overlay"></div>`);
+        $("body").append(`<div class="footsteps-overlay"></div>`);
         overlay = $(".footsteps-overlay");
-        overlay.css({
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            overflow: 'hidden',
-            zIndex: -10
-        });
+        overlay.css({ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', overflow: 'hidden', zIndex: -10 });
     }
 
-    // =========================
-    // Initialize walkers
-    // =========================
     const walkers = WALKERS.map(cfg => {
-        const side = Math.floor(Math.random() * 4); 
+        const side = Math.floor(Math.random() * 4);
         let x, y, angle;
         switch(side) {
-            case 0: x = -ENTRY_MARGIN; y = Math.random() * window.innerHeight; angle = Math.random() * 60 - 30; break; // left
-            case 1: x = window.innerWidth + ENTRY_MARGIN; y = Math.random() * window.innerHeight; angle = 180 + Math.random() * 60 - 30; break; // right
-            case 2: x = Math.random() * window.innerWidth; y = -ENTRY_MARGIN; angle = 90 + Math.random() * 60 - 30; break; // top
-            case 3: x = Math.random() * window.innerWidth; y = window.innerHeight + ENTRY_MARGIN; angle = 270 + Math.random() * 60 - 30; break; // bottom
+            case 0: x = -ENTRY_MARGIN; y = Math.random() * window.innerHeight; angle = Math.random() * 60 - 30; break;
+            case 1: x = window.innerWidth + ENTRY_MARGIN; y = Math.random() * window.innerHeight; angle = 180 + Math.random() * 60 - 30; break;
+            case 2: x = Math.random() * window.innerWidth; y = -ENTRY_MARGIN; angle = 90 + Math.random() * 60 - 30; break;
+            case 3: x = Math.random() * window.innerWidth; y = window.innerHeight + ENTRY_MARGIN; angle = 270 + Math.random() * 60 - 30; break;
         }
-
-        // Walker container (to hold label)
         const walkerEl = $('<div class="walker"></div>');
         overlay.append(walkerEl);
-
-        // Label (scroll parchment style)
         const label = $('<div class="walker-label"></div>').text(cfg.name || "Unknown");
         walkerEl.append(label);
-
-        return {
-            ...cfg,
-            x, y, angle,
-            lastStepX: null,
-            lastStepY: null,
-            leftFoot: Math.random() < 0.5,
-            el: walkerEl,
-            label: label
-        };
+        return { ...cfg, x, y, angle, lastStepX: null, lastStepY: null, leftFoot: Math.random() < 0.5, el: walkerEl, label: label };
     });
 
-    // =========================
-    // Animate walkers
-    // =========================
     function animate() {
         walkers.forEach(w => {
             w.x += Math.cos(w.angle * Math.PI / 180) * w.speed;
             w.y += Math.sin(w.angle * Math.PI / 180) * w.speed;
 
-            // Place footprint if stride reached
             if (w.lastStepX === null || Math.hypot(w.x - w.lastStepX, w.y - w.lastStepY) >= w.stride * STEP_PACE) {
                 const rad = w.angle * Math.PI / 180;
                 const perpX = Math.cos(rad + Math.PI/2) * (w.leftFoot ? -w.lateral : w.lateral);
                 const perpY = Math.sin(rad + Math.PI/2) * (w.leftFoot ? -w.lateral : w.lateral);
-
                 const foot = $('<div class="footprint"></div>')
-                    .addClass(w.type)
-                    .addClass(w.leftFoot ? 'left' : 'right')
-                    .css({
-                        left: w.x + perpX + 'px',
-                        top: w.y + perpY + 'px',
-                        transform: `rotate(${w.angle + 90}deg)`,
-                        opacity: 1
-                    });
-
+                    .addClass(w.type).addClass(w.leftFoot ? 'left' : 'right')
+                    .css({ left: w.x + perpX + 'px', top: w.y + perpY + 'px', transform: `rotate(${w.angle + 90}deg)`, opacity: 1 });
                 overlay.append(foot);
-
                 w.leftFoot = !w.leftFoot;
                 w.lastStepX = w.x;
                 w.lastStepY = w.y;
-
-                // fade out footprint
                 setTimeout(() => foot.fadeOut(FADE_OUT_TIME, () => foot.remove()), FOOTPRINT_DURATION);
             }
 
-            // Update walker label position (trails just behind footsteps)
-            w.el.css({
-                left: w.x + "px",
-                top: w.y + "px"
-            });
-
-            // Random slight angle change
+            w.el.css({ left: w.x + "px", top: w.y + "px" });
             if (Math.random() < 0.01) w.angle += (Math.random() - 0.5) * ANGLE_VARIATION;
 
-            // Respawn walker if exits viewport
             if (w.x < -ENTRY_MARGIN || w.x > window.innerWidth + ENTRY_MARGIN ||
                 w.y < -ENTRY_MARGIN || w.y > window.innerHeight + ENTRY_MARGIN) {
-                
                 const side = Math.floor(Math.random() * 4);
                 switch(side) {
                     case 0: w.x = -ENTRY_MARGIN; w.y = Math.random() * window.innerHeight; w.angle = Math.random() * 60 - 30; break;
@@ -322,83 +272,51 @@ function startWalkers() {
                 w.leftFoot = Math.random() < 0.5;
             }
         });
-
         requestAnimationFrame(animate);
     }
 
     animate();
 }
 
-
-
-
-
-
-
-
-
-    // Countdown Timer
-    const weddingDate = new Date("2025-12-20T15:00:00+08:00");
-    function startCountdown(){
-        updateCountdown();
-        setInterval(updateCountdown,1000);
+// =========================
+// Countdown Timer
+// =========================
+const weddingDate = new Date("2025-12-20T15:00:00+08:00");
+function startCountdown() {
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+function updateCountdown() {
+    const now = new Date();
+    let diff = weddingDate - now;
+    if(diff <= 0) {
+        $("#countdown").html("<span>The big day has arrived! 🎉</span>");
+        return;
     }
-    function updateCountdown(){
-        const now = new Date();
-        let diff = weddingDate - now;
-        if(diff <= 0){
-            $("#countdown").html("<span>The big day has arrived! 🎉</span>");
-            return;
-        }
-        const days = Math.floor(diff/(1000*60*60*24));
-        const hours = Math.floor((diff/(1000*60*60))%24);
-        const minutes = Math.floor((diff/(1000*60))%60);
-        const seconds = Math.floor((diff/1000)%60);
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const minutes = Math.floor((diff/(1000*60))%60);
+    const seconds = Math.floor((diff/1000)%60);
+    $("#countdown").html(`
+        <div class="time-box"><div class="number">${days}</div><div class="label">Days</div></div>
+        <div class="time-box"><div class="number">${hours}</div><div class="label">Hours</div></div>
+        <div class="time-box"><div class="number">${minutes}</div><div class="label">Minutes</div></div>
+        <div class="time-box"><div class="number">${seconds}</div><div class="label">Seconds</div></div>
+    `);
+}
 
-        // Inject styled countdown
-        $("#countdown").html(`
-            <div class="time-box">
-                <div class="number">${days}</div>
-                <div class="label">Days</div>
-            </div>
-            <div class="time-box">
-                <div class="number">${hours}</div>
-                <div class="label">Hours</div>
-            </div>
-            <div class="time-box">
-                <div class="number">${minutes}</div>
-                <div class="label">Minutes</div>
-            </div>
-            <div class="time-box">
-                <div class="number">${seconds}</div>
-                <div class="label">Seconds</div>
-            </div>
-        `);
-    }
-
-    // Scroll animations
-    function checkSections(){
-        $('.section').each(function(){
-            let top = $(this).offset().top;
-            let scroll = $(window).scrollTop();
-            let windowHeight = $(window).height();
-            if(scroll + windowHeight*0.8 > top){
-                $(this).addClass('visible');
-            }
-        });
-    }
-    // $(window).on('scroll resize', checkSections);
-    // checkSections();
-
-    // Smooth scroll for navbar links without changing URL
-    $(".navbar a").on("click", function(e){
-        e.preventDefault(); // prevent default jump
-        let targetId = $(this).attr("href");
-        let targetOffset = $(targetId).offset().top;
-        $("html, body").animate({scrollTop: targetOffset - 60}, 800); // 60px offset for navbar
-    });
+// =========================
+// Smooth scroll for navbar links
+// =========================
+$(".navbar a").on("click", function(e) {
+    e.preventDefault();
+    let targetId = $(this).attr("href");
+    let targetOffset = $(targetId).offset().top;
+    $("html, body").animate({ scrollTop: targetOffset - 60 }, 800);
+});
 
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     
   let activeTooltip = null;
@@ -409,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   tooltipTriggerList.forEach(function (el) {
     const tooltip = new bootstrap.Tooltip(el, {
-      trigger: 'hover click',
+      trigger: 'click',
       placement: 'auto', // default for other tooltips
     });
 
