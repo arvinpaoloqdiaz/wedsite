@@ -418,6 +418,22 @@ body{
     margin-top: 1.5rem;
     flex-direction: column;
     align-items: center;
+    
+}
+.palette-wrapper{
+    margin-top: 4px;
+    padding:1rem;
+    display: flex;
+    justify-content: center;
+}
+.palette-container{
+    border:rgba(0,0,0,0.2) solid 1px;
+    width: auto;
+    border-radius: 2rem;
+    padding-bottom: 1rem;
+    padding-inline: 2rem;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+     background: linear-gradient(45deg, var(--color-beige-cream) 0%, var(--color-beige-ivory) 100%);
 }
 .palette .color-box-container{
     display: flex;
@@ -430,8 +446,6 @@ body{
     }
 
     .color-box {
-      width: 50px;
-      height: 50px;
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -458,8 +472,8 @@ body{
 
 .palette .color-box {
     /* display: flex; */
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-box);
     border: 2px solid #fff;
@@ -1059,4 +1073,36 @@ section{
     transform: translateY(0);
 }
 
+
+.color-box {
+    cursor: pointer; /* still works if hovered in desktop or for accessibility */
+    border: 2px solid transparent;
+    border-radius: 8px;
+    position: relative;
+    transition: border 0.2s, transform 0.2s;
+}
+
+.color-box:active {
+    transform: scale(0.95); /* subtle press feedback */
+}
+
+/* Pulsing animation for tap cue */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+}
+
+.tap-cue {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  color: #454545;
+  opacity: 0.7;
+  margin-top: 0px;
+  font-weight: 1000;
+  font-family: var(--font-main);
+  
+  /* animation properties */
+  animation: pulse 1.2s infinite;
+}
 

@@ -430,13 +430,18 @@
 
     <div class="col-12 col-lg-4 order-3 order-lg-2">
       <!-- 🎨 Color Palette Showcase -->
+      <span class="tap-cue glass-blur">Tap to preview color</span>
+      <div class="palette-wrapper">
+        <div class="palette-container">
+
+        
       <div class="palette mb-4">
         <p class="glass-blur">Blush Pink Palette</p>
         <div class="color-box-container">
           <div class="color-box color-blush-light" data-color="var(--color-blush-light)" data-dress="light_blush" title="Light Blush" data-bs-toggle="tooltip"></div>
-<div class="color-box color-blush-medium" data-color="var(--color-blush-medium)" data-dress="medium_blush" title="Medium Blush" data-bs-toggle="tooltip"></div>
-<div class="color-box color-blush-rose" data-color="var(--color-blush-rose)" data-dress="rose_blush" title="Rose Blush" data-bs-toggle="tooltip"></div>
-<div class="color-box color-blush-deep" data-color="var(--color-blush-deep)" data-dress="deep_blush" title="Deep Blush" data-bs-toggle="tooltip"></div>
+            <div class="color-box color-blush-medium" data-color="var(--color-blush-medium)" data-dress="medium_blush" title="Medium Blush" data-bs-toggle="tooltip"></div>
+            <div class="color-box color-blush-rose" data-color="var(--color-blush-rose)" data-dress="rose_blush" title="Rose Blush" data-bs-toggle="tooltip"></div>
+            <div class="color-box color-blush-deep" data-color="var(--color-blush-deep)" data-dress="deep_blush" title="Deep Blush" data-bs-toggle="tooltip"></div>
 
         </div>
       </div>
@@ -448,8 +453,10 @@
         <div class="color-box color-beige-cream" data-color="var(--color-beige-cream)" data-dress="cream_beige" title="Cream Beige" data-bs-toggle="tooltip"></div>
         <div class="color-box color-beige-sand" data-color="var(--color-beige-sand)" data-dress="sand_beige" title="Sand Beige" data-bs-toggle="tooltip"></div>
         <div class="color-box color-beige-taupe" data-color="var(--color-beige-taupe)" data-dress="taupe_beige" title="Taupe Beige" data-bs-toggle="tooltip"></div>
-
-        </div>
+    </div>
+    
+      </div>
+      </div>
       </div>
     </div>
  
@@ -541,6 +548,25 @@
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    // Function to get query parameter by name
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Get the INV_CODE value from URL
+const invCode = getQueryParam("INV_CODE");
+
+if (invCode) {
+    const iframe = document.getElementById("rsvpIframe");
+    const currentSrc = iframe.src;
+
+    // Append the INV_CODE as query param (preserve existing query params if any)
+    const url = new URL(currentSrc);
+    url.searchParams.set("INV_CODE", invCode);
+    iframe.src = url.toString();
+}
+
 const preloaderStart = Date.now();
 
 function hidePreloader() {
