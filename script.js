@@ -446,3 +446,59 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+const faqs = [
+  {
+    question: " What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?What is the dress code?",
+    answer: "Guests are encouraged to wear semi-formal attire. Light pastels or floral patterns are welcome."
+  },
+  {
+    question: "Is parking available at the venue?",
+    answer: "Yes, there is free parking available for guests at the venue entrance."
+  },
+  {
+    question: "Can children attend?",
+    answer: "Yes, children are welcome but kindly RSVP for them."
+  }
+];
+
+// Populate the FAQ container
+const container = document.getElementById('faq-container');
+
+faqs.forEach((faq, index) => {
+  const item = document.createElement('div');
+  item.classList.add('faq-item');
+
+  // Question wrapper
+  const questionWrapper = document.createElement('div');
+  questionWrapper.classList.add('faq-question-wrapper');
+
+  const question = document.createElement('div');
+  question.classList.add('faq-question-container');
+  question.innerHTML = `<span class="faq-label q">Q</span><span class="faq-question">${faq.question}</span>`;
+
+  questionWrapper.appendChild(question);
+
+  // Answer wrapper
+  const answerWrapper = document.createElement('div');
+  answerWrapper.classList.add('faq-answer-wrapper');
+
+  const answer = document.createElement('div');
+  answer.classList.add('faq-answer-container');
+  answer.innerHTML = `<span class="faq-answer">${faq.answer}</span><span class="faq-label a">A</span>`;
+
+  answerWrapper.appendChild(answer);
+
+  // Toggle open/close on question click
+  question.addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+
+  // Append wrappers to FAQ item
+  item.appendChild(questionWrapper);
+  item.appendChild(answerWrapper);
+
+  // Append FAQ item to container
+  container.appendChild(item);
+});
+
+
