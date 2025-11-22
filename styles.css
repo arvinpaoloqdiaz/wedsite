@@ -318,7 +318,7 @@ body{
 .date-banner{
     /* background-color: black; */
     width:100%;
-    font-size: calc(3vw + 1rem);
+    font-size: clamp(4px,calc(3vw + 1rem),48px);
     font-family: var(--font-magical_me);
     color: #030303;
     position: relative;
