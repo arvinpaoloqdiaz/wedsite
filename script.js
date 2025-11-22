@@ -302,13 +302,10 @@ function updateCountdown() {
     const minutes = Math.floor((diff/(1000*60))%60);
     const seconds = Math.floor((diff/1000)%60);
     $("#countdown").html(`
-        <div class="time-box-container">
         <div class="time-box"><div class="number">${days}</div><div class="label">Days</div></div>
         <div class="time-box"><div class="number">${hours}</div><div class="label">Hours</div></div>
         <div class="time-box"><div class="number">${minutes}</div><div class="label">Minutes</div></div>
         <div class="time-box"><div class="number">${seconds}</div><div class="label">Seconds</div></div>
-        </div>
-         <div class="label-box">left until December 20, 2025</div>
     `);
 }
 
