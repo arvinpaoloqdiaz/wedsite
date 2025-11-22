@@ -107,16 +107,6 @@ $("#openingMap").one("click touchstart", function(e) {
 
     // User interacted: allow music to play later
     canPlayMusic = true;
-     // Start music 7 seconds after map click
-    setTimeout(() => {
-        if (canPlayMusic) {
-            music.play().catch(err => console.log("Autoplay blocked", err));
-            $("#musicToggle").fadeIn().addClass("playing");
-            $("#musicToggle").find("i")
-                .removeClass("bi-volume-mute-fill")
-                .addClass("bi-volume-up-fill");
-        }
-    }, 7000); // 7 seconds
 
     // Proceed only after final name scroll animation finishes
     let transitioned = false;
@@ -153,6 +143,16 @@ $("#openingMap").one("click touchstart", function(e) {
                 startCountdown();
 
                 // Play music if user interacted
+                // Delay music start 11 seconds after map click
+    if (canPlayMusic) {
+        setTimeout(() => {
+            music.play().catch(err => console.log("Autoplay blocked", err));
+            $("#musicToggle").fadeIn().addClass("playing");
+            $("#musicToggle").find("i")
+                .removeClass("bi-volume-mute-fill")
+                .addClass("bi-volume-up-fill");
+        }, 11000); // 11 seconds
+    }
 
 
                 // Music toggle button
@@ -302,10 +302,13 @@ function updateCountdown() {
     const minutes = Math.floor((diff/(1000*60))%60);
     const seconds = Math.floor((diff/1000)%60);
     $("#countdown").html(`
+        <div class="time-box-container">
         <div class="time-box"><div class="number">${days}</div><div class="label">Days</div></div>
         <div class="time-box"><div class="number">${hours}</div><div class="label">Hours</div></div>
         <div class="time-box"><div class="number">${minutes}</div><div class="label">Minutes</div></div>
         <div class="time-box"><div class="number">${seconds}</div><div class="label">Seconds</div></div>
+        </div>
+         <div class="label-box">left until December 20, 2025</div>
     `);
 }
 
