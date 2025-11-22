@@ -1257,7 +1257,7 @@ section{
   justify-content: end;
 }
 .faq-item.open .faq-answer {
-  max-height: 500px; /* big enough for content */
+  max-height: 100%; /* big enough for content */
   text-align: justify;
  
 }
