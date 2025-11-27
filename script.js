@@ -377,6 +377,10 @@ const faqs = [
     question: "CAN I BRING MY CHILD?",
     answer: "We adore your little ones; however, our celebration will be an adult-only affair. We kindly hope you can take this opportunity to enjoy a relaxing evening to yourselves."
   },
+    {
+    question: "DO I REALLY HAVE TO FOLLOW THE DRESS CODE?",
+    answer: "<b>Yes</b>. The dress code will be strictly enforced to maintain the formality of the occasion."
+  },
   {
     question: "IS PARKING AVAILABLE AT THE CHURCH AND VENUE?",
     answer: "Absolutely! Both the ceremony and reception venues offer plenty of parking, ensuring a smooth and stress-free arrival for all our guests."

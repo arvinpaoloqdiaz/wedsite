@@ -1275,3 +1275,7 @@ section{
     font-weight: bold;
     text-decoration: underline;
 }
+
+.text-container{
+    max-width: 900px;
+}
