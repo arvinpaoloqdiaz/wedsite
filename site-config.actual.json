@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Gerwel & Jane Wedding",
+    "manifestName": "Gerwel & Jane Wedding",
+    "favicon": {
+      "appleTouch": "./assets/images/icons/apple-touch-icon.png",
+      "icon32": "./assets/images/icons/favicon-32x32.png",
+      "icon16": "./assets/images/icons/favicon-16x16.png",
+      "shortcut": "./assets/images/icons/favicon.ico"
+    }
+  },
+  "images": {
+    "monogram": "./assets/images/monogram-gerjane.png",
+    "ourStory": "./assets/images/our-story.gif",
+    "proposal": "./assets/images/proposal.gif",
+    "entourage": "./assets/images/entourage.png",
+    "programFlow": "./assets/images/program_flow-v2.png",
+    "carousel": [
+      "./assets/images/carousel/1.jpeg",
+      "./assets/images/carousel/2.jpeg",
+      "./assets/images/carousel/3.jpeg",
+      "./assets/images/carousel/4.jpeg",
+      "./assets/images/carousel/5.jpeg",
+      "./assets/images/carousel/6.jpg",
+      "./assets/images/carousel/7.jpeg",
+      "./assets/images/carousel/8.jpeg"
+    ],
+    "church": "https://balenporac.com/wp-content/uploads/2022/09/church-1.jpg",
+    "reception": "https://acc.alviera.ph/wp-content/uploads/2022/07/gallery-acc7.png",
+    "hero": "https://placehold.co/1920x1080/b29b77/ffffff?text=Hero",
+    "heroVideo": "https://res.cloudinary.com/dotvtqmny/video/upload/v1763650614/output_zgt0b5.mp4",
+    "qrGmaps": "./assets/images/qr-gmaps-v2.png",
+    "qrWaze": "./assets/images/qr-waze-v2.png",
+    "rsvpPlaceholder": "https://placehold.co/800x400/b29b77/ffffff?text=RSVP",
+    "churchIcon": "./assets/images/church.svg"
+  },
+  "text": {
+    "preloader": { "aria": "wait a minute kapeng mainit...", "message": "wait lang nagloload pa..." },
+    "landing": { "groomName": "Gerwel", "brideName": "Jane Ann", "cta": "Tap the map to enter" },
+    "hero": {
+      "lead1": "After years of magic, laughter, and a touch of mischief,",
+      "coupleNames": "Gerwel & Jane",
+      "lead2": "invite you to join them as they cast the greatest spell yet; <br>a lifetime of love."
+    },
+    "ourStory": {
+      "para1": "<span class=\"parisienne\">Gerwel</span> and <span class=\"parisienne bridename\">Jane</span> first met at Lyceum of Subic Bay. He was an IT student, she was studying Accountancy. Even before knowing each other's names, they often crossed paths on the stairs, their eyes meeting in fleeting, unspoken moments. Gerwel had secretly admired Jane for almost a year, and after a memorable day with friends at Ayala Harbor Point in 2015, he finally found the courage to add her on Facebook. That was when their story truly began.",
+      "para2": "For a time, Jane stepped back, unsure and cautious, leaving both hearts aching. Life carried them along separate paths, until two years later fate brought them back together. Healed and stronger, their paused love story resumed. They faced challenges hand in hand, dreamed together, and built a life filled with laughter, love, and unwavering devotion. Now, they are here, ready to fulfill one of their most cherished dreams—uniting their hearts in marriage and beginning their <span class=\"parisienne bridename\">Forever</span>."
+    },
+    "proposal": {
+      "location": "Camp John Hay Baguio",
+      "locationTooltip": "16°24'00.1\"N 120°36'59.9\"E",
+      "story": "The proposal took place at <span class=\"proposal_dateandtime\" data-bs-toggle=\"tooltip\" data-bs-placement=\"top\" title=\"16°24'00.1&quot;N 120°36'59.9&quot;E\">Camp John Hay Baguio</span> on January 27, 2024, at 11:45 AM Gerwel secretly hired a photographer who pretended to be a content creator and asked both of them for a quick 15-minute shoot. While Jane was being photographed, Gerwel quietly prepared the ring. He then knelt down behind her, with Yuki sitting sweetly beside him. When she turned, she was completely surprised. With a full heart, <span class=\"proposal_yes\">she said <span class=\"proposal_yes_yes\">YES</span>.</span>"
+    },
+    "venue": {
+      "churchName": "Santa Catalina de Alexandria Parish, Porac, Pampanga",
+      "receptionName": "Alviera Country Club, Porac Pampanga",
+      "note": "Guests are advised to drive with caution along Porac Road, as portions of the roadway contain potholes."
+    },
+    "hashtags": "#GerwelandJaneWedding #TheUnbreakableVowGerwelAndJane",
+    "rsvp": { "caption": "RSVP using the form above." }
+  },
+  "links": {
+    "churchMap": "https://maps.app.goo.gl/QXFRog5fyGc5f9uK9",
+    "receptionMap": "https://maps.app.goo.gl/UijnUJ8eWV5xcyqKA",
+    "directionsGmaps": "https://maps.app.goo.gl/DUSYmgnABxKg9Y6N8?g_st=ac",
+    "directionsWaze": "https://www.waze.com/live-map/directions/alviera-country-club-porac?to=place.w.78971031.789775847.18767773&from=place.w.78971031.789972451.638288",
+    "instagram": "https://www.instagram.com/jane.sbd/",
+    "facebook": "https://www.facebook.com/imjanesbd/"
+  },
+  "rsvpIframeUrl": "https://widget.gerweljane.life/rsvp-form/widgetv2.html",
+  "script": {
+    "weddingDate": "2025-12-20T15:00:00+08:00",
+    "walkers": [
+      { "type": "human", "stride": 40, "speed": 1, "lateral": 20, "name": "Gerwel" },
+      { "type": "human", "stride": 35, "speed": 1.1, "lateral": 20, "name": "Jane" },
+      { "type": "dog", "stride": 25, "speed": 1.2, "lateral": 12, "name": "Yuki" },
+      { "type": "dog", "stride": 23, "speed": 1.1, "lateral": 12, "name": "Yumi" }
+    ],
+    "faqs": [
+      { "question": "CAN I BRING A GUEST/PLUS ONE?", "answer": "As we hope to keep our celebration intimate and meaningful, kindly refer to your invitation code to know the number of seats reserved for you. We appreciate your understanding that we can accommodate only the guests reflected in your code." },
+      { "question": "CAN I BRING MY CHILD?", "answer": "We adore your little ones; however, our celebration will be an adult-only affair. We kindly hope you can take this opportunity to enjoy a relaxing evening to yourselves." },
+      { "question": "DO I REALLY HAVE TO FOLLOW THE DRESS CODE?", "answer": "<b>Yes</b>. The dress code will be strictly enforced to maintain the formality of the occasion." },
+      { "question": "IS PARKING AVAILABLE AT THE CHURCH AND VENUE?", "answer": "Absolutely! Both the ceremony and reception venues offer plenty of parking, ensuring a smooth and stress-free arrival for all our guests." },
+      { "question": "IS THERE PUBLIC TRANSPORTATION FROM THE CHURCH TO THE RECEPTION?", "answer": "Shuttle service will be available from the church to the reception following the ceremony. The vehicle color and plate number will be announced soon for your convenience." },
+      { "question": "HOW DO I RSVP?", "answer": "Simply enter your unique invitation code on RSVP tab available on this website. Your name will appear automatically once verified. You may optionally add your email and contact number, then select your response.<br><br>If you RSVP <strong>Yes</strong>, a QR code will be generated just for you. This will be used for registration at the wedding reception and give you access to different booths we've prepared with love for our guests while waiting for the program. <br><br>If you RSVP <strong>No</strong>, we would truly appreciate knowing as soon as possible, so we can plan the celebration with care and thoughtfulness for everyone attending." },
+      { "question": "WHEN IS THE RSVP DEADLINE?", "answer": "Kindly submit your RSVP on or before <strong>December 06, 2025</strong>, at <strong>7:00PM</strong>. If your plans change and you are unable to attend after confirming, we kindly ask that you notify us as soon as possible. This will help us accommodate other guests and make the necessary arrangements for a smooth and enjoyable celebration." },
+      { "question": "WHO CAN WE CONTACT FOR QUESTIONS OR CONCERNS?", "answer": "For any questions or concerns, you may reach out to our wedding coordinator. Kindly contact Ms. Melanie Santos through:<br>Mobile number/Viber/Whatsapp: +63 917 532 5105<br>Facebook: <a href=\"https://facebook.com/IamLanie22\" target=\"_blank\">Melanie Santos</a>" },
+      { "question": "DO THE COUPLE HAVE A SPECIAL NOTE?", "answer": "Yes. The couple warmly requests that all guests stay until the end of the program. Every detail has been prepared with love and care for this special day, and they sincerely hope to see everyone through to the send-off." }
+    ]
+  },
+  "assets": { "dressBasePath": "./assets/images/dress", "suitBasePath": "./assets/images/suit" },
+  "css": { "preloaderBg": "#b29b77", "themeColor": "#b29b77" }
+}

@@ -62,9 +62,22 @@
 
 
 /* ============================
+   Config-driven variables
+   (loaded from site-config.json via config-loader.js; fallbacks below)
+============================ */
+:root {
+    --config-preloader-bg: #b29b77;
+    --config-theme-color: #b29b77;
+}
+#preloader {
+    background-color: var(--config-preloader-bg);
+}
+
+/* ============================
    Root Variables
 ============================ */
 :root {
+
     /* 🎨 Colors from palette */
     --color-deep-rose: #C4747B;
     --color-peach: #F7B6A4;
@@ -548,10 +561,10 @@ body{
 .map-side.side-4 { left: 50%; margin-left: -1px; }
 .map-side.side-4 .back { transform: rotateY(180deg); }
 .map-side.side-5 { left: 0; }
-.map-side.side-5 .back { background-image: url('./assets/images/map-fragment/1-v2.png'); }
+.map-side.side-5 .back { background-image: url('./assets/images/map-fragment/1.png'); }
 .map-side.side-6 { left: 50%; }
 .map-side.side-6 .front { background-size: 99.5%; }
-.map-side.side-6 .back { background-image: url('./assets/images/map-fragment/17-v2.png'); }
+.map-side.side-6 .back { background-image: url('./assets/images/map-fragment/17.png'); }
 
 .scroll-name { position: absolute; bottom: 105px; left: -60px; width: clamp(100px, 25vw, 150px); height: clamp(20px, 5vw, 30px); font: clamp(12px, 3vw, 15px) Satisfy, cursive; text-align: center; background: url('./assets/images/map-fragment/scroll.svg') center center / cover; z-index: 10; color: #615349; cursor: default; opacity: 0; }
 .scroll-name p { display: inline-block; margin: 4px 0 0 15px; }

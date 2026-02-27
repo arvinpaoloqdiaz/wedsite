@@ -23,16 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
     dressNames.add("light_blush");
     suitNames.add("light_blush");
 
-    // Preload dress images
+    const dressBase = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.assets && window.__SITE_CONFIG__.assets.dressBasePath) || "./assets/images/dress";
+    const suitBase = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.assets && window.__SITE_CONFIG__.assets.suitBasePath) || "./assets/images/suit";
     dressNames.forEach(name => {
       const img = new Image();
-      img.src = `./assets/images/dress/${name}.png`;
+      img.src = `${dressBase}/${name}.png`;
     });
-
-    // Preload suit images
     suitNames.forEach(name => {
       const img = new Image();
-      img.src = `./assets/images/suit/${name}.png`;
+      img.src = `${suitBase}/${name}.png`;
     });
   }
 
@@ -41,10 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // ----------------------------------------------------
   // 2. Initial images
   // ----------------------------------------------------
-  dressImg.src = "./assets/images/dress/light_blush.png";
-//   dressImg.classList.add("dress-grayscale");
-
-  suitImg.src = "./assets/images/suit/light_blush.png";
+  const dressBase = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.assets && window.__SITE_CONFIG__.assets.dressBasePath) || "./assets/images/dress";
+  const suitBase = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.assets && window.__SITE_CONFIG__.assets.suitBasePath) || "./assets/images/suit";
+  dressImg.src = `${dressBase}/light_blush.png`;
+  suitImg.src = `${suitBase}/light_blush.png`;
 //   suitImg.classList.add("suit-grayscale");
 
   // ----------------------------------------------------
@@ -56,7 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // ------ Dress update ------
       const dressName = box.getAttribute("data-dress");
       if (dressName) {
-        const newDressSrc = `./assets/images/dress/${dressName}.png`;
+        const dressBase = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.assets && window.__SITE_CONFIG__.assets.dressBasePath) || "./assets/images/dress";
+        const newDressSrc = `${dressBase}/${dressName}.png`;
 
         dressImg.classList.add("dress-fade");
         setTimeout(() => {
@@ -72,7 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // ------ Suit update ------
       const suitName = box.getAttribute("data-dress");
       if (suitName) {
-        const newSuitSrc = `./assets/images/suit/${suitName}.png`;
+        const suitBase = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.assets && window.__SITE_CONFIG__.assets.suitBasePath) || "./assets/images/suit";
+        const newSuitSrc = `${suitBase}/${suitName}.png`;
 
         suitImg.classList.add("suit-fade");
         setTimeout(() => {
@@ -205,11 +206,11 @@ $("#openingMap").one("click touchstart", function(e) {
 // Walkers / Footsteps
 // =========================
 function startWalkers() {
-    const WALKERS = [
-        { type: 'human', stride: 40, speed: 1, lateral: 20, name: 'Gerwel' },
-        { type: 'human', stride: 35, speed: 1.1, lateral: 20, name: 'Jane' },
-        { type: 'dog', stride: 25, speed: 1.2, lateral: 12, name: 'Yuki' },
-        { type: 'dog', stride: 23, speed: 1.1, lateral: 12, name: 'Yumi' },
+    const WALKERS = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.script && window.__SITE_CONFIG__.script.walkers) || [
+        { type: 'human', stride: 40, speed: 1, lateral: 20, name: 'Groom' },
+        { type: 'human', stride: 35, speed: 1.1, lateral: 20, name: 'Bride' },
+        { type: 'dog', stride: 25, speed: 1.2, lateral: 12, name: 'Kid 1' },
+        { type: 'dog', stride: 23, speed: 1.1, lateral: 12, name: 'Kid 2' },
     ];
     const FADE_OUT_TIME = 2000;
     const FOOTPRINT_DURATION = 1000;
@@ -285,7 +286,7 @@ function startWalkers() {
 // =========================
 // Countdown Timer
 // =========================
-const weddingDate = new Date("2025-12-20T15:00:00+08:00");
+const weddingDate = new Date((window.__SITE_CONFIG__ && window.__SITE_CONFIG__.script && window.__SITE_CONFIG__.script.weddingDate) || "2028-12-20T15:00:00+08:00");
 function startCountdown() {
     updateCountdown();
     setInterval(updateCountdown, 1000);
@@ -368,93 +369,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-const faqs = [
-  {
-    question: "CAN I BRING A GUEST/PLUS ONE?",
-    answer: "As we hope to keep our celebration intimate and meaningful, kindly refer to your invitation code to know the number of seats reserved for you. We appreciate your understanding that we can accommodate only the guests reflected in your code."
-  },
-  {
-    question: "CAN I BRING MY CHILD?",
-    answer: "We adore your little ones; however, our celebration will be an adult-only affair. We kindly hope you can take this opportunity to enjoy a relaxing evening to yourselves."
-  },
-    {
-    question: "DO I REALLY HAVE TO FOLLOW THE DRESS CODE?",
-    answer: "<b>Yes</b>. The dress code will be strictly enforced to maintain the formality of the occasion."
-  },
-  {
-    question: "IS PARKING AVAILABLE AT THE CHURCH AND VENUE?",
-    answer: "Absolutely! Both the ceremony and reception venues offer plenty of parking, ensuring a smooth and stress-free arrival for all our guests."
-  },
-  {
-    question: "IS THERE PUBLIC TRANSPORTATION FROM THE CHURCH TO THE RECEPTION?",
-    answer: "Shuttle service will be available from the church to the reception following the ceremony. The vehicle color and plate number will be announced soon for your convenience."
-  },
-  {
-  question: "HOW DO I RSVP?",
-  answer: `
-    Simply enter your unique invitation code on RSVP tab available on this website. Your name will appear automatically once verified. You may optionally add your email and contact number, then select your response.<br><br>
-    If you RSVP <strong>Yes</strong>, a QR code will be generated just for you. This will be used for registration at the wedding reception and give you access to different booths we've prepared with love for our guests while waiting for the program. <br><br>
-    If you RSVP <strong>No</strong>, we would truly appreciate knowing as soon as possible, so we can plan the celebration with care and thoughtfulness for everyone attending.
-  `
-    },
-    {
-    question: "WHEN IS THE RSVP DEADLINE?",
-    answer: "Kindly submit your RSVP on or before <strong>December 06, 2025</strong>, at <strong>7:00PM</strong>. If your plans change and you are unable to attend after confirming, we kindly ask that you notify us as soon as possible. This will help us accommodate other guests and make the necessary arrangements for a smooth and enjoyable celebration."
-  },
-  {
-    question: "WHO CAN WE CONTACT FOR QUESTIONS OR CONCERNS?",
-    answer: `For any questions or concerns, you may reach out to our wedding coordinator. Kindly contact Ms. Melanie Santos through:<br>
-Mobile number/Viber/Whatsapp: +63 917 532 5105
-<br>
-Facebook: <a href="facebook.com/IamLanie22" target="_blank">Melanie Santos</a>
-`
-  },
-   {
-    question: "DO THE COUPLE HAVE A SPECIAL NOTE?",
-    answer: "Yes. The couple warmly requests that all guests stay until the end of the program. Every detail has been prepared with love and care for this special day, and they sincerely hope to see everyone through to the send-off."
-  },
-
-
+var defaultFaqs = [
+  { question: "CAN I BRING A GUEST/PLUS ONE?", answer: "As we hope to keep our celebration intimate and meaningful, kindly refer to your invitation code to know the number of seats reserved for you. We appreciate your understanding that we can accommodate only the guests reflected in your code." },
+  { question: "CAN I BRING MY CHILD?", answer: "We adore your little ones; however, our celebration will be an adult-only affair. We kindly hope you can take this opportunity to enjoy a relaxing evening to yourselves." },
+  { question: "DO I REALLY HAVE TO FOLLOW THE DRESS CODE?", answer: "<b>Yes</b>. The dress code will be strictly enforced to maintain the formality of the occasion." },
+  { question: "IS PARKING AVAILABLE AT THE CHURCH AND VENUE?", answer: "Absolutely! Both the ceremony and reception venues offer plenty of parking, ensuring a smooth and stress-free arrival for all our guests." },
+  { question: "IS THERE PUBLIC TRANSPORTATION FROM THE CHURCH TO THE RECEPTION?", answer: "Shuttle service will be available from the church to the reception following the ceremony. The vehicle color and plate number will be announced soon for your convenience." },
+  { question: "HOW DO I RSVP?", answer: "Simply enter your unique invitation code on RSVP tab available on this website. Your name will appear automatically once verified. You may optionally add your email and contact number, then select your response.<br><br>If you RSVP <strong>Yes</strong>, a QR code will be generated just for you. This will be used for registration at the wedding reception and give you access to different booths we've prepared with love for our guests while waiting for the program. <br><br>If you RSVP <strong>No</strong>, we would truly appreciate knowing as soon as possible, so we can plan the celebration with care and thoughtfulness for everyone attending." },
+  { question: "WHEN IS THE RSVP DEADLINE?", answer: "Kindly submit your RSVP by the date indicated on your invitation. If your plans change after confirming, please notify us as soon as possible." },
+  { question: "WHO CAN WE CONTACT FOR QUESTIONS OR CONCERNS?", answer: "For any questions or concerns, please reach out to our wedding coordinator. Contact details will be provided on your invitation." },
+  { question: "DO THE COUPLE HAVE A SPECIAL NOTE?", answer: "Yes. The couple warmly requests that all guests stay until the end of the program. Every detail has been prepared with love and care for this special day, and they sincerely hope to see everyone through to the send-off." }
 ];
 
-// Populate the FAQ container
-const container = document.getElementById('faq-container');
-
-faqs.forEach((faq, index) => {
-  const item = document.createElement('div');
-  item.classList.add('faq-item');
-
-  // Question wrapper
-  const questionWrapper = document.createElement('div');
-  questionWrapper.classList.add('faq-question-wrapper');
-
-  const question = document.createElement('div');
-  question.classList.add('faq-question-container');
-  question.innerHTML = `<span class="faq-label q">Q</span><span class="faq-question">${faq.question}</span>`;
-
-  questionWrapper.appendChild(question);
-
-  // Answer wrapper
-  const answerWrapper = document.createElement('div');
-  answerWrapper.classList.add('faq-answer-wrapper');
-
-  const answer = document.createElement('div');
-  answer.classList.add('faq-answer-container');
-  answer.innerHTML = `<span class="faq-answer">${faq.answer}</span><span class="faq-label a">A</span>`;
-
-  answerWrapper.appendChild(answer);
-
-  // Toggle open/close on question click
-  question.addEventListener('click', () => {
-    item.classList.toggle('open');
+function populateFaqs() {
+  var container = document.getElementById('faq-container');
+  if (!container) return;
+  var faqs = (window.__SITE_CONFIG__ && window.__SITE_CONFIG__.script && window.__SITE_CONFIG__.script.faqs) || defaultFaqs;
+  container.innerHTML = '';
+  faqs.forEach(function (faq) {
+    var item = document.createElement('div');
+    item.classList.add('faq-item');
+    var questionWrapper = document.createElement('div');
+    questionWrapper.classList.add('faq-question-wrapper');
+    var question = document.createElement('div');
+    question.classList.add('faq-question-container');
+    question.innerHTML = '<span class="faq-label q">Q</span><span class="faq-question">' + faq.question + '</span>';
+    questionWrapper.appendChild(question);
+    var answerWrapper = document.createElement('div');
+    answerWrapper.classList.add('faq-answer-wrapper');
+    var answer = document.createElement('div');
+    answer.classList.add('faq-answer-container');
+    answer.innerHTML = '<span class="faq-answer">' + faq.answer + '</span><span class="faq-label a">A</span>';
+    answerWrapper.appendChild(answer);
+    question.addEventListener('click', function () { item.classList.toggle('open'); });
+    item.appendChild(questionWrapper);
+    item.appendChild(answerWrapper);
+    container.appendChild(item);
   });
+}
 
-  // Append wrappers to FAQ item
-  item.appendChild(questionWrapper);
-  item.appendChild(answerWrapper);
-
-  // Append FAQ item to container
-  container.appendChild(item);
-});
+document.addEventListener('DOMContentLoaded', populateFaqs);
+document.addEventListener('siteconfigready', populateFaqs);
 
 

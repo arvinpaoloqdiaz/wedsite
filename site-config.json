@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "title": "Couple 1 & Couple 2 Wedding",
+    "manifestName": "Demo Wedding",
+    "favicon": {
+      "appleTouch": "https://placehold.co/180x180/b29b77/ffffff?text=Demo",
+      "icon32": "https://placehold.co/32x32/b29b77/ffffff?text=W",
+      "icon16": "https://placehold.co/16x16/b29b77/ffffff?text=W",
+      "shortcut": "https://placehold.co/32x32/b29b77/ffffff?text=W"
+    }
+  },
+  "images": {
+    "monogram": "https://placehold.co/200x200/b29b77/ffffff?text=Monogram",
+    "ourStory": "https://placehold.co/600x400/b29b77/ffffff?text=Our+Story",
+    "proposal": "https://placehold.co/600x400/b29b77/ffffff?text=Proposal",
+    "entourage": "https://placehold.co/700x500/b29b77/ffffff?text=Entourage",
+    "programFlow": "https://placehold.co/700x400/b29b77/ffffff?text=Program+Flow",
+    "carousel": [
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+1",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+2",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+3",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+4",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+5",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+6",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+7",
+      "https://placehold.co/800x600/b29b77/ffffff?text=Prenup+8"
+    ],
+    "church": "https://placehold.co/600x400/b29b77/ffffff?text=Church+Venue",
+    "reception": "https://placehold.co/600x400/b29b77/ffffff?text=Reception+Venue",
+    "hero": "https://placehold.co/1920x1080/b29b77/ffffff?text=Hero",
+    "qrGmaps": "https://placehold.co/350x350/b29b77/ffffff?text=Google+Maps+QR",
+    "qrWaze": "https://placehold.co/350x350/b29b77/ffffff?text=Waze+QR",
+    "rsvpPlaceholder": "https://placehold.co/800x400/b29b77/ffffff?text=RSVP",
+    "churchIcon": "./assets/images/church.svg"
+  },
+  "text": {
+    "preloader": { "aria": "Loading...", "message": "Please wait..." },
+    "landing": { "groomName": "Groom", "brideName": "Bride", "cta": "Tap the map to enter" },
+    "hero": {
+      "lead1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "coupleNames": "Groom & Bride",
+      "lead2": "invite you to join them in celebration <br>of their wedding day."
+    },
+    "ourStory": {
+      "para1": "<span class=\"parisienne\">Groom</span> and <span class=\"parisienne bridename\">Bride</span> first met at a place that would become the start of their story. They often crossed paths, their eyes meeting in fleeting, unspoken moments. Over time, their connection grew, and after a memorable day together, their story truly began.",
+      "para2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Life carried them along paths that would one day bring them back together. Healed and stronger, their love story resumed. They faced challenges hand in hand, dreamed together, and built a life filled with laughter and devotion. Now, they are here, ready to unite their hearts in marriage."
+    },
+    "proposal": {
+      "location": "A special place",
+      "locationTooltip": "Demo location",
+      "story": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. The proposal took place at <span class=\"proposal_dateandtime\" data-bs-toggle=\"tooltip\" data-bs-placement=\"top\" title=\"Demo location\">a special place</span> on a beautiful day. With loved ones and a trusted friend by their side, the moment was prepared in secret. When the time came, the question was asked with a full heart, and <span class=\"proposal_yes\">she said <span class=\"proposal_yes_yes\">YES</span>.</span>"
+    },
+    "venue": {
+      "churchName": "Demo Church Venue, City",
+      "receptionName": "Demo Reception Venue, City",
+      "note": "Please follow traffic rules and drive safely."
+    },
+    "hashtags": "#DemoWedding #Couple1AndCouple2",
+    "rsvp": { "caption": "This is where the RSVP form would be embedded." }
+  },
+  "links": {
+    "churchMap": "#",
+    "receptionMap": "#",
+    "directionsGmaps": "#",
+    "directionsWaze": "#",
+    "instagram": "#",
+    "facebook": "#"
+  },
+  "script": {
+    "weddingDate": "2028-06-15T10:00:00+08:00",
+    "walkers": [
+      { "type": "human", "stride": 40, "speed": 1, "lateral": 20, "name": "Groom" },
+      { "type": "human", "stride": 35, "speed": 1.1, "lateral": 20, "name": "Bride" }
+    ],
+    "faqs": [
+      { "question": "CAN I BRING A PLUS ONE?", "answer": "Please refer to your invitation. Our celebration is intimate and we can accommodate only the guests reflected in your code." },
+      { "question": "IS THERE PARKING?", "answer": "Yes. Both venues offer parking." },
+      { "question": "HOW DO I RSVP?", "answer": "Use the RSVP section on this site with your invitation code." }
+    ]
+  },
+  "assets": { "dressBasePath": "./assets/images/dress", "suitBasePath": "./assets/images/suit" },
+  "css": { "preloaderBg": "#b29b77", "themeColor": "#b29b77" }
+}
