@@ -1,83 +1,160 @@
-/* Variables mapped from specifications.md */
-:root {
-  /* Colors */
-  --color-primary: #6b7c93;
-  --color-background: #d6e4f0;
-  --color-accent: #aab7c4;
-  --color-text: #2f3a45;
-
-  /* Typography */
-  --font-primary: "Playfair Display", serif;
-  --font-secondary: "Inter", sans-serif;
-  --font-accent-vibes: "Great Vibes", cursive;
-  --font-accent-allura: "Allura", cursive;
-  --font-accent-parisienne: "Parisienne", cursive;
-
-  /* Font Sizes - Landing Page */
-  --text-landing-names: clamp(64px, 8vw, 96px);
-  --text-landing-date: clamp(14px, 2vw, 18px);
-  --text-landing-small: clamp(12px, 1.5vw, 14px);
-
-  /* Font Sizes - Main Page */
-  --text-hero-title: clamp(48px, 6vw, 72px);
-  --text-section-title: clamp(20px, 3vw, 28px);
-  --text-body: clamp(14px, 2vw, 16px);
-  --text-labels: clamp(12px, 1.5vw, 14px);
-
-  /* Letter Spacing */
-  --tracking-heading: 0.05em;
-  --tracking-heading-wide: 0.1em;
-  --tracking-small: 0.1em;
-  --tracking-small-wide: 0.2em;
-
-  /* Visual Effects */
-  --shadow-soft: 0 10px 30px rgba(107, 124, 147, 0.1);
-  --radius-rounded: 12px;
+/* =========================================
+   FONT DECLARATION — Tangier (Primary)
+   ========================================= */
+@font-face {
+  font-family: "Tangier";
+  src: url("assets/font/Tangier.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Base Reset & Application */
+/* =========================================
+   CSS VARIABLES — Elegant Palette
+   ========================================= */
+:root {
+  /* Brand Palette */
+  --color-ash-grey:    #B6BBB5;
+  --color-pale-peach:  #EEDAC9;
+  --color-powder-blue: #B6C7DB;
+  --color-dusty-blue:  #6E8FB3;
+  --color-dusk-blue:   #365583;
+  --color-baltic-blue: #3F618E;
+
+  /* Semantic Roles (Minimal/White approach) */
+  --color-primary:     var(--color-dusk-blue);
+  --color-secondary:   var(--color-baltic-blue);
+  --color-accent:      var(--color-dusty-blue);
+  --color-background:  #ffffff;                     /* Clean white background */
+  --color-surface:     #ffffff;                     /* White cards */
+  --color-surface-alt: #fcfbfa;                     /* Very subtle off-white */
+  --color-text:        var(--color-dusk-blue);
+  
+  /* Typography */
+  --font-primary:   "Tangier", "Playfair Display", serif;
+  --font-secondary: "Playfair Display", Georgia, serif;
+  --font-utility:   "Inter", system-ui, sans-serif;
+
+  /* Font Sizes */
+  --text-landing-names: clamp(64px, 8vw, 110px);
+  --text-hero-title:    clamp(56px, 8vw, 96px);
+
+  /* Visual Effects */
+  --shadow-soft: 0 10px 40px rgba(54, 85, 131, 0.08);
+  --shadow-nav:  0 4px 20px rgba(54, 85, 131, 0.05);
+}
+
+/* =========================================
+   BASE RESET
+   ========================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-secondary); /* Inter as default body font */
+  font-family: var(--font-secondary); /* Elegant serif for body */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-/* Typography Utility Classes */
-.font-primary {
+/* Headings use Tangier */
+h1, h2, h3, .font-tangier {
   font-family: var(--font-primary);
-}
-.font-secondary {
-  font-family: var(--font-secondary);
-}
-.font-script-vibes {
-  font-family: var(--font-accent-vibes);
-}
-.font-script-allura {
-  font-family: var(--font-accent-allura);
-}
-.font-script-parisienne {
-  font-family: var(--font-accent-parisienne);
+  font-weight: normal;
 }
 
-/* Apply soft transitions generally if needed */
-.transition-soft {
-  transition: all 0.3s ease-in-out;
+/* =========================================
+   LOADING SCREEN
+   ========================================= */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background);
+  overflow: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-/* ========================================= */
-/*  LANDING PAGE                             */
-/* ========================================= */
+/* Subtle elegant gradient background for loader */
+#loading-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(238,218,201,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
 
+.loading__monogram {
+  width: clamp(180px, 25vw, 280px);
+  height: auto;
+  position: relative;
+  z-index: 1;
+  animation: monogramPulse 3s ease-in-out infinite;
+}
+
+@keyframes monogramPulse {
+  0%, 100% { transform: scale(1);     opacity: 1; }
+  50%       { transform: scale(1.05); opacity: 0.85; }
+}
+
+/* Elegant loader animation below monogram */
+.loading__spinner {
+  margin-top: 2rem;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.loading__spinner::before,
+.loading__spinner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.loading__spinner::before {
+  border-top-color: var(--color-dusty-blue);
+  border-bottom-color: var(--color-pale-peach);
+  animation: spin 2s linear infinite;
+}
+
+.loading__spinner::after {
+  border-left-color: var(--color-dusk-blue);
+  border-right-color: var(--color-powder-blue);
+  animation: spin 1.5s linear infinite reverse;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loading-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* =========================================
+   LANDING PAGE
+   ========================================= */
 .landing {
   position: fixed;
   inset: 0;
@@ -85,74 +162,35 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  background: var(--color-background);
 }
 
-/* Dusty blue textured background — fills entire viewport */
+/* Very subtle floral watermark background */
 .landing__bg {
   position: absolute;
   inset: 0;
-  background: url("assets/bg-dusty-blue.png") center center / cover no-repeat;
+  background: radial-gradient(circle at center, rgba(238,218,201,0.15) 0%, transparent 80%);
   z-index: 0;
 }
-
-/* Subtle vignette overlay to deepen edges */
-.landing__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 40%,
-    rgba(90, 110, 130, 0.12) 100%
-  );
-  pointer-events: none;
-}
-
-/* ------ Floral Decorations ------ */
 
 .landing__flower {
   position: absolute;
   z-index: 1;
   pointer-events: none;
-  display: block;
+  opacity: 0.8;
 }
 
-/* Top-left corner — bouquet radiating from corner */
 .landing__flower--top-left {
-  top: -10px;
-  left: -10px;
-  width: clamp(160px, 22vw, 320px);
-  height: auto;
+  top: -20px;
+  left: -20px;
+  width: clamp(180px, 25vw, 360px);
 }
 
-/* Right edge — vertical spray along right side */
-.landing__flower--right-edge {
-  top: 50%;
-  right: -5px;
-  transform: translateY(-50%);
-  width: clamp(80px, 10vw, 160px);
-  height: auto;
-}
-
-/* Left edge — vertical spray along left side */
-.landing__flower--left-edge {
-  top: 50%;
-  left: -5px;
-  transform: translateY(-50%);
-  width: clamp(80px, 10vw, 160px);
-  height: auto;
-}
-
-/* Bottom-right corner — smaller bouquet */
 .landing__flower--bottom-right {
-  bottom: -10px;
-  right: -10px;
-  width: clamp(140px, 18vw, 260px);
-  height: auto;
+  bottom: -20px;
+  right: -20px;
+  width: clamp(160px, 22vw, 300px);
 }
-
-/* ------ Center Content ------ */
 
 .landing__content {
   position: relative;
@@ -161,118 +199,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  padding: 2rem;
-}
-
-.landing__prefix {
-  font-family: var(--font-secondary);
-  font-size: var(--text-landing-small);
-  letter-spacing: var(--tracking-small-wide);
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin: 0 0 1rem;
-  opacity: 0.85;
 }
 
 .landing__names {
-  font-family: var(--font-primary);
   font-size: var(--text-landing-names);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--color-text);
-  margin: 0;
+  color: var(--color-dusk-blue);
+  line-height: 0.9;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.1em;
 }
 
-.landing__name {
-  display: block;
-}
-
-.landing__ampersand {
-  font-family: var(--font-accent-allura);
-  font-size: 0.6em;
-  color: var(--color-primary);
-  line-height: 1;
-  display: block;
-  margin: -0.05em 0;
-}
-
-.landing__date {
-  font-family: var(--font-secondary);
-  font-size: var(--text-landing-date);
-  letter-spacing: var(--tracking-heading-wide);
-  color: var(--color-primary);
-  margin: 1.5rem 0 0;
-  opacity: 0.9;
-}
-
-.landing__divider {
-  width: 48px;
-  height: 1px;
-  background: var(--color-accent);
-  margin: 1.8rem 0;
-  opacity: 0.6;
-}
-
-/* Enter button */
-.landing__enter {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.75rem 2rem;
-  color: var(--color-primary);
-  transition: all 0.4s ease;
-}
-
-.landing__enter-text {
-  font-family: var(--font-secondary);
-  font-size: var(--text-landing-small);
-  letter-spacing: var(--tracking-small-wide);
-  text-transform: uppercase;
-}
-
-.landing__enter-icon {
-  animation: gentleBounce 2.5s ease-in-out infinite;
-}
-
-.landing__enter:hover {
-  color: var(--color-text);
-  transform: translateY(-2px);
-}
-
-.landing__enter:hover .landing__enter-icon {
-  animation: none;
-  transform: translateY(3px);
-  transition: transform 0.3s ease;
-}
-
-@keyframes gentleBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-}
-
-/* Landing transition state — fading out */
 .landing.is-leaving {
   pointer-events: none;
 }
 
-/* ========================================= */
-/*  MAIN CONTENT                             */
-/* ========================================= */
-
+/* =========================================
+   MAIN CONTENT & SMART NAVBAR
+   ========================================= */
 .main-content {
   opacity: 0;
   visibility: hidden;
@@ -284,113 +228,194 @@ body {
   visibility: visible;
 }
 
-.hero-placeholder {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* Navbar states */
+#navbar {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
-/* ========================================= */
-/*  RESPONSIVE — Tablet                      */
-/* ========================================= */
-
-@media (max-width: 1024px) {
-  .landing__flower--right-edge {
-    width: clamp(60px, 9vw, 120px);
-  }
-
-  .landing__flower--left-edge {
-    width: clamp(60px, 9vw, 120px);
-  }
+/* Transparent state (top of page) */
+.navbar--transparent {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.navbar--transparent .nav-link,
+.navbar--transparent .nav-brand {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.elegant-card {
+  background: var(--color-surface);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* ========================================= */
-/*  RESPONSIVE — Mobile                      */
-/* ========================================= */
-
-@media (max-width: 640px) {
-  /* Hide edge flowers on small screens to avoid crowding */
-  .landing__flower--left-edge,
-  .landing__flower--right-edge {
-    display: none;
-  }
-
-  /* Scale down corner pieces */
-  .landing__flower--top-left {
-    width: clamp(120px, 35vw, 180px);
-  }
-
-  .landing__flower--bottom-right {
-    width: clamp(100px, 30vw, 160px);
-  }
-
-  .landing__names {
-    font-size: clamp(48px, 14vw, 72px);
-  }
+/* Dresscode hover animation */
+.dresscode-card {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
+}
+.dresscode-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(54, 85, 131, 0.1);
 }
 
-/* Very small screens — keep minimal */
-@media (max-width: 380px) {
-  .landing__flower--top-left {
-    width: 100px;
-  }
-
-  .landing__flower--bottom-right {
-    width: 90px;
-  }
-
-  .landing__names {
-    font-size: 44px;
-  }
+.color-circle {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.color-circle:hover {
+  transform: translateY(-6px) scale(1.15);
+}
+.navbar--transparent .nav-logo {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* ========================================= */
-/*  ISOLATED STYLES & INTERACTIVE UI ELEMENTS */
-/* ========================================= */
-
-/* Material Icon font settings - Monoline look */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+/* Scrolled state (sticky) */
+.navbar--scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-nav) !important;
+}
+.navbar--scrolled .nav-link,
+.navbar--scrolled .nav-brand {
+  color: var(--color-dusk-blue) !important;
+  text-shadow: none;
+}
+.navbar--scrolled .nav-logo {
+  filter: none;
 }
 
-/* Watercolor texture overlay blend mode */
-.watercolor-overlay {
-  mix-blend-mode: multiply;
-  opacity: 0.85;
+/* Active Nav Link */
+.nav-link {
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--color-dusty-blue);
+  transition: width 0.3s ease;
+}
+.nav-link.active::after {
+  width: 100%;
+}
+.navbar--transparent .nav-link.active::after {
+  background-color: #ffffff;
 }
 
-/* Custom overlay fading into dusty-blue background */
+/* =========================================
+   HERO SECTION & COUNTDOWN
+   ========================================= */
 .hero-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(214, 228, 240, 0) 0%,
-    rgba(214, 228, 240, 0.35) 55%,
-    rgba(214, 228, 240, 0.95) 100%
+    rgba(54, 85, 131, 0.4) 0%,
+    rgba(54, 85, 131, 0.1) 40%,
+    rgba(255, 255, 255, 0.9) 95%,
+    rgba(255, 255, 255, 1) 100%
   );
 }
 
-/* Floating Petals / Leaves Elements */
-.floating-petal {
+.hero-countdown {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.hero-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 1rem clamp(0.8rem, 2vw, 1.5rem);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  min-width: clamp(70px, 15vw, 100px);
+}
+
+.countdown-val {
+  font-family: var(--font-primary);
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--color-dusk-blue);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.countdown-lbl {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-dusty-blue);
+  margin-top: 0.5rem;
+}
+
+/* =========================================
+   DECORATIVE ELEMENTS
+   ========================================= */
+.section-monogram {
+  display: block;
+  width: clamp(80px, 12vw, 120px);
+  height: auto;
+  margin: 0 auto 1.5rem;
+}
+
+.section-flower {
   position: absolute;
   pointer-events: none;
-  user-select: none;
-  z-index: 30;
-  will-change: transform;
+  opacity: 0.6;
+  z-index: 0;
 }
 
-/* Custom slide-over menu layout properties */
-#mobile-menu {
-  box-shadow: -10px 0 40px rgba(47, 58, 69, 0.15);
+.elegant-card {
+  background: #ffffff;
+  border: 1px solid rgba(238, 218, 201, 0.5); /* Pale peach border */
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-#mobile-menu-backdrop {
-  /* Backed by GSAP animation directly */
+/* Subtle elegant gradient backgrounds */
+.bg-gradient-peach {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(238, 218, 201, 0.15) 100%);
+}
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(182, 199, 219, 0.15) 100%);
 }
 
-/* Smooth active state borders for inputs */
-input:focus, select:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(107, 124, 147, 0.2);
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-countdown {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-countdown-unit {
+    min-width: calc(50% - 0.5rem);
+    padding: 0.8rem;
+  }
+  .section-monogram {
+    width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing__names { font-size: 56px; }
+  .hero-countdown-unit { padding: 0.5rem; }
+  .countdown-val { font-size: 28px; }
 }

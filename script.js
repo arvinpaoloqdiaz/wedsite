@@ -1,238 +1,292 @@
 /**
  * script.js
- * Main JavaScript file for wedding website interactivity, animations, and transitions.
- * 
- * Powered by GSAP (GreenSock Animation Platform) for smooth, premium-grade animations.
+ * Main JavaScript for the Rey & Jona Wedding Website.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
-    const landing = document.getElementById('landing');
-    const mainContent = document.getElementById('main-content');
-    const enterBtn = document.getElementById('enter-btn');
-    
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-    // ========================================
-    //  1. Initialize Libraries
-    // ========================================
-    
-    // Render Lucide icons for details dashboard
+    // ============================================================
+    //  DOM References
+    // ============================================================
+    const loadingScreen   = document.getElementById('loading-screen');
+    const landing         = document.getElementById('landing');
+    const mainContent     = document.getElementById('main-content');
+    const enterBtn        = document.getElementById('enter-btn');
+    const navbar          = document.getElementById('navbar');
+
+    const mobileMenuBtn      = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose    = document.getElementById('mobile-menu-close');
+    const mobileMenu         = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+    const mobileLinks        = document.querySelectorAll('.mobile-nav-link');
+
+    // ============================================================
+    //  1. Initialise Lucide Icons
+    // ============================================================
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
 
-    // ========================================
-    //  2. Landing Page — Entrance Animations
-    // ========================================
+    // ============================================================
+    //  2. Countdown Timer  (target: 2026-12-05 14:30 local)
+    // ============================================================
+    const WEDDING_DATE = new Date('2026-12-05T14:30:00');
 
-    // Set initial off-screen / transparent states
-    gsap.set('.landing__content', { opacity: 0, y: 30 });
-    gsap.set('.landing__flower', { opacity: 0, scale: 0.85 });
+    const cdDays    = document.getElementById('cd-days');
+    const cdHours   = document.getElementById('cd-hours');
+    const cdMinutes = document.getElementById('cd-minutes');
+    const cdSeconds = document.getElementById('cd-seconds');
 
-    // Entrance timeline
-    const introTimeline = gsap.timeline({ delay: 0.3 });
+    function pad(n) { return String(n).padStart(2, '0'); }
 
-    // Fade-in landing background texture
-    introTimeline.from('.landing__bg', {
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power2.out'
-    });
+    function updateCountdown() {
+        const now  = new Date();
+        const diff = WEDDING_DATE - now;
 
-    // Bloom flowers in from corners and edges
-    introTimeline.to('.landing__flower', {
-        opacity: 1,
-        scale: 1,
-        duration: 1.2,
-        ease: 'back.out(1.2)',
-        stagger: {
-            each: 0.12,
-            from: 'start'
+        if (diff <= 0) {
+            if (cdDays)    cdDays.textContent    = '00';
+            if (cdHours)   cdHours.textContent   = '00';
+            if (cdMinutes) cdMinutes.textContent = '00';
+            if (cdSeconds) cdSeconds.textContent = '00';
+            return;
         }
-    }, '-=0.8');
 
-    // Reveal landing central text card
-    introTimeline.to('.landing__content', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out'
-    }, '-=0.6');
+        const totalSeconds = Math.floor(diff / 1000);
+        const days    = Math.floor(totalSeconds / 86400);
+        const hours   = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600)  / 60);
+        const seconds = totalSeconds % 60;
 
+        if (cdDays)    cdDays.textContent    = pad(days);
+        if (cdHours)   cdHours.textContent   = pad(hours);
+        if (cdMinutes) cdMinutes.textContent = pad(minutes);
+        if (cdSeconds) cdSeconds.textContent = pad(seconds);
+    }
 
-    // ========================================
-    //  3. Landing → Main Content Transition
-    // ========================================
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
+    // ============================================================
+    //  3. Loading Screen
+    // ============================================================
+    const LOADER_DURATION = 1500; // ms to show loader before fading
+
+    if (landing)     landing.style.display     = 'none';
+    if (mainContent) mainContent.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(() => {
+        dismissLoader();
+    }, LOADER_DURATION);
+
+    function dismissLoader() {
+        if (!loadingScreen) return;
+
+        gsap.to(loadingScreen, {
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power2.inOut',
+            onComplete: () => {
+                loadingScreen.classList.add('is-hidden');
+                if (landing) {
+                    landing.style.display = '';
+                    revealLanding();
+                }
+            }
+        });
+    }
+
+    // ============================================================
+    //  4. Landing Page — Entrance Animations
+    // ============================================================
+    function revealLanding() {
+        document.body.style.overflow = 'hidden';
+
+        gsap.set('.landing__content',  { opacity: 0, y: 32 });
+        gsap.set('.landing__flower',   { opacity: 0, scale: 0.82 });
+
+        const tl = gsap.timeline({ delay: 0.1 });
+
+        tl.from('.landing__bg', {
+            opacity: 0,
+            duration: 1.1,
+            ease: 'power2.out'
+        });
+
+        tl.to('.landing__flower', {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: 'back.out(1.2)',
+            stagger: { each: 0.12, from: 'start' }
+        }, '-=0.7');
+
+        tl.to('.landing__content', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out'
+        }, '-=0.5');
+    }
+
+    // ============================================================
+    //  5. Landing → Main Content Transition
+    // ============================================================
     function transitionToMain() {
-        // Prevent double click during fade
+        if (!enterBtn || enterBtn.disabled) return;
         enterBtn.disabled = true;
         landing.classList.add('is-leaving');
 
-        // Main transition exit timeline
-        const exitTimeline = gsap.timeline({
+        const exitTl = gsap.timeline({
             onComplete: () => {
-                // Remove landing layout from document flow
                 landing.style.display = 'none';
-                document.body.style.overflowY = 'auto'; // restore vertical scrollbar
+                document.body.style.overflowY = 'auto';
 
-                // Make main content visible
-                mainContent.classList.add('is-visible');
+                if (mainContent) {
+                    mainContent.style.display = '';
+                    mainContent.classList.add('is-visible');
 
-                // Fade-in animation for main layout
-                gsap.fromTo(mainContent, 
-                    { opacity: 0, y: 25 },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        duration: 1.2, 
-                        ease: 'power3.out',
-                        onStart: () => {
-                            mainContent.style.visibility = 'visible';
+                    gsap.fromTo(mainContent,
+                        { opacity: 0, y: 20 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1.1,
+                            ease: 'power3.out',
+                            clearProps: 'transform',
+                            onStart: () => { 
+                                mainContent.style.visibility = 'visible'; 
+                                ScrollTrigger.refresh();
+                            }
                         }
-                    }
-                );
+                    );
+                }
             }
         });
 
-        // 3.1. Fade out card content
-        exitTimeline.to('.landing__content', {
-            opacity: 0,
-            y: -30,
-            duration: 0.6,
+        exitTl.to('.landing__content', {
+            opacity: 0, y: -28,
+            duration: 0.55,
             ease: 'power2.in'
         });
-
-        // 3.2. Bloom-out exit for corner flowers
-        exitTimeline.to('.landing__flower', {
-            opacity: 0,
-            scale: 0.85,
-            duration: 0.6,
+        exitTl.to('.landing__flower', {
+            opacity: 0, scale: 0.85,
+            duration: 0.55,
             ease: 'power2.in',
-            stagger: 0.08
-        }, '-=0.4');
-
-        // 3.3. Fade out background
-        exitTimeline.to('.landing__bg', {
+            stagger: 0.07
+        }, '-=0.35');
+        exitTl.to('.landing__bg', {
             opacity: 0,
-            duration: 0.8,
+            duration: 0.75,
             ease: 'power2.inOut'
-        }, '-=0.4');
+        }, '-=0.35');
     }
 
-    // Connect entrance click
     if (enterBtn) {
         enterBtn.addEventListener('click', transitionToMain);
-
-        // Accessibility controls
-        enterBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                transitionToMain();
-            }
-        });
     }
 
+    // ============================================================
+    //  6. Smart Sticky Navbar & Scroll Spy
+    // ============================================================
+    window.addEventListener('scroll', () => {
+        if (!navbar) return;
+        if (window.scrollY > 50) {
+            navbar.classList.add('navbar--scrolled');
+            navbar.classList.remove('navbar--transparent');
+        } else {
+            navbar.classList.add('navbar--transparent');
+            navbar.classList.remove('navbar--scrolled');
+        }
+    });
 
-    // ========================================
-    //  4. Mobile Menu Interactivity (GSAP)
-    // ========================================
+    const navLinks = document.querySelectorAll('.nav-link');
+    const scrollSpySections = document.querySelectorAll('section[id]');
 
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${entry.target.id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+
+    scrollSpySections.forEach(section => spyObserver.observe(section));
+
+    // ============================================================
+    //  7. Mobile Menu
+    // ============================================================
     function openMobileMenu() {
         if (!mobileMenu || !mobileMenuBackdrop) return;
-        
-        // Show backdrop blur block
         mobileMenuBackdrop.classList.remove('hidden');
         gsap.to(mobileMenuBackdrop, { opacity: 1, duration: 0.3 });
-        
-        // Slide drawer in from the right edge
-        gsap.to(mobileMenu, { x: '0%', duration: 0.5, ease: 'power3.out' });
+        gsap.to(mobileMenu, { x: '0%', duration: 0.45, ease: 'power3.out' });
     }
 
     function closeMobileMenu() {
         if (!mobileMenu || !mobileMenuBackdrop) return;
-        
-        // Fade out backdrop and hide it when finished
-        gsap.to(mobileMenuBackdrop, { 
-            opacity: 0, 
-            duration: 0.3, 
-            onComplete: () => mobileMenuBackdrop.classList.add('hidden') 
+        gsap.to(mobileMenuBackdrop, {
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => mobileMenuBackdrop.classList.add('hidden')
         });
-        
-        // Slide drawer out to the right
-        gsap.to(mobileMenu, { x: '100%', duration: 0.4, ease: 'power3.in' });
+        gsap.to(mobileMenu, { x: '100%', duration: 0.38, ease: 'power3.in' });
     }
 
-    // Menu event listeners
-    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
-    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileMenuBtn)      mobileMenuBtn.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose)    mobileMenuClose.addEventListener('click', closeMobileMenu);
     if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
-    
-    // Close menu when a link is clicked (enables scrolling smoothly)
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
+    mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
 
+    // ============================================================
+    //  8. Scroll Reveal (IntersectionObserver)
+    // ============================================================
+    const revealElements = document.querySelectorAll('.elegant-card, .section-monogram, h2, h3, .grid > div');
 
-    // ========================================
-    //  5. Scroll Reveal Animation
-    // ========================================
-    
-    // Target sections inside sections-wrapper to prevent hiding landing elements
-    const sections = document.querySelectorAll('.sections-wrapper > section');
-    const observerOptions = {
-        threshold: 0.05 // Trigger early when section enters view
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('opacity-100');
-                entry.target.classList.remove('opacity-0', 'translate-y-10');
-                observer.unobserve(entry.target); // Trigger only once
+                gsap.to(entry.target, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    clearProps: 'all' // Remove GSAP inline styles after
+                });
+                revealObserver.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    sections.forEach(section => {
-        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-        observer.observe(section);
+    revealElements.forEach(el => {
+        // Only apply to elements not in hero/landing
+        if (!el.closest('#hero') && !el.closest('#landing')) {
+            gsap.set(el, { opacity: 0, y: 30 });
+            revealObserver.observe(el);
+        }
     });
 
-
-    // ========================================
-    //  6. Floating Petals / Leaves Particle Effect
-    // ========================================
-    
+    // ============================================================
+    //  9. Floating Petals / Leaves
+    // ============================================================
     function initFloatingPetals() {
         const container = document.getElementById('petals-container');
         if (!container) return;
 
-        // Leaf/floral images in assets folder
         const petalImages = [
-            'assets/bud-1.png',
-            'assets/flower-1.png',
-            'assets/flower-2.png',
-            'assets/flower-3.png',
-            'assets/flower-4.png',
-            'assets/flower-5.png',
-            'assets/leaf-1.png',
-            'assets/sprig-1.png',
-            'assets/sprig-2.png',
-            'assets/sprig-3.png',
-            'assets/sprig-4.png',
-            'assets/sprig-5.png',
+            'assets/bud-1.png', 'assets/flower-1.png', 'assets/flower-2.png',
+            'assets/flower-3.png', 'assets/flower-4.png', 'assets/flower-5.png',
+            'assets/leaf-1.png', 'assets/sprig-1.png', 'assets/sprig-2.png',
+            'assets/sprig-3.png', 'assets/sprig-4.png', 'assets/sprig-5.png',
             'assets/sprig-6.png'
         ];
 
-        const maxPetals = 16; // Subtle particle count to ensure high performance
-        
-        // Spawn initial particles scattered across the screen
+        const maxPetals = 12; // Reduced slightly for minimal elegant feel
         for (let i = 0; i < maxPetals; i++) {
             createPetal(container, petalImages, true);
         }
@@ -240,75 +294,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createPetal(container, images, isInitial = false) {
         const img = document.createElement('img');
-        const randomSrc = images[Math.floor(Math.random() * images.length)];
-        img.src = randomSrc;
-        img.className = 'floating-petal';
-        
-        // Random size between 12px and 26px for depth perspective
-        const size = gsap.utils.random(12, 26);
-        img.style.width = `${size}px`;
+        img.src = images[Math.floor(Math.random() * images.length)];
+        img.className = 'floating-petal absolute pointer-events-none opacity-40 mix-blend-multiply';
+
+        const size = gsap.utils.random(14, 28);
+        img.style.width  = `${size}px`;
         img.style.height = 'auto';
-        
         container.appendChild(img);
 
-        // Horizontal positioning
         const startX = gsap.utils.random(0, window.innerWidth);
-        // Vertical positioning (if initial load, spawn anywhere vertically, else spawn above top)
         const startY = isInitial ? gsap.utils.random(-100, window.innerHeight) : -50;
-        
-        const duration = gsap.utils.random(10, 18);
-        const delay = isInitial ? 0 : gsap.utils.random(0, 5);
-        const opacity = gsap.utils.random(0.25, 0.65);
-        
+        const dur    = gsap.utils.random(15, 25);
+        const delay  = isInitial ? 0 : gsap.utils.random(0, 6);
+        const opac   = gsap.utils.random(0.15, 0.4);
+
         gsap.set(img, {
-            x: startX,
-            y: startY,
-            opacity: opacity,
-            rotation: gsap.utils.random(0, 360),
-            rotationX: gsap.utils.random(0, 360),
-            rotationY: gsap.utils.random(0, 360)
+            x: startX, y: startY,
+            opacity: opac,
+            rotation: gsap.utils.random(0, 360)
         });
 
-        // GPU-accelerated float, drift and rotate animation
         gsap.to(img, {
-            y: window.innerHeight + 50,
-            x: startX + gsap.utils.random(-120, 120), // sway drift left/right
+            y: window.innerHeight + 60,
+            x: startX + gsap.utils.random(-100, 100),
             rotation: '+=360',
-            rotationX: '+=180',
-            rotationY: '+=360',
-            duration: duration,
+            duration: dur,
             delay: delay,
             ease: 'none',
             onComplete: () => {
-                img.remove(); // garbage collection
-                createPetal(container, images, false); // spawn fresh leaf at top
+                img.remove();
+                createPetal(container, images, false);
             }
         });
     }
 
-    // Start floating particles
     initFloatingPetals();
-
-    // ========================================
-    //  7. RSVP Iframe Handler
-    // ========================================
-    const rsvpIframe = document.getElementById('rsvp-iframe');
-    const rsvpComingSoon = document.getElementById('rsvp-coming-soon');
-    
-    // Set RSVP form link here (e.g., Google Forms embed URL).
-    // Set to "no", empty string, or "#" to display the "Coming Soon" placeholder card.
-    const rsvpUrl = "no"; 
-
-    if (rsvpIframe && rsvpComingSoon) {
-        if (rsvpUrl && rsvpUrl !== 'no' && rsvpUrl !== '#' && rsvpUrl.trim() !== '') {
-            rsvpIframe.src = rsvpUrl;
-            rsvpIframe.classList.remove('hidden');
-            rsvpComingSoon.classList.add('hidden');
-        } else {
-            rsvpIframe.classList.add('hidden');
-            rsvpComingSoon.classList.remove('hidden');
-        }
-    }
-
-    console.log("Wedding website scripts and particles initialized.");
 });
