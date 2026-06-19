@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -7,38 +7,132 @@
     <title>Rey & Jona — Wedding</title>
     <meta name="description" content="You are cordially invited to celebrate the wedding of Rey and Jona.">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Elegant script fonts and base fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols Outlined stylesheet (for existing icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Play CDN for layout structure utility classes -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Lucide CDN for beautiful, thin-stroke monoline icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration matching specifications.md -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        // Custom Palette from specifications.md
+                        primary: "#6B7C93",            // Primary Blue
+                        background: "#D6E4F0",         // Background Dusty Blue
+                        accent: "#AAB7C4",             // Accent Slate
+                        text: "#2F3A45",               // Text Charcoal Grey
+                        
+                        // Theme semantic mappings for Material UI styles
+                        "on-background": "#2F3A45",
+                        "on-surface": "#2F3A45",
+                        "on-surface-variant": "#4E5A66",
+                        "surface": "#D6E4F0",
+                        "surface-dim": "#E2E7ED",
+                        "surface-bright": "#FFFFFF",
+                        "surface-container-lowest": "#FFFFFF",
+                        "surface-container-low": "#EDF1F5",
+                        "surface-container": "#E2E7ED",
+                        "surface-container-high": "#D8E0E8",
+                        "surface-container-highest": "#CDD8E2",
+                        "primary-container": "#E2E7ED",
+                        "on-primary-container": "#2F3A45",
+                        "secondary-container": "#E8EDF2",
+                        "on-secondary-container": "#4E5A66",
+                        "secondary": "#AAB7C4",
+                        "on-secondary": "#FFFFFF",
+                        "on-primary": "#FFFFFF",
+                        "outline": "#AAB7C4",
+                        "outline-variant": "#D8E0E8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "4px",
+                        "lg": "8px",
+                        "xl": "12px",
+                        "2xl": "16px",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "48px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    fontFamily: {
+                        // Playfair Display for names/headings
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "headline-xl": ["Playfair Display", "serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        // Inter for clean, modern body & labels
+                        "label-sm": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "headline-xl-mobile": ["Playfair Display", "serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        // Section titles mapping to specifications.md (20-28px range)
+                        "headline-lg": ["28px", {"lineHeight": "1.3", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                        // Hero titles mapping to specifications.md (48-72px range)
+                        "headline-xl": ["64px", {"lineHeight": "1.15", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl-mobile": ["44px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- GSAP (Animation Library) -->
+    <!-- GSAP (GreenSock Animation Platform CDN) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 
-<body>
+<body class="font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
 
-    <!-- ============================= -->
-    <!-- LANDING PAGE (Full Screen)    -->
-    <!-- ============================= -->
+    <!-- ========================================= -->
+    <!--  1. PETALS CONTAINER                      -->
+    <!-- ========================================= -->
+    <div id="petals-container" class="fixed inset-0 pointer-events-none z-30 overflow-hidden"></div>
+
+    <!-- ========================================= -->
+    <!--  2. LANDING PAGE (Full Screen Card)       -->
+    <!-- ========================================= -->
     <section id="landing" class="landing">
         <!-- Dusty blue textured background -->
         <div class="landing__bg"></div>
 
-        <!-- Floral decorations -->
+        <!-- Floral decorative elements -->
         <img src="assets/top-left-corner-flower.png" alt="" class="landing__flower landing__flower--top-left" aria-hidden="true">
         <img src="assets/right-edge-flower.png" alt="" class="landing__flower landing__flower--right-edge" aria-hidden="true">
         <img src="assets/left-edge-flower.png" alt="" class="landing__flower landing__flower--left-edge" aria-hidden="true">
         <img src="assets/bottom-right-corner-flower.png" alt="" class="landing__flower landing__flower--bottom-right" aria-hidden="true">
 
-        <!-- Center content -->
-        <div class="landing__content">
-            <p class="landing__prefix">THE WEDDING OF</p>
+        <!-- Center card content (containerless layout directly on background) -->
+        <div class="landing__content max-w-lg mx-margin-mobile p-lg text-center">
+            <p class="landing__prefix font-semibold">THE WEDDING OF</p>
             <h1 class="landing__names">
                 <span class="landing__name">Rey</span>
                 <span class="landing__ampersand">&</span>
@@ -48,27 +142,443 @@
             <div class="landing__divider"></div>
             <button id="enter-btn" class="landing__enter" aria-label="Enter the wedding website">
                 <span class="landing__enter-text">View Our Invitation</span>
-                <svg class="landing__enter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="landing__enter-icon text-primary mt-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
             </button>
         </div>
     </section>
 
-    <!-- ============================= -->
-    <!-- MAIN CONTENT                  -->
-    <!-- ============================= -->
+    <!-- ========================================= -->
+    <!--  3. MAIN CONTENT (Navigation & Sections)  -->
+    <!-- ========================================= -->
     <main id="main-content" class="main-content">
-        <!-- Main website content will go here -->
-        <section class="hero-placeholder">
-            <h2 class="font-primary" style="font-size: var(--text-hero-title); text-align: center; padding: 2rem;">
-                Welcome
-            </h2>
-            <p style="text-align: center; font-size: var(--text-body); max-width: 600px; margin: 0 auto; padding: 0 1.5rem 4rem;">
-                We are so excited to celebrate this special day with you. More details coming soon.
-            </p>
-        </section>
+        
+        <!-- Navigation Header -->
+        <header class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-outline-variant/30 bg-surface/80">
+            <nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-7xl mx-auto h-20">
+                <div class="font-headline-md text-headline-md text-primary font-bold">Jona & Rey</div>
+                <div class="hidden md:flex gap-md items-center">
+                    <a class="font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#story">Our Story</a>
+                    <a class="font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#details">Details</a>
+                    <a class="font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#gallery">Gallery</a>
+                    <a class="font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#info">Event Info</a>
+                    <a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b-2 border-primary pb-1 font-semibold" href="#rsvp">RSVP</a>
+                </div>
+                <!-- Hamburger menu button for mobile layout -->
+                <button id="mobile-menu-btn" class="md:hidden text-primary flex items-center justify-center p-2" aria-label="Open navigation menu">
+                    <span class="material-symbols-outlined text-[28px]">menu</span>
+                </button>
+                <button class="hidden md:block bg-primary text-on-primary px-md py-sm font-label-md uppercase tracking-widest rounded-lg hover:opacity-90 transition-opacity">
+                    Save the Date
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Sections Wrapper -->
+        <div class="sections-wrapper">
+            <!-- 3.1. Hero Section -->
+            <section id="hero" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <img
+                        alt="Jona and Rey — Wedding Hero"
+                        class="w-full h-full object-cover object-center"
+                        src="assets/hero-wedding.png"
+                    />
+                    <div class="absolute inset-0 hero-gradient"></div>
+                </div>
+                <div class="relative z-10 text-center px-margin-mobile">
+                    <p class="font-label-md text-label-md uppercase tracking-widest text-primary mb-md font-semibold drop-shadow-sm">We Are Getting Married</p>
+                    <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-lg drop-shadow-sm">Jona &amp; Rey</h1>
+                    <p class="font-body-lg text-body-lg text-secondary italic max-w-xl mx-auto drop-shadow-sm">"Two souls, one heart, a journey that starts today and lasts forever."</p>
+                    <div class="mt-xl">
+                        <span class="material-symbols-outlined text-primary-container animate-bounce text-[32px]">expand_more</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.2. Our Story Section -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto" id="story">
+                <div class="text-center mb-xl">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-md">Our Story</h2>
+                    <div class="w-12 h-1 bg-primary/30 mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-xl items-center">
+                    <div class="relative aspect-[4/5] bg-surface-dim rounded-xl overflow-hidden shadow-soft border border-outline-variant/10">
+                        <img class="w-full h-full object-cover" alt="Rey and Jona in a sun-drenched meadow during golden hour" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlratiNHzx3fzf9yfYztmJ4O6BM87zSW4fQ_ZqRZ1XlTxofLL5oxl3y_jC5gglRSF15OQm87zEG27ndE0ttJFpN-Fx7HyOi8nAZE6CPs1RUIe9oHZsLkNUmJVQPr7N8S41E5vMxV7D183T_Gv0zKA5UCGRze7k8IOE_eyuLh8Obl7F446uLywsb_AxSz3ZmGfcT-S8Xxdiyxv0obDfkQ0wwvErG9OgrjpstDf4JOzqWIUeyMEgxKQDAa-WSe5gVrXKNcZkY9PFlpU"/>
+                    </div>
+                    <div class="space-y-md">
+                        <h3 class="font-headline-md text-headline-md text-primary">How We Met</h3>
+                        <p class="text-on-surface-variant font-body-md leading-relaxed">
+                            It started with a shared coffee and a conversation that never seemed to end. Jona was captivated by Rey's quiet strength, while Rey found a home in Jona's radiant laughter. 
+                        </p>
+                        <p class="text-on-surface-variant font-body-md leading-relaxed">
+                            Through seasons of growth, travel, and quiet afternoons, we discovered that our best versions were the ones we brought out in each other. What began as a simple meeting evolved into a beautiful partnership built on trust, respect, and an ever-deepening love.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.3. The Proposal Section -->
+            <section class="py-xl bg-surface-container-low px-margin-mobile md:px-margin-desktop" id="proposal">
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex flex-col md:flex-row-reverse gap-xl items-center">
+                        <div class="w-full md:w-1/2 relative flex justify-center">
+                            <div class="aspect-square w-full max-w-sm bg-surface-variant rounded-full overflow-hidden p-md border border-outline-variant/20 shadow-soft">
+                                <img class="w-full h-full object-cover rounded-full" alt="Engagement ring with lavender and dusty blue ribbons" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4iz-MgQ_w_UjnLufplt1KGMeyJPoISRFwmXFnlQO4yzTrZU5o1rmZseGqzG0R0o4_3dcpW4o2_dHOuejmOUwtauLCgrd1Wwrg59HMTMqZBAvrRDUPC-euKIuKhGf6d3N6D2S-tRWE5y3ctOGC__d42AOLLv_dz0LbtLr55ONtbVzbsjLcHjX6mX3kZXQ0j4xNwuesa8uRxhVOb1grGa6_y5hcTQjifPBM_lmav9koNMHG3d3tam8PLGS6mQ270jYU8hzL-fxfYGQ"/>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 space-y-md">
+                            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">The Moment</span>
+                            <h2 class="font-headline-lg text-headline-lg text-primary">The Proposal</h2>
+                            <p class="text-on-surface-variant font-body-md italic border-l-4 border-primary/30 pl-md py-2 bg-white/40 rounded-r-lg">
+                                "Under the starlit sky of our favorite coastal town, he asked, and she said 'Finally!'"
+                            </p>
+                            <p class="text-on-surface-variant font-body-md leading-relaxed">
+                                Rey planned a weekend getaway that felt like any other, but as the sun dipped below the horizon, he led Jona to a private terrace overlooking the ocean. With trembling hands and a heart full of promises, he got down on one knee. It wasn't just a question; it was the start of our forever.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.4. Wedding Details (New 4-Column Grid Dashboard) -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop bg-white border-y border-outline-variant/20" id="details">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-xl">
+                        <h2 class="font-headline-lg text-headline-lg text-primary mb-md">Wedding Details</h2>
+                        <div class="w-12 h-1 bg-primary/30 mx-auto"></div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+                        <!-- Date Card -->
+                        <div class="bg-surface-container-low p-md rounded-xl shadow-soft border border-outline-variant/10 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-sm text-primary">
+                                <i data-lucide="calendar" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="font-label-md text-primary uppercase tracking-widest mb-xs">When</h3>
+                            <p class="font-body-md text-on-surface font-semibold">December 28, 2026</p>
+                            <p class="font-label-sm text-secondary uppercase tracking-wider mt-1 font-medium">3:00 PM Ceremony</p>
+                        </div>
+                        <!-- Location Card -->
+                        <div class="bg-surface-container-low p-md rounded-xl shadow-soft border border-outline-variant/10 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-sm text-primary">
+                                <i data-lucide="map-pin" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="font-label-md text-primary uppercase tracking-widest mb-xs">Where</h3>
+                            <p class="font-body-md text-on-surface font-semibold">The Glass Pavilion</p>
+                            <p class="font-label-sm text-secondary uppercase tracking-wider mt-1 font-medium">Coastal Estates, CA</p>
+                        </div>
+                        <!-- Dress Code Card -->
+                        <div class="bg-surface-container-low p-md rounded-xl shadow-soft border border-outline-variant/10 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-sm text-primary">
+                                <i data-lucide="shirt" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="font-label-md text-primary uppercase tracking-widest mb-xs">Dress Code</h3>
+                            <p class="font-body-md text-on-surface font-semibold">Formal Attire</p>
+                            <p class="font-label-sm text-secondary uppercase tracking-wider mt-1 font-medium">Dusty Blue, Slate, Cream</p>
+                        </div>
+                        <!-- Registry Card -->
+                        <div class="bg-surface-container-low p-md rounded-xl shadow-soft border border-outline-variant/10 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-sm text-primary">
+                                <i data-lucide="gift" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="font-label-md text-primary uppercase tracking-widest mb-xs">Registry</h3>
+                            <p class="font-body-md text-on-surface font-semibold">Honeymoon Fund</p>
+                            <p class="font-label-sm text-secondary uppercase tracking-wider mt-1 font-medium">Monetary Contributions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.5. Entourage (Wedding Party) Section -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop" id="party">
+                <div class="text-center mb-xl">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-md">The Wedding Party</h2>
+                    <p class="font-label-md text-label-md uppercase tracking-widest text-secondary font-semibold">Our Loved Ones</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-md max-w-6xl mx-auto">
+                    <!-- Maid of Honor -->
+                    <div class="group">
+                        <div class="aspect-[3/4] bg-surface-dim overflow-hidden rounded-lg mb-sm shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Elena Gilbert - Maid of Honor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKe9dT62Qgtmam-XJ8TFcbmWEphAPly_X2S5kxakaS1bzHszQqhbIpB4EcrKuVkpIKJYD1_CDUYF8hyoxkkvjIHba1noYNmaOxh3DgqRTi3D_aDDqu-992D77EL7RKiS8dJ79NQj8DpRGnxHZpELO9m9QCCv0gJ5YC-Q_RaUTYQvz1zE_OneoFEvxzDPMNCqiZQQNoUTR9Hx2LkoOX41Rn1Le5bOVG88buRNka-R6r-q-LDTqEyY7lNx-yNhCWFguS_tGMY3en4T8"/>
+                        </div>
+                        <h4 class="font-label-md text-label-md text-primary text-center">Elena Gilbert</h4>
+                        <p class="font-label-sm text-label-sm text-secondary text-center uppercase tracking-tighter">Maid of Honor</p>
+                    </div>
+                    <!-- Best Man -->
+                    <div class="group">
+                        <div class="aspect-[3/4] bg-surface-dim overflow-hidden rounded-lg mb-sm shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Marcus Thorne - Best Man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE8lavNcq0hpReHOBL2DSwCDeV_W8icB1_FjZEtZHvid-CipYSNr8twOEoqlldNMEzUU-b9i5L5nqxgjPB8c5rpES0OLJjOTzSfo_ZhJazaVFcLm4jGKGGSwgg4dCRrr7ZVQg4bdBcuQKwRyqqr_imlcTNBSclki56n6twYel_8cF4s1acPAjbq6ua_rYKTWZehE9lucvWsWqdZ6--qPnfHhg1t5wc3rFwi-ZamYYoiCRSN-jAzJ8I1rFl4BTZYdk16-tJoobhA5E"/>
+                        </div>
+                        <h4 class="font-label-md text-label-md text-primary text-center">Marcus Thorne</h4>
+                        <p class="font-label-sm text-label-sm text-secondary text-center uppercase tracking-tighter">Best Man</p>
+                    </div>
+                    <!-- Bridesmaid -->
+                    <div class="group">
+                        <div class="aspect-[3/4] bg-surface-dim overflow-hidden rounded-lg mb-sm shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Sophia Chen - Bridesmaid" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNyxnPf4C2YnIDcTdkSlPMLdshxxhp8ZgYij_-gt9lxS8-3g8GDYw_QDJNT9rxe-QaATGD_J_mN87eNJsShSUI4n4pBZ9MDnY4DqltUfAQkcNYX2zwfEi4qwN3AMLJ5C78LkYt2Rojx-GIPgTDSe8PEJVLOs6OgsjYndce14hVLd6A_0f3TClfwrb8JmY6qL4TZTUeq2Hwr0ZyIiWUJ9fu-wP3Lf3doL3gO_xHGP-s7cyP1P4u-_Bq0eWe2CkDw1X2O3IatbBSiEo"/>
+                        </div>
+                        <h4 class="font-label-md text-label-md text-primary text-center">Sophia Chen</h4>
+                        <p class="font-label-sm text-label-sm text-secondary text-center uppercase tracking-tighter">Bridesmaid</p>
+                    </div>
+                    <!-- Groomsman -->
+                    <div class="group">
+                        <div class="aspect-[3/4] bg-surface-dim overflow-hidden rounded-lg mb-sm shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="David Miller - Groomsman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPt1-mQUVFoRsjMKJxad4Xo1YKvRV3im3j2X02gqru-24_yIJ_47w2kTedvdxoTpmFzj5_ZFCin5P5RafCswR--ygDC5GVjCSo5ZK5RLU2VRQ5D-tkpS4Qg_c7PHRIBSgqIs5QekixrOWdVIS9O5MYgVePkQ2s5XPRJ5fobeXA9MMjKT2CRwvl3A8y4f70OicMFodhdWiU31_9psQ2agsfoKv4Oq0SX5ZcjUqy4_lXneEHSNy_vppfRGd_ztYVe0r96VQpp08J1B4"/>
+                        </div>
+                        <h4 class="font-label-md text-label-md text-primary text-center">David Miller</h4>
+                        <p class="font-label-sm text-label-sm text-secondary text-center uppercase tracking-tighter">Groomsman</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.6. Timeline Section (Schedule) -->
+            <section class="py-xl bg-surface-container-low px-margin-mobile md:px-margin-desktop border-y border-outline-variant/10" id="info">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-xl">
+                        <h2 class="font-headline-lg text-headline-lg text-primary mb-md">The Schedule</h2>
+                        <p class="font-body-md text-secondary">A day of celebration and joy</p>
+                    </div>
+                    <div class="relative space-y-lg before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-outline-variant/30">
+                        <!-- Item 1: Ceremony -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-background text-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow-soft">
+                                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-md rounded-xl bg-surface-bright border border-outline-variant/10 shadow-soft transition-transform duration-300 hover:scale-[1.02]">
+                                <div class="flex items-center justify-between space-x-2 mb-1">
+                                    <div class="font-label-md text-primary uppercase">Ceremony</div>
+                                    <time class="font-label-sm text-primary font-semibold">3:00 PM</time>
+                                </div>
+                                <div class="text-on-surface-variant text-sm font-medium">The Glass Chapel, Main Hall</div>
+                            </div>
+                        </div>
+                        <!-- Item 2: Cocktail Hour -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-background text-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow-soft">
+                                <span class="material-symbols-outlined text-[18px]">local_bar</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-md rounded-xl bg-surface-bright border border-outline-variant/10 shadow-soft transition-transform duration-300 hover:scale-[1.02]">
+                                <div class="flex items-center justify-between space-x-2 mb-1">
+                                    <div class="font-label-md text-primary uppercase">Cocktail Hour</div>
+                                    <time class="font-label-sm text-primary font-semibold">4:30 PM</time>
+                                </div>
+                                <div class="text-on-surface-variant text-sm font-medium">The Veranda &amp; Gardens</div>
+                            </div>
+                        </div>
+                        <!-- Item 3: Dinner Reception -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-background text-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow-soft">
+                                <span class="material-symbols-outlined text-[18px]">restaurant</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-md rounded-xl bg-surface-bright border border-outline-variant/10 shadow-soft transition-transform duration-300 hover:scale-[1.02]">
+                                <div class="flex items-center justify-between space-x-2 mb-1">
+                                    <div class="font-label-md text-primary uppercase">Reception Dinner</div>
+                                    <time class="font-label-sm text-primary font-semibold">6:00 PM</time>
+                                </div>
+                                <div class="text-on-surface-variant text-sm font-medium">Grand Ballroom</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.7. Detailed Dress Code Section -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-md">Dress Code</h2>
+                    <p class="font-label-md text-label-md uppercase tracking-widest text-secondary mb-xl font-semibold">Formal Attire Details</p>
+                    <div class="grid md:grid-cols-3 gap-lg items-start">
+                        <!-- Palette -->
+                        <div class="space-y-sm p-md bg-white rounded-xl shadow-soft border border-outline-variant/10">
+                            <div class="h-16 w-16 bg-primary/10 mx-auto rounded-full flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[30px]">palette</span>
+                            </div>
+                            <h4 class="font-label-md text-primary uppercase">Color Palette</h4>
+                            <div class="flex justify-center gap-2 pt-2">
+                                <div class="w-7 h-7 rounded-full bg-[#6B7C93] shadow-md border border-white" title="Primary Blue"></div>
+                                <div class="w-7 h-7 rounded-full bg-[#AAB7C4] shadow-md border border-white" title="Accent Slate"></div>
+                                <div class="w-7 h-7 rounded-full bg-[#F5F7FA] shadow-md border border-outline-variant" title="Cream"></div>
+                                <div class="w-7 h-7 rounded-full bg-[#2F3A45] shadow-md border border-white" title="Charcoal Text"></div>
+                            </div>
+                        </div>
+                        <!-- Gentlemen -->
+                        <div class="space-y-sm p-md bg-white rounded-xl shadow-soft border border-outline-variant/10">
+                            <div class="h-16 w-16 bg-primary/10 mx-auto rounded-full flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[30px]">man</span>
+                            </div>
+                            <h4 class="font-label-md text-primary uppercase">Gentlemen</h4>
+                            <p class="text-on-surface-variant text-sm leading-relaxed">Formal suit in Charcoal, Navy, Slate, or black. Necktie or bow tie optional but highly encouraged.</p>
+                        </div>
+                        <!-- Ladies -->
+                        <div class="space-y-sm p-md bg-white rounded-xl shadow-soft border border-outline-variant/10">
+                            <div class="h-16 w-16 bg-primary/10 mx-auto rounded-full flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-[30px]">woman</span>
+                            </div>
+                            <h4 class="font-label-md text-primary uppercase">Ladies</h4>
+                            <p class="text-on-surface-variant text-sm leading-relaxed">Floor-length gown or elegant cocktail dress in shades matching the wedding palette. Soft textures welcomed.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.8. Photo Bento Grid Section -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/20" id="gallery">
+                <div class="max-w-7xl mx-auto">
+                    <div class="mb-xl text-center md:text-left">
+                        <h2 class="font-headline-lg text-headline-lg text-primary">Prenup Gallery</h2>
+                        <p class="text-secondary italic">Captured moments before the 'I Do's'</p>
+                    </div>
+                    <!-- Responsive Bento Grid Layout -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-md lg:h-[800px]">
+                        <!-- Big Image -->
+                        <div class="col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 relative group overflow-hidden rounded-xl h-[300px] sm:h-[400px] lg:h-auto shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Jona and Rey styled in modern columned architectural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJim2VM_LoDU9X2RYqGIYrCtJSBNsSUhDW6Qd2HWMCWMBxjGzgUrfRLRKFo-dMDDZOeQMLVsIFCzd1sQuyBkpZqLIACOKeZyYHrYYTkb_2dliKCXAifhR-cYldFKmnMwTucXGskYgYhqfBylGdLzG3Q0rQBauS3sZTAUKvfzarqbz9AQtftzsjmDRr_E5hztFakuvOGe8VAZO00mcE20CUgSnk5usvXY25cb5MC8oJlHJTVAdJuZGRZF97dCfngCY5trRzhWE2qg0"/>
+                        </div>
+                        <!-- Small Image 1 -->
+                        <div class="col-span-1 lg:col-span-1 lg:row-span-1 relative group overflow-hidden rounded-xl h-[200px] sm:h-[250px] lg:h-auto shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Close-up of Jona and Rey holding hands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkVZ5LFxHgpkFDmso3hTmtVwjPybkVoY7EUZj5CADefxveyvdaNekEXSS7ZvIIRn87Os3tMkYXrFbUluAYSXAoYz9lVLt-dXfV0CMm3g8KzKkwxUpgqLl4LatXp_aer49J647Fd8chV23dVxgyW5FPzhw0COiHCGUbyj1VF_unv6WmsHWPcnWwPcMUOc1nEMqyzH67RitgtXbYGLxAXa4NQyUsIlTr7beVTcIFoK_g-mPhSYbsb53GP1b_HIAGRclCxo6K0TtK8Ok"/>
+                        </div>
+                        <!-- Small Image 2 -->
+                        <div class="col-span-1 lg:col-span-1 lg:row-span-1 relative group overflow-hidden rounded-xl h-[200px] sm:h-[250px] lg:h-auto shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Rey looking affectionately at Jona indoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB58e2AZ911Ohaz8NfD1zhfKkdjxDGn8WVeWIxLSpZIbRYChgUkPe9ccXRM2-c6VfSweLwROhrlKlX_yH0TqDr4b8dvupHOpx5AFXzI8i9vOHNQX0HtVUsurVZCJAktRvnjXXisukp-GQtD-NnA3UX3R0zlF0M6IS_PFMiWjznnN1mo-iWCKs-5w8o_alf7jesjif5sWyqZytgOinIadpz5NcURXpyskkz-ROH4cCZHvTHSrVaNSNbfTdWyvOHiLzv5OlQlZ5OjGc8"/>
+                        </div>
+                        <!-- Wide Image -->
+                        <div class="col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-1 relative group overflow-hidden rounded-xl h-[200px] sm:h-[300px] lg:h-auto shadow-soft">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Silhouette of the couple against sunset horizon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHQTl8IrJ7GoqPG2bdz1hBBZCU9pNNTdwJT6ZfSE2JKu__57owCW6kf2R2CWHiCncGUX0AbqDGug78b07vSvjekWen7FOiTtqC3-iyyZzeRP9LEMPmNswls_2fSvEwgcoMXWOif9WLxzJJsDwS5Pl5mAu6-DQt2Gliltg9n32bNff--AEdOgqfV-5hvekhOM3VmJbrBhCjnKyiFTnFrbNWluxpF3Lm8In5GWrHTcrVM18o_gne9LCeNRr2WA9oq066Q8qyz6Hzw_g"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.9. Venue Section -->
+            <section class="py-xl bg-surface px-margin-mobile md:px-margin-desktop">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-xl items-stretch">
+                    <div class="w-full md:w-1/2 space-y-md flex flex-col justify-center">
+                        <h2 class="font-headline-lg text-headline-lg text-primary">The Venue</h2>
+                        <h3 class="font-headline-md text-headline-md text-secondary">The Glass Pavilion</h3>
+                        <p class="text-on-surface-variant font-body-md">
+                            123 Serenity Drive, Coastal Estates<br/>
+                            California, USA
+                        </p>
+                        <div class="py-md border-t border-outline-variant/30">
+                            <p class="font-label-md text-primary mb-2 font-semibold">Parking & Access</p>
+                            <p class="text-on-surface-variant text-sm leading-relaxed">Complimentary valet parking is available at the main pavilion entrance. We kindly ask guests to arrive 15-20 minutes early to be seated comfortably.</p>
+                        </div>
+                        <button class="bg-primary text-on-primary px-md py-sm rounded-lg flex items-center justify-center gap-sm hover:opacity-90 transition-opacity w-fit shadow-soft">
+                            <span class="material-symbols-outlined text-[18px]">directions</span>
+                            Get Directions
+                        </button>
+                    </div>
+                    <!-- Minimal Map Illustration Container -->
+                    <div class="w-full md:w-1/2 min-h-[300px] md:min-h-[400px] rounded-xl overflow-hidden shadow-soft border border-outline-variant/10">
+                        <img class="w-full h-full object-cover" alt="Stylized map illustration showing the Glass Pavilion location" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqMfh4qwbGdCMEYXtE78zpTnJnCWKsrUHWO6qbDlS9f6HxRhgg-AQO_fYE9HhN334QtKjuQcd7bwY_DkyL9VI8mMBqdhMJy8hqDctWjTh08c-4oR0Ouaw7ykDfgpDV_ZgecGMVll6eIuLpkIzMXXxGQQPt5AAmMDvuH-jBOA9940aRpcfbD3GzLZU-146IcIdDm1npfrqktQADmkl4eUOROKKDL1x4RVS-QvcE9vk72eetOgJU6ABc68bDqrQPEdVuYyrIN3LpvDY"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.10. FAQs Section -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/20 max-w-none">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="font-headline-lg text-headline-lg text-primary text-center mb-xl">Common Questions</h2>
+                    <div class="space-y-md">
+                        <!-- FAQ 1 -->
+                        <details class="group bg-white p-md rounded-lg border border-outline-variant/20 shadow-soft">
+                            <summary class="flex justify-between items-center cursor-pointer list-none font-label-md text-primary font-semibold select-none">
+                                Are children invited?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                            </summary>
+                            <p class="mt-md text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-md">
+                                To allow all guests to enjoy an evening of relaxation and celebration, we have chosen for our wedding day to be an adult-only occasion. We thank you for your understanding.
+                            </p>
+                        </details>
+                        <!-- FAQ 2 -->
+                        <details class="group bg-white p-md rounded-lg border border-outline-variant/20 shadow-soft">
+                            <summary class="flex justify-between items-center cursor-pointer list-none font-label-md text-primary font-semibold select-none">
+                                Can I bring a plus one?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                            </summary>
+                            <p class="mt-md text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-md">
+                                Due to venue capacity limits, we can only accommodate the number of guests specifically indicated on your invitation. If you have questions about your invitation card, please contact us.
+                            </p>
+                        </details>
+                        <!-- FAQ 3 -->
+                        <details class="group bg-white p-md rounded-lg border border-outline-variant/20 shadow-soft">
+                            <summary class="flex justify-between items-center cursor-pointer list-none font-label-md text-primary font-semibold select-none">
+                                Is there a wedding gift registry?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                            </summary>
+                            <p class="mt-md text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-md">
+                                Your presence is our greatest gift! If you wish to contribute to our future together, a monetary contribution towards our honeymoon fund would be most appreciated.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.11. RSVP Section -->
+            <section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface" id="rsvp">
+                <div class="max-w-3xl mx-auto bg-white rounded-2xl p-lg shadow-2xl border border-outline-variant/10">
+                    <div class="text-center mb-lg">
+                        <h2 class="font-headline-lg text-headline-lg text-primary mb-md">R.S.V.P.</h2>
+                        <p class="font-body-md text-secondary font-medium">Kindly respond by the 15th of August</p>
+                    </div>
+                    
+                    <!-- RSVP Container -->
+                    <div id="rsvp-container" class="w-full">
+                        <!-- RSVP iframe (controlled via script.js config) -->
+                        <iframe id="rsvp-iframe" class="w-full h-[600px] border-0 rounded-lg hidden" title="Wedding RSVP Form"></iframe>
+                        
+                        <!-- RSVP Coming Soon Placeholder -->
+                        <div id="rsvp-coming-soon" class="flex flex-col items-center justify-center text-center p-xl bg-surface-container-low rounded-xl border border-outline-variant/20">
+                            <div class="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center mb-md text-primary animate-pulse">
+                                <i data-lucide="mail-open" class="w-8 h-8 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="font-headline-md text-primary mb-sm">RSVP Coming Soon</h3>
+                            <p class="text-on-surface-variant font-body-md max-w-md mb-md leading-relaxed">
+                                We are currently putting the final touches on our guest list. The RSVP form will be available here shortly. Thank you for your patience!
+                            </p>
+                            <div class="w-16 h-0.5 bg-primary/30"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-surface-container-low w-full py-xl px-margin-mobile md:px-margin-desktop border-t border-outline-variant/20 mt-xl">
+            <div class="flex flex-col items-center gap-md w-full max-w-7xl mx-auto">
+                <div class="font-headline-md text-headline-md text-primary font-bold">Jona &amp; Rey</div>
+                <div class="flex gap-md">
+                    <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Privacy</a>
+                    <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors font-medium text-sm" href="#">Contact Us</a>
+                </div>
+                <p class="font-body-md text-secondary mt-md text-xs">© 2026 Jona &amp; Rey. Crafted with Love.</p>
+            </div>
+        </footer>
     </main>
+
+    <!-- ========================================= -->
+    <!--  4. RESPONSIVE MOBILE SLIDE-OUT MENU       -->
+    <!-- ========================================= -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-[#2F3A45]/40 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity"></div>
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-72 bg-background z-50 shadow-2xl transform translate-x-full flex flex-col p-lg border-l border-outline-variant/30">
+        <div class="flex justify-end mb-lg">
+            <button id="mobile-menu-close" class="text-primary flex items-center justify-center p-2 hover:opacity-80 transition-opacity" aria-label="Close navigation menu">
+                <span class="material-symbols-outlined text-[30px]">close</span>
+            </button>
+        </div>
+        <div class="flex flex-col gap-md pl-4">
+            <a class="mobile-nav-link font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#story">Our Story</a>
+            <a class="mobile-nav-link font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#details">Details</a>
+            <a class="mobile-nav-link font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#gallery">Gallery</a>
+            <a class="mobile-nav-link font-label-md text-label-md uppercase tracking-widest text-secondary hover:text-primary transition-colors" href="#info">Event Info</a>
+            <a class="mobile-nav-link font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary/20 pb-2 font-semibold" href="#rsvp">RSVP</a>
+            <button class="bg-primary text-on-primary px-md py-sm font-label-md uppercase tracking-widest rounded-lg hover:opacity-90 transition-opacity mt-lg w-full text-center">
+                Save the Date
+            </button>
+        </div>
+    </div>
 
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
