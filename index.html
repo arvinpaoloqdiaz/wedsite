@@ -6,20 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rey & Jona — Coming Soon</title>
   <meta name="description" content="Something beautiful is on its way. Rey & Jona's wedding website is coming soon.">
-
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="assets/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
   <style>
     /* ─── Color Palette ─────────────────────────────────────── */
     :root {
-      --ash-grey:    #B6BBB5;
-      --pale-peach:  #EEDAC9;
+      --ash-grey: #B6BBB5;
+      --pale-peach: #EEDAC9;
       --powder-blue: #B6C7DB;
-      --dusty-blue:  #6E8FB3;
-      --dusk-blue:   #365583;
+      --dusty-blue: #6E8FB3;
+      --dusk-blue: #365583;
       --baltic-blue: #3F618E;
     }
 
@@ -33,13 +41,16 @@
     }
 
     /* ─── Reset & Base ──────────────────────────────────────── */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html, body {
+    html,
+    body {
       height: 100%;
       overflow: hidden;
     }
@@ -60,10 +71,10 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 70% at 90% 5%,  rgba(110,143,179,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1) 0%, rgba(245,238,228,0.85) 100%);
+        radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182, 199, 219, 0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238, 218, 201, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 70% at 90% 5%, rgba(110, 143, 179, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250, 246, 241, 1) 0%, rgba(245, 238, 228, 0.85) 100%);
       z-index: 0;
     }
 
@@ -76,12 +87,34 @@
       opacity: 0.18;
     }
 
-    .corner svg { width: 100%; height: 100%; }
+    .corner svg {
+      width: 100%;
+      height: 100%;
+    }
 
-    .corner--tl { top: -10px;    left: -10px;  transform: rotate(0deg); }
-    .corner--tr { top: -10px;    right: -10px; transform: rotate(90deg); }
-    .corner--bl { bottom: -10px; left: -10px;  transform: rotate(270deg); }
-    .corner--br { bottom: -10px; right: -10px; transform: rotate(180deg); }
+    .corner--tl {
+      top: -10px;
+      left: -10px;
+      transform: rotate(0deg);
+    }
+
+    .corner--tr {
+      top: -10px;
+      right: -10px;
+      transform: rotate(90deg);
+    }
+
+    .corner--bl {
+      bottom: -10px;
+      left: -10px;
+      transform: rotate(270deg);
+    }
+
+    .corner--br {
+      bottom: -10px;
+      right: -10px;
+      transform: rotate(180deg);
+    }
 
     /* ─── Floating Petals ───────────────────────────────────── */
     .petals-canvas {
@@ -103,10 +136,23 @@
     }
 
     @keyframes fall {
-      0%   { transform: translateY(-40px) rotate(0deg)   translateX(0px);  opacity: 0; }
-      5%   { opacity: 0.55; }
-      90%  { opacity: 0.4; }
-      100% { transform: translateY(110vh) rotate(720deg) translateX(60px); opacity: 0; }
+      0% {
+        transform: translateY(-40px) rotate(0deg) translateX(0px);
+        opacity: 0;
+      }
+
+      5% {
+        opacity: 0.55;
+      }
+
+      90% {
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg) translateX(60px);
+        opacity: 0;
+      }
     }
 
     /* ─── Main Card ─────────────────────────────────────────── */
@@ -124,8 +170,15 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ─── Decorative Line ───────────────────────────────────── */
@@ -158,12 +211,19 @@
       width: min(540px, 88vw);
       margin-bottom: 4px;
       animation: floatMono 6s ease-in-out infinite;
-      filter: drop-shadow(0 8px 32px rgba(54,85,131,0.13));
+      filter: drop-shadow(0 8px 32px rgba(54, 85, 131, 0.13));
     }
 
     @keyframes floatMono {
-      0%, 100% { transform: translateY(0px);  }
-      50%       { transform: translateY(-8px); }
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     .monogram-wrap img {
@@ -229,11 +289,15 @@
 
     /* ─── Responsive ─────────────────────────────────────────── */
     @media (max-height: 700px) {
-      .monogram-wrap { width: min(240px, 58vw); }
+      .monogram-wrap {
+        width: min(240px, 58vw);
+      }
     }
 
     @media (max-width: 400px) {
-      .card { padding: 0 16px; }
+      .card {
+        padding: 0 16px;
+      }
     }
   </style>
 </head>
@@ -243,34 +307,34 @@
   <!-- Corner SVG Flourishes -->
   <div class="corner corner--tl" aria-hidden="true">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
-      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
-      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4"/>
-      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
+      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none" />
+      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none" />
+      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4" />
+      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5" />
     </svg>
   </div>
   <div class="corner corner--tr" aria-hidden="true">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
-      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
-      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4"/>
-      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
+      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none" />
+      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none" />
+      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4" />
+      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5" />
     </svg>
   </div>
   <div class="corner corner--bl" aria-hidden="true">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
-      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
-      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4"/>
-      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
+      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none" />
+      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none" />
+      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4" />
+      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5" />
     </svg>
   </div>
   <div class="corner corner--br" aria-hidden="true">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
-      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
-      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4"/>
-      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
+      <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none" />
+      <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none" />
+      <path d="M10 10 L30 10 L10 30 Z" fill="#6E8FB3" opacity="0.4" />
+      <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5" />
     </svg>
   </div>
 
@@ -284,10 +348,7 @@
 
     <!-- Monogram Full -->
     <div class="monogram-wrap" aria-label="Rey and Jona monogram">
-      <img
-        src="assets/monogram/ReyJona-DuskBlue-Monogram.svg"
-        alt="Rey & Jona monogram"
-      >
+      <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" alt="Rey & Jona monogram">
     </div>
 
     <!-- Headline -->
@@ -321,14 +382,14 @@
     ];
 
     function createPetal() {
-      const p       = document.createElement('div');
-      p.className   = 'petal';
-      const size    = 6 + Math.random() * 10;
-      const left    = Math.random() * 100;
-      const dur     = 10 + Math.random() * 18;
-      const delay   = Math.random() * 20;
-      const color   = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
-      const rot     = Math.random() * 360;
+      const p = document.createElement('div');
+      p.className = 'petal';
+      const size = 6 + Math.random() * 10;
+      const left = Math.random() * 100;
+      const dur = 10 + Math.random() * 18;
+      const delay = Math.random() * 20;
+      const color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
+      const rot = Math.random() * 360;
       p.style.cssText = `
         left: ${left}%;
         width: ${size}px;
@@ -346,4 +407,5 @@
   </script>
 
 </body>
+
 </html>
