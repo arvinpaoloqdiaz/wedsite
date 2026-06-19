@@ -155,15 +155,15 @@
 
     /* ─── Monogram ──────────────────────────────────────────── */
     .monogram-wrap {
-      width: min(540px, 88vw);
-      margin-bottom: 4px;
+      width: min(340px, 78vw);
+      margin-bottom: 8px;
       animation: floatMono 6s ease-in-out infinite;
       filter: drop-shadow(0 8px 32px rgba(54,85,131,0.13));
     }
 
     @keyframes floatMono {
-      0%, 100% { transform: translateY(0px);  }
-      50%       { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0px);   }
+      50%       { transform: translateY(-7px);  }
     }
 
     .monogram-wrap img {
@@ -181,19 +181,19 @@
       text-transform: uppercase;
       color: var(--dusty-blue);
       opacity: 0.75;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       animation: fadeUp 1.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* ─── Headline ──────────────────────────────────────────── */
     .headline {
       font-family: 'Tangier', 'Cormorant Garamond', serif;
-      font-size: clamp(56px, 11vw, 96px);
+      font-size: clamp(52px, 10vw, 88px);
       font-weight: normal;
       letter-spacing: 0.04em;
       line-height: 1.05;
       color: var(--dusk-blue);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       animation: fadeUp 1.6s 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -205,14 +205,79 @@
     /* ─── Tagline ────────────────────────────────────────────── */
     .tagline {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(14px, 2.5vw, 18px);
+      font-size: clamp(14px, 2.5vw, 17px);
       font-weight: 300;
       font-style: italic;
       color: var(--dusty-blue);
       letter-spacing: 0.06em;
-      margin-bottom: 38px;
+      margin-bottom: 36px;
       opacity: 0.85;
       animation: fadeUp 1.6s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* ─── Countdown ─────────────────────────────────────────── */
+    .countdown {
+      display: flex;
+      gap: clamp(16px, 4vw, 36px);
+      margin-bottom: 40px;
+      animation: fadeUp 1.6s 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .count-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .count-num {
+      font-family: 'Tangier', 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 7vw, 56px);
+      font-weight: normal;
+      line-height: 1;
+      color: var(--dusk-blue);
+      min-width: 2ch;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .count-num.pop {
+      transform: scale(1.15);
+    }
+
+    .count-num::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--powder-blue), transparent);
+      margin-top: 6px;
+      opacity: 0.7;
+    }
+
+    .count-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dusty-blue);
+      opacity: 0.65;
+    }
+
+    .count-separator {
+      font-family: 'Tangier', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      color: var(--ash-grey);
+      opacity: 0.5;
+      align-self: flex-start;
+      padding-top: clamp(2px, 0.5vw, 6px);
+      line-height: 1.2;
+    }
+
+    /* ─── Bottom Divider ────────────────────────────────────── */
+    .divider-bottom {
+      margin-bottom: 24px;
     }
 
     /* ─── Footer Note ────────────────────────────────────────── */
@@ -220,20 +285,22 @@
       font-family: 'Inter', sans-serif;
       font-size: 10px;
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--dusty-blue);
       opacity: 0.5;
-      animation: fadeUp 1.6s 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: fadeUp 1.6s 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     /* ─── Responsive ─────────────────────────────────────────── */
     @media (max-height: 700px) {
-      .monogram-wrap { width: min(240px, 58vw); }
+      .monogram-wrap { width: min(220px, 55vw); }
+      .countdown { margin-bottom: 24px; }
     }
 
     @media (max-width: 400px) {
       .card { padding: 0 16px; }
+      .count-separator { display: none; }
     }
   </style>
 </head>
@@ -241,7 +308,7 @@
 <body>
 
   <!-- Corner SVG Flourishes -->
-  <div class="corner corner--tl" aria-hidden="true">
+  <div class="corner corner--tl">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
       <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
@@ -249,7 +316,7 @@
       <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
     </svg>
   </div>
-  <div class="corner corner--tr" aria-hidden="true">
+  <div class="corner corner--tr">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
       <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
@@ -257,7 +324,7 @@
       <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
     </svg>
   </div>
-  <div class="corner corner--bl" aria-hidden="true">
+  <div class="corner corner--bl">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
       <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
@@ -265,7 +332,7 @@
       <circle cx="10" cy="10" r="3" fill="#365583" opacity="0.5"/>
     </svg>
   </div>
-  <div class="corner corner--br" aria-hidden="true">
+  <div class="corner corner--br">
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 190 Q10 10 190 10" stroke="#6E8FB3" stroke-width="1" fill="none"/>
       <path d="M30 190 Q30 30 190 30" stroke="#B6C7DB" stroke-width="0.7" fill="none"/>
@@ -275,7 +342,7 @@
   </div>
 
   <!-- Floating Petals -->
-  <div class="petals-canvas" id="petalsCanvas" aria-hidden="true"></div>
+  <div class="petals-canvas" id="petalsCanvas"></div>
 
   <!-- Main Content -->
   <main class="card" role="main">
@@ -285,8 +352,9 @@
     <!-- Monogram Full -->
     <div class="monogram-wrap" aria-label="Rey and Jona monogram">
       <img
-        src="assets/monogram/ReyJona-DuskBlue-Monogram.svg"
-        alt="Rey & Jona monogram"
+        src="assets/monogram-full/ReyJona-DuskBlue-Full.svg"
+        alt="Rey & Jona full monogram"
+        id="monogramImg"
       >
     </div>
 
@@ -296,39 +364,119 @@
     <!-- Tagline -->
     <p class="tagline">Something beautiful is being crafted, just for you.</p>
 
-    <!-- Divider -->
+    <!-- Top Divider -->
     <div class="divider" role="presentation">
       <span class="divider-line"></span>
       <span class="divider-diamond"></span>
       <span class="divider-line"></span>
     </div>
 
+    <!-- Countdown -->
+    <div class="countdown" id="countdown" aria-label="Countdown timer">
+      <div class="count-block">
+        <span class="count-num" id="cd-days">00</span>
+        <span class="count-label">Days</span>
+      </div>
+      <span class="count-separator" aria-hidden="true">·</span>
+      <div class="count-block">
+        <span class="count-num" id="cd-hours">00</span>
+        <span class="count-label">Hours</span>
+      </div>
+      <span class="count-separator" aria-hidden="true">·</span>
+      <div class="count-block">
+        <span class="count-num" id="cd-mins">00</span>
+        <span class="count-label">Minutes</span>
+      </div>
+      <span class="count-separator" aria-hidden="true">·</span>
+      <div class="count-block">
+        <span class="count-num" id="cd-secs">00</span>
+        <span class="count-label">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Bottom Divider -->
+    <div class="divider divider-bottom" role="presentation">
+      <span class="divider-line"></span>
+      <span class="divider-diamond"></span>
+      <span class="divider-line"></span>
+    </div>
+
     <!-- Footer Note -->
-    <p class="footer-note">Rey &amp; Jona &nbsp;·&nbsp; 2026</p>
+    <p class="footer-note" id="wedding-date-display">Rey &amp; Jona · 2026</p>
 
   </main>
 
   <script>
-    /* ── Floating Petals ─────────────────────────────────────── */
+    /* ── Countdown Timer ──────────────────────────────────────
+       Set your wedding date here (YYYY, MM-1, DD, HH, MM, SS)
+       Month is 0-indexed: Jan=0, Dec=11
+    ──────────────────────────────────────────────────────── */
+    const WEDDING_DATE = new Date(2026, 11, 25, 17, 0, 0); // Dec 25, 2026 at 5:00 PM
+
+    const elDays  = document.getElementById('cd-days');
+    const elHours = document.getElementById('cd-hours');
+    const elMins  = document.getElementById('cd-mins');
+    const elSecs  = document.getElementById('cd-secs');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function popAnimate(el) {
+      el.classList.remove('pop');
+      void el.offsetWidth; // reflow
+      el.classList.add('pop');
+      setTimeout(() => el.classList.remove('pop'), 320);
+    }
+
+    let prevSecs = -1, prevMins = -1, prevHours = -1, prevDays = -1;
+
+    function tick() {
+      const now  = new Date();
+      const diff = WEDDING_DATE - now;
+
+      if (diff <= 0) {
+        elDays.textContent  = '00';
+        elHours.textContent = '00';
+        elMins.textContent  = '00';
+        elSecs.textContent  = '00';
+        return;
+      }
+
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000)  / 60000);
+      const s = Math.floor((diff % 60000)    / 1000);
+
+      if (s !== prevSecs)  { elSecs.textContent  = pad(s); popAnimate(elSecs);  prevSecs  = s; }
+      if (m !== prevMins)  { elMins.textContent  = pad(m); popAnimate(elMins);  prevMins  = m; }
+      if (h !== prevHours) { elHours.textContent = pad(h); popAnimate(elHours); prevHours = h; }
+      if (d !== prevDays)  { elDays.textContent  = pad(d); popAnimate(elDays);  prevDays  = d; }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    /* ── Falling Petals ───────────────────────────────────── */
     const canvas = document.getElementById('petalsCanvas');
 
     const PETAL_COLORS = [
-      'rgba(182,199,219,0.65)',
-      'rgba(238,218,201,0.70)',
-      'rgba(182,187,181,0.55)',
-      'rgba(110,143,179,0.45)',
-      'rgba(255,255,255,0.50)',
+      'rgba(182,199,219,0.65)',   // powder blue
+      'rgba(238,218,201,0.70)',   // pale peach
+      'rgba(182,187,181,0.55)',   // ash grey
+      'rgba(110,143,179,0.45)',   // dusty blue
+      'rgba(255,255,255,0.50)',   // white
     ];
 
     function createPetal() {
-      const p       = document.createElement('div');
-      p.className   = 'petal';
+      const p = document.createElement('div');
+      p.className = 'petal';
+
       const size    = 6 + Math.random() * 10;
       const left    = Math.random() * 100;
       const dur     = 10 + Math.random() * 18;
       const delay   = Math.random() * 20;
       const color   = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
       const rot     = Math.random() * 360;
+
       p.style.cssText = `
         left: ${left}%;
         width: ${size}px;
@@ -342,6 +490,7 @@
       canvas.appendChild(p);
     }
 
+    // Generate petals
     for (let i = 0; i < 28; i++) createPetal();
   </script>
 
