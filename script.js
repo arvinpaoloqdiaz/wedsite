@@ -343,6 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const color = circle.style.background || circle.style.backgroundColor;
                 const colorName = circle.getAttribute('title');
                 
+                // Manage active border states
+                colorCircles.forEach(c => {
+                    c.classList.remove('border-dusty-blue', 'scale-110');
+                    c.classList.add('border-white');
+                });
+                circle.classList.remove('border-white');
+                circle.classList.add('border-dusty-blue', 'scale-110');
+
                 dressCodeSection.style.backgroundColor = color;
                 
                 if (dressCodeBgText) {
@@ -358,6 +366,163 @@ document.addEventListener('DOMContentLoaded', () => {
                     dressCodeSection.classList.remove('is-dark');
                 }
             });
+        });
+    }
+
+    // ============================================================
+    //  11. RSVP Form Logic
+    // ============================================================
+    const RSVP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOV9G2QrKPM8LomFp19c5djZWGzxWEPitF4dXwd76rEi73alzCCf0SHIIU5exduYqOWA/exec";
+
+    const verificationForm = document.getElementById('verificationForm');
+    const successModal = document.getElementById('successModal');
+    const rsvpForm = document.getElementById('rsvpForm');
+    const verifyBtn = document.getElementById('verifyBtn');
+    const codeInput = document.getElementById('invitationCode');
+    const verifyLoader = document.getElementById('verifyLoader');
+    const verifyError = document.getElementById('verifyError');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitLoader = document.getElementById('submitLoader');
+
+    async function verifyCode(code) {
+        if (!code) { verifyError.innerText = "Please enter a code."; return; }
+
+        verifyBtn.style.display = 'none';
+        verifyLoader.classList.remove('hidden');
+        verifyError.innerText = "";
+
+        const details = { action: 'verify', code: code };
+        const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
+
+        try {
+            const response = await fetch(RSVP_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'cors',
+                redirect: 'follow',
+                body: formBody,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+            });
+            const result = await response.json();
+            if (result.status === "success") {
+                document.getElementById('finalCode').value = code;
+                document.getElementById('guestName').value = result.name;
+                document.getElementById('welcomeMessage').innerText = result.message;
+                
+                // Smooth transition using GSAP
+                const cardWrapper = document.getElementById('rsvpCardWrapper');
+                const initialHeight = cardWrapper.offsetHeight;
+                
+                // Lock height before changing contents
+                cardWrapper.style.height = initialHeight + 'px';
+                
+                gsap.to(verificationForm, { 
+                    opacity: 0, 
+                    duration: 0.3, 
+                    onComplete: () => {
+                        verificationForm.classList.add('hidden');
+                        
+                        // Show next form instantly (but transparent) to calculate new height
+                        rsvpForm.classList.remove('hidden');
+                        rsvpForm.style.opacity = '0';
+                        
+                        // Measure target height by temporarily setting to auto
+                        cardWrapper.style.height = 'auto';
+                        const targetHeight = cardWrapper.offsetHeight;
+                        
+                        // Put explicit height back to start animation
+                        cardWrapper.style.height = initialHeight + 'px';
+                        
+                        // Animate height smoothly
+                        gsap.to(cardWrapper, {
+                            height: targetHeight,
+                            duration: 0.6,
+                            ease: "power3.inOut",
+                            onComplete: () => {
+                                cardWrapper.style.height = 'auto'; // restore responsiveness
+                                gsap.to(rsvpForm, { opacity: 1, duration: 0.4 });
+                            }
+                        });
+                    }
+                });
+
+            } else {
+                verifyError.innerText = result.message;
+                verifyBtn.style.display = 'inline-block';
+            }
+        } catch (error) {
+            console.error("Verification Fetch Error:", error);
+            verifyError.innerText = "Connection error. Please try again.";
+            verifyBtn.style.display = 'inline-block';
+        } finally {
+            verifyLoader.classList.add('hidden');
+        }
+    }
+
+    if (verificationForm) {
+        verificationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            verifyCode(codeInput.value.trim());
+        });
+    }
+
+    // Auto-verify if ?code= is in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlCode = urlParams.get('code');
+    if (urlCode && codeInput && verificationForm) {
+        codeInput.value = urlCode;
+        // Scroll to RSVP section
+        const rsvpSection = document.getElementById('rsvp');
+        if (rsvpSection) {
+            setTimeout(() => rsvpSection.scrollIntoView({ behavior: 'smooth' }), 500);
+        }
+        verifyCode(urlCode);
+    }
+
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.style.display = 'none';
+            submitLoader.classList.remove('hidden');
+
+            const payload = {
+                action: "rsvp",
+                code: document.getElementById('finalCode').value,
+                name: document.getElementById('guestName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                attendance: document.querySelector('input[name="attendance"]:checked').value,
+                message: document.getElementById('message').value
+            };
+
+            const formBody = Object.keys(payload).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(payload[key])).join('&');
+
+            try {
+                const response = await fetch(RSVP_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    redirect: 'follow',
+                    body: formBody,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
+                });
+                const result = await response.json();
+                if (result.status === "success") {
+                    successModal.classList.remove('hidden');
+                    successModal.classList.remove('opacity-0', 'pointer-events-none');
+                    if (payload.attendance === "Joyfully Accepts" && typeof confetti === 'function') {
+                        confetti({ startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999, particleCount: 150, origin: { x: 0.5, y: 0.5 } });
+                    }
+                    setTimeout(() => { window.location.reload(); }, 60000);
+                } else {
+                    alert("Error: " + result.message);
+                    submitBtn.style.display = 'inline-block';
+                }
+            } catch (error) {
+                console.error("RSVP Submission Error:", error);
+                alert("Submission failed. Please check your connection.");
+                submitBtn.style.display = 'inline-block';
+            } finally {
+                submitLoader.classList.add('hidden');
+            }
         });
     }
 

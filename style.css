@@ -54,18 +54,15 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
 body {
-  background: linear-gradient(135deg, #ffffff 0%, var(--color-dusty-blue) 100%);
-  background-attachment: fixed;
+  background: #e9eef2;
   color: var(--color-text);
   font-family: var(--font-secondary);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
 /* Headings use Tangier */
@@ -111,6 +108,15 @@ h1, h2, h3, .font-tangier {
   0%, 100% { transform: scale(1);     opacity: 1; }
   50%       { transform: scale(1.05); opacity: 0.85; }
 }
+
+@keyframes floatPetal {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+
 
 /* Elegant loader animation below monogram */
 .loading__spinner {
@@ -274,13 +280,13 @@ h1, h2, h3, .font-tangier {
 
 /* Scrolled state (sticky) */
 .navbar--scrolled {
-  background-color: rgba(110, 143, 179, 0.95) !important; /* dusty-blue */
+  background-color: var(--color-surface) !important;
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-nav) !important;
 }
 .navbar--scrolled .nav-link,
 .navbar--scrolled .nav-brand {
-  color: var(--color-dusk-blue) !important;
+  color: var(--color-dusty-blue) !important;
   text-shadow: none;
 }
 .navbar--scrolled .nav-logo {
@@ -316,10 +322,10 @@ h1, h2, h3, .font-tangier {
 .hero-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(110, 143, 179, 0.4) 0%, /* dusty-blue */
-    rgba(110, 143, 179, 0.6) 40%,
-    rgba(110, 143, 179, 0.95) 95%,
-    rgba(110, 143, 179, 1) 100%
+    rgba(110, 143, 179, 0.3) 0%,
+    rgba(110, 143, 179, 0.5) 40%,
+    rgba(233, 238, 242, 0.9) 95%,
+    #e9eef2 100%
   );
 }
 
@@ -359,7 +365,7 @@ h1, h2, h3, .font-tangier {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-pale-peach);
+  color: var(--color-dusk-blue);
   margin-top: 0.5rem;
 }
 
@@ -391,12 +397,8 @@ h1, h2, h3, .font-tangier {
 }
 
 /* Subtle elegant gradient backgrounds */
-.bg-gradient-peach {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(238, 218, 201, 0.15) 100%);
-}
-.bg-gradient-blue {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(182, 199, 219, 0.15) 100%);
-}
+
+
 
 /* =========================================
    RESPONSIVE DESIGN
@@ -438,4 +440,79 @@ h1, h2, h3, .font-tangier {
 }
 #dress-code-bg-text {
   opacity: 0.05 !important;
+}
+
+/* Alternating section background */
+.bg-alt-tint {
+  background-color: #dfe6ec;
+}
+
+
+/* RSVP Loader */
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--color-dusty-blue);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+/* RSVP Clean Underline Inputs */
+.rsvp-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent !important;
+  outline: none;
+  transition: border-color 0.3s ease;
+  border-radius: 0;
+}
+
+.rsvp-input:focus,
+.rsvp-textarea:focus,
+#invitationCode:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#invitationCode:focus {
+  border-bottom-color: var(--color-dusk-blue) !important;
+}
+
+.rsvp-input:focus {
+  border-bottom-color: #ccc !important;
+}
+
+.rsvp-input::placeholder {
+  color: #aab4be;
+}
+
+/* Fix browser autofill styling */
+.rsvp-input:-webkit-autofill,
+.rsvp-input:-webkit-autofill:hover, 
+.rsvp-input:-webkit-autofill:focus, 
+.rsvp-input:-webkit-autofill:active,
+#invitationCode:-webkit-autofill,
+#invitationCode:-webkit-autofill:hover,
+#invitationCode:-webkit-autofill:focus,
+#invitationCode:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-baltic-blue) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* RSVP Textarea (bordered box) */
+.rsvp-textarea {
+  border: 1px solid #ccc;
+  background-color: transparent !important;
+  outline: none;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.rsvp-textarea:focus {
+  border-color: #ccc !important;
+}
+
+.rsvp-textarea::placeholder {
+  color: #aab4be;
 }
