@@ -329,4 +329,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initFloatingPetals();
+
+    // ============================================================
+    //  10. Dress Code Dynamic Background
+    // ============================================================
+    const dressCodeSection = document.getElementById('dress-code');
+    const dressCodeBgText = document.getElementById('dress-code-bg-text');
+    const colorCircles = document.querySelectorAll('.color-circle');
+
+    if (dressCodeSection && colorCircles.length > 0) {
+        colorCircles.forEach(circle => {
+            circle.addEventListener('click', () => {
+                const color = circle.style.background || circle.style.backgroundColor;
+                const colorName = circle.getAttribute('title');
+                
+                dressCodeSection.style.backgroundColor = color;
+                
+                if (dressCodeBgText) {
+                    dressCodeBgText.textContent = colorName;
+                }
+                
+                // If the color is dark (Dusk Blue, Baltic Blue, Dusty Blue), make text white
+                const isDark = ['Dusk Blue', 'Baltic Blue', 'Dusty Blue'].includes(colorName);
+                
+                if (isDark) {
+                    dressCodeSection.classList.add('is-dark');
+                } else {
+                    dressCodeSection.classList.remove('is-dark');
+                }
+            });
+        });
+    }
+
 });

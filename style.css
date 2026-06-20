@@ -25,9 +25,9 @@
   --color-primary:     var(--color-dusk-blue);
   --color-secondary:   var(--color-baltic-blue);
   --color-accent:      var(--color-dusty-blue);
-  --color-background:  #ffffff;                     /* Clean white background */
-  --color-surface:     #ffffff;                     /* White cards */
-  --color-surface-alt: #fcfbfa;                     /* Very subtle off-white */
+  --color-background:  transparent;                     /* Clean white background */
+  --color-surface:     rgba(255, 255, 255, 0.65);                     /* White cards */
+  --color-surface-alt: rgba(255, 255, 255, 0.4);                     /* Very subtle off-white */
   --color-text:        var(--color-dusk-blue);
   
   /* Typography */
@@ -58,9 +58,10 @@ html {
 }
 
 body {
-  background-color: var(--color-background);
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-dusty-blue) 100%);
+  background-attachment: fixed;
   color: var(--color-text);
-  font-family: var(--font-secondary); /* Elegant serif for body */
+  font-family: var(--font-secondary);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -273,7 +274,7 @@ h1, h2, h3, .font-tangier {
 
 /* Scrolled state (sticky) */
 .navbar--scrolled {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: rgba(110, 143, 179, 0.95) !important; /* dusty-blue */
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow-nav) !important;
 }
@@ -299,7 +300,7 @@ h1, h2, h3, .font-tangier {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background-color: var(--color-dusty-blue);
+  background-color: var(--color-pale-peach);
   transition: width 0.3s ease;
 }
 .nav-link.active::after {
@@ -315,10 +316,10 @@ h1, h2, h3, .font-tangier {
 .hero-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(54, 85, 131, 0.4) 0%,
-    rgba(54, 85, 131, 0.1) 40%,
-    rgba(255, 255, 255, 0.9) 95%,
-    rgba(255, 255, 255, 1) 100%
+    rgba(110, 143, 179, 0.4) 0%, /* dusty-blue */
+    rgba(110, 143, 179, 0.6) 40%,
+    rgba(110, 143, 179, 0.95) 95%,
+    rgba(110, 143, 179, 1) 100%
   );
 }
 
@@ -333,9 +334,9 @@ h1, h2, h3, .font-tangier {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1rem clamp(0.8rem, 2vw, 1.5rem);
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
@@ -345,7 +346,7 @@ h1, h2, h3, .font-tangier {
 .countdown-val {
   font-family: var(--font-primary);
   font-size: clamp(32px, 5vw, 48px);
-  color: var(--color-dusk-blue);
+  color: #ffffff;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   display: inline-block;
@@ -358,7 +359,7 @@ h1, h2, h3, .font-tangier {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-dusty-blue);
+  color: var(--color-pale-peach);
   margin-top: 0.5rem;
 }
 
@@ -379,11 +380,11 @@ h1, h2, h3, .font-tangier {
   z-index: 0;
 }
 
+/* Second declaration removed or merged */
 .elegant-card {
-  background: #ffffff;
-  border: 1px solid rgba(238, 218, 201, 0.5); /* Pale peach border */
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -391,10 +392,10 @@ h1, h2, h3, .font-tangier {
 
 /* Subtle elegant gradient backgrounds */
 .bg-gradient-peach {
-  background: linear-gradient(135deg, #ffffff 0%, rgba(238, 218, 201, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(238, 218, 201, 0.15) 100%);
 }
 .bg-gradient-blue {
-  background: linear-gradient(135deg, #ffffff 0%, rgba(182, 199, 219, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(182, 199, 219, 0.15) 100%);
 }
 
 /* =========================================
@@ -418,4 +419,23 @@ h1, h2, h3, .font-tangier {
   .landing__names { font-size: 56px; }
   .hero-countdown-unit { padding: 0.5rem; }
   .countdown-val { font-size: 28px; }
+}
+
+
+/* Dress Code Dynamic Styles */
+#dress-code.is-dark h2,
+#dress-code.is-dark h4,
+#dress-code.is-dark p {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#dress-code.is-dark .section-monogram {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+#dress-code.is-dark #dress-code-bg-text {
+  color: #ffffff !important;
+  opacity: 0.1 !important;
+}
+#dress-code-bg-text {
+  opacity: 0.05 !important;
 }
