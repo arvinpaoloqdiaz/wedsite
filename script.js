@@ -357,14 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     dressCodeBgText.textContent = colorName;
                 }
                 
-                // If the color is dark (Dusk Blue, Baltic Blue, Dusty Blue), make text white
-                const isDark = ['Dusk Blue', 'Baltic Blue', 'Dusty Blue'].includes(colorName);
-                
-                if (isDark) {
-                    dressCodeSection.classList.add('is-dark');
-                } else {
-                    dressCodeSection.classList.remove('is-dark');
-                }
+                // All current palette colors are light, so always use default (non-dark) styling
+                dressCodeSection.classList.remove('is-dark');
             });
         });
     }

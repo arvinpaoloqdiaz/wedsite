@@ -36,8 +36,8 @@
   --font-utility:   "Inter", system-ui, sans-serif;
 
   /* Font Sizes */
-  --text-landing-names: clamp(64px, 8vw, 110px);
-  --text-hero-title:    clamp(56px, 8vw, 96px);
+  --text-landing-names: clamp(48px, 7vw, 110px);
+  --text-hero-title:    clamp(36px, 7vw, 96px);
 
   /* Visual Effects */
   --shadow-soft: 0 10px 40px rgba(54, 85, 131, 0.08);
@@ -418,9 +418,12 @@ h1, h2, h3, .font-tangier {
 }
 
 @media (max-width: 480px) {
-  .landing__names { font-size: 56px; }
+  .landing__names { font-size: 42px; }
   .hero-countdown-unit { padding: 0.5rem; }
   .countdown-val { font-size: 28px; }
+  #dress-code-bg-text {
+    font-size: clamp(40px, 12vw, 80px) !important;
+  }
 }
 
 
@@ -440,6 +443,9 @@ h1, h2, h3, .font-tangier {
 }
 #dress-code-bg-text {
   opacity: 0.05 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Alternating section background */
