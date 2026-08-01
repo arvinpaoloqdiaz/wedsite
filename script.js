@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     const WEDDING_DATE = new Date('2026-12-05T14:30:00');
 
-    const cdDays    = document.getElementById('cd-days');
-    const cdHours   = document.getElementById('cd-hours');
-    const cdMinutes = document.getElementById('cd-minutes');
-    const cdSeconds = document.getElementById('cd-seconds');
+    const cdDaysEls    = document.querySelectorAll('.cd-days');
+    const cdHoursEls   = document.querySelectorAll('.cd-hours');
+    const cdMinutesEls = document.querySelectorAll('.cd-minutes');
+    const cdSecondsEls = document.querySelectorAll('.cd-seconds');
 
     function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const diff = WEDDING_DATE - now;
 
         if (diff <= 0) {
-            if (cdDays)    cdDays.textContent    = '00';
-            if (cdHours)   cdHours.textContent   = '00';
-            if (cdMinutes) cdMinutes.textContent = '00';
-            if (cdSeconds) cdSeconds.textContent = '00';
+            cdDaysEls.forEach(el => el.textContent = '00');
+            cdHoursEls.forEach(el => el.textContent = '00');
+            cdMinutesEls.forEach(el => el.textContent = '00');
+            cdSecondsEls.forEach(el => el.textContent = '00');
             return;
         }
 
@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((totalSeconds % 3600)  / 60);
         const seconds = totalSeconds % 60;
 
-        if (cdDays)    cdDays.textContent    = pad(days);
-        if (cdHours)   cdHours.textContent   = pad(hours);
-        if (cdMinutes) cdMinutes.textContent = pad(minutes);
-        if (cdSeconds) cdSeconds.textContent = pad(seconds);
+        cdDaysEls.forEach(el => el.textContent = pad(days));
+        cdHoursEls.forEach(el => el.textContent = pad(hours));
+        cdMinutesEls.forEach(el => el.textContent = pad(minutes));
+        cdSecondsEls.forEach(el => el.textContent = pad(seconds));
     }
 
     updateCountdown();
@@ -136,6 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!enterBtn || enterBtn.disabled) return;
         enterBtn.disabled = true;
         landing.classList.add('is-leaving');
+
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.play().catch(e => console.log("Video auto-play prevented:", e));
+        }
 
         const exitTl = gsap.timeline({
             onComplete: () => {
@@ -217,6 +222,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { rootMargin: '-50% 0px -50% 0px' });
 
     scrollSpySections.forEach(section => spyObserver.observe(section));
+
+    // Hide nav countdown while hero section is visible
+    const navCountdownWrapper = document.getElementById('nav-countdown-wrapper');
+    const heroSection = document.getElementById('hero');
+
+    if (navCountdownWrapper && heroSection) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If hero is intersecting, hide the nav countdown; show it once hero is out of view
+                if (entry.isIntersecting) {
+                    navCountdownWrapper.style.opacity = '0';
+                    navCountdownWrapper.style.pointerEvents = 'none';
+                } else {
+                    navCountdownWrapper.style.opacity = '1';
+                    navCountdownWrapper.style.pointerEvents = 'none';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        heroObserver.observe(heroSection);
+    }
 
     // ============================================================
     //  7. Mobile Menu
@@ -517,6 +543,175 @@ document.addEventListener('DOMContentLoaded', () => {
             } finally {
                 submitLoader.classList.add('hidden');
             }
+        });
+    }
+
+    // ============================================================
+    //  9. Prenup Gallery Swiper
+    // ============================================================
+    // Cloudinary URLs with auto-format, auto-quality, and scaled to 1200px max-width for fast loading and crisp zoom
+    const galleryImages = [
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560342/01_z9g43x.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560342/02_hwzavj.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560343/03_yq6uqb.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560343/04_ruuwqg.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560342/05_eygv4c.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560343/06_ysvlcy.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/07_hyckjy.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/08_fdfp6a.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/09_o7xudl.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/10_ki6nuo.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560345/11_amiuzj.jpg",
+        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560345/12_s1lobq.jpg"
+    ];
+
+    const galleryContainer = document.getElementById('gallery-container');
+    if (galleryContainer && typeof Swiper !== 'undefined') {
+        galleryImages.forEach(src => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide elegant-card p-1 cursor-pointer';
+            slide.innerHTML = `
+                <div class="w-full h-full rounded-[14px] overflow-hidden">
+                    <img src="${src}" alt="Prenup Photo" loading="lazy" class="w-full h-full object-cover">
+                </div>
+            `;
+            galleryContainer.appendChild(slide);
+        });
+
+        const gallerySwiper = new Swiper('.gallery-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            lazyPreloadPrevNext: 2, // Preloads adjacent images for smooth swiping
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 2,
+                slideShadows: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            }
+        });
+
+        // Photo Zoom Modal Logic
+        const photoModal = document.getElementById('photoModal');
+        const modalImg = document.getElementById('modalImg');
+        const closePhotoModal = document.getElementById('closePhotoModal');
+
+        if (photoModal && modalImg && closePhotoModal) {
+            // Open modal on slide click
+            const slides = galleryContainer.querySelectorAll('.swiper-slide img');
+            slides.forEach(img => {
+                img.addEventListener('click', () => {
+                    gallerySwiper.autoplay.stop(); // Stop autoplay
+                    modalImg.src = img.src;
+                    photoModal.classList.remove('hidden');
+                    // Small delay to allow display block to apply before animating opacity
+                    setTimeout(() => {
+                        photoModal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            // Close modal function
+            const closeModal = () => {
+                photoModal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                setTimeout(() => {
+                    photoModal.classList.add('hidden');
+                    modalImg.src = "";
+                    gallerySwiper.autoplay.start(); // Resume autoplay
+                }, 300);
+            };
+
+            closePhotoModal.addEventListener('click', closeModal);
+            photoModal.addEventListener('click', (e) => {
+                if (e.target === photoModal) closeModal();
+            });
+        }
+    }
+
+    // ============================================================
+    //  10. Location Details Modal
+    // ============================================================
+    const locationModal = document.getElementById('locationModal');
+    const locationModalContent = document.getElementById('locationModalContent');
+    const closeLocationModal = document.getElementById('closeLocationModal');
+    const locationImg = document.getElementById('locationImg');
+    const locationTitle = document.getElementById('locationTitle');
+    const locationDesc = document.getElementById('locationDesc');
+    const locationQr = document.getElementById('locationQr');
+    const locationLink = document.getElementById('locationLink');
+
+    const cardCeremony = document.getElementById('cardCeremony');
+    const cardReception = document.getElementById('cardReception');
+
+    const locations = {
+        ceremony: {
+            title: "The Ceremony",
+            desc: "Our Lady of Mt. Carmel Chapel<br>Sitio Mathay, Balanga City, Bataan",
+            img: "assets/church-street-view.jpg",
+            qr: "assets/church-qr.svg",
+            link: "https://maps.app.goo.gl/abRtN67DGkbcr3bm8"
+        },
+        reception: {
+            title: "The Reception",
+            desc: "Palm Garden Pavilion, La Vista Inland Resort<br>Bataan",
+            img: "assets/reception-street-view.jpg",
+            qr: "assets/reception-qr.svg",
+            link: "https://maps.app.goo.gl/3TNXKBd8pCrGbfMg7"
+        }
+    };
+
+    function openLocationModal(type) {
+        const data = locations[type];
+        if (!data) return;
+
+        locationTitle.innerText = data.title;
+        locationDesc.innerHTML = data.desc;
+        locationImg.src = data.img;
+        locationQr.src = data.qr;
+        
+        if (locationLink) {
+            locationLink.href = data.link;
+        }
+
+        locationModal.classList.remove('hidden');
+        setTimeout(() => {
+            locationModal.classList.remove('opacity-0');
+            locationModalContent.classList.remove('scale-95');
+            locationModalContent.classList.add('scale-100');
+        }, 10);
+    }
+
+    function closeLocModal() {
+        locationModal.classList.add('opacity-0');
+        locationModalContent.classList.remove('scale-100');
+        locationModalContent.classList.add('scale-95');
+        setTimeout(() => {
+            locationModal.classList.add('hidden');
+        }, 300);
+    }
+
+    if (locationModal && closeLocationModal) {
+        if (cardCeremony) cardCeremony.addEventListener('click', () => openLocationModal('ceremony'));
+        if (cardReception) cardReception.addEventListener('click', () => openLocationModal('reception'));
+        
+        closeLocationModal.addEventListener('click', closeLocModal);
+        locationModal.addEventListener('click', (e) => {
+            if (e.target === locationModal) closeLocModal();
         });
     }
 

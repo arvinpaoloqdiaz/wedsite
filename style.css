@@ -3,7 +3,7 @@
    ========================================= */
 @font-face {
   font-family: "Tangier";
-  src: url("assets/font/Tangier.otf") format("opentype");
+  src: url("assets/font/Tangier.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -289,8 +289,21 @@ h1, h2, h3, .font-tangier {
   color: var(--color-dusty-blue) !important;
   text-shadow: none;
 }
+.navbar--scrolled .nav-countdown {
+  color: var(--color-dusty-blue) !important;
+  background-color: rgba(54, 85, 131, 0.05) !important;
+  border-color: rgba(54, 85, 131, 0.2) !important;
+  box-shadow: none !important;
+}
+.navbar--scrolled .nav-countdown-dot {
+  background-color: var(--color-dusty-blue) !important;
+}
 .navbar--scrolled .nav-logo {
   filter: none;
+}
+
+#nav-countdown-wrapper {
+  transition: opacity 0.4s ease;
 }
 
 /* Active Nav Link */
@@ -316,17 +329,26 @@ h1, h2, h3, .font-tangier {
   background-color: #ffffff;
 }
 
-/* =========================================
-   HERO SECTION & COUNTDOWN
-   ========================================= */
 .hero-gradient {
   background: linear-gradient(
     to bottom,
-    rgba(110, 143, 179, 0.3) 0%,
-    rgba(110, 143, 179, 0.5) 40%,
-    rgba(233, 238, 242, 0.9) 95%,
+    rgba(233, 238, 242, 0) 0%,
+    rgba(233, 238, 242, 0) 40%,
+    rgba(233, 238, 242, 0.8) 80%,
     #e9eef2 100%
   );
+}
+
+@media (min-width: 768px) {
+  .hero-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgba(233, 238, 242, 0) 0%,
+      rgba(233, 238, 242, 0) 60%,
+      rgba(233, 238, 242, 0.8) 85%,
+      #e9eef2 100%
+    );
+  }
 }
 
 .hero-countdown {
@@ -347,6 +369,38 @@ h1, h2, h3, .font-tangier {
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
   min-width: clamp(70px, 15vw, 100px);
+}
+
+.hero-countdown-unit--mobile {
+  background: rgba(54, 85, 131, 0.07);
+  border: 1px solid rgba(54, 85, 131, 0.15);
+  backdrop-filter: none;
+}
+
+.hero-countdown-unit--dark {
+  background: rgba(54, 85, 131, 0.12);
+  border: 1px solid rgba(182, 199, 219, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.countdown-val--mobile {
+  color: var(--color-powder-blue) !important;
+}
+
+.countdown-val--dark {
+  color: #ffffff !important;
+}
+
+.countdown-lbl--dark {
+  color: var(--color-dusty-blue);
+}
+
+.hero-countdown--sm {
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.countdown-val--sm {
+  font-size: clamp(20px, 2.5vw, 32px) !important;
 }
 
 .countdown-val {
@@ -521,4 +575,44 @@ h1, h2, h3, .font-tangier {
 
 .rsvp-textarea::placeholder {
   color: #aab4be;
+}
+
+/* =========================================
+   GALLERY SWIPER
+   ========================================= */
+.gallery-swiper {
+  width: 100%;
+  padding-bottom: 3rem; /* Space for pagination */
+}
+
+.gallery-swiper .swiper-slide {
+  width: 300px;
+  height: 200px; /* 3:2 aspect ratio */
+  transition: all 0.5s ease;
+  opacity: 0.4;
+  transform: scale(0.85);
+}
+
+@media (min-width: 768px) {
+  .gallery-swiper .swiper-slide {
+    width: 600px;
+    height: 400px; /* 3:2 aspect ratio */
+  }
+}
+
+.gallery-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gallery-swiper .swiper-pagination-bullet {
+  background-color: var(--color-dusty-blue);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.gallery-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--color-dusk-blue);
+  transform: scale(1.2);
 }
