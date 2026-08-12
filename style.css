@@ -221,6 +221,31 @@ h1, h2, h3, .font-tangier {
   pointer-events: none;
 }
 
+/* ─── Landing Divider (line–diamond–line) ─── */
+.landing-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 240px;
+  margin: 2rem 0;
+}
+
+.landing-divider__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-dusty-blue), transparent);
+  opacity: 0.45;
+}
+
+.landing-divider__diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--color-dusty-blue);
+  transform: rotate(45deg);
+  opacity: 0.55;
+}
+
 /* =========================================
    MAIN CONTENT & SMART NAVBAR
    ========================================= */
