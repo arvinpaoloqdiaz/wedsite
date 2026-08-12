@@ -247,6 +247,65 @@ h1, h2, h3, .font-tangier {
 }
 
 /* =========================================
+   BEIGE STYLE VARIANT  (?style=beige)
+   Only the loading screen + landing section
+   are affected — all other sections stay the
+   same. Activated by adding .style-beige to
+   <html> via the URL param script.
+   ========================================= */
+
+/* Loading screen — warm beige bg */
+.style-beige #loading-screen {
+  background: #FAF6F1;
+}
+.style-beige #loading-screen::before {
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 90%  5%, rgba(110,143,179,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1)    0%, rgba(245,238,228,0.85) 100%);
+}
+
+/* Landing — warm beige background */
+.style-beige .landing {
+  background: #FAF6F1;
+}
+
+/* Landing ambient overlay — richer, warmer gradient from sample */
+.style-beige .landing__bg {
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 90%  5%, rgba(110,143,179,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1)    0%, rgba(245,238,228,0.85) 100%);
+}
+
+/* Landing petals canvas — sits inside the landing at z-5 */
+.style-beige #landing-petals-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Individual petal elements injected by JS */
+.style-beige .landing-petal {
+  position: absolute;
+  top: -40px;
+  border-radius: 80% 20% 80% 20%;
+  opacity: 0;
+  animation: landingPetalFall linear infinite;
+}
+
+@keyframes landingPetalFall {
+  0%   { transform: translateY(-40px) rotate(0deg) translateX(0px);    opacity: 0; }
+  5%   { opacity: 0.55; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(110vh) rotate(720deg) translateX(60px);  opacity: 0; }
+}
+
+/* =========================================
    MAIN CONTENT & SMART NAVBAR
    ========================================= */
 .main-content {

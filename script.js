@@ -357,8 +357,53 @@ document.addEventListener('DOMContentLoaded', () => {
     initFloatingPetals();
 
     // ============================================================
+    //  9b. Beige Landing Petals  (?landing=beige)
+    // ============================================================
+    function initLandingPetals() {
+        const canvas = document.getElementById('landing-petals-canvas');
+        if (!canvas) return;
+
+        const PETAL_COLORS = [
+            'rgba(182,199,219,0.65)',
+            'rgba(238,218,201,0.70)',
+            'rgba(182,187,181,0.55)',
+            'rgba(110,143,179,0.45)',
+            'rgba(255,255,255,0.50)',
+        ];
+
+        function spawnPetal() {
+            const p = document.createElement('div');
+            p.className = 'landing-petal';
+            const size  = 6 + Math.random() * 10;
+            const left  = Math.random() * 100;
+            const dur   = 10 + Math.random() * 18;
+            const delay = Math.random() * 20;
+            const color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
+            const rot   = Math.random() * 360;
+            p.style.cssText = [
+                `left: ${left}%`,
+                `width: ${size}px`,
+                `height: ${size * 1.4}px`,
+                `background: ${color}`,
+                `animation-duration: ${dur}s`,
+                `animation-delay: -${delay}s`,
+                `border-radius: ${Math.random() > 0.5 ? '80% 20% 80% 20%' : '50% 80% 20% 80%'}`,
+                `transform: rotate(${rot}deg)`,
+            ].join(';');
+            canvas.appendChild(p);
+        }
+
+        for (let i = 0; i < 28; i++) spawnPetal();
+    }
+
+    if (document.documentElement.classList.contains('style-beige')) {
+        initLandingPetals();
+    }
+
+    // ============================================================
     //  10. Dress Code Dynamic Background
     // ============================================================
+
     const dressCodeSection = document.getElementById('dress-code');
     const dressCodeBgText = document.getElementById('dress-code-bg-text');
     const colorCircles = document.querySelectorAll('.color-circle');

@@ -55,8 +55,16 @@
         }
     </script>
 
+    <!-- Style variant detection (runs before paint to avoid flash) -->
+    <script>
+        if (new URLSearchParams(window.location.search).get('landing') === 'beige') {
+            document.documentElement.classList.add('style-beige');
+        }
+    </script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -83,6 +91,9 @@
     <!-- ========================================= -->
     <section id="landing" class="landing">
         <div class="landing__bg"></div>
+
+        <!-- Beige-variant petals (only visible when ?landing=beige) -->
+        <div id="landing-petals-canvas" aria-hidden="true"></div>
 
         <img src="assets/top-left-corner-flower.webp" alt="" class="landing__flower landing__flower--top-left" aria-hidden="true">
         <img src="assets/bottom-right-corner-flower.webp" alt="" class="landing__flower landing__flower--bottom-right" aria-hidden="true">
