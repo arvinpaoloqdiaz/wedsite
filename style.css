@@ -82,7 +82,7 @@ h1, h2, h3, .font-tangier {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--color-background);
+  background: #FAF6F1;
   overflow: hidden;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
@@ -92,7 +92,11 @@ h1, h2, h3, .font-tangier {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(238,218,201,0.2) 0%, transparent 70%);
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 90%  5%, rgba(110,143,179,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1)    0%, rgba(245,238,228,0.85) 100%);
   pointer-events: none;
 }
 
@@ -169,14 +173,18 @@ h1, h2, h3, .font-tangier {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-background);
+  background: #FAF6F1;
 }
 
 /* Very subtle floral watermark background */
 .landing__bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(238,218,201,0.15) 0%, transparent 80%);
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 90%  5%, rgba(110,143,179,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1)    0%, rgba(245,238,228,0.85) 100%);
   z-index: 0;
 }
 
@@ -246,42 +254,8 @@ h1, h2, h3, .font-tangier {
   opacity: 0.55;
 }
 
-/* =========================================
-   BEIGE STYLE VARIANT  (?style=beige)
-   Only the loading screen + landing section
-   are affected — all other sections stay the
-   same. Activated by adding .style-beige to
-   <html> via the URL param script.
-   ========================================= */
-
-/* Loading screen — warm beige bg */
-.style-beige #loading-screen {
-  background: #FAF6F1;
-}
-.style-beige #loading-screen::before {
-  background:
-    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 70% at 90%  5%, rgba(110,143,179,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1)    0%, rgba(245,238,228,0.85) 100%);
-}
-
-/* Landing — warm beige background */
-.style-beige .landing {
-  background: #FAF6F1;
-}
-
-/* Landing ambient overlay — richer, warmer gradient from sample */
-.style-beige .landing__bg {
-  background:
-    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(182,199,219,0.28) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(238,218,201,0.45) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 70% at 90%  5%, rgba(110,143,179,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250,246,241,1)    0%, rgba(245,238,228,0.85) 100%);
-}
-
 /* Landing petals canvas — sits inside the landing at z-5 */
-.style-beige #landing-petals-canvas {
+#landing-petals-canvas {
   position: absolute;
   inset: 0;
   z-index: 5;
@@ -290,7 +264,7 @@ h1, h2, h3, .font-tangier {
 }
 
 /* Individual petal elements injected by JS */
-.style-beige .landing-petal {
+.landing-petal {
   position: absolute;
   top: -40px;
   border-radius: 80% 20% 80% 20%;
@@ -690,6 +664,201 @@ h1, h2, h3, .font-tangier {
 }
 
 .gallery-swiper .swiper-pagination-bullet {
+  text-align: center;
+}
+
+.countdown-lbl {
+  font-family: var(--font-utility);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-dusk-blue);
+  margin-top: 0.5rem;
+}
+
+/* =========================================
+   DECORATIVE ELEMENTS
+   ========================================= */
+.section-monogram {
+  display: block;
+  width: clamp(80px, 12vw, 120px);
+  height: auto;
+  margin: 0 auto 1.5rem;
+}
+
+.section-flower {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* Second declaration removed or merged */
+.elegant-card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Subtle elegant gradient backgrounds */
+
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-countdown {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-countdown-unit {
+    min-width: calc(50% - 0.5rem);
+    padding: 0.8rem;
+  }
+  .section-monogram {
+    width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing__names { font-size: 42px; }
+  .hero-countdown-unit { padding: 0.5rem; }
+  .countdown-val { font-size: 28px; }
+  #dress-code-bg-text {
+    font-size: clamp(40px, 12vw, 80px) !important;
+  }
+}
+
+
+/* Dress Code Dynamic Styles */
+#dress-code.is-dark h2,
+#dress-code.is-dark h4,
+#dress-code.is-dark p {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#dress-code.is-dark .section-monogram {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+#dress-code.is-dark #dress-code-bg-text {
+  color: #ffffff !important;
+  opacity: 0.1 !important;
+}
+#dress-code-bg-text {
+  opacity: 0.05 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Alternating section background */
+.bg-alt-tint {
+  background-color: #dfe6ec;
+}
+
+
+/* RSVP Loader */
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--color-dusty-blue);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+/* RSVP Clean Underline Inputs */
+.rsvp-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent !important;
+  outline: none;
+  transition: border-color 0.3s ease;
+  border-radius: 0;
+}
+
+.rsvp-input:focus,
+.rsvp-textarea:focus,
+#invitationCode:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#invitationCode:focus {
+  border-bottom-color: var(--color-dusk-blue) !important;
+}
+
+.rsvp-input:focus {
+  border-bottom-color: #ccc !important;
+}
+
+.rsvp-input::placeholder {
+  color: #aab4be;
+}
+
+/* Fix browser autofill styling */
+.rsvp-input:-webkit-autofill,
+.rsvp-input:-webkit-autofill:hover, 
+.rsvp-input:-webkit-autofill:focus, 
+.rsvp-input:-webkit-autofill:active,
+#invitationCode:-webkit-autofill,
+#invitationCode:-webkit-autofill:hover,
+#invitationCode:-webkit-autofill:focus,
+#invitationCode:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-baltic-blue) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* RSVP Textarea (bordered box) */
+.rsvp-textarea {
+  border: 1px solid #ccc;
+  background-color: transparent !important;
+  outline: none;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.rsvp-textarea:focus {
+  border-color: #ccc !important;
+}
+
+.rsvp-textarea::placeholder {
+  color: #aab4be;
+}
+
+/* =========================================
+   GALLERY SWIPER
+   ========================================= */
+.gallery-swiper {
+  width: 100%;
+  padding-bottom: 3rem; /* Space for pagination */
+}
+
+.gallery-swiper .swiper-slide {
+  width: 300px;
+  height: 200px; /* 3:2 aspect ratio */
+  transition: all 0.5s ease;
+  opacity: 0.4;
+  transform: scale(0.85);
+}
+
+@media (min-width: 768px) {
+  .gallery-swiper .swiper-slide {
+    width: 600px;
+    height: 400px; /* 3:2 aspect ratio */
+  }
+}
+
+.gallery-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gallery-swiper .swiper-pagination-bullet {
   background-color: var(--color-dusty-blue);
   opacity: 0.4;
   transition: all 0.3s ease;
@@ -699,4 +868,22 @@ h1, h2, h3, .font-tangier {
   opacity: 1;
   background-color: var(--color-dusk-blue);
   transform: scale(1.2);
+}
+
+/* =========================================
+   AUDIO VISUALIZER
+   ========================================= */
+@keyframes audioBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.visualizer-bar {
+  transform-origin: bottom;
+  animation: audioBar 1s ease-in-out infinite;
+}
+
+#audio-visualizer.is-paused .visualizer-bar {
+  animation-play-state: paused;
+  transform: scaleY(0.2) !important;
 }

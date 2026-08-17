@@ -55,13 +55,6 @@
         }
     </script>
 
-    <!-- Style variant detection (runs before paint to avoid flash) -->
-    <script>
-        if (new URLSearchParams(window.location.search).get('landing') === 'beige') {
-            document.documentElement.classList.add('style-beige');
-        }
-    </script>
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -748,6 +741,38 @@
                 </a>
                 <p class="font-utility text-[10px] uppercase tracking-widest text-dusty-blue">Scan or click to open in Maps</p>
             </div>
+        </div>
+    </div>
+
+    <!-- ========================================= -->
+    <!--  AUDIO & FLOATING CONTROLS                -->
+    <!-- ========================================= -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/instrumental-bg-v1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="audio-controls" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-1000">
+        <!-- Volume Slider (hidden initially) -->
+        <div id="volume-container" class="bg-white/80 backdrop-blur-md rounded-full px-0 py-1.5 shadow-lg border border-white/50 flex items-center justify-center w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.3" class="w-20 h-1 bg-dusty-blue/30 rounded-lg cursor-pointer accent-dusty-blue">
+        </div>
+
+        <!-- Main Buttons -->
+        <div class="bg-white/80 backdrop-blur-md rounded-full p-1 shadow-lg border border-white/50 flex items-center">
+            <button id="volume-toggle-btn" class="w-8 h-8 rounded-full flex items-center justify-center text-dusty-blue hover:bg-dusty-blue/10 transition-colors">
+                <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+            
+            <div id="audio-visualizer" class="flex items-end gap-[3px] h-[14px] mx-2 is-paused">
+                <div class="visualizer-bar w-[3px] h-full bg-dusty-blue rounded-full" style="animation-delay: 0s;"></div>
+                <div class="visualizer-bar w-[3px] h-full bg-dusty-blue rounded-full" style="animation-delay: 0.2s;"></div>
+                <div class="visualizer-bar w-[3px] h-full bg-dusty-blue rounded-full" style="animation-delay: 0.4s;"></div>
+            </div>
+
+            <button id="play-pause-btn" class="w-8 h-8 rounded-full flex items-center justify-center text-dusty-blue hover:bg-dusty-blue/10 transition-colors">
+                <i data-lucide="pause" id="icon-pause" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="play" id="icon-play" class="w-4 h-4 fill-current hidden"></i>
+            </button>
         </div>
     </div>
 

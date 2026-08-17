@@ -142,6 +142,27 @@ document.addEventListener('DOMContentLoaded', () => {
             heroVideo.play().catch(e => console.log("Video auto-play prevented:", e));
         }
 
+        const bgMusic = document.getElementById('bg-music');
+        const audioControls = document.getElementById('audio-controls');
+        const audioVisualizer = document.getElementById('audio-visualizer');
+        const iconPause = document.getElementById('icon-pause');
+        const iconPlay = document.getElementById('icon-play');
+        
+        if (bgMusic) {
+            bgMusic.volume = 0.3;
+            bgMusic.play().then(() => {
+                if (audioVisualizer) audioVisualizer.classList.remove('is-paused');
+            }).catch(e => {
+                console.log("Audio auto-play prevented:", e);
+                if (iconPause) iconPause.classList.add('hidden');
+                if (iconPlay) iconPlay.classList.remove('hidden');
+                if (audioVisualizer) audioVisualizer.classList.add('is-paused');
+            });
+        }
+        if (audioControls) {
+            audioControls.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
         const exitTl = gsap.timeline({
             onComplete: () => {
                 landing.style.display = 'none';
@@ -396,9 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 28; i++) spawnPetal();
     }
 
-    if (document.documentElement.classList.contains('style-beige')) {
-        initLandingPetals();
-    }
+    initLandingPetals();
 
     // ============================================================
     //  10. Dress Code Dynamic Background
@@ -758,6 +777,51 @@ document.addEventListener('DOMContentLoaded', () => {
         locationModal.addEventListener('click', (e) => {
             if (e.target === locationModal) closeLocModal();
         });
+    }
+
+    // ============================================================
+    //  11. Audio Controls
+    // ============================================================
+    const bgMusic = document.getElementById('bg-music');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const iconPause = document.getElementById('icon-pause');
+    const iconPlay = document.getElementById('icon-play');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeToggleBtn = document.getElementById('volume-toggle-btn');
+    const volumeContainer = document.getElementById('volume-container');
+
+    if (bgMusic && playPauseBtn && volumeSlider) {
+        const audioVisualizer = document.getElementById('audio-visualizer');
+
+        playPauseBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                if (iconPause) iconPause.classList.remove('hidden');
+                if (iconPlay) iconPlay.classList.add('hidden');
+                if (audioVisualizer) audioVisualizer.classList.remove('is-paused');
+            } else {
+                bgMusic.pause();
+                if (iconPause) iconPause.classList.add('hidden');
+                if (iconPlay) iconPlay.classList.remove('hidden');
+                if (audioVisualizer) audioVisualizer.classList.add('is-paused');
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            bgMusic.volume = e.target.value;
+        });
+        
+        if (volumeToggleBtn && volumeContainer) {
+            volumeToggleBtn.addEventListener('click', () => {
+                if (volumeContainer.classList.contains('w-0')) {
+                    volumeContainer.classList.remove('w-0', 'opacity-0', 'px-0');
+                    volumeContainer.classList.add('w-32', 'opacity-100', 'px-4');
+                } else {
+                    volumeContainer.classList.add('w-0', 'opacity-0', 'px-0');
+                    volumeContainer.classList.remove('w-32', 'opacity-100', 'px-4');
+                }
+            });
+        }
     }
 
 });
