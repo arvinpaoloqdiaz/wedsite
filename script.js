@@ -553,76 +553,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    //  10. Location Details Modal
+    //  10. Location Details — inline section (cards scroll via anchor links)
     // ============================================================
-    const locationModal = document.getElementById('locationModal');
-    const locationModalContent = document.getElementById('locationModalContent');
-    const closeLocationModal = document.getElementById('closeLocationModal');
-    const locationImg = document.getElementById('locationImg');
-    const locationTitle = document.getElementById('locationTitle');
-    const locationDesc = document.getElementById('locationDesc');
-    const locationQr = document.getElementById('locationQr');
-    const locationLink = document.getElementById('locationLink');
+    // Cards in the Wedding Details section now use <a href="#location"> and
+    // <a href="#timeline"> / <a href="#dress-code"> for navigation.
+    // The location modal has been replaced with an inline two-venue layout.
 
-    const cardCeremony = document.getElementById('cardCeremony');
-    const cardReception = document.getElementById('cardReception');
+    // ============================================================
+    //  10b. QR Code Zoom Modal
+    // ============================================================
+    const qrZoomModal   = document.getElementById('qrZoomModal');
+    const qrZoomContent = document.getElementById('qrZoomContent');
+    const qrZoomImg     = document.getElementById('qrZoomImg');
+    const qrZoomLink    = document.getElementById('qrZoomLink');
+    const closeQrModal  = document.getElementById('closeQrModal');
+    const qrVenueType   = document.getElementById('qrVenueType');
+    const qrVenueName   = document.getElementById('qrVenueName');
+    const qrVenueSub    = document.getElementById('qrVenueSub');
 
-    const locations = {
-        ceremony: {
-            title: "The Ceremony",
-            desc: "Our Lady of Mt. Carmel Chapel<br>Sitio Mathay, Balanga City, Bataan",
-            img: "assets/church-street-view.jpg",
-            qr: "assets/church-qr.svg",
-            link: "https://maps.app.goo.gl/abRtN67DGkbcr3bm8"
-        },
-        reception: {
-            title: "The Reception",
-            desc: "Palm Garden Pavilion, La Vista Inland Resort<br>Bataan",
-            img: "assets/reception-street-view.jpg",
-            qr: "assets/reception-qr.svg",
-            link: "https://maps.app.goo.gl/3TNXKBd8pCrGbfMg7"
-        }
-    };
-
-    function openLocationModal(type) {
-        const data = locations[type];
-        if (!data) return;
-
-        locationTitle.innerText = data.title;
-        locationDesc.innerHTML = data.desc;
-        locationImg.src = data.img;
-        locationQr.src = data.qr;
-        
-        if (locationLink) {
-            locationLink.href = data.link;
-        }
-
-        locationModal.classList.remove('hidden');
+    function openQrModal(src, mapsUrl, venueType, venueName, venueSub) {
+        if (!qrZoomModal) return;
+        qrZoomImg.src  = src;
+        qrZoomLink.href = mapsUrl;
+        if (qrVenueType) qrVenueType.textContent = venueType || '';
+        if (qrVenueName) qrVenueName.textContent = venueName || '';
+        if (qrVenueSub)  qrVenueSub.textContent  = venueSub  || '';
+        qrZoomModal.classList.remove('hidden');
         setTimeout(() => {
-            locationModal.classList.remove('opacity-0');
-            locationModalContent.classList.remove('scale-95');
-            locationModalContent.classList.add('scale-100');
+            qrZoomModal.classList.remove('opacity-0');
+            qrZoomContent.classList.remove('scale-90');
+            qrZoomContent.classList.add('scale-100');
         }, 10);
     }
 
-    function closeLocModal() {
-        locationModal.classList.add('opacity-0');
-        locationModalContent.classList.remove('scale-100');
-        locationModalContent.classList.add('scale-95');
+    function closeQrZoomModal() {
+        if (!qrZoomModal) return;
+        qrZoomModal.classList.add('opacity-0');
+        qrZoomContent.classList.remove('scale-100');
+        qrZoomContent.classList.add('scale-90');
         setTimeout(() => {
-            locationModal.classList.add('hidden');
+            qrZoomModal.classList.add('hidden');
+            qrZoomImg.src = '';
         }, 300);
     }
 
-    if (locationModal && closeLocationModal) {
-        if (cardCeremony) cardCeremony.addEventListener('click', () => openLocationModal('ceremony'));
-        if (cardReception) cardReception.addEventListener('click', () => openLocationModal('reception'));
-        
-        closeLocationModal.addEventListener('click', closeLocModal);
-        locationModal.addEventListener('click', (e) => {
-            if (e.target === locationModal) closeLocModal();
+    document.querySelectorAll('.qr-zoom-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const src       = btn.getAttribute('data-qr-src');
+            const mapsUrl   = btn.getAttribute('data-maps-url');
+            const venueType = btn.getAttribute('data-venue-type');
+            const venueName = btn.getAttribute('data-venue-name');
+            const venueSub  = btn.getAttribute('data-venue-sub');
+            openQrModal(src, mapsUrl, venueType, venueName, venueSub);
+        });
+    });
+
+    if (closeQrModal) closeQrModal.addEventListener('click', closeQrZoomModal);
+    if (qrZoomModal) {
+        qrZoomModal.addEventListener('click', (e) => {
+            if (e.target === qrZoomModal) closeQrZoomModal();
         });
     }
+
+    // Re-init lucide after modal elements are created
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 
     // ============================================================
     //  11. Audio Controls
