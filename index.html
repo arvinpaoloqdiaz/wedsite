@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rey & Jona — December 5, 2026</title>
-    <meta name="description" content="With the blessing of our parents, we request the honour of your presence as we unite ourselves in the Sacrament of Holy Matrimony. Rey Christopher G. Guevarra & Jonalyn O. Sabado — December 5, 2026.">
+    <title>Zelwyn & Elaine — December 12, 2026</title>
+    <meta name="description"
+        content="With the blessing of our parents, we request the honour of your presence as we unite ourselves in the Sacrament of Holy Matrimony. Zelwyn & Elaine — December 12, 2026.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
@@ -15,20 +16,14 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
-    <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <!-- Fonts are self-hosted via @font-face in style.css -->
 
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
+
     <!-- Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -38,17 +33,20 @@
             theme: {
                 extend: {
                     colors: {
-                        "dusk-blue":   "#365583",
-                        "baltic-blue": "#3F618E",
-                        "dusty-blue":  "#6E8FB3",
-                        "powder-blue": "#B6C7DB",
-                        "pale-peach":  "#EEDAC9",
-                        "ash-grey":    "#B6BBB5",
+                        "dusk-green": "#324d3e",
+                        "baltic-green": "#738a6e",
+                        "dusty-green": "#8ea58b",
+                        "powder-green": "#becfbc",
+                        "classic-cream": "#d9e5d7",
+                        "ash-grey": "#B6BBB5",
                     },
                     fontFamily: {
-                        "primary": ["Tangier", "Playfair Display", "serif"],
-                        "body":    ["Playfair Display", "serif"],
+                        "primary": ["Belgiano Serif", "serif"],
+                        "body": ["Inter", "system-ui", "sans-serif"],
                         "utility": ["Inter", "sans-serif"],
+                        "header-1": ["Italianno", "cursive"],
+                        "header-2": ["Alex Brush", "cursive"],
+                        "accent": ["Playfair Display", "serif"],
                     }
                 }
             }
@@ -70,7 +68,7 @@
     <!--  0. LOADING SCREEN                        -->
     <!-- ========================================= -->
     <div id="loading-screen">
-        <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="loading__monogram"  alt="R & J monogram">
+        <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="loading__monogram" alt="R & J monogram">
         <div class="loading__spinner"></div>
     </div>
 
@@ -83,33 +81,48 @@
     <!--  2. LANDING PAGE (Invitation Cover)       -->
     <!-- ========================================= -->
     <section id="landing" class="landing">
-        <div class="landing__bg"></div>
+        <!-- Placeholder Photo Background -->
+        <div class="absolute inset-0 z-0">
+            <img src="assets/placeholder/landing_hero_fullscreen.jpg" class="w-full h-full object-cover object-center" alt="Landing Background">
+            <!-- Sage Green Overlay -->
+            <div class="absolute inset-0 bg-[#7d9182]/80"></div>
+        </div>
+        <div class="landing__bg relative z-0"></div>
 
         <!-- Beige-variant petals (only visible when ?landing=beige) -->
         <div id="landing-petals-canvas" aria-hidden="true"></div>
 
-        <img src="assets/top-left-corner-flower.webp" alt="" class="landing__flower landing__flower--top-left" aria-hidden="true">
-        <img src="assets/bottom-right-corner-flower.webp" alt="" class="landing__flower landing__flower--bottom-right" aria-hidden="true">
+        <!-- Landing: top-left corner ornament -->
+        <img src="assets/background/landing-page/non-floral-large-corner-ornament.webp" alt=""
+            class="landing__flower landing__flower--top-left" aria-hidden="true">
+        <!-- Landing: bottom-right corner ornament (flipped) -->
+        <img src="assets/background/landing-page/floral-large-corner-ornament.webp" alt=""
+            class="landing__flower landing__flower--bottom-right" aria-hidden="true">
 
         <div class="landing__content">
-            <p class="font-utility text-xs lg:text-base uppercase tracking-[0.2em] text-dusty-blue mb-4 opacity-80">The Wedding of</p>
-            <h1 class="landing__names font-primary text-dusty-blue">
-                <span>Rey Christopher</span>
-                <span class="text-dusty-blue text-[0.5em] leading-none my-2">&amp;</span>
-                <span>Jonalyn</span>
+            <p class="font-utility text-xs lg:text-base uppercase tracking-[0.2em] text-dusty-green mb-4 opacity-80">The
+                Wedding of</p>
+            <h1 class="landing__names font-header-1 text-dusty-green">
+                <span>Zelwyn</span>
+                <span class="text-dusty-green text-[0.5em] leading-none my-2">&amp;</span>
+                <span>Elaine</span>
             </h1>
-            <p class="font-body text-lg lg:text-2xl text-baltic-blue tracking-[0.1em] mt-6 opacity-90">December 5, 2026</p>
-            
+            <p class="font-accent text-lg lg:text-2xl text-baltic-green tracking-[0.1em] mt-6 opacity-90">December 12,
+                2026
+            </p>
+
             <!-- Divider -->
             <div class="landing-divider" role="presentation">
                 <span class="landing-divider__line"></span>
                 <span class="landing-divider__diamond"></span>
                 <span class="landing-divider__line"></span>
             </div>
-            
-            <button id="enter-btn" class="flex flex-col items-center gap-2 text-dusty-blue hover:text-baltic-blue transition-colors group">
+
+            <button id="enter-btn"
+                class="flex flex-col items-center gap-2 text-dusty-green hover:text-baltic-green transition-colors group">
                 <span class="font-utility text-xs uppercase tracking-[0.2em]">View Our Invitation</span>
-                <svg class="group-hover:translate-y-1 transition-transform" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="group-hover:translate-y-1 transition-transform" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
             </button>
@@ -125,13 +138,16 @@
         <header id="navbar" class="fixed top-0 w-full z-50 navbar--transparent">
             <nav class="flex justify-between items-center px-5 md:px-16 max-w-7xl mx-auto h-20">
                 <div class="flex items-center gap-3 w-full lg:w-auto">
-                    <span class="nav-brand font-primary text-2xl tracking-wide transition-colors">Rey &amp; Jona</span>
-                    
+                    <span class="nav-brand font-header-1 text-2xl tracking-wide transition-colors">Zelwyn &amp;
+                        Elaine</span>
+
                     <!-- Countdown (Desktop only) -->
                     <div id="nav-countdown-wrapper" class="hidden lg:flex items-center lg:ml-4 pointer-events-none">
-                        <div class="nav-countdown flex items-center gap-2 text-white font-utility text-[12px] uppercase tracking-widest font-bold bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 shadow-lg transition-all duration-300">
+                        <div
+                            class="nav-countdown flex items-center gap-2 text-white font-utility text-[12px] uppercase tracking-widest font-bold bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 shadow-lg transition-all duration-300">
                             <span>Dec 5, 2026</span>
-                            <span class="nav-countdown-dot w-1.5 h-1.5 rounded-full bg-white transition-colors duration-300"></span>
+                            <span
+                                class="nav-countdown-dot w-1.5 h-1.5 rounded-full bg-white transition-colors duration-300"></span>
                             <div class="flex gap-2">
                                 <span><span class="cd-days">--</span>d</span>
                                 <span><span class="cd-hours">--</span>h</span>
@@ -142,566 +158,823 @@
                     </div>
                 </div>
                 <div class="hidden md:flex gap-8 items-center">
-                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold" href="#hero">Home</a>
-                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold" href="#story">Our Story</a>
-                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold" href="#details">Details</a>
-                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold" href="#entourage">Entourage</a>
-                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold" href="#gallery">Gallery</a>
-                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold" href="#rsvp">RSVP</a>
+                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold"
+                        href="#hero">Home</a>
+                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold"
+                        href="#story">Our Story</a>
+                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold"
+                        href="#details">Details</a>
+                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold"
+                        href="#entourage">Entourage</a>
+                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold"
+                        href="#gallery">Gallery</a>
+                    <a class="nav-link font-utility text-[11px] uppercase tracking-widest font-semibold"
+                        href="#location">Location</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 nav-brand" aria-label="Menu">
-                    <span class="material-symbols-outlined text-[28px]">menu</span>
+                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center p-2 nav-brand"
+                    aria-label="Menu">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
                 </button>
             </nav>
         </header>
 
-        <div class="sections-wrapper">
 
-            <section id="hero" class="relative w-full overflow-hidden">
+        <section id="hero" class="relative w-full overflow-hidden">
 
-                <!-- ── Video Background ── -->
-                <div class="relative w-full">
-                    <video id="hero-video" autoplay loop muted playsinline class="w-full h-auto md:h-screen md:object-cover md:object-center block">
-                        <source src="https://res.cloudinary.com/dotvtqmny/video/upload/f_auto,q_auto,ac_none/v1785416349/save-the-date_uzomps.mp4" type="video/mp4" />
-                    </video>
+            <!-- ── Image Background ── -->
+            <div class="relative w-full">
+                <img id="hero-image" src="assets/placeholder/main_screen_hero.jpg" alt="Main Screen Hero"
+                    class="w-full h-auto md:h-screen md:object-cover md:object-center block">
 
-                    <!-- Subtle blue tint overlay -->
-                    <div class="absolute inset-0 pointer-events-none" style="background: rgba(54, 85, 131, 0.12);"></div>
+                <!-- Subtle blue tint overlay -->
+                <div class="absolute inset-0 pointer-events-none" style="background: rgba(58, 74, 62, 0.12);"></div>
 
-                    <!-- Gradient fade at bottom of video (both mobile & desktop) -->
-                    <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+                <!-- Gradient fade at bottom of video (both mobile & desktop) -->
+                <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
 
-                    <!-- ── DESKTOP ONLY: Overlaid content ── -->
-                    <!-- Top: Label + Names -->
-                    <div class="hidden md:flex absolute inset-x-0 top-0 pt-40 justify-center z-10">
-                        <div class="text-center">
-                            <p class="font-utility text-sm md:text-base uppercase tracking-[0.25em] font-semibold text-white/70 drop-shadow-sm mb-3">
-                                We Are Getting Married
-                            </p>
-                            <h1 class="font-primary text-white leading-[1.05] flex flex-col items-center drop-shadow-md" style="font-size: clamp(22px, 3.5vw, 52px); text-shadow: 0 4px 20px rgba(54,85,131,0.7);">
-                                <span>Rey Christopher</span>
-                                <span class="text-powder-blue text-[0.5em] leading-none my-1">&amp;</span>
-                                <span>Jonalyn</span>
-                            </h1>
-                        </div>
+                <!-- ── DESKTOP ONLY: Overlaid content ── -->
+                <!-- Top: Label + Names -->
+                <div class="hidden md:flex absolute inset-x-0 top-0 pt-40 justify-center z-10">
+                    <div class="text-center">
+                        <p
+                            class="font-utility text-sm md:text-base uppercase tracking-[0.25em] font-semibold text-white/70 drop-shadow-sm mb-3">
+                            We Are Getting Married
+                        </p>
+                        <h1 class="font-header-1 text-white leading-[1.05] flex flex-col items-center drop-shadow-md"
+                            style="font-size: clamp(36px, 5.5vw, 80px); text-shadow: 0 4px 20px rgba(58,74,62,0.7);">
+                            <span>Zelwyn</span>
+                            <span class="text-powder-green text-[0.5em] leading-none my-1">&amp;</span>
+                            <span>Elaine</span>
+                        </h1>
                     </div>
+                </div>
 
-                    <!-- Bottom: Date + Countdown -->
-                    <div class="hidden md:flex absolute inset-x-0 bottom-0 pb-14 justify-center z-10">
-                        <div class="text-center">
-                            <div class="inline-block bg-dusk-blue/[0.12] backdrop-blur-sm border border-powder-blue/30 px-6 py-2 rounded-xl mb-5 shadow-sm">
-                                <p class="font-primary italic text-xl md:text-2xl text-white drop-shadow-md">
-                                    December 5, 2026
-                                </p>
+                <!-- Bottom: Date + Countdown -->
+                <div class="hidden md:flex absolute inset-x-0 bottom-0 pb-14 justify-center z-10">
+                    <div class="text-center">
+                        <div
+                            class="inline-block bg-dusk-green/[0.12] backdrop-blur-sm border border-powder-green/30 px-6 py-2 rounded-xl mb-5 shadow-sm">
+                            <p class="font-primary italic text-xl md:text-2xl text-white drop-shadow-md">
+                                December 12, 2026
+                            </p>
+                        </div>
+                        <div class="hero-countdown hero-countdown--sm">
+                            <div class="hero-countdown-unit hero-countdown-unit--dark">
+                                <span class="countdown-val countdown-val--dark countdown-val--sm cd-days">--</span>
+                                <span class="countdown-lbl countdown-lbl--dark">Days</span>
                             </div>
-                            <div class="hero-countdown hero-countdown--sm">
-                                <div class="hero-countdown-unit hero-countdown-unit--dark">
-                                    <span class="countdown-val countdown-val--dark countdown-val--sm cd-days">--</span>
-                                    <span class="countdown-lbl countdown-lbl--dark">Days</span>
-                                </div>
-                                <div class="hero-countdown-unit hero-countdown-unit--dark">
-                                    <span class="countdown-val countdown-val--dark countdown-val--sm cd-hours">--</span>
-                                    <span class="countdown-lbl countdown-lbl--dark">Hours</span>
-                                </div>
-                                <div class="hero-countdown-unit hero-countdown-unit--dark">
-                                    <span class="countdown-val countdown-val--dark countdown-val--sm cd-minutes">--</span>
-                                    <span class="countdown-lbl countdown-lbl--dark">Min</span>
-                                </div>
-                                <div class="hero-countdown-unit hero-countdown-unit--dark">
-                                    <span class="countdown-val countdown-val--dark countdown-val--sm cd-seconds">--</span>
-                                    <span class="countdown-lbl countdown-lbl--dark">Sec</span>
-                                </div>
+                            <div class="hero-countdown-unit hero-countdown-unit--dark">
+                                <span class="countdown-val countdown-val--dark countdown-val--sm cd-hours">--</span>
+                                <span class="countdown-lbl countdown-lbl--dark">Hours</span>
+                            </div>
+                            <div class="hero-countdown-unit hero-countdown-unit--dark">
+                                <span class="countdown-val countdown-val--dark countdown-val--sm cd-minutes">--</span>
+                                <span class="countdown-lbl countdown-lbl--dark">Min</span>
+                            </div>
+                            <div class="hero-countdown-unit hero-countdown-unit--dark">
+                                <span class="countdown-val countdown-val--dark countdown-val--sm cd-seconds">--</span>
+                                <span class="countdown-lbl countdown-lbl--dark">Sec</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- ── MOBILE ONLY: Content below video ── -->
-                <div class="md:hidden text-center px-6 py-10">
-                    <p class="font-utility text-xs uppercase tracking-[0.25em] font-semibold text-dusty-blue/60 mb-4">
-                        We Are Getting Married
+            <!-- ── MOBILE ONLY: Content below video ── -->
+            <div class="md:hidden text-center px-6 py-10">
+                <p class="font-utility text-xs uppercase tracking-[0.25em] font-semibold text-dusty-green/60 mb-4">
+                    We Are Getting Married
+                </p>
+                <h1 class="font-header-1 text-dusk-green leading-[1.05] flex flex-col items-center mb-4"
+                    style="font-size: clamp(52px, 14vw, 88px);">
+                    <span>Zelwyn</span>
+                    <span class="text-dusty-green text-[0.5em] leading-none my-1">&amp;</span>
+                    <span>Elaine</span>
+                </h1>
+                <div class="mb-8">
+                    <p class="font-accent text-lg text-baltic-green/90 drop-shadow-sm tracking-wide">
+                        December 12, 2026
                     </p>
-                    <h1 class="font-primary text-dusk-blue leading-[1.05] flex flex-col items-center mb-4" style="font-size: clamp(36px, 10vw, 60px);">
-                        <span>Rey Christopher</span>
-                        <span class="text-dusty-blue text-[0.5em] leading-none my-1">&amp;</span>
-                        <span>Jonalyn</span>
-                    </h1>
-                    <div class="mb-8">
-                        <p class="font-body text-lg text-baltic-blue/90 drop-shadow-sm tracking-wide">
-                            December 5, 2026
+                </div>
+                <div class="hero-countdown justify-center">
+                    <div class="hero-countdown-unit hero-countdown-unit--mobile">
+                        <span class="countdown-val countdown-val--mobile cd-days">--</span>
+                        <span class="countdown-lbl">Days</span>
+                    </div>
+                    <div class="hero-countdown-unit hero-countdown-unit--mobile">
+                        <span class="countdown-val countdown-val--mobile cd-hours">--</span>
+                        <span class="countdown-lbl">Hours</span>
+                    </div>
+                    <div class="hero-countdown-unit hero-countdown-unit--mobile">
+                        <span class="countdown-val countdown-val--mobile cd-minutes">--</span>
+                        <span class="countdown-lbl">Min</span>
+                    </div>
+                    <div class="hero-countdown-unit hero-countdown-unit--mobile">
+                        <span class="countdown-val countdown-val--mobile cd-seconds">--</span>
+                        <span class="countdown-lbl">Sec</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =============================== -->
+        <!--  3.2. Our Story                 -->
+        <!-- =============================== -->
+        <!-- Section Divider: non-floral continuous tile -->
+        <div class="section-divider section-divider--cont" role="presentation" aria-hidden="true"
+            style="background-image: url('assets/background/divider/non-floral-horizontal-border-01-cont.webp');"></div>
+
+        <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="story">
+            <!-- Main-background: ambient leaf watermark per-section -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-01.webp"
+                class="section-flower w-72 right-0 top-0 opacity-[0.08] translate-x-16 -rotate-12" alt=""
+                aria-hidden="true">
+            <!-- Section ambient: top-right ornament cluster -->
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-01.webp"
+                class="section-flower w-44 -right-12 top-8 opacity-25 -rotate-12" alt="" aria-hidden="true">
+
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
+                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-green mb-4">Our Love Story</h2>
+                </div>
+                <div class="max-w-5xl mx-auto px-4 pb-24 space-y-24">
+                    <!-- Chapter 1 -->
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="md:w-1/2 flex justify-center">
+                            <img src="assets/placeholder/landing_hero_fullscreen.jpg" alt="How It All Started" class="w-full max-w-sm rounded-xl shadow-lg border border-classic-cream/30">
+                        </div>
+                        <div class="md:w-1/2 text-left space-y-4">
+                            <h3 class="font-primary text-3xl md:text-4xl text-dusk-green mb-6">How It All Started</h3>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                In October 2018 , it all started with something as simple as a reaction on social media.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                We met on Facebook when he reacted to my story. Back then, reactions to stories would appear directly on Messenger, so I replied with a simple, "Napindot?"
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                Little did we know that those two words would become the beginning of a story filled with love, challenges, separation, finding our way back to each other, and countless moments of choosing one another again.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                From that simple conversation, we continued talking until the day we finally met in person. Our first date was at McDonald's Dinalupihan—nothing extravagant, but it became the first page of our love story in real life.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                After months of talking and getting to know each other, he asked if he could court me. And on December 1, 2018, we officially became a couple.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 2 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-10">
+                        <div class="md:w-1/2 flex justify-center">
+                            <img src="assets/placeholder/landing_hero_fullscreen.jpg" alt="Finding Our Way Back" class="w-full max-w-sm rounded-xl shadow-lg border border-classic-cream/30">
+                        </div>
+                        <div class="md:w-1/2 text-left space-y-4">
+                            <h3 class="font-primary text-3xl md:text-4xl text-dusk-green mb-6">Finding Our Way Back</h3>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                But just like any other relationship, our journey was not always easy.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                After a year together, we went our separate ways for many reasons. Months passed without any communication, and we went on with our own lives. We thought that maybe our story had come to an end.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-dusty-green italic my-6 text-xl">
+                                But sometimes, some stories are not meant to end in the first chapter.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                One day, his brother, Kuya Arlee, would pick me up and bring me to their house. And through those simple moments, we slowly found our way back to each other. That was the beginning of our comeback—a new beginning filled with deeper understanding, stronger love, and a clearer reason to stay.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                We went through so much together. There were happy days and difficult ones. There were moments when we wondered if we would ever make it this far.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                But through it all, we chose to come back, forgive, understand, and love each other again.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 3 -->
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <div class="md:w-1/2 flex justify-center">
+                            <img src="assets/placeholder/landing_hero_fullscreen.jpg" alt="Choosing Forever" class="w-full max-w-sm rounded-xl shadow-lg border border-classic-cream/30">
+                        </div>
+                        <div class="md:w-1/2 text-left space-y-4">
+                            <h3 class="font-primary text-3xl md:text-4xl text-dusk-green mb-6">Choosing Forever</h3>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                And then, on July 1, 2026, after everything we had been through, he asked me the question that would change our story forever:
+                            </p>
+                            <blockquote class="font-primary italic text-2xl text-dusty-green my-6 border-l-2 border-dusty-green pl-4">
+                                "Will you marry me?"
+                            </blockquote>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                And I said "yes"
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                A simple question, but one that carried years of memories, challenges, heartbreak, second chances, and all the love that brought us back to each other.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                From a simple "Napindot?" in 2018, to finding our way back to each other, and finally saying "Yes" to forever…
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                We have come a long way.
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                After all the challenges, the distance, the heartbreak, and the second chances…
+                            </p>
+                            <p class="font-primary text-[18px] leading-relaxed text-baltic-green">
+                                We found our way back to each other.
+                            </p>
+                            <p class="font-primary text-2xl text-dusty-green mt-8 italic">
+                                And this time, we're choosing forever.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =============================== -->
+        <!--  3.3. Wedding Details           -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative bg-alt-tint" id="details">
+            <!-- Main-background: ambient leaf watermark per-section -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-04.webp"
+                class="section-flower w-64 left-0 bottom-0 opacity-[0.08] -translate-x-10 rotate-6" alt=""
+                aria-hidden="true">
+            <!-- Section ambient: bottom-left leaf cluster -->
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-03.webp"
+                class="section-flower w-44 -left-12 bottom-10 opacity-20 rotate-12" alt="" aria-hidden="true">
+
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="section-monogram" alt="">
+                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-green">Wedding Details</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Date -->
+                    <div class="elegant-card border border-classic-cream/30 p-8 flex flex-col items-center text-center">
+                        <div class="text-dusty-green mb-4 opacity-80"><i data-lucide="calendar"
+                                class="w-8 h-8 stroke-[1]"></i></div>
+                        <h3 class="font-primary text-2xl text-dusty-green mb-2">When</h3>
+                        <p class="font-accent font-semibold text-baltic-green">December 12, 2026</p>
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mt-2">2:30 PM
+                            Ceremony</p>
+                    </div>
+                    <!-- Ceremony -->
+                    <div id="cardCeremony"
+                        class="elegant-card border border-classic-cream/30 p-6 md:p-8 flex flex-col items-center text-center cursor-pointer hover:bg-white/40 transition-colors group">
+                        <div class="text-dusty-green mb-3 opacity-80 group-hover:scale-110 transition-transform"><i
+                                data-lucide="church" class="w-8 h-8 stroke-[1]"></i></div>
+                        <h3 class="font-primary text-2xl text-dusty-green mb-2">Ceremony</h3>
+                        <p class="font-accent font-semibold text-baltic-green">Our Lady of Mt. Carmel Chapel</p>
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mt-2">Fr. Noel
+                            Nuguid</p>
+                        <p
+                            class="font-accent italic text-[12px] text-dusty-green/80 mt-auto pt-6 group-hover:text-dusk-green transition-colors">
+                            Tap for location details</p>
+                    </div>
+                    <!-- Reception -->
+                    <div id="cardReception"
+                        class="elegant-card border border-classic-cream/30 p-6 md:p-8 flex flex-col items-center text-center cursor-pointer hover:bg-white/40 transition-colors group">
+                        <div class="text-dusty-green mb-3 opacity-80 group-hover:scale-110 transition-transform"><i
+                                data-lucide="map-pin" class="w-8 h-8 stroke-[1]"></i></div>
+                        <h3 class="font-primary text-2xl text-dusty-green mb-2">Reception</h3>
+                        <p class="font-accent font-semibold text-baltic-green">Palm Garden Pavilion</p>
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mt-2">La Vista
+                            Inland Resort</p>
+                        <p
+                            class="font-accent italic text-[12px] text-dusty-green/80 mt-auto pt-6 group-hover:text-dusk-green transition-colors">
+                            Tap for location details</p>
+                    </div>
+                    <!-- Dress Code -->
+                    <a href="#dress-code"
+                        class="elegant-card border border-classic-cream/30 p-6 md:p-8 flex flex-col items-center text-center cursor-pointer hover:bg-white/40 transition-colors group block">
+                        <div class="text-dusty-green mb-3 opacity-80 group-hover:scale-110 transition-transform"><i
+                                data-lucide="shirt" class="w-8 h-8 stroke-[1]"></i></div>
+                        <h3 class="font-primary text-2xl text-dusty-green mb-2">Attire</h3>
+                        <p class="font-accent font-semibold text-baltic-green">Semi-formal / Formal</p>
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mt-2">No
+                            Casual Attire</p>
+                        <p
+                            class="font-accent italic text-[12px] text-dusty-green/80 mt-auto pt-6 group-hover:text-dusk-green transition-colors">
+                            Tap for attire guidelines</p>
+                    </a>
+                </div>
+
+                <!-- Couple -->
+                <div class="mt-16 grid md:grid-cols-2 gap-8">
+                    <div class="elegant-card border border-classic-cream/30 p-10 text-center relative overflow-hidden">
+                        <!-- Container decoration: top-left ornament cluster -->
+                        <img src="assets/background/container-background/floral-small-ornament-cluster-01.webp"
+                            class="absolute -left-6 -top-6 w-28 opacity-25 pointer-events-none" aria-hidden="true"
+                            alt="">
+                        <h3 class="font-primary text-3xl md:text-4xl text-dusty-green mb-2 font-bold relative z-10">
+                            Zelwyn</h3>
+                        <p
+                            class="font-utility text-sm uppercase tracking-widest text-dusty-green mb-5 font-bold relative z-10">
+                            The Groom</p>
+                        <p class="font-accent text-baltic-green text-base relative z-10">Son of<br>Mr. Randy Laysa &amp; Mrs. Lorelee Laysa</p>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-10 text-center relative overflow-hidden">
+                        <!-- Container decoration: bottom-right ornament cluster -->
+                        <img src="assets/background/container-background/floral-small-ornament-cluster-02.webp"
+                            class="absolute -right-6 -bottom-6 w-28 opacity-25 pointer-events-none rotate-180"
+                            aria-hidden="true" alt="">
+                        <h3 class="font-primary text-3xl md:text-4xl text-dusty-green mb-2 font-bold relative z-10">
+                            Elaine</h3>
+                        <p
+                            class="font-utility text-sm uppercase tracking-widest text-dusty-green mb-5 font-bold relative z-10">
+                            The Bride</p>
+                        <p class="font-accent text-baltic-green text-base relative z-10">Daughter of<br>Mr. Elmer David &amp; Mrs. Charmaine David</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider: non-floral single -->
+        <div class="section-divider" role="presentation" aria-hidden="true">
+            <img src="assets/background/divider/non-floral-horizontal-border-02.webp" alt=""
+                class="section-divider__img">
+        </div>
+
+        <!-- =============================== -->
+        <!--  3.4. Principal Sponsors        -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="sponsors">
+            <!-- Main-background: ambient leaf watermark per-section -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-06.webp"
+                class="section-flower w-80 right-0 top-1/4 opacity-[0.07] translate-x-20" alt="" aria-hidden="true">
+            <!-- Section ambient: dual edge ornaments -->
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-04.webp"
+                class="section-flower w-48 -left-16 top-48 opacity-20 rotate-12" alt="" aria-hidden="true">
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-05.webp"
+                class="section-flower w-40 -right-10 bottom-24 opacity-20" alt="" aria-hidden="true">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
+                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-green">Principal Sponsors</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="elegant-card border border-classic-cream/30 p-10 bg-white/40">
+                        <ul class="space-y-3 font-accent text-lg text-baltic-green text-center">
+                            <li>Hon. Patrick Rellosa</li>
+                            <li>Hon. Roger Manarang</li>
+                            <li>Hon. Lou Narciso</li>
+                            <li>Mr. Rex Jorge</li>
+                            <li>Mr. Arturo Sangalang</li>
+                            <li>Hon. Rex Naguiat</li>
+                            <li>Mr. Ariel Mendoza</li>
+                            <li>Mr. Jonard Pangilinan</li>
+                            <li>Mr. Wilfredo Medoranda</li>
+                            <li>Hon. Anne Lorraine C. Adorable Inton</li>
+                        </ul>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-10 bg-white/40">
+                        <ul class="space-y-3 font-accent text-lg text-baltic-green text-center">
+                            <li>Ms. Luzviminda Samaniego</li>
+                            <li>Ms. Maricris Valderueda</li>
+                            <li>Ms. Eliza Tolentino</li>
+                            <li>Ms. Jeniline Lapid</li>
+                            <li>Ms. Ma Purisima Somosierra</li>
+                            <li>Ms. Evangeline Pascual</li>
+                            <li>Ms. Marinette Perez</li>
+                            <li>Ms. Eliza Bayot</li>
+                            <li>Ms. Raquel David</li>
+                            <li>Ms. Evelyn Ponce</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider: floral single -->
+        <div class="section-divider" role="presentation" aria-hidden="true">
+            <img src="assets/background/divider/floral-horizontal-border-02.webp" alt="" class="section-divider__img">
+        </div>
+
+        <!-- =============================== -->
+        <!--  3.5. Entourage Section         -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative overflow-hidden bg-alt-tint" id="entourage">
+            <!-- Main-background: ambient leaf watermark per-section -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-02.webp"
+                class="section-flower w-72 left-0 top-0 opacity-[0.07] -translate-x-10 rotate-6" alt=""
+                aria-hidden="true">
+            <!-- Section ambient: edge ornament clusters -->
+            <img src="assets/background/container-background/floral-small-ornament-cluster-03.webp"
+                class="section-flower w-40 -right-16 top-32 opacity-20" alt="" aria-hidden="true">
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-02.webp"
+                class="section-flower w-48 -left-20 bottom-32 opacity-20 -rotate-45" alt="" aria-hidden="true">
+            <div class="max-w-5xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
+                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-green">The Entourage</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-3">Best Man
+                        </p>
+                        <p class="font-accent text-3xl text-baltic-green">Arlee Laysa</p>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-3">Matron
+                            of Honor</p>
+                        <p class="font-accent text-3xl text-baltic-green">Katherine Altares</p>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-3">Little Groom</p>
+                        <p class="font-accent text-3xl text-baltic-green">Zane Ayden Gregorio</p>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-3">Little Bride</p>
+                        <p class="font-accent text-3xl text-baltic-green">Samantha Leigh Laysa</p>
+                    </div>
+                </div>
+
+                <div class="elegant-card border border-classic-cream/30 p-10 mb-12  text-center">
+                    <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-8">Secondary
+                        Sponsors</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <div>
+                            <p class="font-primary text-xl text-dusty-green mb-4">To Light Our Path</p>
+                            <p class="font-accent text-lg text-baltic-green mb-1">Tristan Joshua Zara</p>
+                            <p class="font-accent text-lg text-baltic-green">Lei Anne Jobelle Juan</p>
+                        </div>
+                        <div>
+                            <p class="font-primary text-xl text-dusty-green mb-4">To Cloth Us As One</p>
+                            <p class="font-accent text-lg text-baltic-green mb-1">Justine Poblete</p>
+                            <p class="font-accent text-lg text-baltic-green">Ma. Cristel Carreon</p>
+                        </div>
+                        <div>
+                            <p class="font-primary text-xl text-dusty-green mb-4">To Bind Us Together</p>
+                            <p class="font-accent text-lg text-baltic-green mb-1">Drexlee Laysa</p>
+                            <p class="font-accent text-lg text-baltic-green">Nicole Gabrielle Circulado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-6">
+                            Groomsmen</p>
+                        <ul class="space-y-3 font-accent text-lg text-baltic-green">
+                            <li>Dale David</li>
+                            <li>Jeuz Pejoro</li>
+                            <li>Harvielle David</li>
+                            <li>Justine Gonzales</li>
+                            <li>Jaycee Pejoro</li>
+                            <li>Sefren Entredecho</li>
+                            <li>Xander Keith Carlos</li>
+                            <li>Jonnel Pangilinan</li>
+                            <li>Angelo Pelagio</li>
+                        </ul>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-6">
+                            Bridesmaids</p>
+                        <ul class="space-y-3 font-accent text-lg text-baltic-green">
+                            <li>Janice David</li>
+                            <li>Alma May David</li>
+                            <li>Jhoanna Ederlyn Sy</li>
+                            <li>Aleah Gonzales</li>
+                            <li>Kristine Pejoro</li>
+                            <li>Bea Poblete</li>
+                            <li>Tricia Mobo</li>
+                            <li>Arah Kairil Crooc</li>
+                            <li>Sandra Sanay</li>
+                            <li>Haya Laysa</li>
+                            <li>Nikki Pauline Ponce</li>
+                            <li>Danna Tungol</li>
+                            <li>Erika Pauline Banzon</li>
+                            <li>Karen Krim Grace Oliveria</li>
+                            <li>Dea Janella Macaspac</li>
+                            <li>Jhobbie Anne Dominguez</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-6">Bearers</p>
+                        <div class="space-y-4 font-accent text-lg text-baltic-green">
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="font-primary text-xl text-dusty-green">Ring</span>
+                                <span>Maica Chloe Capiz</span>
+                            </div>
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span class="font-primary text-xl text-dusty-green">Coin</span>
+                                <span>Xabrine Carlos</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-primary text-xl text-dusty-green">Bible</span>
+                                <span>Jared Lewreighn Pangilinan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 p-8 text-center ">
+                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-6">Flower Girls &amp; Little Boys</p>
+                        <div class="space-y-2 font-accent text-base text-baltic-green">
+                            <div class="border-b border-white/10 pb-1">Isaiah Jaxen Pangilinan</div>
+                            <div class="border-b border-white/10 pb-1">Mckenzie Hendrix Lopez</div>
+                            <div class="border-b border-white/10 pb-1">Jaeden Rafaelle Pangilinan</div>
+                            <div class="border-b border-white/10 pb-1">Claire Jhasmine Arellano</div>
+                            <div class="border-b border-white/10 pb-1">Red Gomo</div>
+                            <div class="border-b border-white/10 pb-1">Javin Exequielle Pangilinan</div>
+                            <div class="border-b border-white/10 pb-1">Kiel Balayo</div>
+                            <div class="border-b border-white/10 pb-1">Liam Arjay Sevilla</div>
+                            <div class="border-b border-white/10 pb-1">Jiro Pejoro</div>
+                            <div class="border-b border-white/10 pb-1">Jarelle Gaverielle Pangilinan</div>
+                            <div class="border-b border-white/10 pb-1">Ayesha Faith Sabado</div>
+                            <div class="border-b border-white/10 pb-1">Riane Carlos</div>
+                            <div>Althea Gonzales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider: floral single -->
+        <div class="section-divider" role="presentation" aria-hidden="true">
+            <img src="assets/background/divider/floral-horizontal-border-02.webp" alt="" class="section-divider__img">
+        </div>
+
+        <!-- =============================== -->
+        <!--  3.6. Wedding Day Timeline      -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="timeline">
+            <!-- Main-background: ambient leaf watermark -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-03.webp"
+                class="section-flower w-72 right-0 top-1/4 opacity-[0.07] translate-x-20" alt="" aria-hidden="true">
+            <!-- Section ambient: edge ornament clusters -->
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-04.webp"
+                class="section-flower w-44 -left-12 top-24 opacity-20 rotate-12" alt="" aria-hidden="true">
+
+            <div class="max-w-2xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
+                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-green mb-4">Wedding Day</h2>
+                    <p class="font-accent text-baltic-green text-base">INANG GADDI RESORT, San Pedro Hermosa Bataan</p>
+                </div>
+
+                <!-- Vertical Timeline -->
+                <div class="relative">
+                    <!-- Central vertical line -->
+                    <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-dusty-green/20"></div>
+
+                    <div class="space-y-10">
+                        <!-- Event 1 -->
+                        <div class="flex items-center gap-6">
+                            <div class="flex-1 text-right">
+                                <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green">9:00 AM</p>
+                            </div>
+                            <div class="relative z-10 flex-shrink-0">
+                                <div class="w-4 h-4 rounded-full bg-dusty-green border-4 border-white shadow-md"></div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-primary text-xl text-baltic-green">Ceremony at the church</p>
+                            </div>
+                        </div>
+                        <!-- Event 2 -->
+                        <div class="flex items-center gap-6">
+                            <div class="flex-1 text-right">
+                                <p class="font-accent text-xl text-baltic-green">Say yes, I do!</p>
+                            </div>
+                            <div class="relative z-10 flex-shrink-0">
+                                <div class="w-4 h-4 rounded-full bg-dusty-green border-4 border-white shadow-md"></div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green">11:00 AM</p>
+                            </div>
+                        </div>
+                        <!-- Event 3 -->
+                        <div class="flex items-center gap-6">
+                            <div class="flex-1 text-right">
+                                <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green">12:00 PM</p>
+                            </div>
+                            <div class="relative z-10 flex-shrink-0">
+                                <div class="w-4 h-4 rounded-full bg-dusty-green border-4 border-white shadow-md"></div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-primary text-xl text-baltic-green">Wedding lunch</p>
+                            </div>
+                        </div>
+                        <!-- Event 4 -->
+                        <div class="flex items-center gap-6">
+                            <div class="flex-1 text-right">
+                                <p class="font-accent text-xl text-baltic-green">Cheer for the couple</p>
+                            </div>
+                            <div class="relative z-10 flex-shrink-0">
+                                <div class="w-4 h-4 rounded-full bg-dusty-green border-4 border-white shadow-md"></div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green">1:00 PM</p>
+                            </div>
+                        </div>
+                        <!-- Event 5 -->
+                        <div class="flex items-center gap-6">
+                            <div class="flex-1 text-right">
+                                <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green">2:00 PM</p>
+                            </div>
+                            <div class="relative z-10 flex-shrink-0">
+                                <div class="w-4 h-4 rounded-full bg-powder-green border-4 border-white shadow-md ring-2 ring-dusty-green/30"></div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-primary text-xl text-baltic-green">Closing Remarks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider: non-floral continuous tile -->
+        <div class="section-divider section-divider--cont" role="presentation" aria-hidden="true"
+            style="background-image: url('assets/background/divider/non-floral-horizontal-border-03-cont.webp');"></div>
+
+        <!-- =============================== -->
+        <!--  3.7. Schedule & Dress Code     -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative" id="dress-code" style="transition: background-color 0.8s ease;">
+            <div id="dress-code-bg-text"
+                class="absolute inset-0 flex items-center justify-center font-primary opacity-20 pointer-events-none transition-colors duration-800 text-dusty-green"
+                style="font-size: clamp(80px, 15vw, 250px); white-space: nowrap; z-index: 20; line-height: 1;">
+            </div>
+            <div class="max-w-4xl mx-auto text-center mb-20 relative z-10">
+                <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="section-monogram" alt="">
+                <h2 class="font-primary text-4xl md:text-5xl text-dusty-green mb-4">Dress Code</h2>
+                <p
+                    class="font-utility text-xs uppercase tracking-widest text-dusty-green mb-8 max-w-2xl mx-auto leading-relaxed">
+                    We'd love for our guests to celebrate with us in attire inspired by our sage green wedding theme,
+                    natural, fresh, timeless.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 relative z-10 mt-8 mb-8">
+                    <div class="elegant-card border border-classic-cream/30 dresscode-card p-10 text-center">
+                        <h4 class="font-primary text-3xl font-bold text-dusty-green mb-4">Principal Sponsors</h4>
+                        <p class="font-accent text-base text-baltic-green mb-2"><b>Ladies:</b> Elegant Dress</p>
+                        <p class="font-accent text-base text-baltic-green"><b>Gentlemen:</b> Barong Tagalog</p>
+                    </div>
+                    <div class="elegant-card border border-classic-cream/30 dresscode-card p-10 text-center">
+                        <h4 class="font-primary text-3xl font-bold text-dusty-green mb-4">Secondary Sponsors</h4>
+                        <p class="font-accent text-base text-baltic-green mb-2"><b>Ladies:</b> Gown</p>
+                        <p class="font-accent text-base text-baltic-green"><b>Gentlemen:</b> Long-Sleeved Polo with Vest
                         </p>
                     </div>
-                    <div class="hero-countdown justify-center">
-                        <div class="hero-countdown-unit hero-countdown-unit--mobile">
-                            <span class="countdown-val countdown-val--mobile cd-days">--</span>
-                            <span class="countdown-lbl">Days</span>
-                        </div>
-                        <div class="hero-countdown-unit hero-countdown-unit--mobile">
-                            <span class="countdown-val countdown-val--mobile cd-hours">--</span>
-                            <span class="countdown-lbl">Hours</span>
-                        </div>
-                        <div class="hero-countdown-unit hero-countdown-unit--mobile">
-                            <span class="countdown-val countdown-val--mobile cd-minutes">--</span>
-                            <span class="countdown-lbl">Min</span>
-                        </div>
-                        <div class="hero-countdown-unit hero-countdown-unit--mobile">
-                            <span class="countdown-val countdown-val--mobile cd-seconds">--</span>
-                            <span class="countdown-lbl">Sec</span>
-                        </div>
-                    </div>
                 </div>
 
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.2. Our Story                 -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="story">
-                <!-- Floral decorative -->
-                <img src="assets/flower-1.png" class="section-flower w-32 -left-10 top-10 opacity-40 rotate-12" alt="">
-                
-                <div class="max-w-6xl mx-auto relative z-10">
-                    <div class="text-center mb-16">
-                        <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
-                        <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue mb-4">Our Story</h2>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div class="elegant-card border border-pale-peach/30 p-2 aspect-[2/3] max-w-md w-full mx-auto -rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <img class="w-full h-full object-cover rounded-xl" alt="Rey and Jona" src="assets/gif-photoshoot-1.webp"/>
-                        </div>
-                        <div class="space-y-6 px-4">
-                            <h3 class="font-primary text-3xl text-dusty-blue">How We Met</h3>
-                            <p class="font-body text-[16px] leading-relaxed text-baltic-blue">
-                                <strong class="font-bold text-[18px] text-dusk-blue">Rey and Jona</strong> first met through a dating app. Neither was looking for anything serious, just hoping to pass the time — <em class="text-dusty-blue">until a mutual swipe right set their story into motion.</em> Realizing that simple app messages weren't enough, Rey asked for Jona's Facebook account so they could truly get to know each other.
-                            </p>
-                            <p class="font-body text-[16px] leading-relaxed text-baltic-blue">
-                                Fate seemed determined to bring them together from the start. On the very day they began chatting, Rey accidentally dropped his phone into a bucket of water, while Jona had only just returned to the app after taking a break. <em class="text-dusty-blue">Against the odds of ruined electronics and precise timing, destiny bridged the gap between them.</em>
-                            </p>
-                            <p class="font-body text-[16px] leading-relaxed text-baltic-blue">
-                                That chance match grew into a deep, genuine bond filled with shared moments and constant support. Today, surrounded by the people who mean the most to them, Rey and Jona are excited to take the next step and finally begin their journey as <strong class="font-bold text-[18px] text-dusk-blue">husband and wife</strong>.
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-12 items-center mt-24">
-                        <div class="space-y-6 px-4 order-2 md:order-1">
-                            <h3 class="font-primary text-3xl text-dusty-blue">The Proposal</h3>
-                            <p class="font-body text-[16px] leading-relaxed text-baltic-blue">
-                                On <strong class="font-bold text-dusk-blue">October 4, 2025</strong>, Rey and Jona were in the crowd, eagerly watching TWICE perform live. Jona was completely lost in the excitement of the concert, having no idea that Rey had spent the entire evening harboring a life-changing secret: he was planning to propose to her that very night.
-                            </p>
-                            <p class="font-body text-[16px] leading-relaxed text-baltic-blue">
-                                Then, TWICE performed "YES or YES." As the song reached its final chorus, Rey leaned in close to Jona and began whispering the words softly into her ear. When she turned, he pulled out a small box, looked into her eyes, and asked the question one more time:
-                            </p>
-                            <blockquote class="font-body italic text-lg text-dusty-blue border-l-2 border-dusty-blue pl-6 py-2 my-6 bg-gradient-to-r from-white/60 to-transparent rounded-r-lg">
-                                "YES or YES"
-                            </blockquote>
-                            <p class="font-body text-[16px] leading-relaxed text-baltic-blue">
-                                With the music thundering around them, Jona smiled and <strong class="font-bold text-[18px] text-dusk-blue">finally said yes.</strong>
-                            </p>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 p-2 aspect-[3/2] w-full rotate-2 hover:rotate-0 transition-transform duration-500 order-1 md:order-2">
-                            <img class="w-full h-full object-cover rounded-xl" alt="Our Proposal" src="assets/gif-photoshoot-2.webp"/>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.3. Wedding Details           -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative bg-alt-tint" id="details">
-                <img src="assets/sprig-3.png" class="section-flower w-40 right-0 bottom-0 opacity-30 -rotate-12" alt="">
-                
-                <div class="max-w-6xl mx-auto relative z-10">
-                    <div class="text-center mb-16">
-                        <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="section-monogram" alt="">
-                        <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue">Wedding Details</h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Date -->
-                        <div class="elegant-card border border-pale-peach/30 p-8 flex flex-col items-center text-center">
-                            <div class="text-dusty-blue mb-4 opacity-80"><i data-lucide="calendar" class="w-8 h-8 stroke-[1]"></i></div>
-                            <h3 class="font-primary text-2xl text-dusty-blue mb-2">When</h3>
-                            <p class="font-body font-semibold text-baltic-blue">December 5, 2026</p>
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mt-2">2:30 PM Ceremony</p>
-                        </div>
-                        <!-- Ceremony -->
-                        <div id="cardCeremony" class="elegant-card border border-pale-peach/30 p-6 md:p-8 flex flex-col items-center text-center cursor-pointer hover:bg-white/40 transition-colors group">
-                            <div class="text-dusty-blue mb-3 opacity-80 group-hover:scale-110 transition-transform"><i data-lucide="church" class="w-8 h-8 stroke-[1]"></i></div>
-                            <h3 class="font-primary text-2xl text-dusty-blue mb-2">Ceremony</h3>
-                            <p class="font-body font-semibold text-baltic-blue">Our Lady of Mt. Carmel Chapel</p>
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mt-2">Fr. Noel Nuguid</p>
-                            <p class="font-body italic text-[12px] text-dusty-blue/80 mt-auto pt-6 group-hover:text-dusk-blue transition-colors">Tap for location details</p>
-                        </div>
-                        <!-- Reception -->
-                        <div id="cardReception" class="elegant-card border border-pale-peach/30 p-6 md:p-8 flex flex-col items-center text-center cursor-pointer hover:bg-white/40 transition-colors group">
-                            <div class="text-dusty-blue mb-3 opacity-80 group-hover:scale-110 transition-transform"><i data-lucide="map-pin" class="w-8 h-8 stroke-[1]"></i></div>
-                            <h3 class="font-primary text-2xl text-dusty-blue mb-2">Reception</h3>
-                            <p class="font-body font-semibold text-baltic-blue">Palm Garden Pavilion</p>
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mt-2">La Vista Inland Resort</p>
-                            <p class="font-body italic text-[12px] text-dusty-blue/80 mt-auto pt-6 group-hover:text-dusk-blue transition-colors">Tap for location details</p>
-                        </div>
-                        <!-- Dress Code -->
-                        <a href="#dress-code" class="elegant-card border border-pale-peach/30 p-6 md:p-8 flex flex-col items-center text-center cursor-pointer hover:bg-white/40 transition-colors group block">
-                            <div class="text-dusty-blue mb-3 opacity-80 group-hover:scale-110 transition-transform"><i data-lucide="shirt" class="w-8 h-8 stroke-[1]"></i></div>
-                            <h3 class="font-primary text-2xl text-dusty-blue mb-2">Attire</h3>
-                            <p class="font-body font-semibold text-baltic-blue">Semi-formal / Formal</p>
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mt-2">No Casual Attire</p>
-                            <p class="font-body italic text-[12px] text-dusty-blue/80 mt-auto pt-6 group-hover:text-dusk-blue transition-colors">Tap for attire guidelines</p>
-                        </a>
-                    </div>
-
-                    <!-- Couple -->
-                    <div class="mt-16 grid md:grid-cols-2 gap-8">
-                        <div class="elegant-card border border-pale-peach/30 p-10 text-center relative overflow-hidden">
-                            <img src="assets/flower-2.png" class="section-flower w-32 -left-8 -top-8 opacity-30" alt="">
-                            <h3 class="font-primary text-3xl md:text-4xl text-dusty-blue mb-2 font-bold relative z-10">Rey Christopher G. Guevarra</h3>
-                            <p class="font-utility text-sm uppercase tracking-widest text-dusty-blue mb-5 font-bold relative z-10">The Groom</p>
-                            <p class="font-body text-baltic-blue text-base relative z-10">Son of<br>Reynaldo P. Guevarra &amp; Nerissa G. Guevarra</p>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 p-10 text-center relative overflow-hidden">
-                            <img src="assets/flower-3.png" class="section-flower w-32 -right-8 -bottom-8 opacity-30 rotate-180" alt="">
-                            <h3 class="font-primary text-3xl md:text-4xl text-dusty-blue mb-2 font-bold relative z-10">Jonalyn O. Sabado</h3>
-                            <p class="font-utility text-sm uppercase tracking-widest text-dusty-blue mb-5 font-bold relative z-10">The Bride</p>
-                            <p class="font-body text-baltic-blue text-base relative z-10">Daughter of<br>Joel B. Sabado &amp; Leilani O. Sabado</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.4. Principal Sponsors        -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="sponsors">
-                <img src="assets/flower-5.png" class="section-flower w-48 -left-16 top-48 opacity-30 rotate-12" alt="">
-                <img src="assets/sprig-2.png" class="section-flower w-40 -right-10 bottom-24 opacity-30" alt="">
-                <div class="max-w-6xl mx-auto relative z-10">
-                    <div class="text-center mb-16">
-                        <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
-                        <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue">Principal Sponsors</h2>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-10">
-                        <div class="elegant-card border border-pale-peach/30 p-10 bg-white/40">
-                            <h4 class="font-primary text-3xl text-dusty-blue text-center mb-8">Godfathers</h4>
-                            <ul class="space-y-3 font-body text-lg text-baltic-blue text-center">
-                                <li>Mr. Rizaldee San Diasanta</li>
-                                <li>Mr. Adolfo Esteban Enciso</li>
-                                <li>Mr. Cris Arceno</li>
-                                <li>Mr. Jose Enrique Garcia III</li>
-                                <li>Mr. Aurelio Angeles, Jr.</li>
-                                <li>Mr. Kumar Buxani</li>
-                                <li>Mr. Tomas Cizcar</li>
-                                <li>Mr. Allan Aparilla</li>
-                                <li>Mr. Lino Mazon</li>
-                                <li>Mr. Alvin Diaz</li>
-                                <li>Mr. Mario Galsim</li>
-                                <li>Mr. Robert Merza</li>
-                                <li>Mr. Ernesto Panogan</li>
-                            </ul>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 p-10 bg-white/40">
-                            <h4 class="font-primary text-3xl text-dusty-blue text-center mb-8">Godmothers</h4>
-                            <ul class="space-y-3 font-body text-lg text-baltic-blue text-center">
-                                <li>Mrs. Myrah Diasanta</li>
-                                <li>Mrs. Elsa Guevarra</li>
-                                <li>Mrs. Mary Arceno</li>
-                                <li>Mrs. Isabel Garcia</li>
-                                <li>Mrs. Maria Renee Angeles</li>
-                                <li>Mrs. Esperanza Buxani</li>
-                                <li>Mrs. Marides Almazan Garcia</li>
-                                <li>Mrs. Rachelle Rañon</li>
-                                <li>Mrs. Annie Clemente Yco</li>
-                                <li>Mrs. Lilibeth Diaz</li>
-                                <li>Mrs. Jovy Galsim</li>
-                                <li>Mrs. Gina Merza</li>
-                                <li>Mrs. Edith Panogan</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.5. Entourage Section         -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative overflow-hidden bg-alt-tint" id="entourage">
-                <img src="assets/flower-4.png" class="section-flower w-40 -right-16 top-32 opacity-30" alt="">
-                <img src="assets/sprig-4.png" class="section-flower w-48 -left-20 bottom-32 opacity-30 -rotate-45" alt="">
-                <div class="max-w-5xl mx-auto relative z-10">
-                    <div class="text-center mb-16">
-                        <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
-                        <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue">The Entourage</h2>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 mb-12">
-                        <div class="elegant-card border border-pale-peach/30 p-8 text-center ">
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-3">Best Man</p>
-                            <p class="font-primary text-3xl text-baltic-blue">Renz Czymon Guevarra</p>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 p-8 text-center ">
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-3">Matron of Honor</p>
-                            <p class="font-primary text-3xl text-baltic-blue">Jane Ann Uy</p>
-                        </div>
-                    </div>
-
-                    <div class="elegant-card border border-pale-peach/30 p-10 mb-12  text-center">
-                        <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-8">Secondary Sponsors</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                            <div>
-                                <p class="font-primary text-xl text-dusty-blue mb-4">Candles</p>
-                                <p class="font-body text-lg text-baltic-blue mb-1">Michael Coronel</p>
-                                <p class="font-body text-lg text-baltic-blue">Delrina Cañafranca</p>
-                            </div>
-                            <div>
-                                <p class="font-primary text-xl text-dusty-blue mb-4">Veil</p>
-                                <p class="font-body text-lg text-baltic-blue mb-1">Jerald Sabado</p>
-                                <p class="font-body text-lg text-baltic-blue">Reyna Rose Laviña</p>
-                            </div>
-                            <div>
-                                <p class="font-primary text-xl text-dusty-blue mb-4">Cord</p>
-                                <p class="font-body text-lg text-baltic-blue mb-1">Gerwel Uy</p>
-                                <p class="font-body text-lg text-baltic-blue">Donnabhie Rañada</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 mb-12">
-                        <div class="elegant-card border border-pale-peach/30 p-8 text-center ">
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-6">Groomsmen</p>
-                            <ul class="space-y-3 font-body text-lg text-baltic-blue">
-                                <li>Phillip Russell Reyes</li>
-                                <li>John Arthure Angeles</li>
-                                <li>Charles Ryrie Trinidad</li>
-                                <li>Ariel Villegas</li>
-                                <li>John Cyrone Gerella</li>
-                            </ul>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 p-8 text-center ">
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-6">Bridesmaids</p>
-                            <ul class="space-y-3 font-body text-lg text-baltic-blue">
-                                <li>Avry Margaloe Calimlim</li>
-                                <li>Juvelyn Cabasal</li>
-                                <li>Naila Cadeliña</li>
-                                <li>Ghinelle Gallardo</li>
-                                <li>Michelle Anne Raquiño</li>
-                                <li>Lienny Abadiano</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 mb-16">
-                        <div class="elegant-card border border-pale-peach/30 p-8 text-center ">
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-6">Bearers</p>
-                            <div class="space-y-4 font-body text-lg text-baltic-blue">
-                                <div class="flex justify-between border-b border-white/10 pb-2"><span class="font-primary text-xl text-dusty-blue">Bible</span> <span>John Benedict Sabado</span></div>
-                                <div class="flex justify-between border-b border-white/10 pb-2"><span class="font-primary text-xl text-dusty-blue">Ring</span> <span>Zachariah Miguel Orgen</span></div>
-                                <div class="flex justify-between"><span class="font-primary text-xl text-dusty-blue">Coin</span> <span>Akio Joaquin Teodoro</span></div>
-                            </div>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 p-8 text-center ">
-                            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-6">Flower Girls</p>
-                            <div class="space-y-4 font-body text-lg text-baltic-blue">
-                                <div class="border-b border-white/10 pb-2">Maddison Raya Diasanta</div>
-                                <div class="border-b border-white/10 pb-2">Makayla Royce Diasanta</div>
-                                <div class="border-b border-white/10 pb-2">Yanamarie Kleigh Yanto</div>
-                                <div>Elisha Rovy Miller</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.6. Schedule & Dress Code     -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative" id="dress-code" style="transition: background-color 0.8s ease;">
-                <div id="dress-code-bg-text" class="absolute inset-0 flex items-center justify-center font-primary opacity-20 pointer-events-none transition-colors duration-800 text-dusty-blue" style="font-size: clamp(80px, 15vw, 250px); white-space: nowrap; z-index: 20; line-height: 1;"></div>
-                <div class="max-w-4xl mx-auto text-center mb-20 relative z-10">
-                    <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="section-monogram" alt="">
-                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue mb-4">Dress Code</h2>
-                    <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-8">Strictly Semi-formal or Formal. No Casual Attire.</p>
-                    
-                    <div class="grid md:grid-cols-2 gap-8 relative z-10 mt-8">
-                        <div class="elegant-card border border-pale-peach/30 dresscode-card p-10  text-center">
-                            <h4 class="font-primary text-3xl font-bold text-dusty-blue mb-4">Gentlemen</h4>
-                            <p class="font-body text-base text-baltic-blue">Formal or semi-formal suit. No casual attire.</p>
-                        </div>
-                        <div class="elegant-card border border-pale-peach/30 dresscode-card p-10  text-center">
-                            <h4 class="font-primary text-3xl font-bold text-dusty-blue mb-4">Ladies</h4>
-                            <p class="font-body text-base text-baltic-blue">Elegant gown or cocktail dress.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12 mb-4 text-center relative z-10">
-                        <p class="font-primary text-2xl md:text-3xl text-baltic-blue">We envision our guests in elegant shades of <span class="font-bold text-[#E8D8C0]">Light Beige</span>.</p>
-                    </div>
-                    <div class="mb-8 text-center relative z-10">
-                        <p class="font-body text-lg text-baltic-blue">We invite you to complement our celebration by choosing attire in shades inspired by this harmonious palette.</p>
-                    </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10 max-w-[280px] md:max-w-md mx-auto">
-                        <div class="flex flex-col items-center gap-2">
-                            <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle" style="background:#faf0e6;" title="Linen"></div>
-                            <span class="font-utility text-[10px] uppercase tracking-widest text-dusty-blue">Linen</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2">
-                            <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle" style="background:#faebd7;" title="Antique White"></div>
-                            <span class="font-utility text-[10px] uppercase tracking-widest text-dusty-blue">Antique White</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2">
-                            <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle" style="background:#f7e7ce;" title="Champagne"></div>
-                            <span class="font-utility text-[10px] uppercase tracking-widest text-dusty-blue">Champagne</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2">
-                            <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle" style="background:#fff8e7;" title="Cosmic Latte"></div>
-                            <span class="font-utility text-[10px] uppercase tracking-widest text-dusty-blue">Cosmic Latte</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.8. Gallery                  -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative overflow-hidden bg-alt-tint" id="gallery">
-                <img src="assets/sprig-6.png" class="section-flower w-40 -left-10 top-20 opacity-30" alt="">
-                <div class="max-w-7xl mx-auto relative z-10">
-                    <div class="text-center mb-16">
-                        <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue mb-4">Prenup Gallery</h2>
-                        <p class="font-primary italic text-xl text-dusty-blue">Captured moments before the 'I Do's'</p>
-                    </div>
-                    <div class="swiper gallery-swiper w-full pt-10 pb-16">
-                        <div class="swiper-wrapper" id="gallery-container">
-                            <!-- Slides will be injected dynamically via JS -->
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.9. Gifts                    -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="gifts">
-                <img src="assets/flower-3.png" class="section-flower w-40 -left-10 bottom-10 opacity-30" alt="">
-                <div class="max-w-3xl mx-auto text-center relative z-10">
-                    <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="section-monogram" alt="">
-                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue mb-8">A Note on Gifts</h2>
-                    <blockquote class="font-body italic text-lg text-dusty-blue border-l-2 border-dusty-blue pl-6 py-2 my-4 text-left max-w-md mx-auto">
-                        Your presence is the gift we treasure,<br>
-                        Your prayers and love, beyond all measure.<br>
-                        But should you wish to give a little more,<br>
-                        A monetary gift is what we adore.
-                    </blockquote>
-                </div>
-            </section>
-
-            <!-- =============================== -->
-            <!--  3.10. RSVP                    -->
-            <!-- =============================== -->
-            <section class="py-24 px-5 md:px-16 bg-alt-tint" id="rsvp">
-                <div class="text-center mb-12">
-                    <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
-                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-blue mb-4">R.S.V.P.</h2>
+                <div
+                    class="elegant-card border border-classic-cream/30 dresscode-card p-10 text-center max-w-2xl mx-auto mb-8">
+                    <h4 class="font-primary text-3xl font-bold text-dusty-green mb-4">Guests</h4>
+                    <p class="font-accent text-base text-baltic-green">Casual to Semi-Casual Attire.</p>
+                    <p class="font-accent text-base text-baltic-green mt-2">Kindly wear outfits that complement our sage
+                        green theme.</p>
                 </div>
 
-                <div id="rsvpCardWrapper" class="max-w-2xl mx-auto elegant-card border border-pale-peach/30 p-8 md:p-12 relative overflow-hidden">
-                    
-                    <!-- Private Invitation Step -->
-                    <form id="verificationForm" class="flex flex-col justify-center items-center py-12 text-center transition-all duration-500 ease-in-out">
-                        <h3 class="font-primary text-3xl text-dusty-blue mb-3">Private Invitation</h3>
-                        <p class="font-utility text-baltic-blue mb-6">Please enter your unique invitation code to unlock your RSVP.</p>
-                        <input type="text" id="invitationCode" class="font-primary text-2xl text-center tracking-[0.2em] uppercase w-full max-w-xs mb-6 border-0 border-b-2 border-dusty-blue bg-transparent focus:outline-none text-baltic-blue pb-2 placeholder:text-gray-300" placeholder="CODE" autocomplete="off">
-                        <div id="verifyLoader" class="loader hidden mx-auto mb-4"></div>
-                        <p class="text-red-500 font-body text-sm h-6 mb-4" id="verifyError"></p>
-                        <button type="submit" id="verifyBtn" class="px-8 py-3 bg-dusty-blue text-white font-utility text-xs uppercase tracking-widest rounded-lg hover:bg-baltic-blue transition-colors shadow-lg">Unlock RSVP</button>
-                    </form>
-
-                    <!-- Success Message Step -->
-                    <div id="successModal" class="absolute inset-0 z-30 flex flex-col justify-center items-center p-8 text-center transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-md hidden opacity-0 pointer-events-none">
-                        <h3 class="font-primary text-4xl text-dusty-blue mb-4">Thank You!</h3>
-                        <p class="font-body text-baltic-blue text-lg">Your response has been beautifully recorded.</p>
-                        <p class="font-body italic text-dusty-blue mt-4">We can't wait to celebrate with you.</p>
-                    </div>
-
-                    <!-- Core RSVP Form Layout (hidden initially) -->
-                    <form id="rsvpForm" class="text-left space-y-8 hidden" style="transition: opacity 0.5s ease-in-out;">
-                        <div class="text-center mb-6">
-                            <h4 id="welcomeMessage" class="font-primary text-2xl text-dusty-blue"></h4>
-                        </div>
-
-                        <input type="hidden" id="finalCode" name="code">
-
-                        <div>
-                            <label class="block font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-2 font-bold">Guest Name</label>
-                            <input type="text" id="guestName" class="rsvp-input w-full py-3 font-body text-baltic-blue" placeholder="Your Name" required>
-                            <p class="font-body italic text-[13px] text-dusty-blue/80 mt-2">* Kindly verify that your name is spelled correctly.</p>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <label class="block font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-2 font-bold">Email Address</label>
-                                <input type="email" id="email" class="rsvp-input w-full py-3 font-body text-baltic-blue" required>
-                            </div>
-                            <div>
-                                <label class="block font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-2 font-bold">Phone Number</label>
-                                <input type="tel" id="phone" class="rsvp-input w-full py-3 font-body text-baltic-blue" required>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-3 font-bold">Will you attend?</label>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <label class="flex items-center gap-3 cursor-pointer font-body text-baltic-blue">
-                                    <input type="radio" name="attendance" value="Joyfully Accepts" class="w-4 h-4 text-dusty-blue focus:ring-dusty-blue" required> Joyfully Accepts
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer font-body text-baltic-blue">
-                                    <input type="radio" name="attendance" value="Regretfully Declines" class="w-4 h-4 text-dusty-blue focus:ring-dusty-blue"> Regretfully Declines
-                                </label>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-2 font-bold">Message for the Couple</label>
-                            <textarea id="message" class="rsvp-textarea w-full py-3 px-4 font-body text-baltic-blue" style="height: 100px; resize: none;" placeholder="Leave a wedding wish..."></textarea>
-                        </div>
-
-                        <div class="text-center pt-4">
-                            <div id="submitLoader" class="loader hidden mx-auto mb-4"></div>
-                            <button type="submit" id="submitBtn" class="w-full px-8 py-4 bg-dusty-blue text-white font-utility text-xs uppercase tracking-widest rounded-lg hover:bg-baltic-blue transition-colors shadow-lg">Submit RSVP</button>
-                        </div>
-                    </form>
+                <div class="mt-12 mb-4 text-center relative z-10 max-w-2xl mx-auto">
+                    <h4 class="font-primary text-2xl text-dusty-green mb-2 font-bold">A little Note:</h4>
+                    <p class="font-accent text-lg text-baltic-green">Please refrain from wearing <b
+                            class="text-dusk-green">white</b>, as this color is reserved for the bride.</p>
+                    <p class="font-accent text-lg text-baltic-green mt-4 italic">Come dressed comfortably, beautifully,
+                        and ready to celebrate with us! <br>A celebration inspired by nature, love and new beginnings.
+                    </p>
                 </div>
-            </section>
+
+                <div class="flex flex-wrap justify-center gap-6 relative z-10 max-w-2xl mx-auto mt-12 mb-16">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle"
+                            style="background:#d9e5d7;" title="Sage Hint"></div>
+                        <span
+                            class="font-utility text-[10px] uppercase tracking-widest text-dusty-green text-center">Sage
+                            Hint</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle"
+                            style="background:#becfbc;" title="Mint"></div>
+                        <span
+                            class="font-utility text-[10px] uppercase tracking-widest text-dusty-green text-center">Mint</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle"
+                            style="background:#8ea58b;" title="Sage"></div>
+                        <span
+                            class="font-utility text-[10px] uppercase tracking-widest text-dusty-green text-center">Sage</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle"
+                            style="background:#738a6e;" title="Moss"></div>
+                        <span
+                            class="font-utility text-[10px] uppercase tracking-widest text-dusty-green text-center">Moss</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full shadow-md border-4 border-white color-circle"
+                            style="background:#324d3e;" title="Evergreen"></div>
+                        <span
+                            class="font-utility text-[10px] uppercase tracking-widest text-dusty-green text-center">Evergreen</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section Divider: non-floral continuous tile -->
+        <div class="section-divider section-divider--cont" role="presentation" aria-hidden="true"
+            style="background-image: url('assets/background/divider/non-floral-horizontal-border-03-cont.webp');"></div>
+
+        <!-- =============================== -->
+        <!--  3.8. Gallery                  -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative overflow-hidden bg-alt-tint" id="gallery">
+            <!-- Main-background: ambient leaf watermark per-section -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-05.webp"
+                class="section-flower w-72 right-0 bottom-0 opacity-[0.07] translate-x-10" alt="" aria-hidden="true">
+            <img src="assets/background/container-background/floral-small-ornament-cluster-04.webp"
+                class="section-flower w-40 -left-10 top-20 opacity-20" alt="" aria-hidden="true">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="font-primary text-4xl md:text-5xl text-dusty-green mb-4">Prenup Gallery</h2>
+                    <p class="font-primary italic text-xl text-dusty-green">Captured moments before the 'I Do's'</p>
+                </div>
+                <div class="swiper gallery-swiper w-full pt-10 pb-16">
+                    <div class="swiper-wrapper" id="gallery-container">
+                        <!-- Slides will be injected dynamically via JS -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider: floral single -->
+        <div class="section-divider" role="presentation" aria-hidden="true">
+            <img src="assets/background/divider/floral-horizontal-border-03.webp" alt="" class="section-divider__img">
+        </div>
+
+        <!-- =============================== -->
+        <!--  3.9. Gifts                    -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 relative overflow-hidden" id="gifts">
+            <!-- Main-background: ambient leaf watermark per-section -->
+            <img src="assets/background/main-background/non-floral-minimalist-leaf-03.webp"
+                class="section-flower w-64 right-0 bottom-0 opacity-[0.08] translate-x-10 rotate-12" alt=""
+                aria-hidden="true">
+            <img src="assets/background/container-background/non-floral-small-ornament-cluster-01.webp"
+                class="section-flower w-40 -left-10 bottom-10 opacity-20" alt="" aria-hidden="true">
+            <div class="max-w-3xl mx-auto text-center relative z-10">
+                <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="section-monogram" alt="">
+                <h2 class="font-primary text-4xl md:text-5xl text-dusty-green mb-8">Gift Guide</h2>
+                <blockquote <p class="mb-4">Your presence at our wedding is already the greatest gift we could ask for.
+                    </p>
+                    <p class="mb-4">As we begin this new chapter together, we would also be truly grateful for any
+                        monetary gift you may wish to give. It will help us as we build our home and future together.
+                    </p>
+                    <p>There is absolutely no pressure - your love, prayers, and presence on our special day mean more
+                        to us than anything.</p>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- =============================== -->
+        <!--  3.10. Location                 -->
+        <!-- =============================== -->
+        <section class="py-24 px-5 md:px-16 bg-alt-tint" id="location">
+            <div class="text-center mb-12">
+                <img src="assets/monogram/ReyJona-DustyBlue-Monogram.svg" class="section-monogram" alt="">
+                <h2 class="font-primary text-4xl md:text-5xl text-dusty-green mb-4">Location</h2>
+                <p class="font-accent text-baltic-green text-lg">Wedding ceremony at Parish of St. Peter of Verona
+                    followed by a joyful celebration at Inang Gaddi Resort, Bataan.</p>
+            </div>
+        </section>
         </div>
 
         <!-- Footer -->
         <footer class="w-full py-16 px-5 text-center bg-transparent border-t border-white/10">
-            <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" alt="Rey & Jona" class="w-24 mx-auto mb-8 opacity-80" >
-            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-blue mb-6">Rey Christopher &amp; Jonalyn</p>
-            <p class="font-body text-sm text-dusty-blue">© 2026. Crafted with Love.</p>
+            <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" alt="Zelwyn & Elaine"
+                class="w-24 mx-auto mb-8 opacity-80">
+            <p class="font-utility text-[11px] uppercase tracking-widest text-dusty-green mb-6">Zelwyn &amp;
+                Elaine</p>
+            <p class="font-accent text-sm text-dusty-green">© 2026. Crafted with Love.</p>
         </footer>
     </main>
 
     <!-- ========================================= -->
     <!--  MOBILE MENU                              -->
     <!-- ========================================= -->
-    <div id="mobile-menu-backdrop" class="fixed inset-0 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity bg-dusty-blue/40"></div>
-    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-72 z-50 bg-white shadow-2xl transform translate-x-full flex flex-col p-10 border-l border-white/10">
+    <div id="mobile-menu-backdrop"
+        class="fixed inset-0 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity bg-dusty-green/40"></div>
+    <div id="mobile-menu"
+        class="fixed inset-y-0 right-0 w-72 z-50 bg-white shadow-2xl transform translate-x-full flex flex-col p-10 border-l border-white/10">
         <div class="flex justify-between items-center mb-12">
-            <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="h-10 w-auto" alt="R & J" >
-            <button id="mobile-menu-close" class="text-dusty-blue p-2">
-                <span class="material-symbols-outlined text-[28px]">close</span>
+            <img src="assets/monogram/ReyJona-DuskBlue-Monogram.svg" class="h-10 w-auto" alt="R & J">
+            <button id="mobile-menu-close" class="text-dusty-green p-2">
+                <i data-lucide="x" class="w-7 h-7"></i>
             </button>
         </div>
-        
+
         <!-- Mobile Menu Countdown -->
-        <div class="mb-10 p-4 rounded-xl bg-alt-tint border border-pale-peach/30 text-center flex flex-col items-center gap-2">
-            <span class="font-utility text-[10px] uppercase tracking-widest font-bold text-dusty-blue">Dec 5, 2026</span>
-            <div class="flex gap-2 font-utility text-[14px] font-bold text-baltic-blue">
+        <div
+            class="mb-10 p-4 rounded-xl bg-alt-tint border border-classic-cream/30 text-center flex flex-col items-center gap-2">
+            <span class="font-utility text-[10px] uppercase tracking-widest font-bold text-dusty-green">Dec 5,
+                2026</span>
+            <div class="flex gap-2 font-utility text-[14px] font-bold text-baltic-green">
                 <span><span class="cd-days">--</span>d</span>
                 <span><span class="cd-hours">--</span>h</span>
                 <span><span class="cd-minutes">--</span>m</span>
@@ -709,37 +982,52 @@
             </div>
         </div>
         <div class="flex flex-col gap-6">
-            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-blue" href="#hero">Home</a>
-            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-blue" href="#story">Our Story</a>
-            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-blue" href="#details">Details</a>
-            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-blue" href="#entourage">Entourage</a>
-            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-blue" href="#gallery">Gallery</a>
-            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-dusty-blue border-b border-white/10 pb-2" href="#rsvp">RSVP</a>
+            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-green"
+                href="#hero">Home</a>
+            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-green"
+                href="#story">Our Story</a>
+            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-green"
+                href="#details">Details</a>
+            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-green"
+                href="#entourage">Entourage</a>
+            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-baltic-green"
+                href="#gallery">Gallery</a>
+            <a class="mobile-nav-link font-utility text-[11px] uppercase tracking-widest font-semibold text-dusty-green border-b border-white/10 pb-2"
+                href="#location">Location</a>
         </div>
     </div>
 
     <!-- Photo Zoom Modal -->
-    <div id="photoModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm">
-        <button id="closePhotoModal" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10">
+    <div id="photoModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        <button id="closePhotoModal"
+            class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10">
             <span class="material-symbols-outlined text-[36px]">close</span>
         </button>
-        <img id="modalImg" src="" alt="Zoomed Photo" class="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+        <img id="modalImg" src="" alt="Zoomed Photo"
+            class="max-w-[95vw] max-h-[95vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
     </div>
 
     <!-- Location Modal -->
-    <div id="locationModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm p-4">
-        <div class="elegant-card bg-white/95 max-w-lg w-full rounded-[14px] relative overflow-hidden flex flex-col scale-95 transition-transform duration-300" id="locationModalContent">
-            <button id="closeLocationModal" class="absolute top-4 right-4 text-baltic-blue/50 hover:text-baltic-blue transition-colors z-10 bg-white/80 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm">
+    <div id="locationModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm p-4">
+        <div class="elegant-card bg-white/95 max-w-lg w-full rounded-[14px] relative overflow-hidden flex flex-col scale-95 transition-transform duration-300"
+            id="locationModalContent">
+            <button id="closeLocationModal"
+                class="absolute top-4 right-4 text-baltic-green/50 hover:text-baltic-green transition-colors z-10 bg-white/80 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm">
                 <span class="material-symbols-outlined text-[24px]">close</span>
             </button>
             <img id="locationImg" src="" alt="Street View" class="w-full h-48 md:h-64 object-cover">
             <div class="p-8 text-center flex flex-col items-center">
-                <h3 id="locationTitle" class="font-primary text-3xl text-dusty-blue mb-2"></h3>
-                <p id="locationDesc" class="font-body text-baltic-blue mb-6 text-sm"></p>
-                <a href="#" id="locationLink" target="_blank" rel="noopener noreferrer" class="block p-2 border border-pale-peach/50 rounded-xl bg-white shadow-sm mb-4 hover:shadow-md transition-shadow group">
-                    <img id="locationQr" src="" alt="QR Code" class="w-32 h-32 object-contain group-hover:scale-105 transition-transform">
+                <h3 id="locationTitle" class="font-primary text-3xl text-dusty-green mb-2"></h3>
+                <p id="locationDesc" class="font-accent text-baltic-green mb-6 text-sm"></p>
+                <a href="#" id="locationLink" target="_blank" rel="noopener noreferrer"
+                    class="block p-2 border border-classic-cream/50 rounded-xl bg-white shadow-sm mb-4 hover:shadow-md transition-shadow group">
+                    <img id="locationQr" src="" alt="QR Code"
+                        class="w-32 h-32 object-contain group-hover:scale-105 transition-transform">
                 </a>
-                <p class="font-utility text-[10px] uppercase tracking-widest text-dusty-blue">Scan or click to open in Maps</p>
+                <p class="font-utility text-[10px] uppercase tracking-widest text-dusty-green">Scan or click to open in
+                    Maps</p>
             </div>
         </div>
     </div>
@@ -751,25 +1039,33 @@
         <source src="assets/instrumental-bg-v1.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="audio-controls" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-1000">
+    <div id="audio-controls"
+        class="fixed bottom-6 right-6 z-50 flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-1000">
         <!-- Volume Slider (hidden initially) -->
-        <div id="volume-container" class="bg-white/80 backdrop-blur-md rounded-full px-0 py-1.5 shadow-lg border border-white/50 flex items-center justify-center w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
-            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.3" class="w-20 h-1 bg-dusty-blue/30 rounded-lg cursor-pointer accent-dusty-blue">
+        <div id="volume-container"
+            class="bg-white/80 backdrop-blur-md rounded-full px-0 py-1.5 shadow-lg border border-white/50 flex items-center justify-center w-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.3"
+                class="w-20 h-1 bg-dusty-green/30 rounded-lg cursor-pointer accent-dusty-green">
         </div>
 
         <!-- Main Buttons -->
         <div class="bg-white/80 backdrop-blur-md rounded-full p-1 shadow-lg border border-white/50 flex items-center">
-            <button id="volume-toggle-btn" class="w-8 h-8 rounded-full flex items-center justify-center text-dusty-blue hover:bg-dusty-blue/10 transition-colors">
+            <button id="volume-toggle-btn"
+                class="w-8 h-8 rounded-full flex items-center justify-center text-dusty-green hover:bg-dusty-green/10 transition-colors">
                 <i data-lucide="volume-2" class="w-4 h-4"></i>
             </button>
-            
+
             <div id="audio-visualizer" class="flex items-end gap-[3px] h-[14px] mx-2 is-paused">
-                <div class="visualizer-bar w-[3px] h-full bg-dusty-blue rounded-full" style="animation-delay: 0s;"></div>
-                <div class="visualizer-bar w-[3px] h-full bg-dusty-blue rounded-full" style="animation-delay: 0.2s;"></div>
-                <div class="visualizer-bar w-[3px] h-full bg-dusty-blue rounded-full" style="animation-delay: 0.4s;"></div>
+                <div class="visualizer-bar w-[3px] h-full bg-dusty-green rounded-full" style="animation-delay: 0s;">
+                </div>
+                <div class="visualizer-bar w-[3px] h-full bg-dusty-green rounded-full" style="animation-delay: 0.2s;">
+                </div>
+                <div class="visualizer-bar w-[3px] h-full bg-dusty-green rounded-full" style="animation-delay: 0.4s;">
+                </div>
             </div>
 
-            <button id="play-pause-btn" class="w-8 h-8 rounded-full flex items-center justify-center text-dusty-blue hover:bg-dusty-blue/10 transition-colors">
+            <button id="play-pause-btn"
+                class="w-8 h-8 rounded-full flex items-center justify-center text-dusty-green hover:bg-dusty-green/10 transition-colors">
                 <i data-lucide="pause" id="icon-pause" class="w-4 h-4 fill-current"></i>
                 <i data-lucide="play" id="icon-play" class="w-4 h-4 fill-current hidden"></i>
             </button>
@@ -781,7 +1077,7 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>

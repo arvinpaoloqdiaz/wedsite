@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================================
     //  2. Countdown Timer  (target: 2026-12-05 14:30 local)
     // ============================================================
-    const WEDDING_DATE = new Date('2026-12-05T14:30:00');
+    const WEDDING_DATE = new Date('2026-12-12T14:30:00');
 
     const cdDaysEls    = document.querySelectorAll('.cd-days');
     const cdHoursEls   = document.querySelectorAll('.cd-hours');
@@ -325,12 +325,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('petals-container');
         if (!container) return;
 
+        // Animation assets: balanced mix of floral petals/leaves & non-floral elements
         const petalImages = [
-            'assets/bud-1.png', 'assets/flower-1.png', 'assets/flower-2.png',
-            'assets/flower-3.png', 'assets/flower-4.png', 'assets/flower-5.png',
-            'assets/leaf-1.png', 'assets/sprig-1.png', 'assets/sprig-2.png',
-            'assets/sprig-3.png', 'assets/sprig-4.png', 'assets/sprig-5.png',
-            'assets/sprig-6.png'
+            'assets/background/animation/floral-petal-01.webp',
+            'assets/background/animation/floral-petal-02.webp',
+            'assets/background/animation/floral-petal-03.webp',
+            'assets/background/animation/floral-petal-04.webp',
+            'assets/background/animation/floral-leaf-01.webp',
+            'assets/background/animation/floral-leaf-02.webp',
+            'assets/background/animation/floral-leaf-03.webp',
+            'assets/background/animation/floral-leaf-04.webp',
+            'assets/background/animation/non-floral-leaf-01.webp',
+            'assets/background/animation/non-floral-leaf-02.webp',
         ];
 
         const maxPetals = 12; // Reduced slightly for minimal elegant feel
@@ -385,10 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!canvas) return;
 
         const PETAL_COLORS = [
-            'rgba(182,199,219,0.65)',
-            'rgba(238,218,201,0.70)',
+            'rgba(178,194,182,0.65)',
+            'rgba(245,238,220,0.70)',
             'rgba(182,187,181,0.55)',
-            'rgba(110,143,179,0.45)',
+            'rgba(125,145,130,0.45)',
             'rgba(255,255,255,0.50)',
         ];
 
@@ -454,179 +460,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================================
-    //  11. RSVP Form Logic
+    //  (RSVP Form Logic removed)
     // ============================================================
-    const RSVP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOV9G2QrKPM8LomFp19c5djZWGzxWEPitF4dXwd76rEi73alzCCf0SHIIU5exduYqOWA/exec";
-
-    const verificationForm = document.getElementById('verificationForm');
-    const successModal = document.getElementById('successModal');
-    const rsvpForm = document.getElementById('rsvpForm');
-    const verifyBtn = document.getElementById('verifyBtn');
-    const codeInput = document.getElementById('invitationCode');
-    const verifyLoader = document.getElementById('verifyLoader');
-    const verifyError = document.getElementById('verifyError');
-    const submitBtn = document.getElementById('submitBtn');
-    const submitLoader = document.getElementById('submitLoader');
-
-    async function verifyCode(code) {
-        if (!code) { verifyError.innerText = "Please enter a code."; return; }
-
-        verifyBtn.style.display = 'none';
-        verifyLoader.classList.remove('hidden');
-        verifyError.innerText = "";
-
-        const details = { action: 'verify', code: code };
-        const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
-
-        try {
-            const response = await fetch(RSVP_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'cors',
-                redirect: 'follow',
-                body: formBody,
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
-            });
-            const result = await response.json();
-            if (result.status === "success") {
-                document.getElementById('finalCode').value = code;
-                document.getElementById('guestName').value = result.name;
-                document.getElementById('welcomeMessage').innerText = result.message;
-                
-                // Smooth transition using GSAP
-                const cardWrapper = document.getElementById('rsvpCardWrapper');
-                const initialHeight = cardWrapper.offsetHeight;
-                
-                // Lock height before changing contents
-                cardWrapper.style.height = initialHeight + 'px';
-                
-                gsap.to(verificationForm, { 
-                    opacity: 0, 
-                    duration: 0.3, 
-                    onComplete: () => {
-                        verificationForm.classList.add('hidden');
-                        
-                        // Show next form instantly (but transparent) to calculate new height
-                        rsvpForm.classList.remove('hidden');
-                        rsvpForm.style.opacity = '0';
-                        
-                        // Measure target height by temporarily setting to auto
-                        cardWrapper.style.height = 'auto';
-                        const targetHeight = cardWrapper.offsetHeight;
-                        
-                        // Put explicit height back to start animation
-                        cardWrapper.style.height = initialHeight + 'px';
-                        
-                        // Animate height smoothly
-                        gsap.to(cardWrapper, {
-                            height: targetHeight,
-                            duration: 0.6,
-                            ease: "power3.inOut",
-                            onComplete: () => {
-                                cardWrapper.style.height = 'auto'; // restore responsiveness
-                                gsap.to(rsvpForm, { opacity: 1, duration: 0.4 });
-                            }
-                        });
-                    }
-                });
-
-            } else {
-                verifyError.innerText = result.message;
-                verifyBtn.style.display = 'inline-block';
-            }
-        } catch (error) {
-            console.error("Verification Fetch Error:", error);
-            verifyError.innerText = "Connection error. Please try again.";
-            verifyBtn.style.display = 'inline-block';
-        } finally {
-            verifyLoader.classList.add('hidden');
-        }
-    }
-
-    if (verificationForm) {
-        verificationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            verifyCode(codeInput.value.trim());
-        });
-    }
-
-    // Auto-verify if ?code= is in the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlCode = urlParams.get('code');
-    if (urlCode && codeInput && verificationForm) {
-        codeInput.value = urlCode;
-        // Scroll to RSVP section
-        const rsvpSection = document.getElementById('rsvp');
-        if (rsvpSection) {
-            setTimeout(() => rsvpSection.scrollIntoView({ behavior: 'smooth' }), 500);
-        }
-        verifyCode(urlCode);
-    }
-
-    if (rsvpForm) {
-        rsvpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.style.display = 'none';
-            submitLoader.classList.remove('hidden');
-
-            const payload = {
-                action: "rsvp",
-                code: document.getElementById('finalCode').value,
-                name: document.getElementById('guestName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                attendance: document.querySelector('input[name="attendance"]:checked').value,
-                message: document.getElementById('message').value
-            };
-
-            const formBody = Object.keys(payload).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(payload[key])).join('&');
-
-            try {
-                const response = await fetch(RSVP_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'cors',
-                    redirect: 'follow',
-                    body: formBody,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }
-                });
-                const result = await response.json();
-                if (result.status === "success") {
-                    successModal.classList.remove('hidden');
-                    successModal.classList.remove('opacity-0', 'pointer-events-none');
-                    if (payload.attendance === "Joyfully Accepts" && typeof confetti === 'function') {
-                        confetti({ startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999, particleCount: 150, origin: { x: 0.5, y: 0.5 } });
-                    }
-                    setTimeout(() => { window.location.reload(); }, 60000);
-                } else {
-                    alert("Error: " + result.message);
-                    submitBtn.style.display = 'inline-block';
-                }
-            } catch (error) {
-                console.error("RSVP Submission Error:", error);
-                alert("Submission failed. Please check your connection.");
-                submitBtn.style.display = 'inline-block';
-            } finally {
-                submitLoader.classList.add('hidden');
-            }
-        });
-    }
 
     // ============================================================
     //  9. Prenup Gallery Swiper
     // ============================================================
     // Cloudinary URLs with auto-format, auto-quality, and scaled to 1200px max-width for fast loading and crisp zoom
     const galleryImages = [
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560342/01_z9g43x.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560342/02_hwzavj.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560343/03_yq6uqb.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560343/04_ruuwqg.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560342/05_eygv4c.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560343/06_ysvlcy.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/07_hyckjy.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/08_fdfp6a.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/09_o7xudl.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560344/10_ki6nuo.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560345/11_amiuzj.jpg",
-        "https://res.cloudinary.com/l5hjrhcx/image/upload/q_auto,f_auto,w_1200/v1785560345/12_s1lobq.jpg"
+        "assets/placeholder/prenup_gallery_01.jpg",
+        "assets/placeholder/prenup_gallery_02.jpg",
+        "assets/placeholder/prenup_gallery_03.jpg",
+        "assets/placeholder/prenup_gallery_04.jpg"
     ];
 
     const galleryContainer = document.getElementById('gallery-container');
