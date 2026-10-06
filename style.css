@@ -625,7 +625,9 @@ h3 {
   display: block;
   width: clamp(80px, 12vw, 120px);
   height: auto;
-  margin: 0 auto 1.5rem;
+  margin: -8px auto 1rem;
+  /* negative margin trims the transparent whitespace edges */
+  clip-path: inset(5% 5% 5% 5%);
 }
 
 .section-flower {
@@ -720,11 +722,18 @@ h3 {
 
 
 /* Dress Code Dynamic Styles */
-#dress-code.is-dark h2,
-#dress-code.is-dark h4,
-#dress-code.is-dark p {
+/* Smooth transition on all text in dress-code section */
+#dress-code h2,
+#dress-code h4,
+#dress-code p,
+#dress-code span {
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+/* Only flip text outside of the cards (marked .dc-outer) to white on dark backgrounds */
+#dress-code.is-dark .dc-outer {
   color: #ffffff !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #dress-code.is-dark .section-monogram {
@@ -864,13 +873,6 @@ h3 {
 }
 
 
-/* Dress Code Dynamic Styles */
-#dress-code.is-dark h2,
-#dress-code.is-dark h4,
-#dress-code.is-dark p {
-  color: #ffffff !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 #dress-code.is-dark .section-monogram {
   filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -1029,4 +1031,34 @@ h3 {
 #audio-visualizer.is-paused .visualizer-bar {
   animation-play-state: paused;
   transform: scaleY(0.2) !important;
+}
+
+/* Card Shine Animation */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine 5s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { left: -150%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
 }

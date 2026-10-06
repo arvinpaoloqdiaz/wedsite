@@ -453,8 +453,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     dressCodeBgText.textContent = colorName;
                 }
                 
-                // All current palette colors are light, so always use default (non-dark) styling
-                dressCodeSection.classList.remove('is-dark');
+                const darkColors = ['Sage', 'Moss', 'Evergreen'];
+                if (darkColors.includes(colorName)) {
+                    dressCodeSection.classList.add('is-dark');
+                } else {
+                    dressCodeSection.classList.remove('is-dark');
+                }
             });
         });
     }
