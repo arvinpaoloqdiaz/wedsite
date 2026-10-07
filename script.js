@@ -163,49 +163,63 @@ document.addEventListener('DOMContentLoaded', () => {
             audioControls.classList.remove('opacity-0', 'pointer-events-none');
         }
 
+        // Pre-position main content for a seamless cross-fade
+        if (mainContent) {
+            mainContent.style.display = '';
+            gsap.set(mainContent, { opacity: 0, y: 15, scale: 0.99 });
+        }
+
         const exitTl = gsap.timeline({
             onComplete: () => {
                 landing.style.display = 'none';
                 document.body.style.overflowY = 'auto';
-
                 if (mainContent) {
-                    mainContent.style.display = '';
-                    mainContent.classList.add('is-visible');
-
-                    gsap.fromTo(mainContent,
-                        { opacity: 0, y: 20 },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            duration: 1.1,
-                            ease: 'power3.out',
-                            clearProps: 'transform',
-                            onStart: () => { 
-                                mainContent.style.visibility = 'visible'; 
-                                ScrollTrigger.refresh();
-                            }
-                        }
-                    );
+                    gsap.set(mainContent, { clearProps: 'opacity,transform,y,scale' });
+                    ScrollTrigger.refresh();
                 }
             }
         });
 
+        // 1. Gently lift and fade invitation typography & ornaments
         exitTl.to('.landing__content', {
-            opacity: 0, y: -28,
-            duration: 0.55,
+            opacity: 0,
+            y: -18,
+            duration: 0.5,
             ease: 'power2.in'
         });
+
         exitTl.to('.landing__flower', {
-            opacity: 0, scale: 0.85,
-            duration: 0.55,
-            ease: 'power2.in',
-            stagger: 0.07
-        }, '-=0.35');
-        exitTl.to('.landing__bg', {
             opacity: 0,
+            scale: 0.9,
+            duration: 0.45,
+            ease: 'power2.in',
+            stagger: 0.04
+        }, '<0.05');
+
+        // 2. Elegantly expand/fade out invitation card while fading out backdrop
+        exitTl.to('.landing__card', {
+            opacity: 0,
+            scale: 1.03,
             duration: 0.75,
             ease: 'power2.inOut'
-        }, '-=0.35');
+        }, '<0.15');
+
+        exitTl.to(['.landing__bg', '#landing-petals-canvas'], {
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power2.inOut'
+        }, '<');
+
+        // 3. Smoothly fade in and float up main content
+        if (mainContent) {
+            exitTl.to(mainContent, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.0,
+                ease: 'power3.out'
+            }, '<0.15');
+        }
     }
 
     if (enterBtn) {

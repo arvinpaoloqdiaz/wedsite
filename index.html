@@ -81,52 +81,57 @@
     <!--  2. LANDING PAGE (Invitation Cover)       -->
     <!-- ========================================= -->
     <section id="landing" class="landing">
-        <!-- Placeholder Photo Background -->
-        <div class="absolute inset-0 z-0">
-            <img src="assets/placeholder/landing_hero_fullscreen.jpg" class="w-full h-full object-cover object-center"
-                alt="Landing Background">
-            <!-- Sage Green Overlay -->
-            <div class="absolute inset-0 bg-[#7d9182]/80"></div>
-        </div>
+        <!-- Elegant Sage Backdrop on Large Screens -->
         <div class="landing__bg relative z-0"></div>
 
-        <!-- Beige-variant petals (only visible when ?landing=beige) -->
+        <!-- Fullscreen Petals Animation Canvas -->
         <div id="landing-petals-canvas" aria-hidden="true"></div>
 
-        <!-- Landing: top-left corner ornament -->
-        <img src="assets/background/landing-page/non-floral-large-corner-ornament.webp" alt=""
-            class="landing__flower landing__flower--top-left" aria-hidden="true">
-        <!-- Landing: bottom-right corner ornament (flipped) -->
-        <img src="assets/background/landing-page/floral-large-corner-ornament.webp" alt=""
-            class="landing__flower landing__flower--bottom-right" aria-hidden="true">
-
-        <div class="landing__content">
-            <p class="font-utility text-xs lg:text-base uppercase tracking-[0.2em] text-dusty-green mb-4 opacity-80">The
-                Wedding of</p>
-            <h1 class="landing__names font-header-1 text-dusty-green">
-                <span>Zelwyn</span>
-                <span class="text-dusty-green text-[0.5em] leading-none my-2">&amp;</span>
-                <span>Elaine</span>
-            </h1>
-            <p class="font-accent text-lg lg:text-2xl text-baltic-green tracking-[0.1em] mt-6 opacity-90">December 12,
-                2026
-            </p>
-
-            <!-- Divider -->
-            <div class="landing-divider" role="presentation">
-                <span class="landing-divider__line"></span>
-                <span class="landing-divider__diamond"></span>
-                <span class="landing-divider__line"></span>
+        <!-- Invitation Card Wrapper (contains photo background, corner ornaments, and invitation text) -->
+        <div class="landing__card">
+            <!-- Photo Background -->
+            <div class="landing__image-container absolute inset-0 z-0 overflow-hidden">
+                <img src="assets/landing-page.jpg" class="landing__image w-full h-full object-cover object-center"
+                    alt="Zelwyn & Elaine">
+                <!-- Sage Green & Vignette Overlay -->
+                <div class="landing__image-overlay absolute inset-0"></div>
             </div>
 
-            <button id="enter-btn"
-                class="flex flex-col items-center gap-2 text-dusty-green hover:text-white active:text-classic-cream transition-colors group cursor-pointer">
-                <span class="font-utility text-xs uppercase tracking-[0.2em]">View Our Invitation</span>
-                <svg class="group-hover:translate-y-1 transition-transform" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </button>
+            <!-- Landing: top-left corner ornament -->
+            <img src="assets/background/landing-page/non-floral-large-corner-ornament.webp" alt=""
+                class="landing__flower landing__flower--top-left" aria-hidden="true">
+            <!-- Landing: bottom-right corner ornament (flipped) -->
+            <img src="assets/background/landing-page/floral-large-corner-ornament.webp" alt=""
+                class="landing__flower landing__flower--bottom-right" aria-hidden="true">
+
+            <div class="landing__content">
+                <p class="font-utility text-xs lg:text-base uppercase tracking-[0.25em] text-white/90 mb-3 drop-shadow-md font-medium">The
+                    Wedding of</p>
+                <h1 class="landing__names font-header-1 text-white drop-shadow-lg">
+                    <span>Zelwyn</span>
+                    <span class="text-classic-cream text-[0.55em] leading-none my-2 drop-shadow-sm">&amp;</span>
+                    <span>Elaine</span>
+                </h1>
+                <p class="font-accent text-lg lg:text-2xl text-classic-cream tracking-[0.12em] mt-4 drop-shadow-md font-medium">December 12,
+                    2026
+                </p>
+
+                <!-- Divider -->
+                <div class="landing-divider" role="presentation">
+                    <span class="landing-divider__line"></span>
+                    <span class="landing-divider__diamond"></span>
+                    <span class="landing-divider__line"></span>
+                </div>
+
+                <button id="enter-btn"
+                    class="flex flex-col items-center gap-2 text-white/90 hover:text-white active:text-classic-cream transition-all group cursor-pointer drop-shadow-md">
+                    <span class="font-utility text-xs uppercase tracking-[0.22em] font-medium">View Our Invitation</span>
+                    <svg class="group-hover:translate-y-1 transition-transform" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -184,14 +189,14 @@
 
             <!-- ── Image Background ── -->
             <div class="relative w-full">
-                <img id="hero-image" src="assets/placeholder/main_screen_hero.jpg" alt="Main Screen Hero"
+                <img id="hero-image" src="assets/hero-section.jpg" alt="Zelwyn & Elaine"
                     class="w-full h-auto md:h-screen md:object-cover md:object-center block">
 
-                <!-- Subtle blue tint overlay -->
+                <!-- Subtle tint overlay -->
                 <div class="absolute inset-0 pointer-events-none" style="background: rgba(58, 74, 62, 0.12);"></div>
 
-                <!-- Gradient fade at bottom of video (both mobile & desktop) -->
-                <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+                <!-- Gradient fade at bottom of hero section (both mobile & desktop) -->
+                <div class="hero-gradient pointer-events-none"></div>
 
                 <!-- ── DESKTOP ONLY: Overlaid content ── -->
                 <!-- Top: Label + Names -->

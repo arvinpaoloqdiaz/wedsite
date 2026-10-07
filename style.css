@@ -272,39 +272,159 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FAF6F1;
+  background: #1e2e24;
+  /* Deep sage fallback */
+  overflow: hidden;
 }
 
-/* Very subtle floral watermark background */
+/* Elegant Animated Sage Backdrop on Large Screens */
 .landing__bg {
   position: absolute;
-  inset: 0;
+  inset: -20px;
   background:
-    radial-gradient(ellipse 70% 60% at 15% 10%, rgba(178, 194, 182, 0.28) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 50% at 88% 85%, rgba(245, 238, 220, 0.45) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 70% at 90% 5%, rgba(125, 145, 130, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(250, 246, 241, 1) 0%, rgba(245, 238, 228, 0.85) 100%);
+    radial-gradient(circle at 50% 50%, #2e4436 0%, #1c2b21 70%, #15221a 100%);
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Ambient animated glowing aurora orbs behind the invitation card */
+.landing__bg::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: clamp(350px, 45vw, 600px);
+  height: clamp(350px, 45vw, 600px);
+  background: radial-gradient(circle, rgba(142, 165, 139, 0.28) 0%, rgba(115, 138, 110, 0.12) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: ambientFloat1 18s ease-in-out infinite alternate;
+}
+
+.landing__bg::after {
+  content: "";
+  position: absolute;
+  bottom: 8%;
+  right: 12%;
+  width: clamp(380px, 50vw, 650px);
+  height: clamp(380px, 50vw, 650px);
+  background: radial-gradient(circle, rgba(190, 207, 188, 0.22) 0%, rgba(78, 107, 88, 0.15) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: ambientFloat2 22s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate(80px, 60px) scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50px, 100px) scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+@keyframes ambientFloat2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: translate(-90px, -70px) scale(1.18);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: translate(60px, -90px) scale(0.9);
+    opacity: 0.55;
+  }
+}
+
+/* ── Invitation Card ── */
+.landing__card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .landing__card {
+    /* Larger size on desktop & refined subtle border radius */
+    width: min(94vw, 680px);
+    height: min(94vh, 920px);
+    border-radius: 12px;
+    box-shadow:
+      0 28px 70px -10px rgba(10, 20, 14, 0.75),
+      0 0 0 1px rgba(218, 227, 219, 0.28),
+      0 0 50px rgba(0, 0, 0, 0.4);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  }
+}
+
+@media (min-width: 1280px) {
+  .landing__card {
+    width: min(92vw, 740px);
+    height: min(93vh, 960px);
+  }
+}
+
+.landing__image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e2e24;
+}
+
+.landing__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Rich sage-tinted gradient overlay that gives the card a bespoke wedding mood and perfect text contrast */
+.landing__image-overlay {
+  background: linear-gradient(180deg,
+      rgba(38, 58, 47, 0.45) 0%,
+      rgba(45, 68, 54, 0.55) 45%,
+      rgba(25, 42, 33, 0.72) 100%);
 }
 
 .landing__flower {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
-  opacity: 0.72;
+  opacity: 0.85;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
 }
 
 .landing__flower--top-left {
-  top: -10px;
-  left: -10px;
-  width: clamp(200px, 28vw, 400px);
+  top: -6px;
+  left: -6px;
+  width: clamp(160px, 26vw, 280px);
 }
 
 .landing__flower--top-edge {
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(260px, 50vw, 700px);
+  width: clamp(220px, 45vw, 500px);
   opacity: 0.55;
 }
 
@@ -312,14 +432,14 @@ h3 {
   top: 50%;
   left: -10px;
   transform: translateY(-50%);
-  width: clamp(120px, 16vw, 220px);
+  width: clamp(100px, 14vw, 180px);
   opacity: 0.55;
 }
 
 .landing__flower--bottom-right {
-  bottom: -10px;
-  right: -10px;
-  width: clamp(180px, 26vw, 360px);
+  bottom: -6px;
+  right: -6px;
+  width: clamp(150px, 24vw, 260px);
   transform: rotate(180deg);
 }
 
@@ -330,15 +450,17 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
 }
 
 .landing__names {
   font-size: var(--text-landing-names);
-  color: var(--color-dusk-green);
-  line-height: 0.9;
-  margin: 1rem 0;
+  color: #ffffff;
+  line-height: 0.95;
+  margin: 0.75rem 0;
   display: flex;
   flex-direction: column;
+  text-shadow: 0 4px 24px rgba(15, 28, 20, 0.85), 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .landing.is-leaving {
@@ -352,22 +474,21 @@ h3 {
   gap: 12px;
   width: 100%;
   max-width: 240px;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 .landing-divider__line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-dusty-green), transparent);
-  opacity: 0.45;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
 }
 
 .landing-divider__diamond {
   width: 6px;
   height: 6px;
-  background: var(--color-dusty-green);
+  background: #d9e5d7;
   transform: rotate(45deg);
-  opacity: 0.55;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
 }
 
 /* Landing petals canvas — sits inside the landing at z-5 */
@@ -412,14 +533,7 @@ h3 {
    MAIN CONTENT & SMART NAVBAR
    ========================================= */
 .main-content {
-  opacity: 0;
-  visibility: hidden;
   min-height: 100vh;
-}
-
-.main-content.is-visible {
-  opacity: 1;
-  visibility: visible;
 }
 
 /* Navbar states */
@@ -529,19 +643,29 @@ h3 {
 }
 
 .hero-gradient {
-  background: linear-gradient(to bottom,
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  min-height: 90px;
+  background: radial-gradient(130% 100% at 50% -10%,
       rgba(218, 227, 219, 0) 0%,
-      rgba(218, 227, 219, 0) 40%,
-      rgba(218, 227, 219, 0.8) 80%,
+      rgba(218, 227, 219, 0) 55%,
+      rgba(218, 227, 219, 0.45) 75%,
+      rgba(218, 227, 219, 0.9) 92%,
       #dae3db 100%);
 }
 
 @media (min-width: 768px) {
   .hero-gradient {
-    background: linear-gradient(to bottom,
+    height: 18%;
+    min-height: 120px;
+    background: radial-gradient(75% 100% at 50% -10%,
         rgba(218, 227, 219, 0) 0%,
         rgba(218, 227, 219, 0) 60%,
-        rgba(218, 227, 219, 0.8) 85%,
+        rgba(218, 227, 219, 0.5) 78%,
+        rgba(218, 227, 219, 0.92) 94%,
         #dae3db 100%);
   }
 }
@@ -1046,19 +1170,25 @@ h3 {
   left: -150%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: skewX(-25deg);
   animation: shine 5s infinite;
   pointer-events: none;
 }
 
 @keyframes shine {
-  0% { left: -150%; }
-  20% { left: 200%; }
-  100% { left: 200%; }
+  0% {
+    left: -150%;
+  }
+
+  20% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
