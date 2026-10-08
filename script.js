@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (landing)     landing.style.display     = 'none';
     if (mainContent) mainContent.style.display = 'none';
-    document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
         dismissLoader();
@@ -100,8 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //  4. Landing Page — Entrance Animations
     // ============================================================
     function revealLanding() {
-        document.body.style.overflow = 'hidden';
-
         gsap.set('.landing__content',  { opacity: 0, y: 32 });
         gsap.set('.landing__flower',   { opacity: 0, scale: 0.82 });
 
@@ -172,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const exitTl = gsap.timeline({
             onComplete: () => {
                 landing.style.display = 'none';
-                document.body.style.overflowY = 'auto';
                 if (mainContent) {
                     gsap.set(mainContent, { clearProps: 'opacity,transform,y,scale' });
                     ScrollTrigger.refresh();
